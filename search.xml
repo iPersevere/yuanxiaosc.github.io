@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[test_blog]]></title>
+    <url>%2F2018%2F07%2F11%2Ftest-blog%2F</url>
+    <content type="text"><![CDATA[反向传播概述反向传播算法最初在 1970 年代被提及，但是人们直到 David Rumelhart、Geoffrey Hinton 和 Ronald Williams 的著名的 1986 年的论文中才认识到这个算法的重要性。 反向传播的核心是一个对代价函数 $C$ 关于任何权重 $w$ 和 偏置 $b$ 的偏导数 $\partial{C}/\partial{w}$ 的表达式。 这个表达式告诉我们在改变权重和偏置时，代价函数变化的快慢。 关于代价函数的两个假设 代价函数可以被写成在每一个训练样本 $x$ 上的代价函数 $Cx$ 的均值 $C=\frac{1}{n}\sum{x}C_x$。 代价函数可以写成神经网络输出的函数。]]></content>
+      <categories>
+        <category>我的测试</category>
+      </categories>
+      <tags>
+        <tag>测试</tag>
+      </tags>
+  </entry>
+</search>
