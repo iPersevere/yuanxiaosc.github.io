@@ -87,17 +87,17 @@
 <meta property="og:site_name" content="望江人工智库">
 <meta property="og:description" content="二分类、多分类与多标签分类问题使用不同的激活函数和损失函数，结论见文末总结。 二分类、多分类与多标签的基本概念二分类：表示分类任务中有两个类别，比如我们想识别一幅图片是不是猫。也就是说，训练一个分类器，输入一幅图片，用特征向量x表示，输出是不是猫，用y=0或1表示。二类分类是假设每个样本都被设置了一个且仅有一个标签 0 或者 1。 多类分类(Multiclass classification):">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/07/01/二分类、多分类与多标签问题的区别——对应损失函数的选择/二分类、多分类与多标签问题的区别——对应损失函数的选择/1.png">
-<meta property="og:image" content="http://yoursite.com/2018/07/01/二分类、多分类与多标签问题的区别——对应损失函数的选择/二分类、多分类与多标签问题的区别——对应损失函数的选择/2.png">
-<meta property="og:image" content="http://yoursite.com/2018/07/01/二分类、多分类与多标签问题的区别——对应损失函数的选择/二分类、多分类与多标签问题的区别——对应损失函数的选择/3.png">
-<meta property="og:image" content="http://yoursite.com/2018/07/01/二分类、多分类与多标签问题的区别——对应损失函数的选择/二分类、多分类与多标签问题的区别——对应损失函数的选择/4.png">
-<meta property="og:image" content="http://yoursite.com/2018/07/01/二分类、多分类与多标签问题的区别——对应损失函数的选择/二分类、多分类与多标签问题的区别——对应损失函数的选择/5.png">
-<meta property="og:image" content="http://yoursite.com/2018/07/01/二分类、多分类与多标签问题的区别——对应损失函数的选择/二分类、多分类与多标签问题的区别——对应损失函数的选择/6.png">
+<meta property="og:image" content="http://yoursite.com/2018/07/01/二分类、多分类与多标签问题的区别——对应损失函数的选择/1.png">
+<meta property="og:image" content="http://yoursite.com/2018/07/01/二分类、多分类与多标签问题的区别——对应损失函数的选择/2.png">
+<meta property="og:image" content="http://yoursite.com/2018/07/01/二分类、多分类与多标签问题的区别——对应损失函数的选择/3.png">
+<meta property="og:image" content="http://yoursite.com/2018/07/01/二分类、多分类与多标签问题的区别——对应损失函数的选择/4.png">
+<meta property="og:image" content="http://yoursite.com/2018/07/01/二分类、多分类与多标签问题的区别——对应损失函数的选择/5.png">
+<meta property="og:image" content="http://yoursite.com/2018/07/01/二分类、多分类与多标签问题的区别——对应损失函数的选择/6.png">
 <meta property="og:updated_time" content="2018-07-04T11:52:33.566Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二分类、多分类与多标签问题的区别——对应损失函数的选择">
 <meta name="twitter:description" content="二分类、多分类与多标签分类问题使用不同的激活函数和损失函数，结论见文末总结。 二分类、多分类与多标签的基本概念二分类：表示分类任务中有两个类别，比如我们想识别一幅图片是不是猫。也就是说，训练一个分类器，输入一幅图片，用特征向量x表示，输出是不是猫，用y=0或1表示。二类分类是假设每个样本都被设置了一个且仅有一个标签 0 或者 1。 多类分类(Multiclass classification):">
-<meta name="twitter:image" content="http://yoursite.com/2018/07/01/二分类、多分类与多标签问题的区别——对应损失函数的选择/二分类、多分类与多标签问题的区别——对应损失函数的选择/1.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/07/01/二分类、多分类与多标签问题的区别——对应损失函数的选择/1.png">
 
 
 
@@ -387,14 +387,14 @@
 <h2 id="二分类、多分类与多标签的基本概念"><a href="#二分类、多分类与多标签的基本概念" class="headerlink" title="二分类、多分类与多标签的基本概念"></a>二分类、多分类与多标签的基本概念</h2><p>二分类：表示分类任务中有两个类别，比如我们想识别一幅图片是不是猫。也就是说，训练一个分类器，输入一幅图片，用特征向量x表示，输出是不是猫，用y=0或1表示。二类分类是假设每个样本都被设置了一个且仅有一个标签 0 或者 1。</p>
 <p>多类分类(Multiclass classification): 表示分类任务中有多个类别, 比如对一堆水果图片分类, 它们可能是橘子、苹果、梨等. 多类分类是假设每个样本都被设置了一个且仅有一个标签: 一个水果可以是苹果或者梨, 但是同时不可能是两者。</p>
 <p>多标签分类(Multilabel classification): 给每个样本一系列的目标标签. 可以想象成一个数据点的各属性不是相互排斥的(一个水果既是苹果又是梨就是相互排斥的), 比如一个文档相关的话题. 一个文本可能被同时认为是宗教、政治、金融或者教育相关话题。</p>
-<h2 id="多分类问题与二分类问题关系"><a href="#多分类问题与二分类问题关系" class="headerlink" title="多分类问题与二分类问题关系"></a>多分类问题与二分类问题关系</h2><p><img src="二分类、多分类与多标签问题的区别——对应损失函数的选择/1.png" alt=""></p>
+<h2 id="多分类问题与二分类问题关系"><a href="#多分类问题与二分类问题关系" class="headerlink" title="多分类问题与二分类问题关系"></a>多分类问题与二分类问题关系</h2><p><img src="/2018/07/01/二分类、多分类与多标签问题的区别——对应损失函数的选择/1.png" alt=""></p>
 <p>首先，两类问题是分类问题中最简单的一种。其次，很多多类问题可以被分解为多个两类问题进行求解（请看下文分解）。所以，历史上有很多算法都是针对两类问题提出的。下面我们来分析如何处理多分类问题：</p>
 <h3 id="直接分成多类"><a href="#直接分成多类" class="headerlink" title="直接分成多类"></a>直接分成多类</h3><p>比如使用 Softmax 回归。</p>
-<p><img src="二分类、多分类与多标签问题的区别——对应损失函数的选择/2.png" alt=""></p>
+<p><img src="/2018/07/01/二分类、多分类与多标签问题的区别——对应损失函数的选择/2.png" alt=""></p>
 <h3 id="一对一的策略"><a href="#一对一的策略" class="headerlink" title="一对一的策略"></a>一对一的策略</h3><p>给定数据集D这里有N个类别，这种情况下就是将这些类别两两配对，从而产生N(N−1)2个二分类任务，在测试的时候把样本交给这些分类器，然后进行投票。</p>
-<p><img src="二分类、多分类与多标签问题的区别——对应损失函数的选择/3.png" alt=""></p>
+<p><img src="/2018/07/01/二分类、多分类与多标签问题的区别——对应损失函数的选择/3.png" alt=""></p>
 <h3 id="一对其余策略"><a href="#一对其余策略" class="headerlink" title="一对其余策略"></a>一对其余策略</h3><p>将每一次的一个类作为正例，其余作为反例，总共训练N个分类器。测试的时候若仅有一个分类器预测为正的类别则对应的类别标记作为最终分类结果，若有多个分类器预测为正类，则选择置信度最大的类别作为最终分类结果。</p>
-<p><img src="二分类、多分类与多标签问题的区别——对应损失函数的选择/4.png" alt=""></p>
+<p><img src="/2018/07/01/二分类、多分类与多标签问题的区别——对应损失函数的选择/4.png" alt=""></p>
 <h2 id="多标签问题与二分类问题关系"><a href="#多标签问题与二分类问题关系" class="headerlink" title="多标签问题与二分类问题关系"></a>多标签问题与二分类问题关系</h2><p><strong>面临的问题：</strong><br>图片的标签数目不是固定的，有的有一个标签，有的有两个标签，但标签的种类总数是固定的，比如为5类。</p>
 <p><strong>解决该问题：</strong><br>采用了标签补齐的方法，即缺失的标签全部使用0标记，这意味着，不再使用one-hot编码。例如：标签为：-1,1,1,-1,1 ;-1表示该类标签没有，1表示该类标签存在，则这张图片的标签编码为：</p>
 <p>0 0 0 0 0<br>0 1 0 0 0<br>0 0 1 0 0<br>0 0 0 0 0<br>0 0 0 0 1</p>
@@ -441,8 +441,8 @@ C = - \sum_i y_i log a_i</script><p>其中， $y_i$ 表示标签向量的第 $i$
 <p>在 Kears 中也有提示（注意: 当使用categorical_crossentropy损失时，你的目标值应该是分类格式 (即，如果你有10个类，每个样本的目标值应该是一个10维的向量，这个向量除了表示类别的那个索引为1，其他均为0)。 为了将 整数目标值 转换为 分类目标值，你可以使用Keras实用函数to_categorical：）</p>
 <hr>
 <p>一种更直接的证明方法，数学公式，</p>
-<p><img src="二分类、多分类与多标签问题的区别——对应损失函数的选择/5.png" alt=""></p>
-<p><img src="二分类、多分类与多标签问题的区别——对应损失函数的选择/6.png" alt=""></p>
+<p><img src="/2018/07/01/二分类、多分类与多标签问题的区别——对应损失函数的选择/5.png" alt=""></p>
+<p><img src="/2018/07/01/二分类、多分类与多标签问题的区别——对应损失函数的选择/6.png" alt=""></p>
 <p>内容来源于 <a href="https://www.safaribooksonline.com/library/view/hands-on-machine-learning/9781491962282/#toc-start" target="_blank" rel="noopener"> Hands-on Machine Learning with Scikit-Learn and TensorFlow</a> 141 页。</p>
 <h3 id="多标签分类-二分类交叉熵损失函数"><a href="#多标签分类-二分类交叉熵损失函数" class="headerlink" title="多标签分类 + 二分类交叉熵损失函数"></a>多标签分类 + 二分类交叉熵损失函数</h3><p>多标签问题与二分类问题关系在上文已经讨论过了，方法是计算一个样本各个标签的损失（输出层采用sigmoid函数），然后取平均值。把一个多标签问题，转化为了在每个标签上的二分类问题。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><div class="table-container">
