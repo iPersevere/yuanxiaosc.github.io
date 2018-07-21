@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="深度学习,弃权（Dropout）," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -79,21 +79,18 @@
 
 
 
-<meta name="description" content="原文链接：CHAPTER 2 Improving the way neural networks learn  弃权（Dropout）的过程弃权是一种相当激进的技术。和规范化不同，弃权技术并不依赖于代价函数的修改。而是，在弃权中，我们改变了网络本身。在介绍它为什么能工作，以及所得到的结果前，让我描述一下弃权（Dropout）基本的工作机制。  特别地，假设我们有一个训练数据 $x$ 和 对应的目">
-<meta name="keywords" content="深度学习,弃权（Dropout）">
+<meta name="description" content="论文实现谷歌全attention机器翻译模型Transformer的TensorFlow实现  自然语言处理NLP 研究灵感库  GitHub | 进展 | NLP-progress跟踪自然语言处理进展，包括数据集和最常见的NLP任务的当前最先进的状态。机器之心 | 翻译 | NLP-progress  Sentiance | 2018-05-03 | Loc2Vec: Learning loca">
+<meta name="keywords" content="深度学习;机器学习;人工智能">
 <meta property="og:type" content="article">
-<meta property="og:title" content="改进神经网络的学习方法——弃权">
-<meta property="og:url" content="http://yoursite.com/2018/06/24/改进神经网络的学习方法——弃权/index.html">
+<meta property="og:title" content="论文资源">
+<meta property="og:url" content="http://yoursite.com/2018/07/21/论文/index.html">
 <meta property="og:site_name" content="望江人工智库">
-<meta property="og:description" content="原文链接：CHAPTER 2 Improving the way neural networks learn  弃权（Dropout）的过程弃权是一种相当激进的技术。和规范化不同，弃权技术并不依赖于代价函数的修改。而是，在弃权中，我们改变了网络本身。在介绍它为什么能工作，以及所得到的结果前，让我描述一下弃权（Dropout）基本的工作机制。  特别地，假设我们有一个训练数据 $x$ 和 对应的目">
+<meta property="og:description" content="论文实现谷歌全attention机器翻译模型Transformer的TensorFlow实现  自然语言处理NLP 研究灵感库  GitHub | 进展 | NLP-progress跟踪自然语言处理进展，包括数据集和最常见的NLP任务的当前最先进的状态。机器之心 | 翻译 | NLP-progress  Sentiance | 2018-05-03 | Loc2Vec: Learning loca">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/06/24/改进神经网络的学习方法——弃权/1.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/24/改进神经网络的学习方法——弃权/2.png">
-<meta property="og:updated_time" content="2018-06-26T01:42:06.171Z">
+<meta property="og:updated_time" content="2018-07-21T07:10:48.216Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="改进神经网络的学习方法——弃权">
-<meta name="twitter:description" content="原文链接：CHAPTER 2 Improving the way neural networks learn  弃权（Dropout）的过程弃权是一种相当激进的技术。和规范化不同，弃权技术并不依赖于代价函数的修改。而是，在弃权中，我们改变了网络本身。在介绍它为什么能工作，以及所得到的结果前，让我描述一下弃权（Dropout）基本的工作机制。  特别地，假设我们有一个训练数据 $x$ 和 对应的目">
-<meta name="twitter:image" content="http://yoursite.com/2018/06/24/改进神经网络的学习方法——弃权/1.png">
+<meta name="twitter:title" content="论文资源">
+<meta name="twitter:description" content="论文实现谷歌全attention机器翻译模型Transformer的TensorFlow实现  自然语言处理NLP 研究灵感库  GitHub | 进展 | NLP-progress跟踪自然语言处理进展，包括数据集和最常见的NLP任务的当前最先进的状态。机器之心 | 翻译 | NLP-progress  Sentiance | 2018-05-03 | Loc2Vec: Learning loca">
 
 
 
@@ -123,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/24/改进神经网络的学习方法——弃权/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/21/论文/"/>
 
 
 
 
 
-  <title>改进神经网络的学习方法——弃权 | 望江人工智库</title>
+  <title>论文资源 | 望江人工智库</title>
   
 
 
@@ -290,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/24/改进神经网络的学习方法——弃权/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/21/论文/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="望江车神">
@@ -307,7 +304,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">改进神经网络的学习方法——弃权</h1>
+          <h1 class="post-title" itemprop="name headline">论文资源</h1>
         
 
         <div class="post-meta">
@@ -319,8 +316,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-24T19:31:15+08:00">
-                2018-06-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-21T10:18:05+08:00">
+                2018-07-21
               </time>
             
 
@@ -342,8 +339,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/深度学习/" itemprop="url" rel="index">
-                    <span itemprop="name">深度学习</span>
+                  <a href="/categories/论文/" itemprop="url" rel="index">
+                    <span itemprop="name">论文</span>
                   </a>
                 </span>
 
@@ -353,8 +350,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/深度学习/Neural-Networks-and-Deep-Learning-Michael-Nielsen/" itemprop="url" rel="index">
-                    <span itemprop="name">Neural Networks and Deep Learning (Michael Nielsen)</span>
+                  <a href="/categories/论文/论文资源/" itemprop="url" rel="index">
+                    <span itemprop="name">论文资源</span>
                   </a>
                 </span>
 
@@ -390,22 +387,28 @@
       
 
       
-        <blockquote>
-<p>原文链接：<a href="http://neuralnetworksanddeeplearning.com/chap3.html" target="_blank" rel="noopener">CHAPTER 2 Improving the way neural networks learn</a></p>
-</blockquote>
-<h2 id="弃权（Dropout）的过程"><a href="#弃权（Dropout）的过程" class="headerlink" title="弃权（Dropout）的过程"></a>弃权（Dropout）的过程</h2><p>弃权是一种相当激进的技术。和规范化不同，弃权技术并不依赖于代价函数的修改。而是，在弃权中，我们改变了网络本身。在介绍它为什么能工作，以及所得到的结果前，让我描述一下弃权（Dropout）基本的工作机制。</p>
-<p><img src="/2018/06/24/改进神经网络的学习方法——弃权/1.png" alt=""></p>
-<p>特别地，假设我们有一个训练数据 $x$ 和 对应的目标输出 $y$。通常我们会通过在网络中前向传播 $x$ ，然后进行反向传播来确定对梯度的贡献。使用弃权（Dropout）技术，这个过程就改了。我们会从随机（临时）地删除网络中的一半的隐藏神经元开始，同时让输入层和输出层的神经元保持不变。在此之后，我们会得到最终如下线条所示的网络。注意那些被弃权（Dropout）的神经元，即那些临时被删除的神经元，用虚圈表示在图中：</p>
-<p><img src="/2018/06/24/改进神经网络的学习方法——弃权/2.png" alt=""></p>
-<p>我们前向传播输入 $x$，通过修改后的网络，然后反向传播结果，同样通过这个修改后的网络。在一个小批量数据的若干样本上进行这些步骤后，我们对有关的权重和偏置进行更新。然后重复这个过程，首先重置弃权（Dropout）的神经元，然后选择一个新的随机的隐藏神经元的子集进行删除，估计对一个不同的小批量数据的梯度，然后更新权重和偏置。通过不断地重复，我们的网络会学到一个权重和偏置的集合。当然，这些权重和偏置也是在一半的隐藏神经元被弃权（Dropout）的情形下学到的。当我们实际运行整个网络时，是指两倍的隐藏神经元将会被激活。为了补偿这个，我们将从隐藏神经元出去的权重减半。</p>
-<h2 id="为什么弃权（Dropout）有效？"><a href="#为什么弃权（Dropout）有效？" class="headerlink" title="为什么弃权（Dropout）有效？"></a>为什么弃权（Dropout）有效？</h2><p>这个弃权（Dropout）过程可能看起来奇怪，像是临时安排的。为什么我们会指望这样的方法能够行正则化呢？为了解释所发生的事，我希望你停下来想一下标准没有弃权（Dropout））的训练方式。特别地，想象一下我们训练几个不同的神经网络，都使用同一个训练数据。当然，网络可能不是从同一初始状态开始的，最终的结果也会有一些差异。出现这种情况时，我们可以使用一些平均或者投票的方式来确定接受哪个输出。例如，如果我们训练了五个网络，其中三个把一个数字分类成 “3”，那很可能它就是“3”。另外两个可能就犯了错误。这种平均的方式通常是一种强大（尽管代价昂贵）的方式来减轻过拟合。原因在于不同的网络可能会以不同的方式过拟合，平均法可能会帮助我们消除那样的过拟合。</p>
-<p>那么这和弃权（Dropout）有什么关系呢？启发式地看，当我们弃权（Dropout）掉不同的神经元集合时，有点像我们在训练不同的神经网络。所以，弃权（Dropout）过程就如同大量不同网络的效果的平均那样。不同的网络会以不同的方式过拟合了，所以，弃权（Dropout）过的网络的效果会减轻过拟合。</p>
-<p>一个相关的启发式解释在早期使用这项技术的论文中曾经给出：“因为神经元不能依赖其他神经元特定的存在，这个技术其实减少了复杂的互适应的神经元。所以，强制要学习那些在神经元的不同随机子集中更加健壮的特征。” 换言之，如果我们将我们的神经网络看做一个进行预测的模型的话，我们就可以将弃权（Dropout）看做是一种确保模型对于一部分证据丢失健壮的方式。这样看来，弃权（Dropout）和 L1、L2 regularization也是有相似之处的，这也倾向于更小的权重，最后让网络对<br>丢失个体连接的场景更加健壮。</p>
-<h2 id="对于弃权的理解"><a href="#对于弃权的理解" class="headerlink" title="对于弃权的理解"></a>对于弃权的理解</h2><p><a href="https://www.cnblogs.com/zyber/p/6824980.html" target="_blank" rel="noopener">CSDN: 神经网络之dropout层</a></p>
+        <h1 id="论文实现"><a href="#论文实现" class="headerlink" title="论文实现"></a>论文实现</h1><p><a href="https://www.jiqizhixin.com/articles/2017-06-19-4" target="_blank" rel="noopener">谷歌全attention机器翻译模型Transformer的TensorFlow实现</a></p>
 <hr>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] Michael Nielsen.CHAPTER 2 Improving the way neural networks learn[DB/OL]. <a href="http://neuralnetworksanddeeplearning.com/chap3.html" target="_blank" rel="noopener">http://neuralnetworksanddeeplearning.com/chap3.html</a>. 2018-06-26.</p>
-<p>[2] Zhu Xiaohu. Zhang Freeman.Another Chinese Translation of Neural Networks and Deep Learning[DB/OL]. <a href="https://github.com/zhanggyb/nndl/blob/master/chap3.tex" target="_blank" rel="noopener">https://github.com/zhanggyb/nndl/blob/master/chap3.tex</a>, 2018-06-26.</p>
-<p>[3] 鹿往森处走. 神经网络之dropout层[DB/OL]. <a href="https://www.cnblogs.com/zyber/p/6824980.html" target="_blank" rel="noopener">https://www.cnblogs.com/zyber/p/6824980.html</a>, 2018-06-26.</p>
+<h1 id="自然语言处理"><a href="#自然语言处理" class="headerlink" title="自然语言处理"></a>自然语言处理</h1><p><a href="https://mp.weixin.qq.com/s/3D5UQ7m_m_18Opr25Q4kbA" target="_blank" rel="noopener">NLP 研究灵感库</a></p>
+<hr>
+<p><a href="https://github.com/sebastianruder/NLP-progress" target="_blank" rel="noopener">GitHub | 进展 | NLP-progress</a><br>跟踪自然语言处理进展，包括数据集和最常见的NLP任务的当前最先进的状态。<br><a href="https://www.jiqizhixin.com/articles/062402" target="_blank" rel="noopener">机器之心 | 翻译 | NLP-progress</a></p>
+<hr>
+<p><a href="http://www.sentiance.com/2018/05/03/loc2vec-learning-location-embeddings-w-triplet-loss-networks" target="_blank" rel="noopener">Sentiance | 2018-05-03 | Loc2Vec: Learning location embeddings with triplet-loss networks</a></p>
+<hr>
+<p><a href="https://www.jiqizhixin.com/articles/2018-06-25-5" target="_blank" rel="noopener">机器之心 | 翻译 | 使用三重损失网络学习位置嵌入：让位置数据也能进行算术运算</a></p>
+<p>以自监督的方式学习<strong>位置数据</strong>并从中提取见解。<br>Sentiance 开发了一款能接收加速度计、陀螺仪和位置信息等智能手机传感器数据并从中提取出行为见解的平台。该平台能学习用户的模式，并能预测和解释事情发生的原因和时间。</p>
+<hr>
+<p><a href="https://www.jiqizhixin.com/articles/2018-07-09-9" target="_blank" rel="noopener">2018-07-09-9 | NLP领域的ImageNet时代到来：词嵌入「已死」，语言模型当立</a></p>
+<blockquote>
+<p>计算机视觉领域常使用在 ImageNet 上预训练的模型，它们可以进一步用于目标检测、语义分割等不同的 CV 任务。而在自然语言处理领域中，我们通常只会使用预训练词嵌入向量编码词汇间的关系，因此也就没有一个能用于整体模型的预训练方法。Sebastian Ruder 表示语言模型有作为整体预训练模型的潜质，它能由浅到深抽取语言的各种特征，并用于机器翻译、问答系统和自动摘要等广泛的 NLP 任务。Ruder 同样展示了用语言模型做预训练模型的效果，并表示 NLP 领域中的「ImageNet」终要到来。</p>
+</blockquote>
+<h1 id="图像处理"><a href="#图像处理" class="headerlink" title="图像处理"></a>图像处理</h1><p><a href="https://zhuanlan.zhihu.com/p/36765623" target="_blank" rel="noopener">知乎 | 进展 | 深度卷积神经网络演化历史及结构改进脉络-40页长文全面解读</a></p>
+<hr>
+<p><a href="https://www.jiqizhixin.com/articles/2018-07-10-6" target="_blank" rel="noopener">2018-07-10-6 | OpenAI提出可逆生成模型Glow</a></p>
+<blockquote>
+<p>目前，生成对抗网络 GAN 被认为是在图像生成等任务上最为有效的方法，越来越多的学者正朝着这一方向努力：在计算机视觉顶会 CVPR 2018 上甚至有 8% 的论文标题中包含 GAN。近日来自 OpenAI 的研究科学家 Diederik Kingma 与 Prafulla Dhariwal 却另辟蹊径，提出了基于流的生成模型 Glow。据介绍，该模型不同于 GAN 与 VAE，而在生成图像任务上也达到了令人惊艳的效果。</p>
+</blockquote>
+<h2 id="知识图谱"><a href="#知识图谱" class="headerlink" title="知识图谱"></a>知识图谱</h2><p><a href="https://www.paperweekly.site/papers/2097" target="_blank" rel="noopener">2018-01-25 | DKN：深度知识网络新闻推荐</a><br>在线新闻推荐系统旨在解决新闻的信息爆炸并为用户提供个性化推荐。一般来说，新闻语言高度浓缩，充满知识实体和常识。然而，现有方法不知道这种外部知识，并且不能完全发现新闻之间的潜在知识级连接。因此，用户的推荐结果仅限于简单模式，无法合理扩展。此外，新闻推荐还面临着新闻时间敏感度高，用户兴趣多样化的挑战。为了解决上述问题，本文提出了一种深度知识感知网络（DKN），它将知识图谱表示结合到新闻推荐中。<br>&gt;</p>
 
       
     </div>
@@ -450,14 +453,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
-          
-            <a href="/tags/弃权（Dropout）/" rel="tag"># 弃权（Dropout）</a>
-          
-        </div>
-      
 
       
       
@@ -467,8 +462,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/22/改进神经网络的学习方法——Softmax/" rel="next" title="改进神经网络的学习方法——Softmax">
-                <i class="fa fa-chevron-left"></i> 改进神经网络的学习方法——Softmax
+              <a href="/2018/07/10/Hands-on-ML机器学习概览/" rel="next" title="机器学习概览">
+                <i class="fa fa-chevron-left"></i> 机器学习概览
               </a>
             
           </div>
@@ -476,10 +471,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/24/改进神经网络的学习方法——正则化/" rel="prev" title="改进神经网络的学习方法——正则化">
-                改进神经网络的学习方法——正则化 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -625,7 +616,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#弃权（Dropout）的过程"><span class="nav-number">1.</span> <span class="nav-text">弃权（Dropout）的过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么弃权（Dropout）有效？"><span class="nav-number">2.</span> <span class="nav-text">为什么弃权（Dropout）有效？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对于弃权的理解"><span class="nav-number">3.</span> <span class="nav-text">对于弃权的理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#论文实现"><span class="nav-number">1.</span> <span class="nav-text">论文实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自然语言处理"><span class="nav-number">2.</span> <span class="nav-text">自然语言处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图像处理"><span class="nav-number">3.</span> <span class="nav-text">图像处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#知识图谱"><span class="nav-number">3.1.</span> <span class="nav-text">知识图谱</span></a></li></ol></li></ol></div>
             
 
           </div>
