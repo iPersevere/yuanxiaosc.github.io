@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ALL_Tensorflow]]></title>
+    <url>%2F2018%2F07%2F27%2FALL_Tensorflow%2F</url>
+    <content type="text"><![CDATA[教程·短文GitHub | EffectiveTensorflow | 20180727]]></content>
+      <categories>
+        <category>Tensorflow</category>
+      </categories>
+      <tags>
+        <tag>深度学习</tag>
+        <tag>Tensorflow</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[论文资源]]></title>
-    <url>%2F2018%2F07%2F21%2F%E8%AE%BA%E6%96%87%2F</url>
-    <content type="text"><![CDATA[论文实现谷歌全attention机器翻译模型Transformer的TensorFlow实现 自然语言处理NLP 研究灵感库 GitHub | 进展 | NLP-progress跟踪自然语言处理进展，包括数据集和最常见的NLP任务的当前最先进的状态。机器之心 | 翻译 | NLP-progress Sentiance | 2018-05-03 | Loc2Vec: Learning location embeddings with triplet-loss networks 机器之心 | 翻译 | 使用三重损失网络学习位置嵌入：让位置数据也能进行算术运算 以自监督的方式学习位置数据并从中提取见解。Sentiance 开发了一款能接收加速度计、陀螺仪和位置信息等智能手机传感器数据并从中提取出行为见解的平台。该平台能学习用户的模式，并能预测和解释事情发生的原因和时间。 2018-07-09-9 | NLP领域的ImageNet时代到来：词嵌入「已死」，语言模型当立 计算机视觉领域常使用在 ImageNet 上预训练的模型，它们可以进一步用于目标检测、语义分割等不同的 CV 任务。而在自然语言处理领域中，我们通常只会使用预训练词嵌入向量编码词汇间的关系，因此也就没有一个能用于整体模型的预训练方法。Sebastian Ruder 表示语言模型有作为整体预训练模型的潜质，它能由浅到深抽取语言的各种特征，并用于机器翻译、问答系统和自动摘要等广泛的 NLP 任务。Ruder 同样展示了用语言模型做预训练模型的效果，并表示 NLP 领域中的「ImageNet」终要到来。 图像处理知乎 | 进展 | 深度卷积神经网络演化历史及结构改进脉络-40页长文全面解读 2018-07-10-6 | OpenAI提出可逆生成模型Glow 目前，生成对抗网络 GAN 被认为是在图像生成等任务上最为有效的方法，越来越多的学者正朝着这一方向努力：在计算机视觉顶会 CVPR 2018 上甚至有 8% 的论文标题中包含 GAN。近日来自 OpenAI 的研究科学家 Diederik Kingma 与 Prafulla Dhariwal 却另辟蹊径，提出了基于流的生成模型 Glow。据介绍，该模型不同于 GAN 与 VAE，而在生成图像任务上也达到了令人惊艳的效果。 知识图谱2018-01-25 | DKN：深度知识网络新闻推荐在线新闻推荐系统旨在解决新闻的信息爆炸并为用户提供个性化推荐。一般来说，新闻语言高度浓缩，充满知识实体和常识。然而，现有方法不知道这种外部知识，并且不能完全发现新闻之间的潜在知识级连接。因此，用户的推荐结果仅限于简单模式，无法合理扩展。此外，新闻推荐还面临着新闻时间敏感度高，用户兴趣多样化的挑战。为了解决上述问题，本文提出了一种深度知识感知网络（DKN），它将知识图谱表示结合到新闻推荐中。&gt;]]></content>
+    <url>%2F2018%2F07%2F27%2F%E8%AE%BA%E6%96%87%2F</url>
+    <content type="text"><![CDATA[论文实现谷歌全attention机器翻译模型Transformer的TensorFlow实现 自然语言处理NLP 研究灵感库 GitHub | 进展 | NLP-progress跟踪自然语言处理进展，包括数据集和最常见的NLP任务的当前最先进的状态。机器之心 | 翻译 | NLP-progress Sentiance | 2018-05-03 | Loc2Vec: Learning location embeddings with triplet-loss networks 机器之心 | 翻译 | 使用三重损失网络学习位置嵌入：让位置数据也能进行算术运算 以自监督的方式学习位置数据并从中提取见解。Sentiance 开发了一款能接收加速度计、陀螺仪和位置信息等智能手机传感器数据并从中提取出行为见解的平台。该平台能学习用户的模式，并能预测和解释事情发生的原因和时间。 2018-07-09-9 | NLP领域的ImageNet时代到来：词嵌入「已死」，语言模型当立 计算机视觉领域常使用在 ImageNet 上预训练的模型，它们可以进一步用于目标检测、语义分割等不同的 CV 任务。而在自然语言处理领域中，我们通常只会使用预训练词嵌入向量编码词汇间的关系，因此也就没有一个能用于整体模型的预训练方法。Sebastian Ruder 表示语言模型有作为整体预训练模型的潜质，它能由浅到深抽取语言的各种特征，并用于机器翻译、问答系统和自动摘要等广泛的 NLP 任务。Ruder 同样展示了用语言模型做预训练模型的效果，并表示 NLP 领域中的「ImageNet」终要到来。 达观数据 | 2018-07-25 | NLP概述和文本自动分类算法详解 图像处理知乎 | 进展 | 深度卷积神经网络演化历史及结构改进脉络-40页长文全面解读 2018-07-10-6 | OpenAI提出可逆生成模型Glow 目前，生成对抗网络 GAN 被认为是在图像生成等任务上最为有效的方法，越来越多的学者正朝着这一方向努力：在计算机视觉顶会 CVPR 2018 上甚至有 8% 的论文标题中包含 GAN。近日来自 OpenAI 的研究科学家 Diederik Kingma 与 Prafulla Dhariwal 却另辟蹊径，提出了基于流的生成模型 Glow。据介绍，该模型不同于 GAN 与 VAE，而在生成图像任务上也达到了令人惊艳的效果。 知识图谱2018-01-25 | DKN：深度知识网络新闻推荐在线新闻推荐系统旨在解决新闻的信息爆炸并为用户提供个性化推荐。一般来说，新闻语言高度浓缩，充满知识实体和常识。然而，现有方法不知道这种外部知识，并且不能完全发现新闻之间的潜在知识级连接。因此，用户的推荐结果仅限于简单模式，无法合理扩展。此外，新闻推荐还面临着新闻时间敏感度高，用户兴趣多样化的挑战。为了解决上述问题，本文提出了一种深度知识感知网络（DKN），它将知识图谱表示结合到新闻推荐中。&gt;]]></content>
       <categories>
         <category>论文</category>
         <category>论文资源</category>
@@ -244,8 +256,8 @@
         <category>数学</category>
       </categories>
       <tags>
-        <tag>LaTex</tag>
         <tag>显示</tag>
+        <tag>LaTex</tag>
       </tags>
   </entry>
   <entry>
@@ -257,8 +269,8 @@
         <category>Markdown</category>
       </categories>
       <tags>
-        <tag>显示</tag>
         <tag>Markdown</tag>
+        <tag>显示</tag>
       </tags>
   </entry>
   <entry>
@@ -279,8 +291,11 @@
     <content type="text"><![CDATA[yuanxiaosc.github.io个人博客；机器学习；深度学习；Python学习；]]></content>
   </entry>
   <entry>
-    <title><![CDATA[学习资源归类（置顶）]]></title>
-    <url>%2F2017%2F07%2F16%2F%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90%E5%BD%92%E7%B1%BB%EF%BC%88%E7%BD%AE%E9%A1%B6%EF%BC%89%2F</url>
-    <content type="text"><![CDATA[AIhttp://tools.google.com/seedbank/Collection of Interactive Machine Learning Examples JupyterGitHub | 教程 | data-science-ipython-notebooks 数据科学常用库的 jupyter notebook 教程 TensorFlowGoogle | 官网 | tensorflow 掘金翻译 | 翻译 | TensorFlow 官方文档中文版 香港科技大学计算机系教授 Sung KimGitHub | 课程代码 | DeepLearningZeroToAll 香港科技大学TensorFlow三天速成课件 PytorchFacebook | 官网 | PyTorch PyTorch 中文网 | 中文网 | PyTorch GitHub | 课程代码 | PyTorchZeroToAll PyTorchZeroToAll课件 Python知乎 | 代码教程 | 13 个 python3 才能用的特性 深度信念网络，玻尔兹曼机欲了解 玻尔兹曼机，参考这个玻尔兹曼机综述。还有这篇文章也很有用。 模型选择模型选择的一些基本思想和方法 PycharmWindows下的Pycharm远程连接虚拟机中Centos下的Python环境 面试算法工程师（机器学习） GitHub | 中山大学 郑永川 | 2018秋招笔记 书籍 Stanford | 书籍 | UFLDL Tutorial 本教程将教你无监督的特征学习和深度学习的主要思想。 O’Reilly book | 书籍 | Hands-on Machine Learning with Scikit-Learn and TensorFlow GitHub | 书籍代码 | Hands-on Machine Learning with Scikit-Learn and TensorFlowApachecn | 书籍翻译 | Sklearn 与 TensorFlow 机器学习实用指南]]></content>
+    <title><![CDATA[学习资源归类]]></title>
+    <url>%2F2017%2F07%2F28%2F%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90%E5%BD%92%E7%B1%BB%EF%BC%88%E7%BD%AE%E9%A1%B6%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[AIhttp://tools.google.com/seedbank/Collection of Interactive Machine Learning Examples JupyterGitHub | 教程 | data-science-ipython-notebooks 数据科学常用库的 jupyter notebook 教程 TensorFlowGoogle | 官网 | tensorflow 掘金翻译 | 翻译 | TensorFlow 官方文档中文版 香港科技大学计算机系教授 Sung KimGitHub | 课程代码 | DeepLearningZeroToAll 香港科技大学TensorFlow三天速成课件 PytorchFacebook | 官网 | PyTorch PyTorch 中文网 | 中文网 | PyTorch GitHub | 课程代码 | PyTorchZeroToAll PyTorchZeroToAll课件 Python知乎 | 代码教程 | 13 个 python3 才能用的特性 模型选择模型选择的一些基本思想和方法 PycharmWindows下的Pycharm远程连接虚拟机中Centos下的Python环境 面试算法工程师（机器学习） GitHub | 中山大学 郑永川 | 2018秋招笔记 书籍 Stanford | 书籍 | UFLDL Tutorial 本教程将教你无监督的特征学习和深度学习的主要思想。 O’Reilly book | 书籍 | Hands-on Machine Learning with Scikit-Learn and TensorFlow GitHub | 书籍代码 | Hands-on Machine Learning with Scikit-Learn and TensorFlowApachecn | 书籍翻译 | Sklearn 与 TensorFlow 机器学习实用指南 书籍下载区]]></content>
+      <categories>
+        <category>资源</category>
+      </categories>
   </entry>
 </search>
