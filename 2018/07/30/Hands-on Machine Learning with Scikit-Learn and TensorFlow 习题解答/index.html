@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="本文是 《Hands-on Machine Learning with Scikit-Learn and TensorFlow 》的课后习题解答！ 把练习和答案分开是为了督促学习和思考，提倡独立思考，主动学习，而不是背答案！文章前半段中文翻译有问题的地方欢迎评论指正，英文原文在后面。  CHAPTER 1 The Machine Learning Landscape这一章介绍了大量每个数据科学家">
+<meta name="description" content="本文是 《Hands-on Machine Learning with Scikit-Learn and TensorFlow 》的课后习题解答！ 把练习和答案分开是为了督促学习和思考，提倡独立思考，主动学习，而不是背答案！文章前半段中文翻译有问题的地方欢迎评论指正，英文原文在后面。  CHAPTER 1 The Machine Learning Landscape练习本章中，我们学习了一些机器">
 <meta name="keywords" content="深度学习;机器学习;人工智能">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hands-on Machine Learning 课后习题解答">
 <meta property="og:url" content="http://yoursite.com/2018/07/30/Hands-on Machine Learning with Scikit-Learn and TensorFlow 习题解答/index.html">
 <meta property="og:site_name" content="望江人工智库">
-<meta property="og:description" content="本文是 《Hands-on Machine Learning with Scikit-Learn and TensorFlow 》的课后习题解答！ 把练习和答案分开是为了督促学习和思考，提倡独立思考，主动学习，而不是背答案！文章前半段中文翻译有问题的地方欢迎评论指正，英文原文在后面。  CHAPTER 1 The Machine Learning Landscape这一章介绍了大量每个数据科学家">
+<meta property="og:description" content="本文是 《Hands-on Machine Learning with Scikit-Learn and TensorFlow 》的课后习题解答！ 把练习和答案分开是为了督促学习和思考，提倡独立思考，主动学习，而不是背答案！文章前半段中文翻译有问题的地方欢迎评论指正，英文原文在后面。  CHAPTER 1 The Machine Learning Landscape练习本章中，我们学习了一些机器">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-30T06:17:36.574Z">
+<meta property="og:updated_time" content="2018-07-30T13:55:33.904Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hands-on Machine Learning 课后习题解答">
-<meta name="twitter:description" content="本文是 《Hands-on Machine Learning with Scikit-Learn and TensorFlow 》的课后习题解答！ 把练习和答案分开是为了督促学习和思考，提倡独立思考，主动学习，而不是背答案！文章前半段中文翻译有问题的地方欢迎评论指正，英文原文在后面。  CHAPTER 1 The Machine Learning Landscape这一章介绍了大量每个数据科学家">
+<meta name="twitter:description" content="本文是 《Hands-on Machine Learning with Scikit-Learn and TensorFlow 》的课后习题解答！ 把练习和答案分开是为了督促学习和思考，提倡独立思考，主动学习，而不是背答案！文章前半段中文翻译有问题的地方欢迎评论指正，英文原文在后面。  CHAPTER 1 The Machine Learning Landscape练习本章中，我们学习了一些机器">
 
 
 
@@ -391,10 +391,7 @@
 <p>本文是 <a href="https://github.com/ageron/handson-ml" target="_blank" rel="noopener">《Hands-on Machine Learning with Scikit-Learn and TensorFlow 》</a>的课后习题解答！</p>
 <p>把练习和答案分开是为了督促学习和思考，提倡独立思考，主动学习，而不是背答案！文章前半段中文翻译有问题的地方欢迎评论指正，英文原文在后面。</p>
 </blockquote>
-<h1 id="CHAPTER-1-The-Machine-Learning-Landscape"><a href="#CHAPTER-1-The-Machine-Learning-Landscape" class="headerlink" title="CHAPTER 1 The Machine Learning Landscape"></a>CHAPTER 1 The Machine Learning Landscape</h1><p>这一章介绍了大量每个数据科学家需要牢记在心的基础概念（和习语）。第一章只是概览（唯一不含有代码的一章），相当简单，但你要确保每一点都搞明白了，再继续进行学习本书其余章节。端起一杯咖啡，开始学习吧！</p>
-<p>提示：如果你已经知道了机器学习的所有基础概念，可以直接翻到第2章。如果你不确认，可以尝试回答本章末尾列出的问题，然后再继续。</p>
-<hr>
-<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p>本章中，我们学习了一些机器学习中最为重要的概念。下一章，我们会更加深入，并写一些代码。开始下章之前，确保你能回答下面的问题：</p>
+<h1 id="CHAPTER-1-The-Machine-Learning-Landscape"><a href="#CHAPTER-1-The-Machine-Learning-Landscape" class="headerlink" title="CHAPTER 1 The Machine Learning Landscape"></a>CHAPTER 1 The Machine Learning Landscape</h1><h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p>本章中，我们学习了一些机器学习中最为重要的概念。下一章，我们会更加深入，并写一些代码。开始下章之前，确保你能回答下面的问题：</p>
 <ol>
 <li>如何定义机器学习？</li>
 <li>机器学习可以解决的四类问题？</li>
@@ -524,6 +521,7 @@
 <li><p>与LeNet-5相比，AlexNet的主要创新是：（1）它更大更深，（2）它将卷积层直接叠加在一起，而不是在每个卷积层的顶部堆叠汇集层。 GoogLeNet的主要创新是引入了初始模块，这使得有可能拥有比以前的CNN架构更深的网络，参数更少。 最后，ResNet的主要创新是跳过连接的引入，这使得它可以超越100层。 可以说，它的简洁性和一致性也相当具有创新性。</p>
 </li>
 </ol>
+<hr>
 <h2 id="Exercises-1"><a href="#Exercises-1" class="headerlink" title="Exercises"></a>Exercises</h2><ol>
 <li>What are the advantages of a CNN over a fully connected DNN for image classi‐fication?</li>
 <li>Consider a CNN composed of three convolutional layers, each with 3 × 3 kernels, a stride of 2, and SAME padding. The lowest layer outputs 100 feature maps, the middle one outputs 200, and the top one outputs 400. The input images are RGB images of 200 × 300 pixels. What is the total number of parameters in the CNN?If we are using 32-bit floats, at least how much RAM will this network require when making a prediction for a single instance? What about when training on a mini-batch of 50 images?</li>
@@ -560,6 +558,128 @@
 </li>
 <li><p>The main innovations in AlexNet compared to LeNet-5 are (1) it is much larger and deeper, and (2) it stacks convolutional layers directly on top of each other, instead of stacking a pooling layer on top of each convolutional layer. The main innovation in GoogLeNet is the introduction of inception modules, which make it possible to have a much deeper net than previous CNN architectures, with fewer parameters. Finally, ResNet’s main innovation is the introduction of skip connec‐tions, which make it possible to go well beyond 100 layers. Arguably, its simplic‐ity and consistency are also rather innovative.</p>
 </li>
+</ol>
+<h1 id="Chapter-13-Convolutional-Neural-Networks-1"><a href="#Chapter-13-Convolutional-Neural-Networks-1" class="headerlink" title="Chapter 13: Convolutional Neural Networks"></a>Chapter 13: Convolutional Neural Networks</h1><h2 id="练习-2"><a href="#练习-2" class="headerlink" title="练习"></a>练习</h2><ol>
+<li>你能想象 seq2seq RNN 的几个应用吗？ seq2vec 的 RNN 呢？vex2seq 的 RNN 呢？</li>
+<li>为什么人们使用编解码器 RNN 而不是简单的 seq2seq RNN 来自动翻译？</li>
+<li>如何将卷积神经网络与 RNN 结合，来对视频进行分类？</li>
+<li>使用 dynamic_rnn() 而不是 static_rnn() 构建 RNN 有什么好处？</li>
+<li>你如何处理长度可变的输入序列？ 那么长度可变输出序列呢？</li>
+<li>在多个 GPU 上分配深层 RNN 的训练和执行的常见方式是什么？</li>
+</ol>
+<h2 id="练习解答"><a href="#练习解答" class="headerlink" title="练习解答"></a>练习解答</h2><ol>
+<li>以下是一些RNN应用程序：</li>
+</ol>
+<ul>
+<li>对于序列到序列的RNN：预测天气（或任何其他时间序列），机器翻译（使用编码器 - 解码器架构），视频字幕，语音到文本，音乐生成（或其他序列生成），识别 一首歌的和弦。</li>
+<li>对于序列到矢量RNN：按音乐类型对音乐样本进行分类，分析书评的情绪，根据大脑植入物的读数预测失语症患者正在考虑的单词，预测概率 用户希望根据她的观看历史观看电影（这是协作过滤的许多可能实现之一）。</li>
+<li>对于矢量到序列RNN：图像字幕，基于当前艺术家的嵌入创建音乐播放列表，基于一组参数生成旋律，在图片中定位行人。</li>
+</ul>
+<ol>
+<li><p>一般来说，如果你一次翻译一个单词，结果将是非常可怕的。 例如，法语句子“Je vous en prie”的意思是“欢迎你”，但如果你一次翻译一个词，你会得到“我在祷告。”嗯？ 首先阅读整个句子然后翻译它会好得多。 普通的序列到序列RNN将在读取第一个字之后立即开始翻译句子，而编码器 - 解码器RNN将首先读取整个句子然后翻译它。 也就是说，人们可以想象一个简单的序列到序列的RNN，只要不确定接下来要说什么就会输出静音（就像人类翻译者必须翻译直播时那样）。</p>
+</li>
+<li><p>为了基于视觉内容对视频进行分类，一种可能的架构可以是（比方说）每秒一帧，然后通过卷积神经网络运行每一帧，将CNN的输出馈送到序列到矢量RNN ，最后通过softmax层运行其输出，为您提供所有类概率。 对于培训，您只需使用交叉熵作为成本函数。 如果您也想将音频用于分类，您可以将每秒音频转换为摄谱仪，将此摄谱仪输入CNN，并将此CNN的输出馈送到RNN（以及其他CNN的相应输出））。</p>
+</li>
+<li><p>使用dynamic_rnn（）而不是static_rnn（）构建RNN具有以下几个优点：</p>
+</li>
+</ol>
+<ul>
+<li>它基于while_loop（）操作，该操作能够在反向传播期间将GPU的内存交换到CPU的内存，从而避免内存不足错误。</li>
+<li>它可以说更容易使用，因为它可以直接将单个张量作为输入和输出（涵盖所有时间步骤），而不是张量列表（每个时间步长一个）。 无需堆叠，取消堆叠或转置。</li>
+<li>它生成一个较小的图形，更容易在TensorBoard中可视化。</li>
+</ul>
+<p>5.要处理可变长度输入序列，最简单的选项是在调用static_rnn（）或dynamic_rnn（）函数时设置sequence_length参数。 另一种选择是填充较小的输入（例如，用零）以使它们与最大输入相同（如果输入序列都具有非常相似的长度，则这可能比第一选项快）。 要处理可变长度输出序列，如果事先知道每个输出序列的长度，可以使用sequence_length参数（例如，考虑序列到序列的RNN，用暴力标记视频中的每一帧 得分：输出序列与输入序列的长度完全相同）。 如果您事先不知道输出序列的长度，则可以使用填充技巧：始终输出相同大小的序列，但忽略序列结束标记之后的任何输出（通过在计算时忽略它们） 成本函数）。</p>
+<ol>
+<li>要在多个GPU上分发深度RNN的训练和执行，常见的技术就是将每个层放在不同的GPU上（参见第12章）。</li>
+</ol>
+<hr>
+<h2 id="Exercises-2"><a href="#Exercises-2" class="headerlink" title="Exercises"></a>Exercises</h2><ol>
+<li>Can you think of a few applications for a sequence-to-sequence RNN? What about a sequence-to-vector RNN? And a vector-to-sequence RNN?</li>
+<li>Why do people use encoder–decoder RNNs rather than plain sequence-to-sequence RNNs for automatic translation?</li>
+<li>How could you combine a convolutional neural network with an RNN to classify videos?</li>
+<li>What are the advantages of building an RNN using dynamic_rnn() rather than static_rnn()?</li>
+<li>How can you deal with variable-length input sequences? What about variable-length output sequences?</li>
+<li>What is a common way to distribute training and execution of a deep RNN across multiple GPUs?</li>
+</ol>
+<h2 id="Exercise-Solutions-2"><a href="#Exercise-Solutions-2" class="headerlink" title="Exercise Solutions"></a>Exercise Solutions</h2><ol>
+<li>Here are a few RNN applications:</li>
+</ol>
+<ul>
+<li>For a sequence-to-sequence RNN: predicting the weather (or any other time series), machine translation (using an encoder–decoder architecture), video captioning, speech to text, music generation (or other sequence generation), identifying the chords of a song.</li>
+<li>For a sequence-to-vector RNN: classifying music samples by music genre, ana‐lyzing the sentiment of a book review, predicting what word an aphasic patient is thinking of based on readings from brain implants, predicting the probabil‐ity that a user will want to watch a movie based on her watch history (this is one of many possible implementations of collaborative filtering).</li>
+<li>For a vector-to-sequence RNN: image captioning, creating a music playlist based on an embedding of the current artist, generating a melody based on a set of parameters, locating pedestrians in a picture (e.g., a video frame from a self-driving car’s camera).</li>
+</ul>
+<ol>
+<li>In general, if you translate a sentence one word at a time, the result will be terri‐ble. For example, the French sentence “Je vous en prie” means “You are welcome,” but if you translate it one word at a time, you get “I you in pray.” Huh? It is much better to read the whole sentence first and then translate it. A plain sequence-to-sequence RNN would start translating a sentence immediately after reading the first word, while an encoder–decoder RNN will first read the whole sentence and then translate it. That said, one could imagine a plain sequence-to-sequence RNN that would output silence whenever it is unsure about what to say next (just like human translators do when they must translate a live broadcast).</li>
+<li>To classify videos based on the visual content, one possible architecture could be to take (say) one frame per second, then run each frame through a convolutional neural network, feed the output of the CNN to a sequence-to-vector RNN, and finally run its output through a softmax layer, giving you all the class probabili‐ties. For training you would just use cross entropy as the cost function. If you wanted to use the audio for classification as well, you could convert every second of audio to a spectrograph, feed this spectrograph to a CNN, and feed the output of this CNN to the RNN (along with the corresponding output of the other CNN).</li>
+<li><p>Building an RNN using dynamic_rnn() rather than static_rnn() offers several advantages:<br>•    It is based on a while_loop() operation that is able to swap the GPU’s memory to the CPU’s memory during backpropagation, avoiding out-of-memory errors.<br>•    It is arguably easier to use, as it can directly take a single tensor as input and output (covering all time steps), rather than a list of tensors (one per time step). No need to stack, unstack, or transpose.<br>•    It generates a smaller graph, easier to visualize in TensorBoard.</p>
+</li>
+<li><p>To handle variable length input sequences, the simplest option is to set the sequence_length parameter when calling the static_rnn() or dynamic_rnn() functions. Another option is to pad the smaller inputs (e.g., with zeros) to make them the same size as the largest input (this may be faster than the first option if the input sequences all have very similar lengths). To handle variable-length out‐put sequences, if you know in advance the length of each output sequence, you can use the sequence_length parameter (for example, consider a sequence-to-sequence RNN that labels every frame in a video with a violence score: the output sequence will be exactly the same length as the input sequence). If you don’t know in advance the length of the output sequence, you can use the padding trick: always output the same size sequence, but ignore any outputs that come after the end-of-sequence token (by ignoring them when computing the cost function).</p>
+</li>
+<li>To distribute training and execution of a deep RNN across multiple GPUs, a common technique is simply to place each layer on a different GPU (see Chap‐ter 12).</li>
+</ol>
+<h1 id="Chapter-15-Autoencoders"><a href="#Chapter-15-Autoencoders" class="headerlink" title="Chapter 15: Autoencoders"></a>Chapter 15: Autoencoders</h1><h2 id="练习-3"><a href="#练习-3" class="headerlink" title="练习"></a>练习</h2><ol>
+<li>自动编码器的主要任务是什么？</li>
+<li>假设你想训练一个分类器并且你有很多未标记的训练<br>数据，但只有几千个标记的实例。 自动编码器如何提供帮助？<br>你会怎么做？</li>
+<li>如果自动编码器完美地重建了输入，它是否一定是好的<br>自编码？ 如何评估自动编码器的性能？</li>
+<li>什么是欠完备和过完备的自动编码器？ 主要风险是什么？<br>一个过于不完整的自动编码器？ 怎么样的主要风险<br>过完备的自动编码器？</li>
+<li>如何在堆叠自动编码器中绑定权重？ 这样做有什么意义？</li>
+<li>什么是可视化堆叠自动编码器下层学习的功能的常用技术？ 更高层呢？</li>
+<li>什么是生成模型？ 你能说出一种生成型自动编码器吗？</li>
+</ol>
+<h2 id="练习解答-1"><a href="#练习解答-1" class="headerlink" title="练习解答"></a>练习解答</h2><ol>
+<li>以下是自动编码器用于的一些主要任务：</li>
+</ol>
+<ul>
+<li>特征提取</li>
+<li>无人监督的预训练</li>
+<li>维度降低</li>
+<li>生成模型</li>
+<li>异常检测（自动编码器通常不利于重建异常值）</li>
+</ul>
+<ol>
+<li><p>如果您想训练分类器并且您有大量未标记的训练数据，但只有几千个带标签的实例，那么你可以先训练一下完整数据集上的autoencoder（标记为+未标记），然后重用其下半部分<br>分类器（即，重复使用包括编码层的层）并训练使用标记数据的分类器。 如果你的标签数据很少，你可能想要在训练分类器时冻结重用的层。</p>
+</li>
+<li><p>自动编码器完美地重建其输入的事实并不一定如此意味着它是一个很好的自动编码器;也许它只是一个过度完整的自动编码器学会了将其输入复制到编码层然后再输出到输出。实际上，即使编码层包含单个神经元，也是可能的对于一个非常深的自动编码器来学习将每个训练实例映射到不同的编码（例如，第一个实例可以映射到0.001，第二个实例可以映射到0.002，即第三到0.003，等等），它可以“用心”学习重建右边每个编码的训练实例。它将完美地重建其输入没有真正学习数据中任何有用的模式。在实践中这样的映射不太可能发生，但它说明了完美的重建不是这样的事实保证自动编码器学到了什么有用的东西。但是，如果它产生非常糟糕的重建，然后它几乎保证是一个糟糕的自动编码器。为了评估自动编码器的性能，一种选择是测量重建损失（例如，计算MSE，输出的均方值）减去输入）。再次，高重建损失是一个很好的迹象自动编码器很糟糕，但重建损失很小并不能保证好。您还应该根据它将使用的内容来评估自动编码器对于。例如，如果您将其用于无人监督的分类器预训练，那么你还应该评估分类器的性能。</p>
+</li>
+<li><p>欠完全自动编码器是一种编码层小于编码层的编码器输入和输出层。 如果它更大，那么它是一个过完备的自动编码器。过度完整的自动编码器的主要风险是它可能无法完成重建输入。 过度完整的自动编码器的主要风险是它可能只是将输入复制到输出，而不学习任何有用的功能。</p>
+</li>
+<li><p>要将编码器层及其相应解码器层的权重联系起来简单地使解码器权重等于编码器权重的转置。这会将模型中的参数数量减少一半，通常会进行培训通过较少的训练数据更快地收敛，并降低过度拟合的风险训练集。</p>
+</li>
+<li><p>为了可视化由堆叠自动编码器的下层学习的特征，通常的技术是通过将每个权重向量重新整形为输入图像的大小来简单地绘制每个神经元的权重（例如，对于MNIST，重塑一个权重向量）。 形状[784]至[28,28]）。 为了可视化更高层学习的特征，一种技术是显示最能激活每个神经元的训练实例。</p>
+</li>
+<li><p>生成模型是能够随机生成类似于训练实例的输出的模型。 例如，一旦在MNIST数据集上成功训练，生成模型可用于随机生成数字的真实图像。 输出分布通常类似于训练数据。 例如，由于MNIST包含每个数字的许多图像，因此生成模型将输出大致相同数量的每个数字的图像。 一些生成模型可以参数化。例如，仅生成某种输出。 生成自动编码器的一个例子是变分自动编码器。</p>
+</li>
+</ol>
+<hr>
+<h2 id="Exercise"><a href="#Exercise" class="headerlink" title="Exercise"></a>Exercise</h2><ol>
+<li>What are the main tasks that autoencoders are used for?</li>
+<li>Suppose you want to train a classifier and you have plenty of unlabeled training<br>data, but only a few thousand labeled instances. How can autoencoders help?<br>How would you proceed?</li>
+<li>If an autoencoder perfectly reconstructs the inputs, is it necessarily a good<br>autoencoder? How can you evaluate the performance of an autoencoder?</li>
+<li>What are undercomplete and overcomplete autoencoders? What is the main risk<br>of an excessively undercomplete autoencoder? What about the main risk of an<br>overcomplete autoencoder?</li>
+<li>How do you tie weights in a stacked autoencoder? What is the point of doing so?</li>
+<li>What is a common technique to visualize features learned by the lower layer of a stacked autoencoder? What about higher layers?</li>
+<li>What is a generative model? Can you name a type of generative autoencoder?</li>
+</ol>
+<h2 id="Exercise-Solutions-3"><a href="#Exercise-Solutions-3" class="headerlink" title="Exercise Solutions"></a>Exercise Solutions</h2><ol>
+<li>Here are some of the main tasks that autoencoders are used for:</li>
+</ol>
+<ul>
+<li>Feature extraction</li>
+<li>Unsupervised pretraining</li>
+<li>Dimensionality reduction</li>
+<li>Generative models</li>
+<li>Anomaly detection (an autoencoder is generally bad at reconstructing outliers)</li>
+</ul>
+<ol>
+<li><p>If you want to train a classifier and you have plenty of unlabeled training data, but only a few thousand labeled instances, then you could first train a deep autoencoder on the full dataset (labeled + unlabeled), then reuse its lower half for the classifier (i.e., reuse the layers up to the codings layer, included) and train the classifier using the labeled data. If you have little labeled data, you probably want to freeze the reused layers when training the classifier.</p>
+</li>
+<li><p>The fact that an autoencoder perfectly reconstructs its inputs does not necessarily mean that it is a good autoencoder; perhaps it is simply an overcomplete autoen‐coder that learned to copy its inputs to the codings layer and then to the outputs. In fact, even if the codings layer contained a single neuron, it would be possible for a very deep autoencoder to learn to map each training instance to a different coding (e.g., the first instance could be mapped to 0.001, the second to 0.002, the third to 0.003, and so on), and it could learn “by heart” to reconstruct the right training instance for each coding. It would perfectly reconstruct its inputs without really learning any useful pattern in the data. In practice such a mapping is unlikely to happen, but it illustrates the fact that perfect reconstructions are not a guarantee that the autoencoder learned anything useful. However, if it produces very bad reconstructions, then it is almost guaranteed to be a bad autoencoder. To evaluate the performance of an autoencoder, one option is to measure the reconstruction loss (e.g., compute the MSE, the mean square of the outputs minus the inputs). Again, a high reconstruction loss is a good sign that the autoencoder is bad, but a low reconstruction loss is not a guarantee that it is good. You should also evaluate the autoencoder according to what it will be used for. For example, if you are using it for unsupervised pretraining of a classifier, then you should also evaluate the classifier’s performance.</p>
+</li>
+<li>An undercomplete autoencoder is one whose codings layer is smaller than the input and output layers. If it is larger, then it is an overcomplete autoencoder. The main risk of an excessively undercomplete autoencoder is that it may fail to reconstruct the inputs. The main risk of an overcomplete autoencoder is that it may just copy the inputs to the outputs, without learning any useful feature.</li>
+<li>To tie the weights of an encoder layer and its corresponding decoder layer, you simply make the decoder weights equal to the transpose of the encoder weights. This reduces the number of parameters in the model by half, often making train‐ing converge faster with less training data, and reducing the risk of overfitting the training set.</li>
+<li>To visualize the features learned by the lower layer of a stacked autoencoder, a common technique is simply to plot the weights of each neuron, by reshaping each weight vector to the size of an input image (e.g., for MNIST, reshaping a weight vector of shape [784] to [28, 28]). To visualize the features learned by higher layers, one technique is to display the training instances that most activate each neuron.</li>
+<li>A generative model is a model capable of randomly generating outputs that resemble the training instances. For example, once trained successfully on the MNIST dataset, a generative model can be used to randomly generate realistic images of digits. The output distribution is typically similar to the training data. For example, since MNIST contains many images of each digit, the generative model would output roughly the same number of images of each digit. Some generative models can be parametrized—for example, to generate only some kinds of outputs. An example of a generative autoencoder is the variational autoencoder.</li>
 </ol>
 
       
@@ -714,7 +834,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -725,7 +845,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -768,7 +888,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CHAPTER-1-The-Machine-Learning-Landscape"><span class="nav-number">1.</span> <span class="nav-text">CHAPTER 1 The Machine Learning Landscape</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">1.1.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考答案"><span class="nav-number">1.2.</span> <span class="nav-text">参考答案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exercises"><span class="nav-number">1.3.</span> <span class="nav-text">Exercises</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exercise-Solutions"><span class="nav-number">1.4.</span> <span class="nav-text">Exercise Solutions</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-13-Convolutional-Neural-Networks"><span class="nav-number">2.</span> <span class="nav-text">Chapter 13: Convolutional Neural Networks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-1"><span class="nav-number">2.1.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考答案-1"><span class="nav-number">2.2.</span> <span class="nav-text">参考答案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exercises-1"><span class="nav-number">2.3.</span> <span class="nav-text">Exercises</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exercise-Solutions-1"><span class="nav-number">2.4.</span> <span class="nav-text">Exercise Solutions</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CHAPTER-1-The-Machine-Learning-Landscape"><span class="nav-number">1.</span> <span class="nav-text">CHAPTER 1 The Machine Learning Landscape</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">1.1.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考答案"><span class="nav-number">1.2.</span> <span class="nav-text">参考答案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exercises"><span class="nav-number">1.3.</span> <span class="nav-text">Exercises</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exercise-Solutions"><span class="nav-number">1.4.</span> <span class="nav-text">Exercise Solutions</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-13-Convolutional-Neural-Networks"><span class="nav-number">2.</span> <span class="nav-text">Chapter 13: Convolutional Neural Networks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-1"><span class="nav-number">2.1.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考答案-1"><span class="nav-number">2.2.</span> <span class="nav-text">参考答案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exercises-1"><span class="nav-number">2.3.</span> <span class="nav-text">Exercises</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exercise-Solutions-1"><span class="nav-number">2.4.</span> <span class="nav-text">Exercise Solutions</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-13-Convolutional-Neural-Networks-1"><span class="nav-number">3.</span> <span class="nav-text">Chapter 13: Convolutional Neural Networks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-2"><span class="nav-number">3.1.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习解答"><span class="nav-number">3.2.</span> <span class="nav-text">练习解答</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exercises-2"><span class="nav-number">3.3.</span> <span class="nav-text">Exercises</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exercise-Solutions-2"><span class="nav-number">3.4.</span> <span class="nav-text">Exercise Solutions</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-15-Autoencoders"><span class="nav-number">4.</span> <span class="nav-text">Chapter 15: Autoencoders</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-3"><span class="nav-number">4.1.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习解答-1"><span class="nav-number">4.2.</span> <span class="nav-text">练习解答</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exercise"><span class="nav-number">4.3.</span> <span class="nav-text">Exercise</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exercise-Solutions-3"><span class="nav-number">4.4.</span> <span class="nav-text">Exercise Solutions</span></a></li></ol></li></ol></div>
             
 
           </div>
