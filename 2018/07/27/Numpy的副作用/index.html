@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="深度学习,Softmax," />
+  <meta name="keywords" content="numpy," />
 
 
 
@@ -79,25 +79,18 @@
 
 
 
-<meta name="description" content="原文链接：CHAPTER 3 Improving the way neural networks learn  Softmax 前言我们大多数情况会使用交叉熵来解决学习缓慢的问题。但是，我希望简要介绍一下另一种解决这个问题的方法，基于 softmax 神经元层。在人工神经网络（ANN）中，softmax 通常被用作输出层的激活函数。这不仅是因为它的效果好，而且因为它使得 ANN 的输出值更易于理">
-<meta name="keywords" content="深度学习,Softmax">
+<meta name="description" content="array_split(X, X.shape[0], axis=0)将数组切分时，会保留原始的数组维度。 concatenate(x, axis=0)用于将多个数组进行连接，这与stack函数很容易混淆，他们之间的区别是concatenate会把当前要匹配的元素降一维，即去掉最外面那一层括号。">
+<meta name="keywords" content="numpy">
 <meta property="og:type" content="article">
-<meta property="og:title" content="改进神经网络的学习方法——Softmax">
-<meta property="og:url" content="http://yoursite.com/2018/06/22/改进神经网络的学习方法——Softmax/index.html">
+<meta property="og:title" content="Numpy 的副作用">
+<meta property="og:url" content="http://yoursite.com/2018/07/27/Numpy的副作用/index.html">
 <meta property="og:site_name" content="望江人工智库">
-<meta property="og:description" content="原文链接：CHAPTER 3 Improving the way neural networks learn  Softmax 前言我们大多数情况会使用交叉熵来解决学习缓慢的问题。但是，我希望简要介绍一下另一种解决这个问题的方法，基于 softmax 神经元层。在人工神经网络（ANN）中，softmax 通常被用作输出层的激活函数。这不仅是因为它的效果好，而且因为它使得 ANN 的输出值更易于理">
+<meta property="og:description" content="array_split(X, X.shape[0], axis=0)将数组切分时，会保留原始的数组维度。 concatenate(x, axis=0)用于将多个数组进行连接，这与stack函数很容易混淆，他们之间的区别是concatenate会把当前要匹配的元素降一维，即去掉最外面那一层括号。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/06/22/改进神经网络的学习方法——Softmax/3.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/22/改进神经网络的学习方法——Softmax/4.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/22/改进神经网络的学习方法——Softmax/5.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/22/改进神经网络的学习方法——Softmax/1.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/22/改进神经网络的学习方法——Softmax/反向传播算法_1.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/22/改进神经网络的学习方法——Softmax/2.png">
-<meta property="og:updated_time" content="2018-07-01T07:39:26.251Z">
+<meta property="og:updated_time" content="2018-07-27T11:59:49.147Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="改进神经网络的学习方法——Softmax">
-<meta name="twitter:description" content="原文链接：CHAPTER 3 Improving the way neural networks learn  Softmax 前言我们大多数情况会使用交叉熵来解决学习缓慢的问题。但是，我希望简要介绍一下另一种解决这个问题的方法，基于 softmax 神经元层。在人工神经网络（ANN）中，softmax 通常被用作输出层的激活函数。这不仅是因为它的效果好，而且因为它使得 ANN 的输出值更易于理">
-<meta name="twitter:image" content="http://yoursite.com/2018/06/22/改进神经网络的学习方法——Softmax/3.png">
+<meta name="twitter:title" content="Numpy 的副作用">
+<meta name="twitter:description" content="array_split(X, X.shape[0], axis=0)将数组切分时，会保留原始的数组维度。 concatenate(x, axis=0)用于将多个数组进行连接，这与stack函数很容易混淆，他们之间的区别是concatenate会把当前要匹配的元素降一维，即去掉最外面那一层括号。">
 
 
 
@@ -127,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/22/改进神经网络的学习方法——Softmax/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/27/Numpy的副作用/"/>
 
 
 
 
 
-  <title>改进神经网络的学习方法——Softmax | 望江人工智库</title>
+  <title>Numpy 的副作用 | 望江人工智库</title>
   
 
 
@@ -294,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/22/改进神经网络的学习方法——Softmax/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/27/Numpy的副作用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="望江车神">
@@ -311,7 +304,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">改进神经网络的学习方法——Softmax</h1>
+          <h1 class="post-title" itemprop="name headline">Numpy 的副作用</h1>
         
 
         <div class="post-meta">
@@ -323,8 +316,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-22T19:31:15+08:00">
-                2018-06-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-27T08:22:42+08:00">
+                2018-07-27
               </time>
             
 
@@ -346,30 +339,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/深度学习/" itemprop="url" rel="index">
-                    <span itemprop="name">深度学习</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/深度学习/Neural-Networks-and-Deep-Learning-Michael-Nielsen/" itemprop="url" rel="index">
-                    <span itemprop="name">Neural Networks and Deep Learning (Michael Nielsen)</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/深度学习/Neural-Networks-and-Deep-Learning-Michael-Nielsen/CHAPTER-3-Improving-the-way-neural-networks-learn/" itemprop="url" rel="index">
-                    <span itemprop="name">CHAPTER 3 Improving the way neural networks learn</span>
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
                   </a>
                 </span>
 
@@ -405,96 +376,8 @@
       
 
       
-        <blockquote>
-<p>原文链接：<a href="http://neuralnetworksanddeeplearning.com/chap3.html" target="_blank" rel="noopener">CHAPTER 3 Improving the way neural networks learn</a></p>
-</blockquote>
-<h2 id="Softmax-前言"><a href="#Softmax-前言" class="headerlink" title="Softmax 前言"></a>Softmax 前言</h2><p>我们大多数情况会使用交叉熵来解决学习缓慢的问题。但是，我希望简要介绍一下另一种解决这个问题的方法，基于 softmax 神经元层。在人工神经网络（ANN）中，softmax 通常被用作输出层的激活函数。这不仅是因为它的效果好，而且因为它使得 ANN 的输出值更易于理解。同时，softmax 配合 log 似然代价函数，其训练效果也要比采用二次代价函数的方式好。</p>
-<h2 id="Softmax-函数性质"><a href="#Softmax-函数性质" class="headerlink" title="Softmax 函数性质"></a>Softmax 函数性质</h2><p><img src="/2018/06/22/改进神经网络的学习方法——Softmax/3.png" alt=""></p>
-<p>softmax的函数公式如下：</p>
-<script type="math/tex; mode=display">
-a^L_j = \frac{e^{z^L_j}}{\sum_k e^{z^L_k}},</script><p>在公式中的指数确保了所有的输出激活值是正数。然后方程中分母的求和又保证了 softmax 的输出和为 $1$。这个特定的形式确保输出激活值形成一个概率分布的自然的方式。你可以将其想象成一种重新调节 $z^L_j$ 的方法，然后将这个结果整合起来构成一个概率分布。</p>
-<p>softmax函数最明显的特点在于：它把每个神经元的输入占当前层所有神经元输入之和的比值，当作该神经元的输出。这使得输出更容易被解释：神经元的输出值越大，则该神经元对应的类别是真实类别的可能性更高。</p>
-<p><strong>softmax 的单调性</strong></p>
-<p>证明如果 $j=k$ 则 $\partial a^L_j / \partial z^L_k$ 为正，$j \neq k$ 时为负。结果是，增加 $z^L_j$ 会提高对应的输出激活值 $a^L_j$ 并降低其他所有输出激活值。单调性证明见后文。</p>
-<p><strong>softmax的非局部性</strong></p>
-<p>softmax 层的一个好处是输出 $a^L_j$ 是对应带权输入 $a^L_j = \sigma(z^L_j)$ 的函数。由于分母求和所有的 $e^{z^L_k}$ 所以计算式子中计算每一个 $a_j^L$ 都与其他 $a_j^L$ 紧密相关。深入理解就是对于 softmax 层来说：任何特定的输出激活值 $a^L_j$ 依赖所有的带权输入。</p>
-<p><strong>逆转softmax层</strong></p>
-<p>假设我们有一个使用 softmax 输出层的神经网络，然后激活值 $a^L_j$ 已知。容易证明对应带权输入的形式为 $z^L_j = \ln a^L_j + C$，其中常量 $C$ 是独立于 $j$ 的。</p>
-<h2 id="Softmax-解决学习缓慢问题"><a href="#Softmax-解决学习缓慢问题" class="headerlink" title="Softmax 解决学习缓慢问题"></a>Softmax 解决学习缓慢问题</h2><p>我们现在已经对柔性最大值神经元层有了一定的认识。但是我们还没有看到一个柔性最大值层会怎么样解决学习缓慢问题。为了理解这点，让我们先定义一个对数似然函数。我们使用 $x$ 表示网络的训练输入，$y$ 表示对应的目标输出。然后关联这个训练输入的代价函数就是</p>
-<script type="math/tex; mode=display">
-  C \equiv -\ln a^L_y</script><p>所以，如果我们训练的是 MNIST 图像，输入为 $7$ 的图像，那么对应的对数似然代价就是 $-\ln a_7^L$。看看这个直觉上的含义，想想当网络表现很好的时候，也就是确认输入为 $7$ 的时候。这时，他会估计一个对应的概率 $a_7^L$ 跟$1$ 非常接近，所以代价 $-\ln a_7^L$ 就会很小。反之，如果网络的表现糟糕时，概率$a_7^L$ 就变得很小，代价 $-\ln a_7^L$ 随之增大。所以对数似然代价函数也是满足我们期待的代价函数的条件的。</p>
-<p>那关于学习缓慢问题呢？为了分析它，回想一下学习缓慢的关键就是量 $\partial C /<br>\partial w^L_{jk}$ 和 $\partial C / \partial b^L_j$ 的变化情况。这里我不会显式地给出详细的推导，但是通过一点代数运算你会得</p>
-<script type="math/tex; mode=display">
-  \frac{\partial C}{\partial b^L_j} = a^L_j-y_j</script><script type="math/tex; mode=display">
-  \frac{\partial C}{\partial w^L_{jk}} = a^{L-1}_k (a^L_j-y_j)</script><p>这些方程其实和我们前面对交叉熵得到的类似。而且，正如前面的分析，这些表达式确保我们不会遇到学习缓慢的问题。事实上，把一个具有对数似然代价的 softmax 输出层，看作与一个具有交叉熵代价的 S 型输出层非常相似，这是很有用的。</p>
-<p>有了这样的相似性，你应该使用一个具有交叉熵代价的 S 型输出层，还是一个具有对数似然代价的柔性最大值输出层呢？实际上，在很多应用场景中，这两种方式的效果都不错。作为一种通用的视角，柔性最大值加上对数似然的组合更加适用于那些需要将输出激活值解释为概率的场景。那并不总是一个需要关注的问题，但是在诸如 MNIST 这种有着不重叠的分类问题上确实很有用。</p>
-<h2 id="数学形式证明-Softmax-有效性"><a href="#数学形式证明-Softmax-有效性" class="headerlink" title="数学形式证明 Softmax 有效性"></a>数学形式证明 Softmax 有效性</h2><p>softmax的函数公式如下：</p>
-<script type="math/tex; mode=display">
-a^L_j = \frac{e^{z^L_j}}{\sum_k e^{z^L_k}},</script><p>softmax在的求导结果比较特别，分为两种情况。</p>
-<p><img src="/2018/06/22/改进神经网络的学习方法——Softmax/4.png" alt=""><br><img src="/2018/06/22/改进神经网络的学习方法——Softmax/5.png" alt=""><br><img src="/2018/06/22/改进神经网络的学习方法——Softmax/1.png" alt=""></p>
-<p>上文讲到，二次代价函数在训练ANN时可能会导致训练速度变慢的问题。那就是，初始的输出值离真实值越远，训练速度就越慢。这个问题可以通过采用交叉熵代价函数来解决。其实，这个问题也可以采用另外一种方法解决，那就是采用 softmax 激活函数，并采用log似然代价函数（log-likelihood cost function）来解决。</p>
-<p>log似然代价函数的公式为：</p>
-<script type="math/tex; mode=display">
-C = - \sum_i y_i log a_i</script><p><strong>注意这种情况：</strong><br>其中，表示第 $a_k$ 个神经元的输出值，$y_k$ 表示第 k 个神经元对应的真实值，取值为 0 或 1 。由于 $y_k$ 取值为 0 或 1 ，对于每一个样本， $y_1,y_2,..,y_k$ 只会有一个取 1 其余的都取值为0， 所以对数似然函数求和符号可以去掉，化简为</p>
-<script type="math/tex; mode=display">
-  C \equiv -\ln a^L_j</script><p> 为了检验 softmax 和这个代价函数也可以解决上述所说的训练速度变慢问题，接下来的重点就是推导ANN的权重 w 和偏置 b 的梯度公式。</p>
-<p> 先求损失函数对偏置b的偏导数：</p>
-<p>当 $i=j$ 时，带入 上面的结果$\frac{\partial a^L_j}{\partial z^L_i}=a_j^L(1-a_j^L)$</p>
-<script type="math/tex; mode=display">
- \begin{aligned}
- \frac{\partial C}{\partial b_{j}^L} &= \frac{\partial C}{\partial a^L_j} \frac{\partial a^L_j}{\partial z^L_i}
-    \\
-   &= - \frac{1}{a^L_j} [a_j^L(1-a_j^L)] \\
- &= a_j^L -1
- \end{aligned}</script><p> 当 $i\not= j$ 时，带入 上面的结果$\frac{\partial a^L_j}{\partial z^L_i}=-a_j^La_i^L$</p>
-<script type="math/tex; mode=display">
- \begin{aligned}
- \frac{\partial C}{\partial b_{j}^L} &= \frac{\partial C}{\partial a^L_j} \frac{\partial a^L_j}{\partial z^L_i}
-    \\
-   &= - \frac{1}{a^L_j} (-a_j^La_i^L) \\
- &= a_i^L
- \end{aligned}</script><p>根据反向传播的四个方程，具体分析见<a href="https://yuanxiaosc.github.io/2018/06/21/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95/#more" target="_blank" rel="noopener">《反向传播算法》</a></p>
-<p><img src="/2018/06/22/改进神经网络的学习方法——Softmax/反向传播算法_1.png" alt=""></p>
-<p>可以知道，$\frac{\partial C}{\partial b^l_j} =\delta^l_j$ 和 $\frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j$</p>
-<p>所以,当 $i=j$ 时，</p>
-<script type="math/tex; mode=display">
-\frac{\partial C}{\partial w^L_{jk}}  =  a^{L-1}_k (a^L_j-1)</script><p>当 $i\not= j$ 时，</p>
-<script type="math/tex; mode=display">
-\frac{\partial C}{\partial w^L_{jk}}  =  a^{L-1}_k a_i</script><p><strong>举个例子</strong><br>通过若干层的计算，最后得到的某个训练样本的向量的分数是[ 2, 3, 4 ],那么经过softmax函数作用后概率分别就是=[e^2/(e^2+e^3+e^4),e^3/(e^2+e^3+e^4),e^4/(e^2+e^3+e^4)] = [0.0903,0.2447,0.665],如果这个样本正确的分类是第二个的话，那么计算出来的偏导（实际上这个偏导就是 $\delta^L$ 或者说是 $\partial C/\partial b^L$ ）就是[0.0903,0.2447-1,0.665]=[0.0903,-0.7553,0.665]，是不是非常简单！然后再根据这个进行back propagation就可以了</p>
-<hr>
-<p>注意！当 $y_j$ 取值不为 0 或 1，而是区间 [0,1] 的一个实数值时，上面的式子只需稍稍做点修改，只需把下面式子中 $\frac{\partial C}{\partial a^L_j}$ 的结果从 $\frac{1}{a^L_j}$ 改为 $\frac{y_i}{a^L_j}$ 即可，</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-\frac{\partial C}{\partial b_{j}^L} &= \frac{\partial C}{\partial a^L_j} \frac{\partial a^L_j}{\partial z^L_i}
-   \\
-  &= - \frac{1}{a^L_j} [a_j^L(1-a_j^L)] \\
-&= a_j^L -1
-\end{aligned}</script><p>其它的求导过程也要做相应调整。所以在有的地方会看到这样的公式，</p>
-<script type="math/tex; mode=display">
-  \frac{\partial C}{\partial b^L_j} = a^L_j-y_j</script><script type="math/tex; mode=display">
-  \frac{\partial C}{\partial w^L_{jk}} = a^{L-1}_k (a^L_j-y_j)</script><p>两者都是正确的，只是因为前提不一样，所以结论也有差异。</p>
-<h2 id="交叉熵与对数似然的关系"><a href="#交叉熵与对数似然的关系" class="headerlink" title="交叉熵与对数似然的关系"></a>交叉熵与对数似然的关系</h2><p><strong>结论</strong>：交叉熵和最大似然的loss函数是一致的，在样本所属分类是唯一的情况下。</p>
-<p><strong>两者能够和谐统一的关键点是：</strong></p>
-<p>样本所属类别是唯一的，样本一定是某一类的，似然的思想是抽样样本的概率最大化，所以每一个样本只能处于一个固定的状态。这就使得每个样本的概率形式可以写成一个综合的形式，而综合的形式呢刚好可以在log下拆分成交叉熵的样子。在多类下，若样本所属类别是唯一的，最大似然的loss与交叉熵的loss仍然是一致的。</p>
-<p><strong>论证：</strong></p>
-<p><strong>二项分布</strong></p>
-<p>二项分布也叫 0-1 分布，如随机变量 x 服从二项分布，关于参数 μ（0≤μ≤1），其值取 1 和取 0 的概率如下：</p>
-<script type="math/tex; mode=display">
-p(x=1|\mu)=\mu</script><script type="math/tex; mode=display">
-p(x=0|\mu)=1-\mu</script><p>则在 x 上的概率分布为：</p>
-<script type="math/tex; mode=display">\text{Bern}(x|\mu)=\mu^x(1-\mu)^{1-x}</script><p><strong>服从二项分布的样本集的对数似然函数</strong></p>
-<p>给定样本集 D={x1,x2,…,xB} 是对随机变量 x 的观测值，假定样本集从二项分布 p(x|μ) 中独立（p(x1,x2,…,xN)=∏ip(xi)）采样得来，则当前样本集关于 μ 的似然函数为：</p>
-<script type="math/tex; mode=display">p(\mathcal D|\mu)=\prod_{n=1}^Np(x_n|\mu)=\prod_{n=1}^N\mu^{x_n}\left(1-\mu\right)^{1-x_n}</script><p>从频率学派的观点来说，通过最大似然函数的取值，可以估计参数 μ，最大化似然函数，等价于最大化其对数形式：</p>
-<p><img src="/2018/06/22/改进神经网络的学习方法——Softmax/2.png" alt=""></p>
-<p>求其关于 μ 的导数，解得 μ 的最大似然解为：</p>
-<script type="math/tex; mode=display">\mu_{ML}=\frac1N\sum_{n=1}^Nx_n</script><p>这里我们仅关注：</p>
-<script type="math/tex; mode=display">\ln P(\mathcal D|\mu)=\sum_{n=1}^Nx_n\ln \mu+(1-x_n)\ln(1-\mu)</script><p><strong>交叉熵损失函数</strong></p>
-<script type="math/tex; mode=display">L_H(\mathbf x,\mathbf z)=-\sum_{n=1}^Nx_n\log z_n+(1-x_n)\log(1-z_n)</script><p>x  表示原始信号，z 表示重构信号。（损失函数的目标是最小化，似然函数则是最大化，二者仅相差一个符号）。</p>
-<hr>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] Michael Nielsen.CHAPTER 3 Improving the way neural networks learn[DB/OL]. <a href="http://neuralnetworksanddeeplearning.com/chap3.html" target="_blank" rel="noopener">http://neuralnetworksanddeeplearning.com/chap3.html</a>, 2018-06-22.</p>
-<p>[2] Zhu Xiaohu. Zhang Freeman.Another Chinese Translation of Neural Networks and Deep Learning[DB/OL].<a href="https://github.com/zhanggyb/nndl/blob/master/chap3.tex" target="_blank" rel="noopener">https://github.com/zhanggyb/nndl/blob/master/chap3.tex</a>, 2018-06-22.</p>
-<p>[3] __鸿. softmax的log似然代价函数（公式求导）[DB/OL]. <a href="https://blog.csdn.net/u014313009/article/details/51045303" target="_blank" rel="noopener">https://blog.csdn.net/u014313009/article/details/51045303</a>. 2018-06-22.</p>
-<p>[4] 忆臻HIT_NLP. 手打例子一步一步带你看懂softmax函数以及相关求导过程[DB/OL]. <a href="https://www.jianshu.com/p/ffa51250ba2e" target="_blank" rel="noopener">https://www.jianshu.com/p/ffa51250ba2e</a>. 2018-06-22.</p>
+        <p>array_split(X, X.shape[0], axis=0)<br>将数组切分时，会保留原始的数组维度。</p>
+<p>concatenate(x, axis=0)<br>用于将多个数组进行连接，这与stack函数很容易混淆，他们之间的区别是concatenate会把当前要匹配的元素降一维，即去掉最外面那一层括号。</p>
 
       
     </div>
@@ -541,9 +424,7 @@ p(x=0|\mu)=1-\mu</script><p>则在 x 上的概率分布为：</p>
       
         <div class="post-tags">
           
-            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
-          
-            <a href="/tags/Softmax/" rel="tag"># Softmax</a>
+            <a href="/tags/numpy/" rel="tag"># numpy</a>
           
         </div>
       
@@ -556,8 +437,8 @@ p(x=0|\mu)=1-\mu</script><p>则在 x 上的概率分布为：</p>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/21/改进神经网络的学习方法——交叉熵/" rel="next" title="改进神经网络的学习方法——交叉熵">
-                <i class="fa fa-chevron-left"></i> 改进神经网络的学习方法——交叉熵
+              <a href="/2018/07/09/四川大学研究生软件项目管理期末考试分析/" rel="next" title="四川大学研究生软件项目管理期末考试分析">
+                <i class="fa fa-chevron-left"></i> 四川大学研究生软件项目管理期末考试分析
               </a>
             
           </div>
@@ -566,8 +447,8 @@ p(x=0|\mu)=1-\mu</script><p>则在 x 上的概率分布为：</p>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/24/改进神经网络的学习方法——正则化/" rel="prev" title="改进神经网络的学习方法——正则化">
-                改进神经网络的学习方法——正则化 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/07/27/论文/" rel="prev" title="论文资源">
+                论文资源 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -620,17 +501,8 @@ p(x=0|\mu)=1-\mu</script><p>则在 x 上的概率分布为：</p>
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -704,22 +576,6 @@ p(x=0|\mu)=1-\mu</script><p>则在 x 上的概率分布为：</p>
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Softmax-前言"><span class="nav-number">1.</span> <span class="nav-text">Softmax 前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Softmax-函数性质"><span class="nav-number">2.</span> <span class="nav-text">Softmax 函数性质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Softmax-解决学习缓慢问题"><span class="nav-number">3.</span> <span class="nav-text">Softmax 解决学习缓慢问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数学形式证明-Softmax-有效性"><span class="nav-number">4.</span> <span class="nav-text">数学形式证明 Softmax 有效性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#交叉熵与对数似然的关系"><span class="nav-number">5.</span> <span class="nav-text">交叉熵与对数似然的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">6.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
