@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="望江人工智库">
 <meta property="og:description" content="本文是 《Hands-on Machine Learning with Scikit-Learn and TensorFlow 》的课后习题解答！ 把练习和答案分开是为了督促学习和思考，提倡独立思考，主动学习，而不是背答案！文章前半段中文翻译有问题的地方欢迎评论指正，英文原文在后面。  CHAPTER 1 The Machine Learning Landscape练习本章中，我们学习了一些机器">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-30T13:55:33.904Z">
+<meta property="og:updated_time" content="2018-07-31T00:57:10.484Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hands-on Machine Learning 课后习题解答">
 <meta name="twitter:description" content="本文是 《Hands-on Machine Learning with Scikit-Learn and TensorFlow 》的课后习题解答！ 把练习和答案分开是为了督促学习和思考，提倡独立思考，主动学习，而不是背答案！文章前半段中文翻译有问题的地方欢迎评论指正，英文原文在后面。  CHAPTER 1 The Machine Learning Landscape练习本章中，我们学习了一些机器">
@@ -619,13 +619,13 @@
 <li>To distribute training and execution of a deep RNN across multiple GPUs, a common technique is simply to place each layer on a different GPU (see Chap‐ter 12).</li>
 </ol>
 <h1 id="Chapter-15-Autoencoders"><a href="#Chapter-15-Autoencoders" class="headerlink" title="Chapter 15: Autoencoders"></a>Chapter 15: Autoencoders</h1><h2 id="练习-3"><a href="#练习-3" class="headerlink" title="练习"></a>练习</h2><ol>
-<li>自动编码器的主要任务是什么？</li>
-<li>假设你想训练一个分类器并且你有很多未标记的训练<br>数据，但只有几千个标记的实例。 自动编码器如何提供帮助？<br>你会怎么做？</li>
-<li>如果自动编码器完美地重建了输入，它是否一定是好的<br>自编码？ 如何评估自动编码器的性能？</li>
-<li>什么是欠完备和过完备的自动编码器？ 主要风险是什么？<br>一个过于不完整的自动编码器？ 怎么样的主要风险<br>过完备的自动编码器？</li>
-<li>如何在堆叠自动编码器中绑定权重？ 这样做有什么意义？</li>
-<li>什么是可视化堆叠自动编码器下层学习的功能的常用技术？ 更高层呢？</li>
-<li>什么是生成模型？ 你能说出一种生成型自动编码器吗？</li>
+<li>自动编码器使用的主要任务是什么？</li>
+<li>假设你想训练一个分类器，你有很多未标记的训练数据，但是只有几千个标记的实例。自动编码器如何帮助？你将如何进行？</li>
+<li>如果一个自动编码器完美地重建输入，它一定是好的吗？自动编码器？如何评价自动编码器的性能？</li>
+<li>什么是欠完备和过完备的自动编码器？过度完备的自动编码器的主要风险是什么？超完备自动编码器的主要风险是什么？</li>
+<li>如何在堆叠式自动编码器中系紧砝码？这样做有什么意义呢？</li>
+<li>什么是一种常见的技术来可视化的特点，学习下层的堆叠自动编码器？更高层怎么办？</li>
+<li>什么是生成模型？你能说出一种生成式自动编码器吗？</li>
 </ol>
 <h2 id="练习解答-1"><a href="#练习解答-1" class="headerlink" title="练习解答"></a>练习解答</h2><ol>
 <li>以下是自动编码器用于的一些主要任务：</li>
@@ -638,11 +638,11 @@
 <li>异常检测（自动编码器通常不利于重建异常值）</li>
 </ul>
 <ol>
-<li><p>如果您想训练分类器并且您有大量未标记的训练数据，但只有几千个带标签的实例，那么你可以先训练一下完整数据集上的autoencoder（标记为+未标记），然后重用其下半部分<br>分类器（即，重复使用包括编码层的层）并训练使用标记数据的分类器。 如果你的标签数据很少，你可能想要在训练分类器时冻结重用的层。</p>
+<li><p>如果你想训练一个分类器，你有大量的未标记的训练数据，但是只有几千个标记的实例，那么你可以首先在完整的数据集（标记和未标记）上训练一个深度的自动编码器，然后再将其下半部分用于分类器（即，重复使用编码层）。编码层，包括使用标记数据训练分类器。如果您的标记数据很少，则可能需要在训练分类器时冻结重复使用的层。</p>
 </li>
 <li><p>自动编码器完美地重建其输入的事实并不一定如此意味着它是一个很好的自动编码器;也许它只是一个过度完整的自动编码器学会了将其输入复制到编码层然后再输出到输出。实际上，即使编码层包含单个神经元，也是可能的对于一个非常深的自动编码器来学习将每个训练实例映射到不同的编码（例如，第一个实例可以映射到0.001，第二个实例可以映射到0.002，即第三到0.003，等等），它可以“用心”学习重建右边每个编码的训练实例。它将完美地重建其输入没有真正学习数据中任何有用的模式。在实践中这样的映射不太可能发生，但它说明了完美的重建不是这样的事实保证自动编码器学到了什么有用的东西。但是，如果它产生非常糟糕的重建，然后它几乎保证是一个糟糕的自动编码器。为了评估自动编码器的性能，一种选择是测量重建损失（例如，计算MSE，输出的均方值）减去输入）。再次，高重建损失是一个很好的迹象自动编码器很糟糕，但重建损失很小并不能保证好。您还应该根据它将使用的内容来评估自动编码器对于。例如，如果您将其用于无人监督的分类器预训练，那么你还应该评估分类器的性能。</p>
 </li>
-<li><p>欠完全自动编码器是一种编码层小于编码层的编码器输入和输出层。 如果它更大，那么它是一个过完备的自动编码器。过度完整的自动编码器的主要风险是它可能无法完成重建输入。 过度完整的自动编码器的主要风险是它可能只是将输入复制到输出，而不学习任何有用的功能。</p>
+<li><p>欠完全自动编码器是一种编码层小于编码层的编码器输入和输出层。 如果它更大，那么它是一个过完备的自动编码器。欠完全自动编码器的主要风险是它可能无法完成重建输入。 过度完整的自动编码器的主要风险是它可能只是将输入复制到输出，而不学习任何有用的功能。</p>
 </li>
 <li><p>要将编码器层及其相应解码器层的权重联系起来简单地使解码器权重等于编码器权重的转置。这会将模型中的参数数量减少一半，通常会进行培训通过较少的训练数据更快地收敛，并降低过度拟合的风险训练集。</p>
 </li>
@@ -654,9 +654,9 @@
 <hr>
 <h2 id="Exercise"><a href="#Exercise" class="headerlink" title="Exercise"></a>Exercise</h2><ol>
 <li>What are the main tasks that autoencoders are used for?</li>
-<li>Suppose you want to train a classifier and you have plenty of unlabeled training<br>data, but only a few thousand labeled instances. How can autoencoders help?<br>How would you proceed?</li>
-<li>If an autoencoder perfectly reconstructs the inputs, is it necessarily a good<br>autoencoder? How can you evaluate the performance of an autoencoder?</li>
-<li>What are undercomplete and overcomplete autoencoders? What is the main risk<br>of an excessively undercomplete autoencoder? What about the main risk of an<br>overcomplete autoencoder?</li>
+<li>Suppose you want to train a classifier and you have plenty of unlabeled training data, but only a few thousand labeled instances. How can autoencoders help? How would you proceed?</li>
+<li>If an autoencoder perfectly reconstructs the inputs, is it necessarily a good autoencoder? How can you evaluate the performance of an autoencoder?</li>
+<li>What are undercomplete and overcomplete autoencoders? What is the main risk of an excessively undercomplete autoencoder? What about the main risk of an overcomplete autoencoder?</li>
 <li>How do you tie weights in a stacked autoencoder? What is the point of doing so?</li>
 <li>What is a common technique to visualize features learned by the lower layer of a stacked autoencoder? What about higher layers?</li>
 <li>What is a generative model? Can you name a type of generative autoencoder?</li>
