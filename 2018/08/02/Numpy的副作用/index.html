@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="numpy," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="深度学习你~~~">
-<meta name="keywords" content="深度学习;机器学习;人工智能">
-<meta property="og:type" content="website">
-<meta property="og:title" content="望江人工智库">
-<meta property="og:url" content="http://yoursite.com/archives/2018/06/page/2/index.html">
+<meta name="description" content="array_split(X, X.shape[0], axis=0)将数组切分时，会保留原始的数组维度。 concatenate(x, axis=0)用于将多个数组进行连接，这与stack函数很容易混淆，他们之间的区别是concatenate会把当前要匹配的元素降一维，即去掉最外面那一层括号。 Reshape、转置、旋转、轴对换区别1import numpy as np 12X = np.aran">
+<meta name="keywords" content="numpy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Numpy 的副作用">
+<meta property="og:url" content="http://yoursite.com/2018/08/02/Numpy的副作用/index.html">
 <meta property="og:site_name" content="望江人工智库">
-<meta property="og:description" content="深度学习你~~~">
+<meta property="og:description" content="array_split(X, X.shape[0], axis=0)将数组切分时，会保留原始的数组维度。 concatenate(x, axis=0)用于将多个数组进行连接，这与stack函数很容易混淆，他们之间的区别是concatenate会把当前要匹配的元素降一维，即去掉最外面那一层括号。 Reshape、转置、旋转、轴对换区别1import numpy as np 12X = np.aran">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-02T02:42:38.601Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="望江人工智库">
-<meta name="twitter:description" content="深度学习你~~~">
+<meta name="twitter:title" content="Numpy 的副作用">
+<meta name="twitter:description" content="array_split(X, X.shape[0], axis=0)将数组切分时，会保留原始的数组维度。 concatenate(x, axis=0)用于将多个数组进行连接，这与stack函数很容易混淆，他们之间的区别是concatenate会把当前要匹配的元素降一维，即去掉最外面那一层括号。 Reshape、转置、旋转、轴对换区别1import numpy as np 12X = np.aran">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2018/06/page/2/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/02/Numpy的副作用/"/>
 
 
 
 
 
-  <title>归档 | 望江人工智库</title>
+  <title>Numpy 的副作用 | 望江人工智库</title>
   
 
 
@@ -144,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -272,263 +273,274 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/02/Numpy的副作用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="望江车神">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/16183570?s=400&u=5e09ebb784cfd47de99d249f2be2413adcf4e672&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="望江人工智库">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">Numpy 的副作用</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-02T08:22:42+08:00">
+                2018-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 24 篇日志。 继续努力。
-      </span>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/06/19/使用神经网络识别手写数字——代码实现/" itemprop="url">
-              
-                <span itemprop="name">使用神经网络识别手写数字——代码实现</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-06-19T20:22:42+08:00"
-              content="2018-06-19" >
-          06-19
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/06/18/使用神经网络识别手写数字——梯度下降算法/" itemprop="url">
-              
-                <span itemprop="name">使用神经网络识别手写数字——梯度下降算法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-06-18T20:22:42+08:00"
-              content="2018-06-18" >
-          06-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/06/17/使用神经网络识别手写数字——感知器/" itemprop="url">
-              
-                <span itemprop="name">使用神经网络识别手写数字——感知器</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-06-17T10:22:42+08:00"
-              content="2018-06-17" >
-          06-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
+        <p>array_split(X, X.shape[0], axis=0)<br>将数组切分时，会保留原始的数组维度。</p>
+<p>concatenate(x, axis=0)<br>用于将多个数组进行连接，这与stack函数很容易混淆，他们之间的区别是concatenate会把当前要匹配的元素降一维，即去掉最外面那一层括号。</p>
+<h2 id="Reshape、转置、旋转、轴对换区别"><a href="#Reshape、转置、旋转、轴对换区别" class="headerlink" title="Reshape、转置、旋转、轴对换区别"></a>Reshape、转置、旋转、轴对换区别</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X = np.arange(<span class="number">0</span>,<span class="number">15</span>,<span class="number">1</span>).reshape((<span class="number">3</span>,<span class="number">5</span>))</span><br><span class="line">X</span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 0,  1,  2,  3,  4],
+       [ 5,  6,  7,  8,  9],
+       [10, 11, 12, 13, 14]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X.reshape((<span class="number">5</span>,<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 0,  1,  2],
+       [ 3,  4,  5],
+       [ 6,  7,  8],
+       [ 9, 10, 11],
+       [12, 13, 14]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X.T</span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 0,  5, 10],
+       [ 1,  6, 11],
+       [ 2,  7, 12],
+       [ 3,  8, 13],
+       [ 4,  9, 14]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 轴对换</span></span><br><span class="line">X.swapaxes(<span class="number">0</span>,<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 0,  5, 10],
+       [ 1,  6, 11],
+       [ 2,  7, 12],
+       [ 3,  8, 13],
+       [ 4,  9, 14]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 顺时针旋转 1 个 90 度</span></span><br><span class="line">np.rot90(X, <span class="number">1</span>, axes=(<span class="number">1</span>,<span class="number">0</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>array([[10,  5,  0],
+       [11,  6,  1],
+       [12,  7,  2],
+       [13,  8,  3],
+       [14,  9,  4]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.rot90(X, <span class="number">1</span>, axes=(<span class="number">0</span>,<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 4,  9, 14],
+       [ 3,  8, 13],
+       [ 2,  7, 12],
+       [ 1,  6, 11],
+       [ 0,  5, 10]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C2 = np.rot90(X, <span class="number">2</span>, axes=(<span class="number">1</span>,<span class="number">0</span>))</span><br><span class="line">C2</span><br></pre></td></tr></table></figure>
+<pre><code>array([[14, 13, 12, 11, 10],
+       [ 9,  8,  7,  6,  5],
+       [ 4,  3,  2,  1,  0]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.rot90(C2, <span class="number">2</span>, axes=(<span class="number">0</span>,<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 0,  1,  2,  3,  4],
+       [ 5,  6,  7,  8,  9],
+       [10, 11, 12, 13, 14]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X2 = np.arange(<span class="number">0</span>,<span class="number">24</span>,<span class="number">1</span>).reshape((<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>))</span><br><span class="line">X2</span><br></pre></td></tr></table></figure>
+<pre><code>array([[[ 0,  1,  2,  3],
+        [ 4,  5,  6,  7],
+        [ 8,  9, 10, 11]],
 
-        
-        
-        
+       [[12, 13, 14, 15],
+        [16, 17, 18, 19],
+        [20, 21, 22, 23]]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X2.swapaxes(<span class="number">1</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[[ 0,  4,  8],
+        [ 1,  5,  9],
+        [ 2,  6, 10],
+        [ 3,  7, 11]],
 
-        
-        
+       [[12, 16, 20],
+        [13, 17, 21],
+        [14, 18, 22],
+        [15, 19, 23]]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X2.transpose(<span class="number">0</span>,<span class="number">2</span>,<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[[ 0,  4,  8],
+        [ 1,  5,  9],
+        [ 2,  6, 10],
+        [ 3,  7, 11]],
 
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/06/09/NumPy学习手册1.0版/" itemprop="url">
-              
-                <span itemprop="name">NumPy 学习手册1.0版</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-06-09T15:52:34+08:00"
-              content="2018-06-09" >
-          06-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
+       [[12, 16, 20],
+        [13, 17, 21],
+        [14, 18, 22],
+        [15, 19, 23]]])
+</code></pre>
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/06/09/MarkDown学习手册/" itemprop="url">
-              
-                <span itemprop="name">MarkDown学习手册</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-06-09T15:52:34+08:00"
-              content="2018-06-09" >
-          06-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/06/09/LATEX学习手册1.0版/" itemprop="url">
-              
-                <span itemprop="name">LATEX学习手册1.0版</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-06-09T15:52:34+08:00"
-              content="2018-06-09" >
-          06-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢金主！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="望江车神 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="望江车神 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/numpy/" rel="tag"># numpy</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/01/Hands-on Machine Learning with Scikit-Learn and TensorFlow 习题解答/" rel="next" title="Hands-on Machine Learning 课后习题解答">
+                <i class="fa fa-chevron-left"></i> Hands-on Machine Learning 课后习题解答
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/07/论文/" rel="prev" title="论文资源">
+                论文资源 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2018/06/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/2018/06/">1</a><span class="page-number current">2</span>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -536,6 +548,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -556,8 +572,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -631,6 +656,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reshape、转置、旋转、轴对换区别"><span class="nav-number">1.</span> <span class="nav-text">Reshape、转置、旋转、轴对换区别</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -778,6 +819,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
