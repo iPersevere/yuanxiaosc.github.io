@@ -79,18 +79,29 @@
 
 
 
-<meta name="description" content="经典论文《Auto-Encoding Variational Bayes》 | Diederik P Kingma, Max Welling | 2013 Abstract如何在有向概率模型中进行有效的推理和学习，在存在连续的潜在变量和难以处理的后验分布和大数据集的情况下？我们引入一个随机变分推理和学习算法，缩放到大数据集，并在一些温和的可微性条件下，甚至在棘手的情况下工作。我们的贡献是双重的。首">
+<meta name="description" content="变分自编码器经典论文《Auto-Encoding Variational Bayes》 | Diederik P Kingma, Max Welling | 2013 Abstract如何在有向概率模型中进行有效的推理和学习，在存在连续的潜在变量和难以处理的后验分布和大数据集的情况下？我们引入一个随机变分推理和学习算法，缩放到大数据集，并在一些温和的可微性条件下，甚至在棘手的情况下工作。我们的贡献">
 <meta name="keywords" content="VAE,变分自编码器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="变分自编码器（Variational Auto-Encoder，VAE）">
 <meta property="og:url" content="http://yoursite.com/2018/08/14/变分自编码器/index.html">
 <meta property="og:site_name" content="望江人工智库">
-<meta property="og:description" content="经典论文《Auto-Encoding Variational Bayes》 | Diederik P Kingma, Max Welling | 2013 Abstract如何在有向概率模型中进行有效的推理和学习，在存在连续的潜在变量和难以处理的后验分布和大数据集的情况下？我们引入一个随机变分推理和学习算法，缩放到大数据集，并在一些温和的可微性条件下，甚至在棘手的情况下工作。我们的贡献是双重的。首">
+<meta property="og:description" content="变分自编码器经典论文《Auto-Encoding Variational Bayes》 | Diederik P Kingma, Max Welling | 2013 Abstract如何在有向概率模型中进行有效的推理和学习，在存在连续的潜在变量和难以处理的后验分布和大数据集的情况下？我们引入一个随机变分推理和学习算法，缩放到大数据集，并在一些温和的可微性条件下，甚至在棘手的情况下工作。我们的贡献">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-14T12:50:38.868Z">
+<meta property="og:image" content="http://yoursite.com/2018/08/14/变分自编码器/2.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/14/变分自编码器/9.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/14/变分自编码器/10.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/14/变分自编码器/3.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/14/变分自编码器/4.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/14/变分自编码器/5.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/14/变分自编码器/1.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/14/变分自编码器/6.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/14/变分自编码器/7.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/14/变分自编码器/8.png">
+<meta property="og:updated_time" content="2018-08-15T13:42:46.434Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="变分自编码器（Variational Auto-Encoder，VAE）">
-<meta name="twitter:description" content="经典论文《Auto-Encoding Variational Bayes》 | Diederik P Kingma, Max Welling | 2013 Abstract如何在有向概率模型中进行有效的推理和学习，在存在连续的潜在变量和难以处理的后验分布和大数据集的情况下？我们引入一个随机变分推理和学习算法，缩放到大数据集，并在一些温和的可微性条件下，甚至在棘手的情况下工作。我们的贡献是双重的。首">
+<meta name="twitter:description" content="变分自编码器经典论文《Auto-Encoding Variational Bayes》 | Diederik P Kingma, Max Welling | 2013 Abstract如何在有向概率模型中进行有效的推理和学习，在存在连续的潜在变量和难以处理的后验分布和大数据集的情况下？我们引入一个随机变分推理和学习算法，缩放到大数据集，并在一些温和的可微性条件下，甚至在棘手的情况下工作。我们的贡献">
+<meta name="twitter:image" content="http://yoursite.com/2018/08/14/变分自编码器/2.png">
 
 
 
@@ -376,11 +387,42 @@
       
 
       
-        <h2 id="经典论文"><a href="#经典论文" class="headerlink" title="经典论文"></a>经典论文</h2><p><a href="https://arxiv.org/abs/1312.6114v10" target="_blank" rel="noopener">《Auto-Encoding Variational Bayes》 | Diederik P Kingma, Max Welling | 2013</a></p>
+        <h2 id="变分自编码器经典论文"><a href="#变分自编码器经典论文" class="headerlink" title="变分自编码器经典论文"></a>变分自编码器经典论文</h2><p><a href="https://arxiv.org/abs/1312.6114v10" target="_blank" rel="noopener">《Auto-Encoding Variational Bayes》 | Diederik P Kingma, Max Welling | 2013</a></p>
 <p><strong>Abstract</strong><br>如何在有向概率模型中进行有效的推理和学习，在存在连续的潜在变量和难以处理的后验分布和大数据集的情况下？我们引入一个随机变分推理和学习算法，缩放到大数据集，并在一些温和的可微性条件下，甚至在棘手的情况下工作。我们的贡献是双重的。首先，我们表明，变分下界的重新参数化产生一个下界估计，可以直接使用标准随机梯度方法优化。第二，我们表明，对于I.I.D.数据集具有连续潜变量每个数据点，后推理可以特别有效的拟合近似推理模型（也称为识别模型）棘手的后部使用所提出的下界估计。理论优势反映在实验结果中。<br><strong>Subjects</strong>:    Machine Learning (stat.ML); Machine Learning (cs.LG)</p>
 <hr>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] 苏剑林‏. 变分自编码器（一）：原来是这么一回事[DB/OL]. <a href="https://spaces.ac.cn/me.html" target="_blank" rel="noopener">https://spaces.ac.cn/me.html</a>, 2018-08-14.</p>
-<p>[2] Kingma D P, Welling M. Auto-Encoding Variational Bayes[J]. 2013.</p>
+<h2 id="变分自编码器导论"><a href="#变分自编码器导论" class="headerlink" title="变分自编码器导论"></a>变分自编码器导论</h2><ul>
+<li><p>Vivek Vyas 的<a href="http://www.sohu.com/a/165055924_390227" target="_blank" rel="noopener">《浅析变分自编码器VAE》</a></p>
+</li>
+<li><p>MoussaTintin 的<a href="https://blog.csdn.net/JackyTintin/article/details/53641885" target="_blank" rel="noopener">《【Learning Notes】变分自编码器（Variational Auto-Encoder，VAE）》</a></p>
+</li>
+</ul>
+<h2 id="变分自编码器基础"><a href="#变分自编码器基础" class="headerlink" title="变分自编码器基础"></a>变分自编码器基础</h2><p>首先阅读苏剑林 VAE 的第一篇文章<a href="https://spaces.ac.cn/archives/5253" target="_blank" rel="noopener">《变分自编码器（一）：原来是这么一回事》</a>。</p>
+<p>下面示意 VAE 代码<a href="https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter8-vae/vae-mlp-mnist-8.1.1.py" target="_blank" rel="noopener">完整版</a> 。</p>
+<h3 id="VAE-的示意图"><a href="#VAE-的示意图" class="headerlink" title="VAE 的示意图"></a>VAE 的示意图</h3><p><img src="/2018/08/14/变分自编码器/2.png" alt=""></p>
+<p>VAE由三部分组成：编码器 $q(z|x)$，先验 $p(z)$，解码器 $p(x|z)$。</p>
+<p><img src="/2018/08/14/变分自编码器/9.png" alt=""></p>
+<p>编码器将图像映射到针对该图像的代码的分布上。这种分布也被称为后验（posterior），因为它反映了我们关于代码应该用于给定图像之后的准确度。</p>
+<p><img src="/2018/08/14/变分自编码器/10.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''Example of VAE on MNIST dataset using MLP</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">The VAE has a modular design. The encoder, decoder and VAE</span></span><br><span class="line"><span class="string">are 3 models that share weights. After training the VAE model,</span></span><br><span class="line"><span class="string">the encoder can be used to  generate latent vectors.</span></span><br><span class="line"><span class="string">The decoder can be used to generate MNIST digits by sampling the</span></span><br><span class="line"><span class="string">latent vector from a Gaussian distribution with mean=0 and std=1.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># Reference</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[1] Kingma, Diederik P., and Max Welling.</span></span><br><span class="line"><span class="string">"Auto-encoding variational bayes."</span></span><br><span class="line"><span class="string">https://arxiv.org/abs/1312.6114</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<h3 id="VAE-网络结构"><a href="#VAE-网络结构" class="headerlink" title="VAE 网络结构"></a>VAE 网络结构</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># network parameters</span></span><br><span class="line">input_shape = (original_dim, )</span><br><span class="line">intermediate_dim = <span class="number">512</span></span><br><span class="line">batch_size = <span class="number">128</span></span><br><span class="line">latent_dim = <span class="number">2</span> <span class="comment">#可以是其它维度，这里选择二维只是为了方便可视化</span></span><br><span class="line">epochs = <span class="number">50</span></span><br><span class="line"><span class="comment"># VAE model = encoder + decoder</span></span><br></pre></td></tr></table></figure>
+<h4 id="编码器"><a href="#编码器" class="headerlink" title="编码器"></a>编码器</h4><p><img src="/2018/08/14/变分自编码器/3.png" alt=""><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># build encoder model</span></span><br><span class="line">inputs = Input(shape=input_shape, name=<span class="string">'encoder_input'</span>)</span><br><span class="line">x = Dense(intermediate_dim, activation=<span class="string">'relu'</span>)(inputs)</span><br><span class="line">z_mean = Dense(latent_dim, name=<span class="string">'z_mean'</span>)(x)</span><br><span class="line">z_log_var = Dense(latent_dim, name=<span class="string">'z_log_var'</span>)(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># use reparameterization trick to push the sampling out as input</span></span><br><span class="line"><span class="comment"># note that "output_shape" isn't necessary with the TensorFlow backend</span></span><br><span class="line">z = Lambda(sampling, output_shape=(latent_dim,), name=<span class="string">'z'</span>)([z_mean, z_log_var])</span><br><span class="line"></span><br><span class="line"><span class="comment"># instantiate encoder model</span></span><br><span class="line">encoder = Model(inputs, [z_mean, z_log_var, z], name=<span class="string">'encoder'</span>)</span><br></pre></td></tr></table></figure></p>
+<h4 id="解码器"><a href="#解码器" class="headerlink" title="解码器"></a>解码器</h4><p><img src="/2018/08/14/变分自编码器/4.png" alt=""><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># build decoder model</span></span><br><span class="line">latent_inputs = Input(shape=(latent_dim,), name=<span class="string">'z_sampling'</span>)</span><br><span class="line">x = Dense(intermediate_dim, activation=<span class="string">'relu'</span>)(latent_inputs)</span><br><span class="line">outputs = Dense(original_dim, activation=<span class="string">'sigmoid'</span>)(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># instantiate decoder model</span></span><br><span class="line">decoder = Model(latent_inputs, outputs, name=<span class="string">'decoder'</span>)</span><br></pre></td></tr></table></figure></p>
+<h4 id="VAE"><a href="#VAE" class="headerlink" title="VAE"></a>VAE</h4><p><img src="/2018/08/14/变分自编码器/5.png" alt=""><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># instantiate VAE model</span></span><br><span class="line">outputs = decoder(encoder(inputs)[<span class="number">2</span>]) <span class="comment">#前两维度分别是均值和“方差”</span></span><br><span class="line">vae = Model(inputs, outputs, name=<span class="string">'vae_mlp'</span>)</span><br></pre></td></tr></table></figure></p>
+<h4 id="重参数技巧"><a href="#重参数技巧" class="headerlink" title="重参数技巧"></a>重参数技巧</h4><p><img src="/2018/08/14/变分自编码器/1.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># reparameterization trick</span></span><br><span class="line"><span class="comment"># instead of sampling from Q(z|X), sample eps = N(0,I)</span></span><br><span class="line"><span class="comment"># z = z_mean + sqrt(var)*eps</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sampling</span><span class="params">(args)</span>:</span></span><br><span class="line">    <span class="string">"""Reparameterization trick by sampling fr an isotropic unit Gaussian.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    # Arguments:</span></span><br><span class="line"><span class="string">        args (tensor): mean and log of variance of Q(z|X)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    # Returns:</span></span><br><span class="line"><span class="string">        z (tensor): sampled latent vector</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    z_mean, z_log_var = args</span><br><span class="line">    <span class="comment"># K is the keras backend</span></span><br><span class="line">    batch = K.shape(z_mean)[<span class="number">0</span>]</span><br><span class="line">    dim = K.int_shape(z_mean)[<span class="number">1</span>]</span><br><span class="line">    <span class="comment"># by default, random_normal has mean=0 and std=1.0</span></span><br><span class="line">    epsilon = K.random_normal(shape=(batch, dim))</span><br><span class="line">    <span class="keyword">return</span> z_mean + K.exp(<span class="number">0.5</span> * z_log_var) * epsilon</span><br></pre></td></tr></table></figure>
+<h4 id="VAE-本质结构"><a href="#VAE-本质结构" class="headerlink" title="VAE 本质结构"></a>VAE 本质结构</h4><p><img src="/2018/08/14/变分自编码器/6.png" alt=""></p>
+<h4 id="网络输出结果"><a href="#网络输出结果" class="headerlink" title="网络输出结果"></a>网络输出结果</h4><p>网络输入时 MNIST 数据集<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># MNIST dataset</span></span><br><span class="line">(x_train, y_train), (x_test, y_test) = mnist.load_data()</span><br><span class="line"></span><br><span class="line">image_size = x_train.shape[<span class="number">1</span>]</span><br><span class="line">original_dim = image_size * image_size</span><br><span class="line">x_train = np.reshape(x_train, [<span class="number">-1</span>, original_dim])</span><br><span class="line">x_test = np.reshape(x_test, [<span class="number">-1</span>, original_dim])</span><br><span class="line">x_train = x_train.astype(<span class="string">'float32'</span>) / <span class="number">255</span></span><br><span class="line">x_test = x_test.astype(<span class="string">'float32'</span>) / <span class="number">255</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/08/14/变分自编码器/7.png" alt=""><br><img src="/2018/08/14/变分自编码器/8.png" alt=""></p>
+<h2 id="继续研究-VAE"><a href="#继续研究-VAE" class="headerlink" title="继续研究 VAE"></a>继续研究 VAE</h2><p><a href="https://spaces.ac.cn/archives/5343" target="_blank" rel="noopener">《变分自编码器（二）：从贝叶斯观点出发》</a><br><a href="https://spaces.ac.cn/archives/5383" target="_blank" rel="noopener">《变分自编码器（三）：这样做为什么能成？》</a><br><a href="https://jaan.io/what-is-variational-autoencoder-vae-tutorial/" target="_blank" rel="noopener">《what-is-variational-autoencoder-vae-tutorial》</a></p>
+<h2 id="条件变分自编码器"><a href="#条件变分自编码器" class="headerlink" title="条件变分自编码器"></a>条件变分自编码器</h2><p><a href="http://ijdykeman.github.io/ml/2016/12/21/cvae.html" target="_blank" rel="noopener">Conditional Variational Autoencoders | Isaac Dykeman
+</a></p>
+<hr>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] 苏剑林‏. 变分自编码器（一）：原来是这么一回事[DB/OL]. <a href="https://spaces.ac.cn/archives/5253" target="_blank" rel="noopener">https://spaces.ac.cn/archives/5253</a>, 2018-08-14.</p>
+<p>[2] 苏剑林‏. 变分自编码器（二）：从贝叶斯观点出发[DB/OL]. <a href="https://spaces.ac.cn/archives/5343" target="_blank" rel="noopener">https://spaces.ac.cn/archives/5343</a>, 2018-08-15.</p>
+<p>[3] 苏剑林‏. 变分自编码器（三）：这样做为什么能成？[DB/OL]. <a href="https://spaces.ac.cn/archives/5383" target="_blank" rel="noopener">https://spaces.ac.cn/archives/5383</a>, 2018-08-15.</p>
+<p>[4] Kingma D P, Welling M. Auto-Encoding Variational Bayes[J]. 2013.</p>
+<p>[5] Isaac Dykeman‏. Conditional Variational Autoencoders[DB/OL]. <a href="http://ijdykeman.github.io/ml/2016/12/21/cvae.html" target="_blank" rel="noopener">http://ijdykeman.github.io/ml/2016/12/21/cvae.html</a>, 2018-08-15.</p>
+<p>[6] MoussaTintin. Learning Notes】变分自编码器（Variational Auto-Encoder，VAE）[DB/OL]. <a href="https://blog.csdn.net/JackyTintin/article/details/53641885" target="_blank" rel="noopener">https://blog.csdn.net/JackyTintin/article/details/53641885</a>, 2018-08-15.</p>
 
       
     </div>
@@ -451,6 +493,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/15/似然函数、先验概率、后验概率以及共轭先验概念/" rel="prev" title="期望、似然函数、先验概率、后验概率以及共轭先验概念">
+                期望、似然函数、先验概率、后验概率以及共轭先验概念 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -531,7 +577,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -542,7 +588,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -553,7 +599,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -596,7 +642,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#经典论文"><span class="nav-number">1.</span> <span class="nav-text">经典论文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">2.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#变分自编码器经典论文"><span class="nav-number">1.</span> <span class="nav-text">变分自编码器经典论文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变分自编码器导论"><span class="nav-number">2.</span> <span class="nav-text">变分自编码器导论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变分自编码器基础"><span class="nav-number">3.</span> <span class="nav-text">变分自编码器基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#VAE-的示意图"><span class="nav-number">3.1.</span> <span class="nav-text">VAE 的示意图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VAE-网络结构"><span class="nav-number">3.2.</span> <span class="nav-text">VAE 网络结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#编码器"><span class="nav-number">3.2.1.</span> <span class="nav-text">编码器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解码器"><span class="nav-number">3.2.2.</span> <span class="nav-text">解码器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VAE"><span class="nav-number">3.2.3.</span> <span class="nav-text">VAE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重参数技巧"><span class="nav-number">3.2.4.</span> <span class="nav-text">重参数技巧</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VAE-本质结构"><span class="nav-number">3.2.5.</span> <span class="nav-text">VAE 本质结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络输出结果"><span class="nav-number">3.2.6.</span> <span class="nav-text">网络输出结果</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继续研究-VAE"><span class="nav-number">4.</span> <span class="nav-text">继续研究 VAE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件变分自编码器"><span class="nav-number">5.</span> <span class="nav-text">条件变分自编码器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">6.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>
