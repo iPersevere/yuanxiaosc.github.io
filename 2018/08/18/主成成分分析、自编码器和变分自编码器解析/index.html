@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="望江人工智库">
 <meta property="og:description" content="介绍主成分分析（PCA）和自编码器（AutoEncoders, AE）是无监督学习中的两种代表性方法。  PCA 的地位不必多说，只要是讲到降维的书，一定会把 PCA 放到最前面，它与 LDA 同为机器学习中最基础的线性降维算法，SVM/Logistic Regression、PCA/LDA 也是最常被拿来作比较的两组算法。  自编码器虽然不像 PCA 那般在教科书上随处可见，但是在早期被拿来做深">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-18T14:02:51.997Z">
+<meta property="og:updated_time" content="2018-08-19T06:57:23.645Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="主成成分分析、自编码器和变分自编码器解析">
 <meta name="twitter:description" content="介绍主成分分析（PCA）和自编码器（AutoEncoders, AE）是无监督学习中的两种代表性方法。  PCA 的地位不必多说，只要是讲到降维的书，一定会把 PCA 放到最前面，它与 LDA 同为机器学习中最基础的线性降维算法，SVM/Logistic Regression、PCA/LDA 也是最常被拿来作比较的两组算法。  自编码器虽然不像 PCA 那般在教科书上随处可见，但是在早期被拿来做深">
@@ -378,7 +378,7 @@
       
         <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>主成分分析（PCA）和自编码器（AutoEncoders, AE）是无监督学习中的两种代表性方法。 </p>
 <p>PCA 的地位不必多说，只要是讲到降维的书，一定会把 PCA 放到最前面，它与 LDA 同为机器学习中最基础的线性降维算法，SVM/Logistic Regression、PCA/LDA 也是最常被拿来作比较的两组算法。 </p>
-<p>自编码器虽然不像 PCA 那般在教科书上随处可见，但是在早期被拿来做深度网络的逐层预训练，其地位可见一斑。尽管在 ReLU、Dropout 等神器出现之后，人们不再使用 AutoEncoders 来预训练，但它延伸出的稀疏 AutoEncoders，降噪 AutoEncoders 等仍然被广泛用于表示学习。2017 年 Kaggle 比赛 <strong>_Porto Seguro’s Safe Driver Prediction_</strong> 的冠军就是使用了降噪 AutoEncoders 来做表示学习，最终以绝对优势击败了手工特征工程的选手们。 </p>
+<p>自编码器虽然不像 PCA 那般在教科书上随处可见，但是在早期被拿来做深度网络的逐层预训练，其地位可见一斑。尽管在 ReLU、Dropout 等技术出现之后，人们不再使用 AutoEncoders 来预训练，但它延伸出的稀疏 AutoEncoders，降噪 AutoEncoders 等仍然被广泛用于表示学习。2017 年 Kaggle 比赛 <strong>Porto Seguro’s Safe Driver Prediction</strong> 的冠军就是使用了降噪 AutoEncoders 来做表示学习，最终以绝对优势击败了手工特征工程的选手们。 </p>
 <p>PCA 和 AutoEncoders 都是非概率的方法，它们分别有一种对应的概率形式叫做概率 PCA (Probabilistic PCA) 和变分自编码器（Variational AE, VAE），<strong>本文的主要目的就是整理一下 PCA、概率 PCA、AutoEncoders、变分 AutoEncoders 这四者的关系</strong>。 </p>
 <p>先放结论，后面就围绕这个表格展开：</p>
 <div class="table-container">
@@ -413,30 +413,20 @@
 <p>首先我们看看相同点：</p>
 <ol>
 <li>两者均可以对数据进行降维。</li>
+<li>两者在降维时均使用了矩阵特征分解的思想。</li>
+<li>两者都假设数据符合高斯分布。</li>
 </ol>
-</blockquote>
-</blockquote>
-<ol>
-<li><p>两者在降维时均使用了矩阵特征分解的思想。</p>
-</li>
-<li><p>两者都假设数据符合高斯分布。</p>
-<blockquote>
-<blockquote>
 <p>我们接着看看不同点：</p>
 </blockquote>
 </blockquote>
-</li>
-<li><p>LDA是有监督的降维方法，而PCA是无监督的降维方法</p>
-</li>
-<li><p>LDA降维最多降到类别数k-1的维数，而PCA没有这个限制。</p>
-</li>
-<li><p>LDA除了可以用于降维，还可以用于分类。</p>
-</li>
-<li><p>LDA选择分类性能最好的投影方向，而PCA选择样本点投影具有最大方差的方向。</p>
-</li>
+<ol>
+<li>LDA是有监督的降维方法，而PCA是无监督的降维方法</li>
+<li>LDA降维最多降到类别数k-1的维数，而PCA没有这个限制。</li>
+<li>LDA除了可以用于降维，还可以用于分类。</li>
+<li>LDA选择分类性能最好的投影方向，而PCA选择样本点投影具有最大方差的方向。</li>
 </ol>
-<p><strong>非线性降维的两类代表方法是流形降维和 AutoEncoders，这两类方法也体现出了两种不同角度的“非线性”</strong>。流形方法的非线性体现在它认为数据分布在一个低维流形上，而流形本身就是非线性的，流形降维的代表方法是两篇 2000 年的 Science 论文提出的：多维放缩（multidimensional scaling, MDS）和局部线性嵌入（locally linear embedding, LLE）。不得不说实在太巧了，两种流形方法发表在同一年的 Science 上。</p>
-<p>AutoEncoders 的非线性和神经网络的非线性是一回事，都是利用堆叠非线性激活函数来近似任意函数。<strong>事实上，AutoEncoders 就是一种神经网络，只不过它的输入和输出相同，真正有意义的地方不在于网络的输出，而是在于网络的权重。</strong></p>
+<p><strong>非线性降维的两类代表方法是流形降维和 AutoEncoders，这两类方法也体现出了两种不同角度的“非线性”</strong>。流形方法的非线性体现在它认为数据分布在一个低维流形上，而流形本身就是非线性的，流形降维的代表方法是两篇 2000 年的 Science 论文提出的：多维放缩（multidimensional scaling, MDS）和局部线性嵌入（locally linear embedding, LLE）。两种流形方法发表在同一年的 Science 上。</p>
+<p>AutoEncoders 的非线性和神经网络的非线性是一回事，都是利用堆叠非线性激活函数来近似任意连续函数。<strong>事实上，AutoEncoders 就是一种神经网络，只不过它的输入和输出相同，真正有意义的地方不在于网络的输出，而是在于网络的权重。</strong></p>
 <h2 id="降维的生成式方法和非生成式方法"><a href="#降维的生成式方法和非生成式方法" class="headerlink" title="降维的生成式方法和非生成式方法"></a>降维的生成式方法和非生成式方法</h2><p><strong>两类方法</strong></p>
 <p>降维还可以分为生成式方法（概率方法）和非生成式方法（非概率方法）。</p>
 <p>教科书对 PCA 的推导一般是基于最小化重建误差或者最大化可分性的，或者说是通过提取数据集的结构信息来建模一个约束最优化问题来推导的。事实上，PCA 还有一种概率形式的推导，那就是概率 PCA，PRML 里面有对概率 PCA 的详细讲解，感兴趣的读者可以去阅读。需要注意的是，<strong>概率 PCA 不是 PCA 的变体，它就是 PCA 本身，概率 PCA 是从另一种角度来推导和理解 PCA，它把 PCA 纳入了生成式的框架。</strong>  </p>
@@ -446,10 +436,10 @@
 <script type="math/tex; mode=display">z \sim p_\theta(Z)</script><p>再对这个依赖关系进行建模：</p>
 <script type="math/tex; mode=display">x|z \sim p_\theta(x|z)</script><p>有了这两个公式，我们就可以表达出随机变量 x 的分布：</p>
 <script type="math/tex; mode=display">x \sim p_\theta(x)=\int_Zp_\theta(x|z)p_\theta(z)dz</script><p>随后我们利用数据集对分布的参数 θ 进行估计，就得到这几个分布。好了，设定了这么多，可是降维降在哪里了呢，为什么没有看到？</p>
-<p>回想一下降维的定义：降维就是给定一个高维样本 x，给出对应的低维表示 z，这恰好就是 p(z|x) 的含义。所以我们只要应用 Bayes 定理求出这个概率即可：</p>
+<p>回想一下降维的定义：<strong>降维就是给定一个高维样本 x，给出对应的低维表示 z，这恰好就是 p(z|x) 的含义。所以我们只要应用 Bayes 定理求出这个概率即可：</strong></p>
 <script type="math/tex; mode=display">p_\theta(z|x)=\dfrac{p_\theta(x|z)p_\theta(z)dz}{\int_Zp_\theta(x|z)p_\theta(z)dz}</script><p>这样我们就可以得到每个样本点 x 上的 z 的分布 p(z|X=x) ，可以选择这个分布的峰值点作为 z，降维就完成了。 </p>
 <p><strong>Q：那么问题来了，生成式方法和非生成式方法哪个好呢？</strong></p>
-<p><strong>A：当然是非生成式方法好了，一两行就能设定完，君不见生成式方法你设定了一大段？</strong></p>
+<p><strong>A：或许是非生成式方法好，一两行就能设定完，君不见生成式方法你设定了一大段？</strong></p>
 <p>应该会有很多人这样想吧？事实也的确如此，上面这个回答<strong>在一定意义上</strong>是正确的。如果你只是为了对现有的数据进行降维，而没有其他需求，那么简单粗暴的非生成式方法当然是更好的选择。 </p>
 <p>那么，在什么情况下，或者说什么需求下，生成式方法是更好的选择更好呢？答案就蕴含在“生成式”这个名称中：<strong>在需要生成新样本的情况下，生成式方法是更好的选择。</strong></p>
 <p>在需要生成新样本时，非生成式方法需要对 z 的概率分布进行代价巨大的数值逼近，然后才能从分布中采样；生成式方法本身就对 z 的概率分布进行了建模，因此可以直接从分布中进行采样。所以，在需要生成新样本时，生成式方法是更好的选择，甚至是必然的选择。</p>
@@ -463,7 +453,7 @@
 <p>PCA 中的 p=2 ，即最小化二范数意义下的重建误差，如果 p=1 的话我们就得到了鲁棒 PCA (Robust PCA)。而最小化误差的二范数等价于对高斯噪声的 MLE，最小化误差的一范数等价于对拉普拉斯噪声的 MLE。</p>
 <p>因此，PCA 其实是在假设存在高斯噪声的条件下对数据集进行重建，这个高斯误差就是我们将要在下面概率 PCA 一节中提到的 ϵ。你看，即使不是概率 PCA，其中也隐含着概率的思想。 </p>
 <p>编码和解码用到的 W 和 b 是一样的，即编码过程和解码过程是对称的，这一点与下面要讲的 AutoEncoders 是不同的。 </p>
-<p>求解上述最优化问题可以得到，这恰好是样本均值的相反数。也就是说，PCA 中截距项的含义是让每个样本都减去样本均值，这正是“样本中心化”的含义。</p>
+<p>求解上述最优化问题可以得到 b，这恰好是样本均值的相反数。也就是说，PCA 中截距项的含义是让每个样本都减去样本均值，这正是“样本中心化”的含义。</p>
 <p>既然我们已经知道求出来的截距就是样本均值，所以干脆一开始就对样本进行中心化，这样在使用 PCA 的时候就可以忽略截距项 b 而直接使用，变量就只剩下 W 了。教科书上讲解 PCA 时一般都是上来就说“使用 PCA 之前需要进行样本中心化”，但是没有人告诉我们为什么要这样做，现在大家应该明白为什么要进行中心化了吧。</p>
 <h3 id="AutoEncoders"><a href="#AutoEncoders" class="headerlink" title="AutoEncoders"></a>AutoEncoders</h3><p>原数据：</p>
 <script type="math/tex; mode=display">X=\{x|x\in R^d\}</script><p>编码后的数据：</p>
@@ -472,13 +462,13 @@
 <script type="math/tex; mode=display">\sum||x-\hat x||^p_p</script><p>最小化重建误差，利用反向传播算法可以得到的局部最优解&amp;数值解，AutoEncoders 的求解完成。 </p>
 <p>补充说明： 这里可以使用任意范数，每一个范数都代表我们对数据的一种不同的假设。为了和 PCA 对应，我们也取 p=2。 </p>
 <p>σ(·) 是非线性激活函数。AutoEncoder 一般都会堆叠多层，方便起见我们只写了一层。 </p>
-<p>$W$ 和 $\hat W$ 完全不是一个东西，这是因为经过非线性变换之后我们已经无法将样本再用原来的基 W 进行表示了，必须要重新训练解码的基 。甚至，AutoEncoders 的编码器和解码器堆叠的层数都可以不同，例如可以用 4 层来编码，用 3 层来解码。</p>
+<p>$W$ 和 $\hat W$ 是不同的权重矩阵，这是因为经过非线性变换之后我们已经无法将样本再用原来的基 W 进行表示了，必须要重新训练解码的基 。甚至，AutoEncoders 的编码器和解码器堆叠的层数都可以不同，例如可以用 4 层来编码，用 3 层来解码。</p>
 <h3 id="概率PCA"><a href="#概率PCA" class="headerlink" title="概率PCA"></a>概率PCA</h3><p>隐变量边缘分布：</p>
 <script type="math/tex; mode=display">p(z)=N(z|0,I)</script><p>观测变量条件分布：</p>
-<script type="math/tex; mode=display">p_\theta (x|z) = N(x|f(z;\theta),{\sigma}^2 I)</script><p>确定函数：</p>
+<script type="math/tex; mode=display">p_\theta (x|z) = N(x|f(z;\theta),{\sigma}^2 I)</script><p>均值函数：</p>
 <script type="math/tex; mode=display">f(z;\theta)=Wz+\mu</script><p>x 的生成过程：</p>
-<script type="math/tex; mode=display">x=Wz+\mu+\epsilon, \epsilon \in N(0,{\sigma}^2 I))</script><p><strong>因为 p(z) 和 pθ(x|z) 都是高斯分布，且 pθ(x|z) 的均值 f(z;θ) = Wz+μ 是 z 的线性函数，所以这是一个线性高斯模型。</strong> 线性高斯模型有一个非常重要的性质： pθ(x) 和 pθ(z|x) 也都是高斯分布。这个性质保证了我们能够使用极大似然估计或者EM算法来求解PCA。</p>
-<p>如果没有这个性质的话，我们就只能借助变分法（变分 AE 采用的）或者对抗训练（GAN 采用的）来近似 pθ(x) 和 pθ(z|x) 了。有了这个优秀的性质之后，我们至少有三种方法可以求解概率 PCA：</p>
+<script type="math/tex; mode=display">x=f(z;\theta)+\epsilon, \epsilon \in N(0,{\sigma}^2 I))</script><p><strong>因为 $p(z)$ 和 $p_θ(x|z)$ 都是高斯分布，且 $p_θ(x|z)$ 的均值 $f(z;θ) = Wz+μ$ 是 z 的线性函数，所以这是一个线性高斯模型。</strong> 线性高斯模型有一个非常重要的性质： $p_θ(x)$ 和$p_θ(z|x)$ 也都是高斯分布。这个性质保证了我们能够使用极大似然估计或者EM算法来求解PCA。</p>
+<p>如果没有这个性质的话，我们就只能借助变分法（变分 AE 采用的）或者对抗训练（GAN 采用的）来近似 $p_θ(x)$ 和 $p_θ(z|x)$ 了。有了这个优秀的性质之后，我们至少有三种方法可以求解概率 PCA：</p>
 <ol>
 <li>是一个形式已知，仅参数未知的高斯分布，因此可以用极大似然估计来求解 θ。</li>
 </ol>
@@ -486,61 +476,52 @@
 <li>也是一个形式已知，仅参数未知的高斯分布，因此可以用 EM 算法来求解 θ，顺便还能得到隐变量 z。 </li>
 </ol>
 <script type="math/tex; mode=display">p_\theta(z|x)=\dfrac{p_\theta(x|z)p_\theta(z)dz}{\int_Zp_\theta(x|z)p_\theta(z)dz}</script><ol>
-<li>甚至也可以引入一个变分分布 qΦ(z|x) 来求解概率 PCA。</li>
+<li>甚至也可以引入一个变分分布 $q_Φ(z|x)$ 来求解概率 PCA。</li>
 </ol>
 <p>一旦求出了 θ，我们就得到了所有的四个概率：</p>
-<script type="math/tex; mode=display">P(z), p_\theta(x|z), p_\theta(x), p_\theta(z|x)</script><p>有了这四个概率，我们就可以做这些事情了： </p>
+<script type="math/tex; mode=display">p(z), p_\theta(x|z), p_\theta(x), p_\theta(z|x)</script><p>有了这四个概率，我们就可以做这些事情了： </p>
 <ol>
-<li>降维：给定样本 x ，就得到了分布 pθ(z|X=x) ，取这个分布的峰值点 z 就是降维后的数据； </li>
-<li>重建：给定降维后的样本 z ，就得到了分布 pθ(x|Z=z)，取这个分布的峰值点 x 就是重建后的数据；</li>
+<li>降维：给定样本 x ，就得到了分布 $p_θ(z|X=x)$ ，取这个分布的峰值点 z 就是降维后的数据； </li>
+<li>重建：给定降维后的样本 z ，就得到了分布 $p_θ(x|Z=z)$，取这个分布的峰值点 x 就是重建后的数据；</li>
 <li>生成：从分布 p(z) 中采样一个，就得到了分布，取这个分布的峰值点就是新生成的数据； </li>
 <li>密度估计：给定样本 x ，就得到了这一点的概率密度 pθ(X=x) 。 </li>
 </ol>
 <p>PCA 只能做到 1 和 2，对 3 和 4无力，这一点我们已经分析过了。</p>
 <p><strong>Q：为什么隐变量要取单位高斯分布（标准正态分布）？</strong></p>
 <p><strong>A：这是两个问题。</strong></p>
-<p><strong>subQ1：为什么要取高斯分布？_</strong></p>
-<p><strong>subA1：为了求解方便</strong>，如果不取高斯分布，那么 pθ(x) 有很大的可能没有解析解，这会给求解带来很大的麻烦。还有一个原因，回想生成新样本的过程，要首先从 p(z) 中采样一个，高斯分布采样简单。 </p>
+<p><strong>subQ1：为什么要取高斯分布？</strong></p>
+<p><strong>subA1：为了求解方便</strong>，如果不取高斯分布，那么 $p_θ(x)$ 有很大的可能没有解析解，这会给求解带来很大的麻烦。还有一个原因，回想生成新样本的过程，要首先从 p(z) 中采样一个，高斯分布采样简单。 </p>
 <p><strong>subQ2：为什么是零均值单位方差的？</strong></p>
-<p><strong>subA2：完全可以取任意均值和方差</strong>，但是我们要将 p(z) 和 pθ(x|z) 相乘，均值和方差部分可以挪到 f(z;θ) 中，所以 p(z) 的均值和方差取多少都无所谓，方便起见就取单位均值方差了。</p>
-<p><strong>Q：pθ(x|z) 为什么选择了高斯分布呢？</strong></p>
-<p><strong>A：因为简单</strong>，和上一个问题的一样。还有一个直觉的解释是 pθ(x|z) 认为 x 是由 f(z:θ) 和噪声 ϵ 加和而成的，如果 ϵ 是高斯分布的话，恰好和 PCA 的二范数重建误差相对应，这也算是一个佐证吧。</p>
-<p><strong>Q：pθ(x|z) 的方差为什么选择了各向同性的，而不是更一般的 ∑ 呢？</strong></p>
+<p><strong>subA2：完全可以取任意均值和方差</strong>，但是我们要将 $p(z)$ 和 $p_θ(x|z)$ 相乘，均值和方差部分可以挪到 $f(z;θ)$ 中，所以 $p(z)$ 的均值和方差取多少都无所谓，方便起见就取单位均值方差了。</p>
+<p><strong>Q：$p_θ(x|z)$ 为什么选择了高斯分布呢？</strong></p>
+<p><strong>A：因为简单</strong>，和上一个问题的一样。还有一个直觉的解释是 $p_θ(x|z)$ 认为 x 是由 f(z;θ) 和噪声 ϵ 加和而成的，如果 ϵ 是高斯分布的话，恰好和 PCA 的二范数重建误差相对应，这也算是一个佐证吧。</p>
+<p><strong>Q：$p_θ(x|z)$ 的方差为什么选择了各向同性的，而不是更一般的 ∑ 呢？</strong></p>
 <p>A：方差可以选择一般的 ∑ ，但是个参数一定会给求解带来困难，所导出的方法虽然也是线性降维，但它已经不是 PCA 了，而是另外的方法。方差也可以选择成一个的各向异性的对角阵 λ，这样只有 d 个参数，事实上这就是因子分析，另一种线性降维方法。只有当方差选择成各向同性的对角阵时，导出来的方法才叫主成分分析，这个地方 PRML 里有介绍。</p>
 <h3 id="变分AutoEncoders"><a href="#变分AutoEncoders" class="headerlink" title="变分AutoEncoders"></a>变分AutoEncoders</h3><p>隐变量边缘分布：</p>
 <script type="math/tex; mode=display">p(z)=N(z|0,I)</script><p>观测变量条件分布：</p>
-<script type="math/tex; mode=display">p_\theta (x|z) = N(x|f(z;\theta),{\sigma}^2 I)</script><p>确定函数：</p>
+<script type="math/tex; mode=display">p_\theta (x|z) = N(x|f(z;\theta),{\sigma}^2 I)</script><p>均值函数：</p>
 <script type="math/tex; mode=display">f(z;\theta)=\sigma(Wz+\mu)</script><p>x 的生成过程：</p>
 <script type="math/tex; mode=display">x=f(z;\theta)+\epsilon, \epsilon \in N(0,{\sigma}^2 I))</script><p>因为 f(z;θ) 是 z 的非线性函数，所以这不再是一个线性高斯模型。观测变量的边缘分布：</p>
 <script type="math/tex; mode=display">p_\theta(x)=\int_Zp_\theta(x|z)p_\theta(z)dz</script><p>没有解析形式。这就意味着我们无法直接使用极大似然估计来求解参数 θ。隐变量的后验分布：</p>
 <script type="math/tex; mode=display">p_\theta(z|x)=\dfrac{p_\theta(x|z)p_\theta(z)dz}{\int_Zp_\theta(x|z)p_\theta(z)dz}</script><p>也没有解析形式（这是当然，因为分母没有解析形式了）。这就意味着我们也无法通过 EM 算法来估计参数和求解隐变量。 </p>
 <p>那么，建出来的模型该怎么求解呢？这就需要上变分推断（Variational Inference），又称变分贝叶斯（Variational Bayes）了。本文不打算细讲变分推断，仅仅讲一下大致的流程。更多关于 VAE 的内容见<a href="https://yuanxiaosc.github.io/2018/08/14/变分自编码器/" target="_blank" rel="noopener">《变分自编码器》。</a></p>
-<p>变分推断会引入一个变分分布 qΦ(z|x) 来近似没有解析形式的后验概率 pθ(z|x) 。在变分 AE 的原文中，作者使用了 SGD 来同时优化参数 θ 和 Φ。一旦求出了这两个参数就可以得到这些概率：</p>
-<script type="math/tex; mode=display">p(z), p_\theta(x|z), q_\phi(z|x)</script><p>注意因为 pθ(x) 和 pθ(z|x) 没有解析形式，所以即使求出了 θ 我们也无法获得这两个概率。但是，正如上面说的， qΦ(z|x) 就是 pθ(z|x) 的近似，所以需要用pθ(z|x) 的地方都可以用 qΦ(z|x) 代替。</p>
+<p>变分推断会引入一个变分分布 $q_Φ(z|x)$ 来近似没有解析形式的后验概率 $p_θ(z|x)$ 。在变分 AE 的原文中，作者使用了 SGD 来同时优化参数 θ 和 Φ。一旦求出了这两个参数就可以得到这些概率：</p>
+<script type="math/tex; mode=display">p(z), p_\theta(x|z), q_\phi(z|x)</script><p>注意因为 $p_θ(x)$ 和 $p_θ(z|x)$ 没有解析形式，所以即使求出了 θ 我们也无法获得这两个概率。但是，正如上面说的， $q_Φ(z|x)$ 就是 $p_θ(z|x)$ 的近似，所以需要用 $p_θ(z|x)$ 的地方都可以用 $q_Φ(z|x)$ 代替。</p>
 <p>有了这三个概率，我们就可以做这些事情了： </p>
 <ol>
-<li><p>降维：给定样本 x，就得到了分布 qΦ(z|X=x) ，取这个分布的峰值点 z 就是降维后的数据； </p>
-</li>
-<li><p>重建：给定降维后的样本 z，就得到了分布 pθ(x|Z=z)，取这个分布的峰值点 x 就是重建后的数据；</p>
-</li>
-<li><p>生成：从分布 p(z) 中采样一个，就得到了分布，取这个分布的峰值点就是新生成的数据。 </p>
-</li>
+<li>降维：给定样本 x，就得到了分布 $q_Φ(z|X=x)$ ，取这个分布的峰值点 z 就是降维后的数据； </li>
+<li>重建：给定降维后的样本 z，就得到了分布 $p_θ(x|Z=z)$，取这个分布的峰值点 x 就是重建后的数据；</li>
+<li>生成：从分布 $ p(z)$ 中采样一个，就得到了分布，取这个分布的峰值点就是新生成的数据。 </li>
 </ol>
-<p>与概率 PCA 不同的是，这里无法解析地得到 pθ(xi) ，进行密度估计需要进行另外的设计，通过采样得到，计算代价还是比较大的，具体步骤变分 AE 的原文中有介绍。</p>
-<p> AutoEncoders 只能做到 1 和 2，对 3 无力。</p>
+<p>与概率 PCA 不同的是，这里无法解析地得到 $p_θ(x)$ ，进行密度估计需要进行另外的设计，通过采样得到，计算代价还是比较大的，具体步骤变分 AE 的原文中有介绍。</p>
+<p> AutoEncoders 只能做到 1 、2 和 3，对 4无力。</p>
 <h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><ol>
-<li><p>从 PCA 和 AutoEncoders 这两节可以看出，PCA 实际上就是线性 Autoencoders。两者无论是编码解码形式还是重建误差形式都完全一致，只有是否线性的区别。线性与否给优化求解带来了不同性质：PCA 可以直接得到最优的解析解，而 AutoEncoders 只能通过反向传播得到局部最优的数值解。 </p>
-</li>
-<li><p>从概率 PCA 和变分 AutoEncoders 这两节可以看出，概率 PCA 和变分 AutoEncoders 的唯一区别就是 f(z;θ) 是否是 z 的线性函数，但是这个区别给优化求解带来了巨大的影响。在概率 PCA 中，f(z;θ) 是线性的，所以我们得到了一个线性高斯模型，线性高斯模型的优秀性质是牵扯到的 4 个概率都是高斯分布，所以我们可以直接给出边缘分布和编码分布的解析形式，极大似然估计和 EM 算法都可以使用，一切处理都非常方便。在变分AutoEncoders中，f(z;θ) 是非线性的，所以边缘分布不再有解析形式，极大似然估计无法使用；编码分布也不再有解析形式，EM 算法无法使用，我们只能求助于变分推断，得到编码分布的近似 qΦ(z|x) ，再利用别的技巧得到边缘分布 pθ(x) 的估计。 </p>
-</li>
-<li><p>从 PCA 和概率 PCA 两小节可以看出，PCA 和概率 PCA 中 x 都是 z 的线性函数，只不过概率 PCA 显式地把高斯噪声 ϵ 写在了表达式中；PCA 没有显式写出噪声，而是把高斯噪声隐含在了二范数重建误差中。 </p>
-</li>
-<li><p>从 AutoEncoders 和变分 AutoEncoders 这两节可以看出，<strong>AE 和 VAE 的最重要的区别在于 VAE 迫使隐变量 z 满足高斯分布 p(z)=N(z|0,I) ，而 AE 对 z 的分布没有做任何假设。</strong> 这个区别使得在生成新样本时，AE 需要先数值拟合 p(z) ，才能生成符合数据集分布的隐变量，而 VAE 直接从 N(z|0,I) 中采样一个 z ，它天然就符合数据集分布。事实上，这是因为在使用变分推断进行优化时，VAE 迫使 z 的分布向 N(z|0,I) 靠近，不过本文中没有讲优化细节，VAE 的原文中有详细的解释。 </p>
-</li>
-<li><p>PCA 求解简单，但是都是线性降维，提取信息的能力有限；非线性的 AE 提取信息的能力强，但是求解复杂。要根据不同的场景选择不同的降维算法。 </p>
-</li>
-<li><p>要生成新样本时，不能选择 PCA 或 AE，而是要选择概率 PCA 或 VAE。</p>
-</li>
+<li>从 PCA 和 AutoEncoders 这两节可以看出，PCA 实际上就是线性 Autoencoders。两者无论是编码解码形式还是重建误差形式都完全一致，只有是否线性的区别。线性与否给优化求解带来了不同性质：PCA 可以直接得到最优的解析解，而 AutoEncoders 只能通过反向传播得到局部最优的数值解。 </li>
+<li>从概率 PCA 和变分 AutoEncoders 这两节可以看出，概率 PCA 和变分 AutoEncoders 的唯一区别就是 f(z;θ) 是否是 z 的线性函数，但是这个区别给优化求解带来了巨大的影响。在概率 PCA 中，f(z;θ) 是线性的，所以我们得到了一个线性高斯模型，线性高斯模型的优秀性质是牵扯到的 4 个概率都是高斯分布，所以我们可以直接给出边缘分布和编码分布的解析形式，极大似然估计和 EM 算法都可以使用，一切处理都非常方便。在变分AutoEncoders中，f(z;θ) 是非线性的，所以边缘分布不再有解析形式，极大似然估计无法使用；编码分布也不再有解析形式，EM 算法无法使用，我们只能求助于变分推断，得到编码分布的近似 $q_Φ(z|x)$ ，再利用别的技巧得到边缘分布 $pθ(x)$ 的估计。 </li>
+<li>从 PCA 和概率 PCA 两小节可以看出，PCA 和概率 PCA 中 x 都是 z 的线性函数，只不过概率 PCA 显式地把高斯噪声 ϵ 写在了表达式中；PCA 没有显式写出噪声，而是把高斯噪声隐含在了二范数重建误差中。 </li>
+<li>从 AutoEncoders 和变分 AutoEncoders 这两节可以看出，<strong>AE 和 VAE 的最重要的区别在于 VAE 迫使隐变量 z 满足高斯分布 p(z)=N(z|0,I) ，而 AE 对 z 的分布没有做任何假设。</strong> 这个区别使得在生成新样本时，AE 需要先数值拟合 p(z) ，才能生成符合数据集分布的隐变量，而 VAE 直接从 N(z|0,I) 中采样一个 z ，它天然就符合数据集分布。事实上，这是因为在使用变分推断进行优化时，VAE 迫使 z 的分布向 N(z|0,I) 靠近，不过本文中没有讲优化细节，VAE 的原文中有详细的解释。 </li>
+<li>PCA 求解简单，但是都是线性降维，提取信息的能力有限；非线性的 AE 提取信息的能力强，但是求解复杂。要根据不同的场景选择不同的降维算法。 </li>
+<li>要生成新样本时，不能选择 PCA 或 AE，而是要选择概率 PCA 或 VAE。</li>
 </ol>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文将降维按照是否线性、是否生成式划分，将 PCA、概率 PCA、AutoEncoders 和变分 AutoEncoders 纳入了这个划分框架中，并分析了四种算法的内在联系。</p>
 
@@ -615,6 +596,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/24/胶囊网络/" rel="prev" title="胶囊网络（Capsule Network）">
+                胶囊网络（Capsule Network） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -695,7 +680,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -717,7 +702,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
