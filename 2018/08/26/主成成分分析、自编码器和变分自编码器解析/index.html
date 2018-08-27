@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="望江人工智库">
 <meta property="og:description" content="介绍主成分分析（PCA）和自编码器（AutoEncoders, AE）是无监督学习中的两种代表性方法。  PCA 的地位不必多说，只要是讲到降维的书，一定会把 PCA 放到最前面，它与 LDA 同为机器学习中最基础的线性降维算法，SVM/Logistic Regression、PCA/LDA 也是最常被拿来作比较的两组算法。  自编码器虽然不像 PCA 那般在教科书上随处可见，但是在早期被拿来做深">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-26T13:43:08.729Z">
+<meta property="og:updated_time" content="2018-08-27T02:17:27.610Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="主成成分分析、自编码器和变分自编码器解析">
 <meta name="twitter:description" content="介绍主成分分析（PCA）和自编码器（AutoEncoders, AE）是无监督学习中的两种代表性方法。  PCA 的地位不必多说，只要是讲到降维的书，一定会把 PCA 放到最前面，它与 LDA 同为机器学习中最基础的线性降维算法，SVM/Logistic Regression、PCA/LDA 也是最常被拿来作比较的两组算法。  自编码器虽然不像 PCA 那般在教科书上随处可见，但是在早期被拿来做深">
@@ -520,6 +520,8 @@
 <li>要生成新样本时，不能选择 PCA 或 AE，而是要选择概率 PCA 或 VAE。</li>
 </ol>
 <h2 id="对自编码器和变分自编码器的进一步理解"><a href="#对自编码器和变分自编码器的进一步理解" class="headerlink" title="对自编码器和变分自编码器的进一步理解"></a>对自编码器和变分自编码器的进一步理解</h2><p><a href="http://www.atyun.com/17888.html" target="_blank" rel="noopener">《从自编码器到变分自编码器（其一）》</a><br><a href="http://www.atyun.com/17976.html" target="_blank" rel="noopener">《从自编码器到变分自编码器（其二）》</a></p>
+<p>自编码器将数据作为输入并发现数据的一些潜在状态表示的模型（欠完备，稀疏，降噪，压缩）。也就是说，我们的输入数据被转换成一个编码向量，其中每个维度表示一些学到的关于数据的属性。在这里，最重要的细节是我们的编码器网络为每个编码维度输出单个值，而解码器网络随后接收这些值并尝试重构原始输入。</p>
+<p>变分自编码器（VAE）以概率的方式描述潜在空间观察。因此，我们不会构建一个输出单个值来描述每个潜在状态属性的编码器，而是用编码器来描述每个潜在属性的概率分布。</p>
 
       
     </div>
@@ -592,6 +594,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/27/Keras/" rel="prev" title="Keras">
+                Keras <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
