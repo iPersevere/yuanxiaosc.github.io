@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="信息熵,交叉熵,相对熵,KL散度,Wasserstein距离," />
+  <meta name="keywords" content="交叉熵,信息熵,相对熵,KL散度,Wasserstein距离," />
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="信息熵信息论之父 C. E. Shannon 在 1948 年发表的论文“通信的数学理论（ A Mathematical Theory of Communication ）”中， Shannon 指出，任何信息都存在冗余，冗余大小与信息中每个符号（数字、字母或单词）的出现概率或者说不确定性有关。Shannon 借鉴了热力学的概念，把信息中排除了冗余后的平均信息量称为“信息熵”，并给出了计算信息熵的">
-<meta name="keywords" content="信息熵,交叉熵,相对熵,KL散度,Wasserstein距离">
+<meta name="keywords" content="交叉熵,信息熵,相对熵,KL散度,Wasserstein距离">
 <meta property="og:type" content="article">
 <meta property="og:title" content="概率分布距离度量函数">
 <meta property="og:url" content="http://yoursite.com/2018/08/28/概率分布距离度量函数/index.html">
@@ -88,7 +88,7 @@
 <meta property="og:description" content="信息熵信息论之父 C. E. Shannon 在 1948 年发表的论文“通信的数学理论（ A Mathematical Theory of Communication ）”中， Shannon 指出，任何信息都存在冗余，冗余大小与信息中每个符号（数字、字母或单词）的出现概率或者说不确定性有关。Shannon 借鉴了热力学的概念，把信息中排除了冗余后的平均信息量称为“信息熵”，并给出了计算信息熵的">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/08/28/概率分布距离度量函数/a1.png">
-<meta property="og:updated_time" content="2018-08-28T10:34:35.377Z">
+<meta property="og:updated_time" content="2018-08-28T11:22:49.231Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="概率分布距离度量函数">
 <meta name="twitter:description" content="信息熵信息论之父 C. E. Shannon 在 1948 年发表的论文“通信的数学理论（ A Mathematical Theory of Communication ）”中， Shannon 指出，任何信息都存在冗余，冗余大小与信息中每个符号（数字、字母或单词）的出现概率或者说不确定性有关。Shannon 借鉴了热力学的概念，把信息中排除了冗余后的平均信息量称为“信息熵”，并给出了计算信息熵的">
@@ -387,6 +387,9 @@
 <script type="math/tex; mode=display">H(p,q)=\sum_i{p(i)}log(\dfrac{1}{q(i)})</script><p>此时就将H(p,q)称之为交叉熵。交叉熵的计算方式如下：</p>
 <p>对于离散变量采用以下的方式计算：$H(p,q)=\sum_x p(x)log(\dfrac{1}{q(x)})$</p>
 <p>对于连续变量采用以下的方式计算：$-\int _XP(x)logQ(x)dx=E_p[-logQ]$</p>
+<blockquote>
+<p>注意：<script type="math/tex">E_{x\sim p(x)}[f(x)]=\int{f(x)p(x)}dx \approx \dfrac{1}{n}\sum_{i=1}^nf(x_i), x_i \sim p(x)</script></p>
+</blockquote>
 <h3 id="交叉熵的应用"><a href="#交叉熵的应用" class="headerlink" title="交叉熵的应用"></a>交叉熵的应用</h3><ol>
 <li>交叉熵可在神经网络(机器学习)中作为损失函数，p表示真实标记的分布，q则为训练后的模型的预测标记分布，交叉熵损失函数可以衡量p与q的相似性。交叉熵作为损失函数还有一个好处是使用sigmoid函数在梯度下降时能避免均方误差损失函数学习速率降低的问题，因为学习速率可以被输出的误差所控制。</li>
 <li>在特征工程中，可以用来衡量两个随机变量之间的相似度。</li>
@@ -458,9 +461,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/信息熵/" rel="tag"># 信息熵</a>
-          
             <a href="/tags/交叉熵/" rel="tag"># 交叉熵</a>
+          
+            <a href="/tags/信息熵/" rel="tag"># 信息熵</a>
           
             <a href="/tags/相对熵/" rel="tag"># 相对熵</a>
           
@@ -488,6 +491,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/29/Keras/" rel="prev" title="Keras">
+                Keras <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
