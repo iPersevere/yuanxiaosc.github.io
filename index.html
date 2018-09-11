@@ -1687,15 +1687,32 @@ PCA 的地位不必多说，只要是讲到降维的书，一定会把 PCA 放�
       
         
           
-          理解胶囊网络基本计算公式将 Capsule 称作向量神经元 (vector neuron, VN)，而普通的人工神经元叫做标量神经元 (scalar neuron, SN)，下表总结了 VN 和 SN 之间的差异：
+          
 
-SN 从其他神经元接收输入标量，然后乘以标量权重再求和，然后将这个总和传递给某个非线性激活函数 (比如 sigmoid, tanh, Relu)，生出一个输出标量。该标量将作为下一层的输入变量。实质上，SN 可以用以下三个步骤来描述：
 
-将输入标量 x 乘上权重 w
-对加权的输入标量求和成标量 a
-用非线性函数将标量 a 转化成标量 h
 
-VN 的步骤在 SN 的三个步骤前加一步
+标题
+说明
+附加
+
+
+
+
+《Dynamic Routing Between Capsules》
+原始论文
+2017
+
+
+cifar10_cnn_capsule
+Keras 实现
+2018
+
+
+
+
+Dynamic Routing Between CapsulesSara Sabour, Nicholas Frosst, Geoffrey E Hinton(Submitted on 26 Oct 2017 (v1), last revised 7 Nov 2017 (this version, v2))
+
+A capsule is a group of neurons whose acti
           ...
           <!--noindex-->
           <div class="post-button text-center">
