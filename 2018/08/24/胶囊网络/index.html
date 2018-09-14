@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="标题 说明 附加     《Dynamic Routing Between Capsules》 原始论文 2017   cifar10_cnn_capsule Keras 实现 2018     Dynamic Routing Between CapsulesSara Sabour, Nicholas Frosst, Geoffrey E Hinton(Submitted on 26 Oc">
+<meta name="description" content="标题 说明 附加     《Dynamic Routing Between Capsules》 原始论文 2017   《胶囊间的动态路由》 论文翻译 AI研习社   cifar10_cnn_capsule Keras 实现 2018   CapsNet-Tensorflow TensorFlow实现 2018     Dynamic Routing Between CapsulesSar">
 <meta name="keywords" content="胶囊网络,Capsule Network">
 <meta property="og:type" content="article">
 <meta property="og:title" content="胶囊网络（Capsule Network）">
 <meta property="og:url" content="http://yoursite.com/2018/08/24/胶囊网络/index.html">
 <meta property="og:site_name" content="望江人工智库">
-<meta property="og:description" content="标题 说明 附加     《Dynamic Routing Between Capsules》 原始论文 2017   cifar10_cnn_capsule Keras 实现 2018     Dynamic Routing Between CapsulesSara Sabour, Nicholas Frosst, Geoffrey E Hinton(Submitted on 26 Oc">
+<meta property="og:description" content="标题 说明 附加     《Dynamic Routing Between Capsules》 原始论文 2017   《胶囊间的动态路由》 论文翻译 AI研习社   cifar10_cnn_capsule Keras 实现 2018   CapsNet-Tensorflow TensorFlow实现 2018     Dynamic Routing Between CapsulesSar">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/08/24/胶囊网络/1.jpeg">
 <meta property="og:image" content="http://yoursite.com/2018/08/24/胶囊网络/2.jpeg">
@@ -95,10 +95,10 @@
 <meta property="og:image" content="http://yoursite.com/2018/08/24/胶囊网络/6.jpeg">
 <meta property="og:image" content="http://yoursite.com/2018/08/24/胶囊网络/7.jpeg">
 <meta property="og:image" content="http://yoursite.com/2018/08/24/胶囊网络/8.jpeg">
-<meta property="og:updated_time" content="2018-09-11T13:42:26.037Z">
+<meta property="og:updated_time" content="2018-09-12T01:53:29.991Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="胶囊网络（Capsule Network）">
-<meta name="twitter:description" content="标题 说明 附加     《Dynamic Routing Between Capsules》 原始论文 2017   cifar10_cnn_capsule Keras 实现 2018     Dynamic Routing Between CapsulesSara Sabour, Nicholas Frosst, Geoffrey E Hinton(Submitted on 26 Oc">
+<meta name="twitter:description" content="标题 说明 附加     《Dynamic Routing Between Capsules》 原始论文 2017   《胶囊间的动态路由》 论文翻译 AI研习社   cifar10_cnn_capsule Keras 实现 2018   CapsNet-Tensorflow TensorFlow实现 2018     Dynamic Routing Between CapsulesSar">
 <meta name="twitter:image" content="http://yoursite.com/2018/08/24/胶囊网络/1.jpeg">
 
 
@@ -401,19 +401,29 @@
 <td>2017</td>
 </tr>
 <tr>
+<td><a href="https://www.zhihu.com/question/67287444/answer/252315722" target="_blank" rel="noopener">《胶囊间的动态路由》</a></td>
+<td>论文翻译</td>
+<td>AI研习社</td>
+</tr>
+<tr>
 <td><a href="https://github.com/keras-team/keras/blob/master/examples/cifar10_cnn_capsule.py" target="_blank" rel="noopener">cifar10_cnn_capsule</a></td>
 <td>Keras 实现</td>
+<td>2018</td>
+</tr>
+<tr>
+<td><a href="https://github.com/naturomics/CapsNet-Tensorflow" target="_blank" rel="noopener">CapsNet-Tensorflow</a></td>
+<td>TensorFlow实现</td>
 <td>2018</td>
 </tr>
 </tbody>
 </table>
 </div>
-<h2 id="Dynamic-Routing-Between-Capsules"><a href="#Dynamic-Routing-Between-Capsules" class="headerlink" title="Dynamic Routing Between Capsules"></a><a href="https://arxiv.org/abs/1710.09829v2" target="_blank" rel="noopener">Dynamic Routing Between Capsules</a></h2><p>Sara Sabour, Nicholas Frosst, Geoffrey E Hinton<br>(Submitted on 26 Oct 2017 (v1), last revised 7 Nov 2017 (this version, v2))</p>
+<h1 id="Dynamic-Routing-Between-Capsules"><a href="#Dynamic-Routing-Between-Capsules" class="headerlink" title="Dynamic Routing Between Capsules"></a><a href="https://arxiv.org/abs/1710.09829v2" target="_blank" rel="noopener">Dynamic Routing Between Capsules</a></h1><p>Sara Sabour, Nicholas Frosst, Geoffrey E Hinton<br>(Submitted on 26 Oct 2017 (v1), last revised 7 Nov 2017 (this version, v2))</p>
 <blockquote>
 <p>A capsule is a group of neurons whose activity vector represents the instantiation parameters of a specific type of entity such as an object or an object part. We use the length of the activity vector to represent the probability that the entity exists and its orientation to represent the instantiation parameters. Active capsules at one level make predictions, via transformation matrices, for the instantiation parameters of higher-level capsules. When multiple predictions agree, a higher level capsule becomes active. We show that a discrimininatively trained, multi-layer capsule system achieves state-of-the-art performance on MNIST and is considerably better than a convolutional net at recognizing highly overlapping digits. To achieve these results we use an iterative routing-by-agreement mechanism: A lower-level capsule prefers to send its output to higher level capsules whose activity vectors have a big scalar product with the prediction coming from the lower-level capsule.</p>
 </blockquote>
 <p>Subjects:    Computer Vision and Pattern Recognition (cs.CV)<br>Cite as:    arXiv:1710.09829 [cs.CV]<br>     (or arXiv:1710.09829v2 [cs.CV] for this version)</p>
-<h2 id="理解胶囊网络基本计算公式"><a href="#理解胶囊网络基本计算公式" class="headerlink" title="理解胶囊网络基本计算公式"></a>理解胶囊网络基本计算公式</h2><p>将 Capsule 称作向量神经元 (vector neuron, VN)，而普通的人工神经元叫做标量神经元 (scalar neuron, SN)，下表总结了 VN 和 SN 之间的差异：</p>
+<h1 id="Hinton大神的胶囊网络"><a href="#Hinton大神的胶囊网络" class="headerlink" title="Hinton大神的胶囊网络"></a><a href="http://www.sohu.com/a/226611009_633698" target="_blank" rel="noopener">Hinton大神的胶囊网络</a></h1><h2 id="理解胶囊网络基本计算公式"><a href="#理解胶囊网络基本计算公式" class="headerlink" title="理解胶囊网络基本计算公式"></a>理解胶囊网络基本计算公式</h2><p>将 Capsule 称作向量神经元 (vector neuron, VN)，而普通的人工神经元叫做标量神经元 (scalar neuron, SN)，下表总结了 VN 和 SN 之间的差异：</p>
 <p><img src="/2018/08/24/胶囊网络/1.jpeg" alt=""></p>
 <p>SN 从其他神经元接收输入标量，然后乘以标量权重再求和，然后将这个总和传递给某个非线性激活函数 (比如 sigmoid, tanh, Relu)，生出一个输出标量。该标量将作为下一层的输入变量。实质上，SN 可以用以下三个步骤来描述：</p>
 <ol>
@@ -496,6 +506,7 @@
 <li>如果 k 类不存在，||vk|| 不会大于 0.1</li>
 </ul>
 <p>惩罚假阳性的重要性大概是惩罚假阴性的重要性的 2 倍</p>
+<p>#</p>
 <hr>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] 王圣元‏.看完这篇，别说你还不懂Hinton大神的胶囊网络[DB/OL]. <a href="http://www.sohu.com/a/226611009_633698" target="_blank" rel="noopener">http://www.sohu.com/a/226611009_633698</a>, 2018-08-24.</p>
 
@@ -652,7 +663,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -674,7 +685,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -717,7 +728,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dynamic-Routing-Between-Capsules"><span class="nav-number">1.</span> <span class="nav-text">Dynamic Routing Between Capsules</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解胶囊网络基本计算公式"><span class="nav-number">2.</span> <span class="nav-text">理解胶囊网络基本计算公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解胶囊网络工作原理"><span class="nav-number">3.</span> <span class="nav-text">理解胶囊网络工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一步：矩阵转化"><span class="nav-number">3.1.</span> <span class="nav-text">第一步：矩阵转化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二步：输入加权"><span class="nav-number">3.2.</span> <span class="nav-text">第二步：输入加权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三步：加权求和"><span class="nav-number">3.3.</span> <span class="nav-text">第三步：加权求和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四步：非线性激活"><span class="nav-number">3.4.</span> <span class="nav-text">第四步：非线性激活</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态路由"><span class="nav-number">4.</span> <span class="nav-text">动态路由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#损失函数"><span class="nav-number">5.</span> <span class="nav-text">损失函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">6.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Dynamic-Routing-Between-Capsules"><span class="nav-number">1.</span> <span class="nav-text">Dynamic Routing Between Capsules</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hinton大神的胶囊网络"><span class="nav-number">2.</span> <span class="nav-text">Hinton大神的胶囊网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#理解胶囊网络基本计算公式"><span class="nav-number">2.1.</span> <span class="nav-text">理解胶囊网络基本计算公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解胶囊网络工作原理"><span class="nav-number">2.2.</span> <span class="nav-text">理解胶囊网络工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一步：矩阵转化"><span class="nav-number">2.2.1.</span> <span class="nav-text">第一步：矩阵转化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二步：输入加权"><span class="nav-number">2.2.2.</span> <span class="nav-text">第二步：输入加权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三步：加权求和"><span class="nav-number">2.2.3.</span> <span class="nav-text">第三步：加权求和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四步：非线性激活"><span class="nav-number">2.2.4.</span> <span class="nav-text">第四步：非线性激活</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态路由"><span class="nav-number">2.3.</span> <span class="nav-text">动态路由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#损失函数"><span class="nav-number">2.4.</span> <span class="nav-text">损失函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">2.5.</span> <span class="nav-text">参考文献</span></a></li></ol></li></ol></div>
             
 
           </div>

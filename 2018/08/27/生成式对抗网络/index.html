@@ -87,10 +87,13 @@
 <meta property="og:site_name" content="望江人工智库">
 <meta property="og:description" content="生成式对抗网络定义生成式对抗网络（GAN, Generative Adversarial Networks ）是一种深度学习模型，是近年来复杂分布上无监督学习最具前景的方法之一。模型通过框架中（至少）两个模块：生成模型（Generative Model）和判别模型（Discriminative Model）的互相博弈学习产生相当好的输出。原始 GAN 理论中，并不要求 G 和 D 都是神经网络，只">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-27T06:45:51.516Z">
+<meta property="og:image" content="http://yoursite.com/2018/08/27/生成式对抗网络/a2.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/27/生成式对抗网络/a1.png">
+<meta property="og:updated_time" content="2018-09-12T13:02:58.709Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="生成式对抗网络 Generative Adversarial Network (GAN)">
 <meta name="twitter:description" content="生成式对抗网络定义生成式对抗网络（GAN, Generative Adversarial Networks ）是一种深度学习模型，是近年来复杂分布上无监督学习最具前景的方法之一。模型通过框架中（至少）两个模块：生成模型（Generative Model）和判别模型（Discriminative Model）的互相博弈学习产生相当好的输出。原始 GAN 理论中，并不要求 G 和 D 都是神经网络，只">
+<meta name="twitter:image" content="http://yoursite.com/2018/08/27/生成式对抗网络/a2.png">
 
 
 
@@ -377,6 +380,17 @@
 
       
         <h1 id="生成式对抗网络定义"><a href="#生成式对抗网络定义" class="headerlink" title="生成式对抗网络定义"></a><a href="https://baike.baidu.com/item/Gan/22181905?fr=aladdin" target="_blank" rel="noopener">生成式对抗网络定义</a></h1><p>生成式对抗网络（GAN, Generative Adversarial Networks ）是一种深度学习模型，是近年来复杂分布上无监督学习最具前景的方法之一。模型通过框架中（至少）两个模块：生成模型（Generative Model）和判别模型（Discriminative Model）的互相博弈学习产生相当好的输出。原始 GAN 理论中，并不要求 G 和 D 都是神经网络，只需要是能拟合相应生成和判别的函数即可。但实用中一般均使用深度神经网络作为 G 和 D 。一个优秀的GAN应用需要有良好的训练方法，否则可能由于神经网络模型的自由性而导致输出不理想。</p>
+<h1 id="生成式对抗网络资源列表"><a href="#生成式对抗网络资源列表" class="headerlink" title="生成式对抗网络资源列表"></a>生成式对抗网络资源列表</h1><h2 id="《Generative-Adversarial-Networks》-开山论文-2014"><a href="#《Generative-Adversarial-Networks》-开山论文-2014" class="headerlink" title="《Generative Adversarial Networks》|开山论文|2014|"></a><a href="https://arxiv.org/abs/1406.2661" target="_blank" rel="noopener">《Generative Adversarial Networks》</a>|开山论文|2014|</h2><p>Ian J. Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David Warde-Farley, Sherjil Ozair, Aaron Courville, Yoshua Bengio</p>
+<blockquote>
+<p>We propose a new framework for estimating generative models via an adversarial process, in which we simultaneously train two models: a generative model G that captures the data distribution, and a discriminative model D that estimates the probability that a sample came from the training data rather than G. The training procedure for G is to maximize the probability of D making a mistake. This framework corresponds to a minimax two-player game. In the space of arbitrary functions G and D, a unique solution exists, with G recovering the training data distribution and D equal to 1/2 everywhere. In the case where G and D are defined by multilayer perceptrons, the entire system can be trained with backpropagation. There is no need for any Markov chains or unrolled approximate inference networks during either training or generation of samples. Experiments demonstrate the potential of the framework through qualitative and quantitative evaluation of the generated samples.</p>
+</blockquote>
+<p>Subjects:    Machine Learning (stat.ML); Machine Learning (cs.LG)<br>Cite as:    arXiv:1406.2661 [stat.ML]<br>             (or arXiv:1406.2661v1 [stat.ML] for this version)</p>
+<h3 id="GAN-极大极小博弈精髓"><a href="#GAN-极大极小博弈精髓" class="headerlink" title="GAN 极大极小博弈精髓"></a>GAN 极大极小博弈精髓</h3><p><img src="/2018/08/27/生成式对抗网络/a2.png" alt=""><br><img src="/2018/08/27/生成式对抗网络/a1.png" alt=""></p>
+<h2 id="《NIPS-2016-Tutorial-Generative-Adversarial-Networks》"><a href="#《NIPS-2016-Tutorial-Generative-Adversarial-Networks》" class="headerlink" title="《NIPS 2016 Tutorial: Generative Adversarial Networks》"></a><a href="https://arxiv.org/abs/1701.00160" target="_blank" rel="noopener">《NIPS 2016 Tutorial: Generative Adversarial Networks》</a></h2><p>Ian Goodfellow<br>(Submitted on 31 Dec 2016 (v1), last revised 3 Apr 2017 (this version, v4))</p>
+<blockquote>
+<p>This report summarizes the tutorial presented by the author at NIPS 2016 on generative adversarial networks (GANs). The tutorial describes: (1) Why generative modeling is a topic worth studying, (2) how generative models work, and how GANs compare to other generative models, (3) the details of how GANs work, (4) research frontiers in GANs, and (5) state-of-the-art image models that combine GANs with other methods. Finally, the tutorial contains three exercises for readers to complete, and the solutions to these exercises.</p>
+</blockquote>
+<p>Comments:    v2-v4 are all typo fixes. No substantive changes relative to v1<br>Subjects:    Machine Learning (cs.LG)<br>Cite as:    arXiv:1701.00160 [cs.LG]<br>     (or arXiv:1701.00160v4 [cs.LG] for this version)</p>
 
       
     </div>
@@ -531,7 +545,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -553,7 +567,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -596,7 +610,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#生成式对抗网络定义"><span class="nav-number">1.</span> <span class="nav-text">生成式对抗网络定义</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#生成式对抗网络定义"><span class="nav-number">1.</span> <span class="nav-text">生成式对抗网络定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生成式对抗网络资源列表"><span class="nav-number">2.</span> <span class="nav-text">生成式对抗网络资源列表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#《Generative-Adversarial-Networks》-开山论文-2014"><span class="nav-number">2.1.</span> <span class="nav-text">《Generative Adversarial Networks》|开山论文|2014|</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GAN-极大极小博弈精髓"><span class="nav-number">2.1.1.</span> <span class="nav-text">GAN 极大极小博弈精髓</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#《NIPS-2016-Tutorial-Generative-Adversarial-Networks》"><span class="nav-number">2.2.</span> <span class="nav-text">《NIPS 2016 Tutorial: Generative Adversarial Networks》</span></a></li></ol></li></ol></div>
             
 
           </div>
