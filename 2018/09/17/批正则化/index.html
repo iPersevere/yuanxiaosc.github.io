@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="BN,批正则化," />
 
 
 
@@ -79,17 +79,20 @@
 
 
 
-<meta name="description" content="深度学习你~~~">
-<meta name="keywords" content="深度学习;机器学习;人工智能">
-<meta property="og:type" content="website">
-<meta property="og:title" content="望江人工智库">
-<meta property="og:url" content="http://yoursite.com/archives/2018/09/index.html">
+<meta name="description" content="标题 说明 附加     《Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift》 原文 2015   Batch Normalization 论文翻译 DCD_Lin    深入理解Batch Normalization批标准化 郭耀华   优化深度神经网络">
+<meta name="keywords" content="BN,批正则化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Batch Normalization——Accelerating Deep Network Training by Reducing Internal">
+<meta property="og:url" content="http://yoursite.com/2018/09/17/批正则化/index.html">
 <meta property="og:site_name" content="望江人工智库">
-<meta property="og:description" content="深度学习你~~~">
+<meta property="og:description" content="标题 说明 附加     《Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift》 原文 2015   Batch Normalization 论文翻译 DCD_Lin    深入理解Batch Normalization批标准化 郭耀华   优化深度神经网络">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/09/17/批正则化/a1.png">
+<meta property="og:updated_time" content="2018-09-17T10:50:54.093Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="望江人工智库">
-<meta name="twitter:description" content="深度学习你~~~">
+<meta name="twitter:title" content="Batch Normalization——Accelerating Deep Network Training by Reducing Internal">
+<meta name="twitter:description" content="标题 说明 附加     《Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift》 原文 2015   Batch Normalization 论文翻译 DCD_Lin    深入理解Batch Normalization批标准化 郭耀华   优化深度神经网络">
+<meta name="twitter:image" content="http://yoursite.com/2018/09/17/批正则化/a1.png">
 
 
 
@@ -119,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2018/09/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/17/批正则化/"/>
 
 
 
 
 
-  <title>归档 | 望江人工智库</title>
+  <title>Batch Normalization——Accelerating Deep Network Training by Reducing Internal | 望江人工智库</title>
   
 
 
@@ -144,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -272,295 +275,255 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      <span class="archive-page-counter">
-        
-        
-         
-        
-        OK! 目前共计 35 篇日志。 继续努力。
-      </span>
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/17/批正则化/">
 
-      
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="望江车神">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/16183570?s=400&u=5e09ebb784cfd47de99d249f2be2413adcf4e672&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="望江人工智库">
+    </span>
+
+    
+      <header class="post-header">
 
         
         
+          <h1 class="post-title" itemprop="name headline">Batch Normalization——Accelerating Deep Network Training by Reducing Internal</h1>
         
 
-        
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-17T18:31:50+08:00">
+                2018-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/17/批正则化/" itemprop="url">
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
               
-                <span itemprop="name">Batch Normalization——Accelerating Deep Network Training by Reducing Internal</span>
+                <span class="post-meta-item-text">分类于</span>
               
-            </a>
-        
-      </h2>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文/" itemprop="url" rel="index">
+                    <span itemprop="name">论文</span>
+                  </a>
+                </span>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-17T18:31:50+08:00"
-              content="2018-09-17" >
-          09-17
-        </time>
-      </div>
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文/论文阅读/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读</span>
+                  </a>
+                </span>
 
-    </header>
-  </article>
+                
+                
+              
+            </span>
+          
 
+          
+            
+          
 
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/15/Group Normalization/" itemprop="url">
-              
-                <span itemprop="name">Group Normalization</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-15T15:08:50+08:00"
-              content="2018-09-15" >
-          09-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/14/残差网络/" itemprop="url">
-              
-                <span itemprop="name">残差网络</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-14T18:40:42+08:00"
-              content="2018-09-14" >
-          09-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <div class="table-container">
+<table>
+<thead>
+<tr>
+<th>标题</th>
+<th>说明</th>
+<th>附加</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://arxiv.org/abs/1502.03167" target="_blank" rel="noopener">《Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift》</a></td>
+<td>原文</td>
+<td>2015</td>
+</tr>
+<tr>
+<td><a href="https://blog.csdn.net/linmingan/article/details/50780761" target="_blank" rel="noopener">Batch Normalization 论文翻译</a></td>
+<td>DCD_Lin</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://www.cnblogs.com/guoyaohua/p/8724433.html" target="_blank" rel="noopener">深入理解Batch Normalization批标准化</a></td>
+<td>郭耀华</td>
+</tr>
+<tr>
+<td><a href="https://www.cnblogs.com/34fj/p/8805979.html" target="_blank" rel="noopener">优化深度神经网络（三）Batch Normalization</a></td>
+<td>喵喵帕斯</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://blog.csdn.net/hjimce/article/details/50866313" target="_blank" rel="noopener">Batch Normalization 学习笔记</a></td>
+<td>hjimce</td>
+<td>2016</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="白化"><a href="#白化" class="headerlink" title="白化"></a><a href="http://ufldl.stanford.edu/wiki/index.php/%E7%99%BD%E5%8C%96" target="_blank" rel="noopener">白化</a></h1><p>我们已经了解了如何使用PCA降低数据维度。在一些算法中还需要一个与之相关的预处理步骤，这个预处理过程称为白化（一些文献中也叫sphering）。举例来说，假设训练数据是图像，由于图像中相邻像素之间具有很强的相关性，所以用于训练时输入是冗余的。白化的目的就是降低输入的冗余性；更正式的说，我们希望通过白化过程使得学习算法的输入具有如下性质：(i)特征之间相关性较低；(ii)所有特征具有相同的方差。s</p>
+<h1 id="Batch-Normalization-Accelerating-Deep-Network-Training-by-Reducing-Internal-Covariate-Shift"><a href="#Batch-Normalization-Accelerating-Deep-Network-Training-by-Reducing-Internal-Covariate-Shift" class="headerlink" title="Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"></a><a href="https://arxiv.org/abs/1502.03167" target="_blank" rel="noopener">Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift</a></h1><p>Sergey Ioffe, Christian Szegedy<br>(Submitted on 11 Feb 2015 (v1), last revised 2 Mar 2015 (this version, v3))</p>
+<blockquote>
+<p>Training Deep Neural Networks is complicated by the fact that the distribution of each layer’s inputs changes during training, as the parameters of the previous layers change. This slows down the training by requiring lower learning rates and careful parameter initialization, and makes it notoriously hard to train models with saturating nonlinearities. We refer to this phenomenon as internal covariate shift, and address the problem by normalizing layer inputs. Our method draws its strength from making normalization a part of the model architecture and performing the normalization for each training mini-batch. Batch Normalization allows us to use much higher learning rates and be less careful about initialization. It also acts as a regularizer, in some cases eliminating the need for Dropout. Applied to a state-of-the-art image classification model, Batch Normalization achieves the same accuracy with 14 times fewer training steps, and beats the original model by a significant margin. Using an ensemble of batch-normalized networks, we improve upon the best published result on ImageNet classification: reaching 4.9% top-5 validation error (and 4.8% test error), exceeding the accuracy of human raters.</p>
+<p>当前神经网络层之前的神经网络层的参数变化，引起神经网络每一层输入数据的分布产生了变化，这使得训练一个深度神经网络（Deep Neural Networks）变得复杂。这样就要求使用更小的学习率，参数初始化也需要更为谨慎的设置。并且由于非线性饱和（注：如sigmoid激活函数的非线性饱和问题），训练一个深度神经网络会非常困难。我们称这个现象为：internal covariate shif；同时利用归一化层输入解决这个问题。我们将归一化层输入作为神经网络的结构，并且对每一个小批量训练数据执行这一操作。Batch Normalization（BN） 能使用更高的学习率，并且不需要过多的注重参数初始化问题。BN 的过程与正则化相似，在某些情况下可以去除Dropout。将BN应用到一个state-of-the-art的图片分类模型中时，使用BN只要1/14的训练次数就能够达到同样的精度。使用含有BN神经网络模型能提升现有最好的ImageNet分类结果：在top-5 验证集中达到4.9%的错误率（测试集为4.8%），超出了人类的分类精度。</p>
+</blockquote>
+<p>Subjects:    Machine Learning (cs.LG)<br>Cite as:    arXiv:1502.03167 [cs.LG]<br>     (or arXiv:1502.03167v3 [cs.LG] for this version)</p>
+<p><img src="/2018/09/17/批正则化/a1.png" alt=""></p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/14/Deep Residual Learning for Image Recognition/" itemprop="url">
-              
-                <span itemprop="name">Deep Residual Learning for Image Recognition</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-14T17:22:50+08:00"
-              content="2018-09-14" >
-          09-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/11/Generative Adversarial Networks/" itemprop="url">
-              
-                <span itemprop="name">Generative Adversarial Networks</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-11T10:52:50+08:00"
-              content="2018-09-11" >
-          09-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/08/Keras/" itemprop="url">
-              
-                <span itemprop="name">Keras</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-08T10:25:42+08:00"
-              content="2018-09-08" >
-          09-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/07/Auto-Encoding Variational Bayes/" itemprop="url">
-              
-                <span itemprop="name">Auto-Encoding Variational Bayes</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-07T15:50:50+08:00"
-              content="2018-09-07" >
-          09-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢金主！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="望江车神 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="望江车神 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/BN/" rel="tag"># BN</a>
+          
+            <a href="/tags/批正则化/" rel="tag"># 批正则化</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/15/Group Normalization/" rel="next" title="Group Normalization">
+                <i class="fa fa-chevron-left"></i> Group Normalization
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -568,6 +531,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -588,8 +555,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -663,6 +639,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#白化"><span class="nav-number">1.</span> <span class="nav-text">白化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Batch-Normalization-Accelerating-Deep-Network-Training-by-Reducing-Internal-Covariate-Shift"><span class="nav-number">2.</span> <span class="nav-text">Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -810,6 +802,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
