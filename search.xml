@@ -98,8 +98,8 @@
         <category>概率论与数理统计</category>
       </categories>
       <tags>
-        <tag>信息熵</tag>
         <tag>交叉熵</tag>
+        <tag>信息熵</tag>
         <tag>相对熵</tag>
         <tag>KL散度</tag>
         <tag>Wasserstein距离</tag>
