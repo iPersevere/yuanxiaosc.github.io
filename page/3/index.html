@@ -1754,7 +1754,7 @@ Having applied those s
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/24/改进神经网络的学习方法——弃权/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/24/改进神经网络的学习方法——正则化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="望江车神">
@@ -1773,7 +1773,7 @@ Having applied those s
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/24/改进神经网络的学习方法——弃权/" itemprop="url">改进神经网络的学习方法——弃权</a></h1>
+                <a class="post-title-link" href="/2018/06/24/改进神经网络的学习方法——正则化/" itemprop="url">改进神经网络的学习方法——正则化</a></h1>
         
 
         <div class="post-meta">
@@ -1826,6 +1826,17 @@ Having applied those s
 
                 
                 
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/深度学习/Neural-Networks-and-Deep-Learning-Michael-Nielsen/CHAPTER-3-Improving-the-way-neural-networks-learn/" itemprop="url" rel="index">
+                    <span itemprop="name">CHAPTER 3 Improving the way neural networks learn</span>
+                  </a>
+                </span>
+
+                
+                
               
             </span>
           
@@ -1859,15 +1870,14 @@ Having applied those s
         
           
           
-原文链接：CHAPTER 2 Improving the way neural networks learn
+原文链接：CHAPTER 3 Improving the way neural networks learn
 
-弃权（Dropout）的过程弃权是一种相当激进的技术。和规范化不同，弃权技术并不依赖于代价函数的修改。而是，在弃权中，我们改变了网络本身。在介绍它为什么能工作，以及所得到的结果前，让我描述一下弃权（Dropout）基本的工作机制。
-
-特别地，假设我们有一个训练数据 $x$ 和 对应的目标输出 $y$。通常我们会通过在网络中前向传播 $x$ ，然后进行反向传播来确定对梯度的贡献。使用弃权（Dropout）技术，这个过程就改了。我们会从随机（临时）地删除网络中的一半的隐藏神经元开始，同
+产生过度拟合和正则化的原因拥有大量的自由参数的模型能够描述特别神奇的现象。即使这样的模型能够很好的拟合已有的数据，但并不表示是一个好模型。因为这可能只是因为模型中足够的自由度使得它可以描述几乎所有给定大小的数据集，而不需要真正洞察现象的本质。所以发生这种情形时，模型对已有的数据会表现的很好，但是对新的数据很难泛化。对一个模型真正的测验就是它对没有见过的场景的预测能力。
+我们用来对 MNIST 数字分类的 30 个隐藏神经元神经网络拥有将近 24,000 个参数！当然很多。我们有 1
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/06/24/改进神经网络的学习方法——弃权/#more" rel="contents">
+            <a class="btn" href="/2018/06/24/改进神经网络的学习方法——正则化/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
