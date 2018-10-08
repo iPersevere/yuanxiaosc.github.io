@@ -87,27 +87,27 @@
 <meta property="og:site_name" content="望江人工智库">
 <meta property="og:description" content="论文核心代码，TensorFlow 实现12345def selu(x):  with ops.name_scope(&apos;elu&apos;) as scope:    alpha = 1.6732632423543772848170429916717    scale = 1.0507009873554804934193349852946    return scale*tf.where(x&amp;gt;0.0,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/SELU/MNIST_MLP_SELU.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/SELU/MNIST_Conv_RELU.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/SELU/a1.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/SELU/a2.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/SELU/MNIST_Conv_SELU.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/SELU/MNIST_Conv_RELU.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/SELU/a1.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/SELU/a2.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/SELU/CIFAR10_Conv_SELU.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/SELU/CIFAR10_Conv_RELU.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/SELU/c1.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/SELU/c2.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/SELU/reuters_mlp_selu.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/SELU/reuters_mlp_relu.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/SELU/d1.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/SELU/d2.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/MNIST_MLP_SELU.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/MNIST_Conv_RELU.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/a1.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/a2.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/MNIST_Conv_SELU.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/MNIST_Conv_RELU.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/a1.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/a2.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/CIFAR10_Conv_SELU.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/CIFAR10_Conv_RELU.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/c1.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/c2.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/reuters_mlp_selu.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/reuters_mlp_relu.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/d1.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/SELU/d2.png">
 <meta property="og:updated_time" content="2018-09-30T01:10:55.875Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Self-Normalizing Neural Networks selu">
 <meta name="twitter:description" content="论文核心代码，TensorFlow 实现12345def selu(x):  with ops.name_scope(&apos;elu&apos;) as scope:    alpha = 1.6732632423543772848170429916717    scale = 1.0507009873554804934193349852946    return scale*tf.where(x&amp;gt;0.0,">
-<meta name="twitter:image" content="http://yoursite.com/2018/09/30/SELU/SELU/MNIST_MLP_SELU.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/09/30/SELU/MNIST_MLP_SELU.png">
 
 
 
@@ -452,33 +452,33 @@
 <h1 id="实验结论"><a href="#实验结论" class="headerlink" title="实验结论"></a>实验结论</h1><p>我们提出了自归一化神经网络，并且已经证明了当神经元激励在网络中传播时是在朝零均值（zero mean）和单位方差（unit variance）的趋势发展的。而且，对于没有接近单位方差的激励，我们也证明了方差映射的上线和下限。于是 SNN 不会产梯度消失和梯度爆炸的问题。因此，SNN 非常适用于多层的结构，这使我们可以引入一个全新的正则化（regularization）机制，从而更稳健地进行学习。在 121UCI 基准数据集中，SNN 已经超过了其他一些包括或不包括归一化方法的 FNN，比如批归一化（batch）、层级归一化（layer）、权值归一化（weight normalization）或其它特殊结构（Highway network 或 Residual network）。SNN 也在药物研发和天文学任务中产生了完美的结果。和其他的 FNN 网络相比，高性能的 SNN 结构通常深度更深。</p>
 <h1 id="基于-SELUs-的模型的论文"><a href="#基于-SELUs-的模型的论文" class="headerlink" title="基于 SELUs 的模型的论文"></a>基于 SELUs 的模型的论文</h1><p><a href="https://github.com/bioinf-jku/SNNs/tree/master/SNN-successes" target="_blank" rel="noopener">Models and architectures built on Self-Normalizing Networks</a></p>
 <h1 id="实验验证-SELU-的真实效果"><a href="#实验验证-SELU-的真实效果" class="headerlink" title="实验验证 SELU 的真实效果"></a>实验验证 SELU 的真实效果</h1><h2 id="MNIST-MLP-SELU-VS-MNIST-MLP-RELU"><a href="#MNIST-MLP-SELU-VS-MNIST-MLP-RELU" class="headerlink" title="MNIST-MLP-SELU VS MNIST-MLP-RELU"></a>MNIST-MLP-SELU VS MNIST-MLP-RELU</h2><h3 id="模型结构"><a href="#模型结构" class="headerlink" title="模型结构"></a>模型结构</h3><p><strong>MNIST_Conv_SELU</strong></p>
-<p><img src="SELU/MNIST_MLP_SELU.png" alt=""></p>
+<p><img src="/2018/09/30/SELU/MNIST_MLP_SELU.png" alt=""></p>
 <p><strong>MNIST_Conv_RELU</strong></p>
-<p><img src="SELU/MNIST_Conv_RELU.png" alt=""></p>
+<p><img src="/2018/09/30/SELU/MNIST_Conv_RELU.png" alt=""></p>
 <h3 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h3><p>蓝色的线代表 SELU ，橙色的线代表 RELU。</p>
-<p><img src="SELU/a1.png" alt=""><br><img src="SELU/a2.png" alt=""></p>
+<p><img src="/2018/09/30/SELU/a1.png" alt=""><br><img src="/2018/09/30/SELU/a2.png" alt=""></p>
 <h3 id="结果分析"><a href="#结果分析" class="headerlink" title="结果分析"></a>结果分析</h3><p>在 MNIST 数据集，多层前馈神经网络模型条件下，SELU 在训练集的效果差于 RELU，但是 SELU 在验证集效果与 RELU 几乎一致，且 SELU 训练时间更长。</p>
 <h2 id="MNIST-Conv-SELU-VS-MNIST-Conv-RELU"><a href="#MNIST-Conv-SELU-VS-MNIST-Conv-RELU" class="headerlink" title="MNIST-Conv-SELU VS MNIST-Conv-RELU"></a><a href="https://github.com/bioinf-jku/SNNs/blob/master/Keras-CNN/MNIST-Conv-SELU.py" target="_blank" rel="noopener">MNIST-Conv-SELU VS MNIST-Conv-RELU</a></h2><h3 id="模型结构-1"><a href="#模型结构-1" class="headerlink" title="模型结构"></a>模型结构</h3><p><strong>MNIST_Conv_SELU</strong></p>
-<p><img src="SELU/MNIST_Conv_SELU.png" alt=""></p>
+<p><img src="/2018/09/30/SELU/MNIST_Conv_SELU.png" alt=""></p>
 <p><strong>MNIST_Conv_RELU</strong></p>
-<p><img src="SELU/MNIST_Conv_RELU.png" alt=""></p>
+<p><img src="/2018/09/30/SELU/MNIST_Conv_RELU.png" alt=""></p>
 <h3 id="实验结果-1"><a href="#实验结果-1" class="headerlink" title="实验结果"></a>实验结果</h3><p>蓝色的线代表 SELU ，橙色的线代表 RELU</p>
-<p><img src="SELU/a1.png" alt=""><br><img src="SELU/a2.png" alt=""></p>
+<p><img src="/2018/09/30/SELU/a1.png" alt=""><br><img src="/2018/09/30/SELU/a2.png" alt=""></p>
 <h3 id="结果分析-1"><a href="#结果分析-1" class="headerlink" title="结果分析"></a>结果分析</h3><p>在 MNIST 数据集，多层卷积神经网络模型条件下，SELU 在训练集的效果优于 RELU，但是 SELU 在验证集效果差于 RELU ，且 SELU 训练时间更长。</p>
 <h2 id="CIFAR10-Conv-SELU-VS-CIFAR10-Conv-RELU"><a href="#CIFAR10-Conv-SELU-VS-CIFAR10-Conv-RELU" class="headerlink" title="CIFAR10_Conv_SELU VS CIFAR10_Conv_RELU"></a><a href="https://github.com/bioinf-jku/SNNs/blob/master/Keras-CNN/CIFAR10-Conv-SELU.py" target="_blank" rel="noopener">CIFAR10_Conv_SELU VS CIFAR10_Conv_RELU</a></h2><h3 id="模型结构-2"><a href="#模型结构-2" class="headerlink" title="模型结构"></a>模型结构</h3><p><strong>CIFAR10_Conv_SELU</strong></p>
-<p><img src="SELU/CIFAR10_Conv_SELU.png" alt=""></p>
+<p><img src="/2018/09/30/SELU/CIFAR10_Conv_SELU.png" alt=""></p>
 <p><strong>CIFAR10_Conv_RELU</strong></p>
-<p><img src="SELU/CIFAR10_Conv_RELU.png" alt=""></p>
+<p><img src="/2018/09/30/SELU/CIFAR10_Conv_RELU.png" alt=""></p>
 <h3 id="实验结果-2"><a href="#实验结果-2" class="headerlink" title="实验结果"></a>实验结果</h3><p>灰色线代表 SELU，绿色线代表 RELU。</p>
-<p><img src="SELU/c1.png" alt=""></p>
-<p><img src="SELU/c2.png" alt=""></p>
+<p><img src="/2018/09/30/SELU/c1.png" alt=""></p>
+<p><img src="/2018/09/30/SELU/c2.png" alt=""></p>
 <h3 id="结果分析-2"><a href="#结果分析-2" class="headerlink" title="结果分析"></a>结果分析</h3><p>在 CIFAR10 数据集，多层卷积神经网络模型条件下，SELU 在训练集的效果优于 RELU，但是 SELU 在验证集效果与 RELU 一致，且 RELU 更不易发生过拟合，SELU 训练时间更长。</p>
 <h2 id="reuters-mlp-relu-vs-selu"><a href="#reuters-mlp-relu-vs-selu" class="headerlink" title="reuters_mlp_relu_vs_selu"></a><a href="https://github.com/keras-team/keras/blob/master/examples/reuters_mlp_relu_vs_selu.py" target="_blank" rel="noopener">reuters_mlp_relu_vs_selu</a></h2><h2 id="模型结构-3"><a href="#模型结构-3" class="headerlink" title="模型结构"></a>模型结构</h2><p><strong>reuters_mlp_selu</strong></p>
-<p><img src="SELU/reuters_mlp_selu.png" alt=""></p>
+<p><img src="/2018/09/30/SELU/reuters_mlp_selu.png" alt=""></p>
 <p><strong>reuters_mlp_relu</strong></p>
-<p><img src="SELU/reuters_mlp_relu.png" alt=""></p>
+<p><img src="/2018/09/30/SELU/reuters_mlp_relu.png" alt=""></p>
 <h2 id="实验结果-3"><a href="#实验结果-3" class="headerlink" title="实验结果"></a>实验结果</h2><p>灰色的线代表 SELU，绿色的线代表 RELU。</p>
-<p><img src="SELU/d1.png" alt=""><br><img src="SELU/d2.png" alt=""></p>
+<p><img src="/2018/09/30/SELU/d1.png" alt=""><br><img src="/2018/09/30/SELU/d2.png" alt=""></p>
 <h2 id="结果分析-3"><a href="#结果分析-3" class="headerlink" title="结果分析"></a>结果分析</h2><p>在 reuters 数据集，多层前馈神经网络模型条件下，SELU 在训练集的效果差于 RELU，但是 SELU 在验证集效果稍稍优于 RELU ，但 SELU 训练时间更长。</p>
 <h1 id="本文结论"><a href="#本文结论" class="headerlink" title="本文结论"></a>本文结论</h1><p>SELU 只有在特殊限定的数据集和网络模型结构的条件下会优于 RELU，一般情况下 RELU 训练速度更快，且更不容易发生过拟合。所以根据现有证据，SELU 比 RELU 没有显著优势，一般情况下选择 RELU 更优。</p>
 

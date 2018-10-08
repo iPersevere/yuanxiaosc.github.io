@@ -87,12 +87,12 @@
 <meta property="og:site_name" content="望江人工智库">
 <meta property="og:description" content="信息熵熵是传输一个随机变量状态值所需的比特位的下界。 信息论之父 C. E. Shannon 在 1948 年发表的论文“通信的数学理论（ A Mathematical Theory of Communication ）”中， Shannon 指出，任何信息都存在冗余，冗余大小与信息中每个符号（数字、字母或单词）的出现概率或者说不确定性有关。Shannon 借鉴了热力学的概念，把信息中排除了冗余后">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/08/29/概率分布距离度量函数/概率分布距离度量函数/a1.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/29/概率分布距离度量函数/a1.png">
 <meta property="og:updated_time" content="2018-08-30T02:58:40.475Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="概率分布距离度量函数">
 <meta name="twitter:description" content="信息熵熵是传输一个随机变量状态值所需的比特位的下界。 信息论之父 C. E. Shannon 在 1948 年发表的论文“通信的数学理论（ A Mathematical Theory of Communication ）”中， Shannon 指出，任何信息都存在冗余，冗余大小与信息中每个符号（数字、字母或单词）的出现概率或者说不确定性有关。Shannon 借鉴了热力学的概念，把信息中排除了冗余后">
-<meta name="twitter:image" content="http://yoursite.com/2018/08/29/概率分布距离度量函数/概率分布距离度量函数/a1.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/08/29/概率分布距离度量函数/a1.png">
 
 
 
@@ -410,7 +410,7 @@
 <h3 id="相对熵的应用"><a href="#相对熵的应用" class="headerlink" title="相对熵的应用"></a>相对熵的应用</h3><p>相对熵可以衡量两个随机分布之间的距离，当两个随机分布相同时，它们的相对熵为零，当两个随机分布的差别增大时，它们的相对熵也会增大。所以相对熵（KL散度）可以用于比较文本的相似度，先统计出词的频率，然后计算相对熵。另外，在多指标系统评估中，指标权重分配 [2]  是一个重点和难点，也通过相对熵可以处理。</p>
 <h2 id="JS散度（Jensen–Shannon-divergence）"><a href="#JS散度（Jensen–Shannon-divergence）" class="headerlink" title="JS散度（Jensen–Shannon divergence）"></a><a href="https://en.wikipedia.org/wiki/Jensen%E2%80%93Shannon_divergence" target="_blank" rel="noopener">JS散度（Jensen–Shannon divergence）</a></h2><p>JS散度度量了两个概率分布的相似度，基于KL散度的变体，解决了KL散度非对称的问题。一般地，JS散度是对称的，其取值是0到1之间。定义如下：</p>
 <script type="math/tex; mode=display">JSD(P_1||P_2)=\dfrac{1}{2}KL(P_1||\dfrac{P_1+P_2}{2})+\dfrac{1}{2}KL(P_2||\dfrac{P_1+P_2}{2})</script><p>KL散度和JS散度度量的时候有一个问题：如果两个分配P,Q离得很远，完全没有重叠的时候，那么KL散度值是没有意义的，而JS散度值是一个常数。这在学习算法中是比较致命的，这就意味这这一点的梯度为0。梯度消失了。</p>
-<h2 id="Wasserstein距离"><a href="#Wasserstein距离" class="headerlink" title="Wasserstein距离"></a>Wasserstein距离</h2><p><img src="概率分布距离度量函数/a1.png" alt=""></p>
+<h2 id="Wasserstein距离"><a href="#Wasserstein距离" class="headerlink" title="Wasserstein距离"></a>Wasserstein距离</h2><p><img src="/2018/08/29/概率分布距离度量函数/a1.png" alt=""></p>
 <hr>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] ajiao_nihao‏. 交叉熵[DB/OL]. <a href="https://baike.baidu.com/item/%E4%BA%A4%E5%8F%89%E7%86%B5/8983241" target="_blank" rel="noopener">https://baike.baidu.com/item/%E4%BA%A4%E5%8F%89%E7%86%B5/8983241</a>, 2018-08-28.</p>
 <p>[2] 蒙牛纯爷们‏. 相对熵[DB/OL]. <a href="https://baike.baidu.com/item/%E7%9B%B8%E5%AF%B9%E7%86%B5" target="_blank" rel="noopener">https://baike.baidu.com/item/%E7%9B%B8%E5%AF%B9%E7%86%B5</a>, 2018-08-28.</p>

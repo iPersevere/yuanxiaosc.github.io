@@ -87,17 +87,17 @@
 <meta property="og:site_name" content="望江人工智库">
 <meta property="og:description" content="原文链接：CHAPTER 3 Improving the way neural networks learn  为什么需要交叉熵代价函数人类却能够根据明显的犯错快速地学习到正确的东西。相反，在我们的错误不是很好地定义的时候，学习的过程会变得更加缓慢。但神经网络却不一定如此，这种行为看起来和人类学习行为差异很大。人工神经元在其犯错较大的情况下其实学习很有难度。 为了理解这个问题的源头，想想我们的神">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/06/21/改进神经网络的学习方法——交叉熵/改进神经网络的学习方法——交叉熵/one_1.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/21/改进神经网络的学习方法——交叉熵/改进神经网络的学习方法——交叉熵/one_2.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/21/改进神经网络的学习方法——交叉熵/改进神经网络的学习方法——交叉熵/one_4.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/21/改进神经网络的学习方法——交叉熵/改进神经网络的学习方法——交叉熵/one_5.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/21/改进神经网络的学习方法——交叉熵/改进神经网络的学习方法——交叉熵/one_6.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/21/改进神经网络的学习方法——交叉熵/改进神经网络的学习方法——交叉熵/one_3.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/21/改进神经网络的学习方法——交叉熵/one_1.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/21/改进神经网络的学习方法——交叉熵/one_2.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/21/改进神经网络的学习方法——交叉熵/one_4.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/21/改进神经网络的学习方法——交叉熵/one_5.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/21/改进神经网络的学习方法——交叉熵/one_6.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/21/改进神经网络的学习方法——交叉熵/one_3.png">
 <meta property="og:updated_time" content="2018-07-06T13:11:00.456Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="改进神经网络的学习方法——交叉熵">
 <meta name="twitter:description" content="原文链接：CHAPTER 3 Improving the way neural networks learn  为什么需要交叉熵代价函数人类却能够根据明显的犯错快速地学习到正确的东西。相反，在我们的错误不是很好地定义的时候，学习的过程会变得更加缓慢。但神经网络却不一定如此，这种行为看起来和人类学习行为差异很大。人工神经元在其犯错较大的情况下其实学习很有难度。 为了理解这个问题的源头，想想我们的神">
-<meta name="twitter:image" content="http://yoursite.com/2018/06/21/改进神经网络的学习方法——交叉熵/改进神经网络的学习方法——交叉熵/one_1.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/06/21/改进神经网络的学习方法——交叉熵/one_1.png">
 
 
 
@@ -414,14 +414,14 @@
 <script type="math/tex; mode=display">
 \frac{\partial C}{\partial w^L_{jk}} = \frac{1}{n}
    \sum_x a^{L-1}_k  (a^L_j-y_j) \sigma'(z^L_j)</script><p>项 $\sigma’(z^L_j)$ 会在一个输出神经元困在错误值时导致学习速度的下降。</p>
-<p><img src="改进神经网络的学习方法——交叉熵/one_1.png" alt=""></p>
+<p><img src="/2018/06/21/改进神经网络的学习方法——交叉熵/one_1.png" alt=""></p>
 <p>我们可以从这幅图看出，当神经元的输出接近 $1$ 的时候，曲线变得相当平，所以$\sigma’(z)$ 就很小了。上面式子中的 $\frac{\partial C}{\partial w^L_{jk}}$ 也会非常小。这其实就是学习缓慢的原因所在。而且，我们后面也会提到，这种学习速度下降的原因实际上也是更加一般的神经网络学习缓慢的原因，并不仅仅是在这个特例中特有的。</p>
 <p>注意，在输出层使用线性神经元时使用二次代价函数。假设我们有一个多层多神经元网络，最终输出层的神经元都是线性神经元，输出不再是$S$型函数作用的结果，而是 $a^L_j = z^L_j$。如果我们使用二次代价函数，那么对单个训练样本 $x$ 的输出误差就是</p>
 <script type="math/tex; mode=display">
     \delta^L = a^L-y</script><p>这表明如果输出神经元是线性的那么二次代价不再会导致学习速度下降的问题。在此情形下，二次代价函数就是一种合适的选择。</p>
 <p>但是如果输出神经元是$S$型函数作用的结果，我们就最好考虑其他的代价函数。</p>
 <h2 id="交叉熵代价函数的定义"><a href="#交叉熵代价函数的定义" class="headerlink" title="交叉熵代价函数的定义"></a>交叉熵代价函数的定义</h2><p>那么我们如何解决这个问题呢？研究表明，我们可以通过使用交叉熵函数来替换二次代价函数。为了理解什么是交叉熵，我们稍微改变一下之前的简单例子。假设，我们现在要训练一个包含若干输入变量的的神经元，$x_1, x_2, \ldots$ 对应的权重为 $w_1,w_2, \ldots$ 和偏置 $b$：</p>
-<p><img src="改进神经网络的学习方法——交叉熵/one_2.png" alt=""></p>
+<p><img src="/2018/06/21/改进神经网络的学习方法——交叉熵/one_2.png" alt=""></p>
 <p>神经元的输出就是 $a = \sigma(z)$，其中 $z = \sum_j w_j x_j+b$ 是输入的带权和。我<br>们如下定义这个神经元的交叉熵代价函数：</p>
 <script type="math/tex; mode=display">
   C = -\frac{1}{n} \sum_x \left[y \ln a + (1-y ) \ln (1-a) \right]</script><p>其中 $n$ 是训练数据的总数，求和是在所有的训练输入 $x$ 上进行的，$y$ 是对应的目标输出。</p>
@@ -436,14 +436,14 @@
 <h3 id="交叉熵在单分类问题中的应用"><a href="#交叉熵在单分类问题中的应用" class="headerlink" title="交叉熵在单分类问题中的应用"></a>交叉熵在单分类问题中的应用</h3><p>这里的单类别是指，每一张图像样本只能有一个类别，比如只能是狗或只能是猫。交叉熵在单分类问题上基本是标配的方法  </p>
 <script type="math/tex; mode=display">
 loss = -\sum_{i=1}^ny_i log(\hat{y}_i)</script><p>上式为一张样本的 $loss$ 计算方法。式中 $n$ 代表着 $n$ 种类别。举例如下，</p>
-<p><img src="改进神经网络的学习方法——交叉熵/one_4.png" alt=""></p>
+<p><img src="/2018/06/21/改进神经网络的学习方法——交叉熵/one_4.png" alt=""></p>
 <h3 id="交叉熵在多标签问题中的应用"><a href="#交叉熵在多标签问题中的应用" class="headerlink" title="交叉熵在多标签问题中的应用"></a>交叉熵在多标签问题中的应用</h3><p>这里的多类别是指，每一张图像样本可以有多个类别，比如同时包含一只猫和一只狗和单分类问题的标签不同，多分类的标签是n-hot。</p>
-<p><img src="改进神经网络的学习方法——交叉熵/one_5.png" alt=""></p>
+<p><img src="/2018/06/21/改进神经网络的学习方法——交叉熵/one_5.png" alt=""></p>
 <p>值得注意的是，这里的Pred采用的是sigmoid函数计算。将每一个节点的输出归一化到[0,1]之间。所有Pred值的和也不再为1。换句话说，就是每一个Label都是独立分布的，相互之间没有影响。所以交叉熵在这里是单独对每一个节点进行计算，每一个节点只有两种可能值，所以是一个二项分布。前面说过对于二项分布这种特殊的分布，熵的计算可以进行简化。</p>
 <p>同样的，交叉熵的计算也可以简化，即</p>
 <script type="math/tex; mode=display">
 loss =-ylog(\hat{y})-(1-y)log(1-\hat{y})</script><p>注意，上式只是针对一个节点的计算公式。这一点一定要和单分类loss区分开来。</p>
-<p><img src="改进神经网络的学习方法——交叉熵/one_6.png" alt=""></p>
+<p><img src="/2018/06/21/改进神经网络的学习方法——交叉熵/one_6.png" alt=""></p>
 <h2 id="交叉熵代价函数对权重求导的证明"><a href="#交叉熵代价函数对权重求导的证明" class="headerlink" title="交叉熵代价函数对权重求导的证明"></a>交叉熵代价函数对权重求导的证明</h2><p>交叉熵代价函数的定义：</p>
 <script type="math/tex; mode=display">
   C = -\frac{1}{n} \sum_x \left[y \ln a + (1-y ) \ln (1-a) \right]</script><p>代价函数 $C$ 对 $w^L_{jk}$ 求偏导</p>
@@ -514,7 +514,7 @@ loss =-ylog(\hat{y})-(1-y)log(1-\hat{y})</script><p>注意，上式只是针对�
 <p>假设 $X$ 是一个离散型随机变量，其取值集合为 $\chi$ ,概率分布函数 $p(x)=Pr(X=x),x\in\chi$ ,则定义事件 $X=x_0$ 的信息量为：</p>
 <script type="math/tex; mode=display">
 I(x_0)=-log(p(x_0))</script><p>由于是概率所以$p(x_0)$的取值范围是[0,1], 绘制为图形如下：</p>
-<p><img src="改进神经网络的学习方法——交叉熵/one_3.png" alt=""></p>
+<p><img src="/2018/06/21/改进神经网络的学习方法——交叉熵/one_3.png" alt=""></p>
 <p><strong>什么是熵(Entropy)？</strong></p>
 <p>放在信息论的语境里面来说，就是一个事件所包含的信息量。我们现在有了信息量的定义，而熵用来表示所有信息量的期望，即：</p>
 <p>因此熵被定义为 $S(x)=-\sum_{i}P(x_{i})log_{b}P(x_{i})$</p>
