@@ -87,21 +87,21 @@
 <meta property="og:site_name" content="望江人工智库">
 <meta property="og:description" content="原文链接：CHAPTER 2 How the backpropagation algorithm works  反向传播概述反向传播算法最初在 1970 年代被提及，但是人们直到 David Rumelhart、Geoffrey Hinton 和 Ronald Williams 的著名的 1986 年的论文中才认识到这个算法的重要性。 反向传播的核心是一个对代价函数 $C$ 关于任何权重 $w$">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/06/21/反向传播算法/one_1.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/21/反向传播算法/one_2.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/21/反向传播算法/one_3.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/21/反向传播算法/one_4.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/21/反向传播算法/one_2.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/21/反向传播算法/one_5.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/21/反向传播算法/one_8.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/21/反向传播算法/one_4.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/21/反向传播算法/one_6.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/21/反向传播算法/one_7.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/21/反向传播算法/反向传播算法/one_1.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/21/反向传播算法/反向传播算法/one_2.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/21/反向传播算法/反向传播算法/one_3.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/21/反向传播算法/反向传播算法/one_4.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/21/反向传播算法/反向传播算法/one_2.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/21/反向传播算法/反向传播算法/one_5.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/21/反向传播算法/反向传播算法/one_8.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/21/反向传播算法/反向传播算法/one_4.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/21/反向传播算法/反向传播算法/one_6.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/21/反向传播算法/反向传播算法/one_7.png">
 <meta property="og:updated_time" content="2018-07-18T12:43:10.767Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="反向传播算法">
 <meta name="twitter:description" content="原文链接：CHAPTER 2 How the backpropagation algorithm works  反向传播概述反向传播算法最初在 1970 年代被提及，但是人们直到 David Rumelhart、Geoffrey Hinton 和 Ronald Williams 的著名的 1986 年的论文中才认识到这个算法的重要性。 反向传播的核心是一个对代价函数 $C$ 关于任何权重 $w$">
-<meta name="twitter:image" content="http://yoursite.com/2018/06/21/反向传播算法/one_1.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/06/21/反向传播算法/反向传播算法/one_1.png">
 
 
 
@@ -423,7 +423,7 @@
 </ol>
 <p>需要假设1的原因是，反向传播实际上是对一个独立的训练样本计算了 $\partial{C_x}/\partial{w}$ 和 $\partial{C_x}/\partial{b}$。然后通过在所有训练样本上进行平均化获得 $\partial{C}/\partial{w}$ 和 $\partial{C}/\partial{w}$ 。</p>
 <p>需要假设2的原因是，要把代价函数与神经网络输出联系起来，进而与神经网络的参数联系起来。</p>
-<h2 id="符号定义"><a href="#符号定义" class="headerlink" title="符号定义"></a>符号定义</h2><p><img src="/2018/06/21/反向传播算法/one_1.png" alt=""></p>
+<h2 id="符号定义"><a href="#符号定义" class="headerlink" title="符号定义"></a>符号定义</h2><p><img src="反向传播算法/one_1.png" alt=""></p>
 <blockquote>
 <p>$W_{jk}^{l}$ 是从 $l-1$ 层的第 $k$ 个神经元到 $l$ 层的第 $j$ 个神经元的权重。</p>
 <p>$b_j^l$ 是第 $l$ 层的第 $j$ 个神经元的偏置。</p>
@@ -505,7 +505,7 @@
 <p>反向传播的核心是一个对代价函数 $C$ 关于任何权重 $w$ 和 偏置 $b$ 的偏导数 $\partial{C}/\partial{w}$ 的表达式。为了计算这些值，引入一个中间量 $\delta_j^l$ ,表示在 $l$ 层的第 $j$ 个神经元的误差。</p>
 <p>定义</p>
 <script type="math/tex; mode=display">\delta^l_j \equiv \frac{\partial C}{\partial z^l_j}.</script><p>$\delta^l$ 是误差向量，$\delta^l$ 的第 $j$ 个元素是 $\delta_j^l$。</p>
-<h2 id="反向传播的四个基本方程"><a href="#反向传播的四个基本方程" class="headerlink" title="反向传播的四个基本方程"></a>反向传播的四个基本方程</h2><p><img src="/2018/06/21/反向传播算法/one_2.png" alt=""></p>
+<h2 id="反向传播的四个基本方程"><a href="#反向传播的四个基本方程" class="headerlink" title="反向传播的四个基本方程"></a>反向传播的四个基本方程</h2><p><img src="反向传播算法/one_2.png" alt=""></p>
 <p>$\nabla_a$ 是求梯度运算符，$\nabla_a C$ 结果是一个向量，其元素是偏导数 $\partial C / \partial a^L_j$。</p>
 <p>$\odot$ 是按元素乘积的运算符，$ {(s \odot t)}_j = s_j t_j $ ，例如</p>
 <script type="math/tex; mode=display">
@@ -540,13 +540,13 @@
 </tbody>
 </table>
 </div>
-<h2 id="反向传播算法"><a href="#反向传播算法" class="headerlink" title="反向传播算法"></a>反向传播算法</h2><p><img src="/2018/06/21/反向传播算法/one_3.png" alt=""></p>
+<h2 id="反向传播算法"><a href="#反向传播算法" class="headerlink" title="反向传播算法"></a>反向传播算法</h2><p><img src="反向传播算法/one_3.png" alt=""></p>
 <p>正如我们上面所讲的，反向传播算法对一个训练样本计算代价函数的梯度，$C=C_x$。在实践中，通常将反向传播算法和诸如随机梯度下降这样的学习算法进行组合使用，我们会对许多训练样本计算对应的梯度。特别地，给定一个大小为 m 的小批量数据，下面的算法在这个小批量数据的基础上应用梯度下降学习算法：</p>
-<p><img src="/2018/06/21/反向传播算法/one_4.png" alt=""></p>
+<p><img src="反向传播算法/one_4.png" alt=""></p>
 <p>反向传播算法与小批量随机梯度下降算法结合的一个示意代码，完整代码参看 <a href="https://github.com/MichalDanielDobrzanski/DeepLearningPython35/blob/master/network.py" target="_blank" rel="noopener">network.py</a></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">backprop</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        <span class="string">"""Return a tuple ``(nabla_b, nabla_w)`` representing the</span></span><br><span class="line"><span class="string">        gradient for the cost function C_x.  ``nabla_b`` and</span></span><br><span class="line"><span class="string">        ``nabla_w`` are layer-by-layer lists of numpy arrays, similar</span></span><br><span class="line"><span class="string">        to ``self.biases`` and ``self.weights``."""</span></span><br><span class="line">        nabla_b = [np.zeros(b.shape) <span class="keyword">for</span> b <span class="keyword">in</span> self.biases]</span><br><span class="line">        nabla_w = [np.zeros(w.shape) <span class="keyword">for</span> w <span class="keyword">in</span> self.weights]</span><br><span class="line">        <span class="comment"># feedforward</span></span><br><span class="line">        activation = x</span><br><span class="line">        activations = [x] <span class="comment"># list to store all the activations, layer by layer</span></span><br><span class="line">        zs = [] <span class="comment"># list to store all the z vectors, layer by layer</span></span><br><span class="line">        <span class="keyword">for</span> b, w <span class="keyword">in</span> zip(self.biases, self.weights):</span><br><span class="line">            z = np.dot(w, activation)+b</span><br><span class="line">            zs.append(z)</span><br><span class="line">            activation = sigmoid(z)</span><br><span class="line">            activations.append(activation)</span><br><span class="line">        <span class="comment"># backward pass</span></span><br><span class="line">        delta = self.cost_derivative(activations[<span class="number">-1</span>], y) * \</span><br><span class="line">            sigmoid_prime(zs[<span class="number">-1</span>])</span><br><span class="line">        nabla_b[<span class="number">-1</span>] = delta</span><br><span class="line">        nabla_w[<span class="number">-1</span>] = np.dot(delta, activations[<span class="number">-2</span>].transpose())</span><br><span class="line">        <span class="comment"># Note that the variable l in the loop below is used a little</span></span><br><span class="line">        <span class="comment"># differently to the notation in Chapter 2 of the book.  Here,</span></span><br><span class="line">        <span class="comment"># l = 1 means the last layer of neurons, l = 2 is the</span></span><br><span class="line">        <span class="comment"># second-last layer, and so on.  It's a renumbering of the</span></span><br><span class="line">        <span class="comment"># scheme in the book, used here to take advantage of the fact</span></span><br><span class="line">        <span class="comment"># that Python can use negative indices in lists.</span></span><br><span class="line">        <span class="keyword">for</span> l <span class="keyword">in</span> range(<span class="number">2</span>, self.num_layers):</span><br><span class="line">            z = zs[-l]</span><br><span class="line">            sp = sigmoid_prime(z)</span><br><span class="line">            delta = np.dot(self.weights[-l+<span class="number">1</span>].transpose(), delta) * sp</span><br><span class="line">            nabla_b[-l] = delta</span><br><span class="line">            nabla_w[-l] = np.dot(delta, activations[-l<span class="number">-1</span>].transpose())</span><br><span class="line">        <span class="keyword">return</span> (nabla_b, nabla_w)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cost_derivative</span><span class="params">(self, output_activations, y)</span>:</span></span><br><span class="line">        <span class="string">"""Return the vector of partial derivatives \partial C_x /</span></span><br><span class="line"><span class="string">        \partial a for the output activations."""</span></span><br><span class="line">        <span class="keyword">return</span> (output_activations-y)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid_prime</span><span class="params">(z)</span>:</span></span><br><span class="line">    <span class="string">"""Derivative of the sigmoid function."""</span></span><br><span class="line">    <span class="keyword">return</span> sigmoid(z)*(<span class="number">1</span>-sigmoid(z))</span><br></pre></td></tr></table></figure>
-<h2 id="四个基本方程的证明"><a href="#四个基本方程的证明" class="headerlink" title="四个基本方程的证明"></a>四个基本方程的证明</h2><p><img src="/2018/06/21/反向传播算法/one_2.png" alt=""></p>
+<h2 id="四个基本方程的证明"><a href="#四个基本方程的证明" class="headerlink" title="四个基本方程的证明"></a>四个基本方程的证明</h2><p><img src="反向传播算法/one_2.png" alt=""></p>
 <p>我们现在证明这四个基本的方程（BP）-（BP4）。所有的这些都是多元微积分的链式法则的推论。</p>
 <h3 id="证明-delta-L-nabla-a-C-odot-sigma’-z-L"><a href="#证明-delta-L-nabla-a-C-odot-sigma’-z-L" class="headerlink" title="证明$\delta^L = \nabla_a C \odot \sigma’(z^L)$"></a>证明$\delta^L = \nabla_a C \odot \sigma’(z^L)$</h3><p>从方程（BP1）开始，它给出了误差 $\delta^l$ 的表达式。根据定义</p>
 <script type="math/tex; mode=display">\delta^l_j \equiv \frac{\partial C}{\partial z^l_j}.</script><p>根据关于代价函数的两个假设2 “代价函数可以写成神经网络输出的函数”，应用链式法测可知可先对神经网络输出求偏导${\partial C}/{\partial a^L_k}$再对带权输出求偏导${\partial a^L_k}/{\partial z^L_j}$。</p>
@@ -559,7 +559,7 @@
 <script type="math/tex; mode=display">
 \delta^L ={\nabla_a {C}} \odot {\sigma'(z^L_j)}</script><p>（BP1） 得到证明。</p>
 <h3 id="证明-delta-l-w-l-1-T-delta-l-1-odot-sigma’-z-l"><a href="#证明-delta-l-w-l-1-T-delta-l-1-odot-sigma’-z-l" class="headerlink" title="证明 $ \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma’(z^l)$"></a>证明 $ \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma’(z^l)$</h3><p>证明（BP2），它个给出以下一层误差 $\delta^{l+1}$ 的形式表示误差 $\delta^l$。为此，要以 $\delta^l_j = \partial C / \partial z^l_j$的形式重写 $\delta^{l+1}_k = \partial C / \partial z^{l+1}_k$,$\delta^{l+1}$ 和 $\delta^l$ 通过 $z_k^{l+1}$ 和 $z_j^l$ 联系起来，应用链式法测</p>
-<p><img src="/2018/06/21/反向传播算法/one_5.png" alt=""></p>
+<p><img src="反向传播算法/one_5.png" alt=""></p>
 <p>根据 $z_k^{l+1}$ 的定义有</p>
 <script type="math/tex; mode=display">
  z^{l+1}_k = \sum_j w^{l+1}_{kj} a^l_j +b^{l+1}_k = \sum_j w^{l+1}_{kj} \sigma(z^l_j) +b^{l+1}_k</script><p>$z_k^{l+1}$ 对 $z_j^{l}$ 做偏微分，得到</p>
@@ -659,11 +659,11 @@
       \end{matrix}
       \right] }</script><p>（BP4） 得到证明。</p>
 <p>一个直观的图：</p>
-<p><img src="/2018/06/21/反向传播算法/one_8.png" alt=""></p>
+<p><img src="反向传播算法/one_8.png" alt=""></p>
 <p>到此关于反向传播的四个方程已经全部证明完毕。</p>
 <p>其他学者反向传播四个方程的证明（他写的更简明扼要些）：<a href="https://blog.csdn.net/hoho1151191150/article/details/79537246" target="_blank" rel="noopener">CSDN: oio328Loio</a></p>
 <h2 id="矩阵形式反向传播算法"><a href="#矩阵形式反向传播算法" class="headerlink" title="矩阵形式反向传播算法"></a>矩阵形式反向传播算法</h2><p>正如我们上面所讲的，反向传播算法对一个训练样本计算代价函数的梯度，$C=C_x$。在实践中，通常将反向传播算法和诸如随机梯度下降这样的学习算法进行组合使用，我们会对许多训练样本计算对应的梯度。特别地，给定一个大小为 m 的小批量数据，下面的算法在这个小批量数据的基础上应用梯度下降学习算法：</p>
-<p><img src="/2018/06/21/反向传播算法/one_4.png" alt=""></p>
+<p><img src="反向传播算法/one_4.png" alt=""></p>
 <p>根据上面的小批量数据的符号定义，为了方便用矩阵表示，下面新增了一些符号。</p>
 <p>$z^{v,l}$ 表示神经网络第 $l$ 层的小批量样本中的第 $v$ 个样本的带权输入向量，用矩阵 $Z^l$ 来表示就是</p>
 <script type="math/tex; mode=display">
@@ -738,7 +738,7 @@
 </tbody>
 </table>
 </div>
-<h2 id="反向传播：全局观"><a href="#反向传播：全局观" class="headerlink" title="反向传播：全局观"></a>反向传播：全局观</h2><p><img src="/2018/06/21/反向传播算法/one_6.png" alt=""></p>
+<h2 id="反向传播：全局观"><a href="#反向传播：全局观" class="headerlink" title="反向传播：全局观"></a>反向传播：全局观</h2><p><img src="反向传播算法/one_6.png" alt=""></p>
 <p>如上图所示，假设我们对 $w_{jk}^l$ 做一点微小的扰动 $\Delta w_{jk}^l$, 这个扰动会沿着神经网络最终影响到代价函数 $C$, 代价函数的 $\Delta C$ 改变和  $\Delta w_{jk}^l$ 按照下面公式联系起来</p>
 <script type="math/tex; mode=display">
  \Delta C \approx \frac{\partial C}{\partial w^l_{jk}} \Delta w^l_{jk}</script><p>可以想象影响代价函数的一条路径是</p>
@@ -762,7 +762,7 @@
   \frac{\partial a^{L-1}_n}{\partial a^{L-2}_p} \ldots
   \frac{\partial a^{l+1}_q}{\partial a^l_j}
   \frac{\partial a^l_j}{\partial w^l_{jk}}</script><p>上面的公式看起来复杂，这里有一个相当好的直觉上的解释。我们用这个公式计算 $C$ 关于网络中一个权重的变化率。而这个公式告诉我们的是：两个神经元之间的连接其实是关联于一个变化率因子，这仅仅是一个神经元的激活值相对于其他神经元的激活值的偏导数。路径的变化率因子就是这条路径上众多因子的乘积。整个变化率 $\partial C / \partial w^l_{jk}$ 就是对于所有可能从初始权重到最终输出的代价函数的路径的变化率因子的和。针对某一路径，这个过程解释如下，</p>
-<p><img src="/2018/06/21/反向传播算法/one_7.png" alt=""></p>
+<p><img src="反向传播算法/one_7.png" alt=""></p>
 <p>如果用矩阵运算对上面式子所有的情况求和，然后尽可能化简，最后你会发现，自己就是在做反向传播！可以将反向传播想象成一种计算所有可能路径变化率求和的方式。或者，换句话说，反向传播就是一种巧妙地追踪权重和偏置微小变化的传播，抵达输出层影响代价函数的技术。</p>
 <p>如果你尝试用上面的思路来证明反向传播，会比本文的反向传播四个方程证明复杂许多，因为按上面的思路来证明有许多可以简化的地方。其中可以添加一个巧妙的步骤，上面方程的偏导对象是类似 $a_q^{l+1}$ 的激活值。巧妙之处是改用加权输入，例如 $z_q^{l+1}$ ，作为中间变量。如果没想到这个主意，而是继续使用激活值 $a_q^{l+1}$ ，你得到的证明最后会比前文给出的证明稍稍复杂些。</p>
 <p><strong>其实最早的证明的出现也不是太过神秘的事情。因为那只是对简化证明的艰辛工作的积累！</strong></p>
@@ -924,7 +924,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -935,7 +935,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -946,7 +946,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-count">68</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

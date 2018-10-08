@@ -87,13 +87,13 @@
 <meta property="og:site_name" content="望江人工智库">
 <meta property="og:description" content="原文链接：CHAPTER 3 Improving the way neural networks learn  为什么选择神经网络的超参数是个难题直到现在，我们还没有解释对诸如学习率 $\eta$，正则化参数 $\lambda$ 等等超参数选择的方法。我只是给出那些效果很好的值而已。实践中，当你使用神经网络解决问题时，寻找好的超参数其实是很困难的一件事。例如，我们要解决 MNIST 问题，开始时">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/06/28/改进神经网络的学习方法——如何选择神经网络的超参数/1.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/28/改进神经网络的学习方法——如何选择神经网络的超参数/2.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/28/改进神经网络的学习方法——如何选择神经网络的超参数/改进神经网络的学习方法——如何选择神经网络的超参数/1.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/28/改进神经网络的学习方法——如何选择神经网络的超参数/改进神经网络的学习方法——如何选择神经网络的超参数/2.png">
 <meta property="og:updated_time" content="2018-06-30T02:51:01.836Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="改进神经网络的学习方法——如何选择神经网络的超参数">
 <meta name="twitter:description" content="原文链接：CHAPTER 3 Improving the way neural networks learn  为什么选择神经网络的超参数是个难题直到现在，我们还没有解释对诸如学习率 $\eta$，正则化参数 $\lambda$ 等等超参数选择的方法。我只是给出那些效果很好的值而已。实践中，当你使用神经网络解决问题时，寻找好的超参数其实是很困难的一件事。例如，我们要解决 MNIST 问题，开始时">
-<meta name="twitter:image" content="http://yoursite.com/2018/06/28/改进神经网络的学习方法——如何选择神经网络的超参数/1.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/06/28/改进神经网络的学习方法——如何选择神经网络的超参数/改进神经网络的学习方法——如何选择神经网络的超参数/1.png">
 
 
 
@@ -417,9 +417,9 @@
 <p>所有这些作为一种宽泛的策略看起来很有前途。然而，我想要回到寻找超参数的原点。实际上，即使是上面的讨论也传达出过于乐观的观点。实际上，很容易会遇到神经网络学习不到任何知识的情况。你可能要花费若干天在调整参数上，仍然没有进展。 <strong>所以我想要再重申一下在前期你应该从实验中尽可能早的获得快速反馈。</strong> 直觉上看，这看起来简化问题和架构仅仅会降低你的效率。实际上，这样能够将进度加快，因为你能够更快地找到传达出有意义的信号的网络。一旦你获得这些信号，你可以尝尝通过微调超参数获得快速的性能提升。这和人生中很多情况一样，万事开头难。</p>
 <p>好了，上面就是宽泛的策略。现在我们看看一些具体的设置超参数的推荐。我会聚焦在学习率 $\eta$，L2 regularization参数 $\lambda$，和小批量数据大小。然而，很多的观点同样可以应用在其他的超参数的选择上，包括一些关于网络架构的、其他类型的regularization和一些本书后面遇到的如 momentum co-efficient 这样的超参数。</p>
 <h2 id="学习速率（Learning-rate）"><a href="#学习速率（Learning-rate）" class="headerlink" title="学习速率（Learning rate）"></a>学习速率（Learning rate）</h2><p>假设我们运行了三个不同学习速率（$\eta=0.025$、$\eta=0.25$、$\eta=2.5$）的 MNIST 网络。我们会像前面介绍的实验那样设置其他的超参数，进行 $30$ 回合，minibatch 大小为 $10$，然后 $\lambda = 5.0$。我们同样会使用整个 $50,000$ 幅训练图像。下面是一副展示了训练代价的变化情况的图：</p>
-<p><img src="/2018/06/28/改进神经网络的学习方法——如何选择神经网络的超参数/1.png" alt=""></p>
+<p><img src="改进神经网络的学习方法——如何选择神经网络的超参数/1.png" alt=""></p>
 <p>使用 $\eta=0.025$，代价函数平滑下降到最后的回合。使用 $\eta=0.25$，代价刚开始下降，在大约 $20$ 回合后接近饱和状态，后面就是微小的震荡和随机抖动。最终使用 $\eta=2.5$ 代价从始至终都震荡得非常明显。为了理解震荡的原因，回想一下随机梯度下降其实是期望我们能够逐渐地抵达代价函数的谷底的，</p>
-<p><img src="/2018/06/28/改进神经网络的学习方法——如何选择神经网络的超参数/2.png" alt=""></p>
+<p><img src="改进神经网络的学习方法——如何选择神经网络的超参数/2.png" alt=""></p>
 <p>然而，如果 $\eta$ 太大的话，步长也会变大可能会使得算法在接近最小值时候又越过了谷底。这在 $\eta=2.5$ 时非常可能发生。当我们选择 $\eta=0.25$ 时，初始几步将我们带到了谷底附近，但一旦到达了谷底，又很容易跨越过去。而在我们选择 $\eta=0.025$ 时，在前 $30$ 回合的训练中不再受到这个情况的影响。当然，选择太小的%学习速率，也会带来另一个题,\gls*{sgd}算法变慢了。一种更加好的策略其实是，在开始时使用 $\eta=0.25$，随着越来越接近谷底，就换成$\eta=0.025$。这种可变学习速率的方法我们后面会介绍。现在，我们就聚焦在找出一个单独的好的学习速率的选择，$\eta$。</p>
 <p>所以，有了这样的想法，我们可以如下设置 $\eta$。</p>
 <ul>
@@ -615,7 +615,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -626,7 +626,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -637,7 +637,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-count">68</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

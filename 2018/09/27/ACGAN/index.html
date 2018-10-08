@@ -87,18 +87,18 @@
 <meta property="og:site_name" content="望江人工智库">
 <meta property="og:description" content="标题 说明 附加     《Conditional Image Synthesis with Auxiliary Classifier GANs》 原始论文 2016   《Conditional Image Synthesis with Auxiliary Classifier GANs》阅读笔记 summer 2017   Conditional Image Synthesis Wit">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/09/27/ACGAN/a1.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/27/ACGAN/a2.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/27/ACGAN/a3.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/27/ACGAN/a4.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/27/ACGAN/a5.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/27/ACGAN/a6.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/27/ACGAN/a7.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/27/ACGAN/ACGAN/a1.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/27/ACGAN/ACGAN/a2.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/27/ACGAN/ACGAN/a3.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/27/ACGAN/ACGAN/a4.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/27/ACGAN/ACGAN/a5.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/27/ACGAN/ACGAN/a6.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/27/ACGAN/ACGAN/a7.png">
 <meta property="og:updated_time" content="2018-09-27T11:58:51.553Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Conditional Image Synthesis with Auxiliary Classifier GANs">
 <meta name="twitter:description" content="标题 说明 附加     《Conditional Image Synthesis with Auxiliary Classifier GANs》 原始论文 2016   《Conditional Image Synthesis with Auxiliary Classifier GANs》阅读笔记 summer 2017   Conditional Image Synthesis Wit">
-<meta name="twitter:image" content="http://yoursite.com/2018/09/27/ACGAN/a1.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/09/27/ACGAN/ACGAN/a1.png">
 
 
 
@@ -441,7 +441,7 @@
 <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>表征自然图像的结构是一项丰富的研究工作。 <strong>自然图像遵循内在的不变性，并展示历史上难以量化的多尺度统计结构（Simoncelli＆Olshausen， 2001 ）</strong>。 机器学习的最新进展提供了显着改善图像模型质量的机会。 <strong>改进的图像模型推进了图像去噪（Ballé等， 2015 ） ，压缩（Toderici等， 2016 ） ，绘画（van den Oord等， 2016a ）和超级图像去噪方面的最新技术。 - 分辨率（Ledig等， 2016 ）</strong> 。 更好的自然图像模型也提高了半监督学习任务的性能（Kingma等， 2014 ; Springenberg， 2015 ; Odena， 2016 ; Salimans等， 2016 ）和强化学习问题（Blundell等， 2016 ） 。</p>
 <p>理解自然图像统计的一种方法是构建从头合成图像的系统。 有几种有前景的方法可用于构建图像合成模型。 变分自动编码器（VAE）最大化训练数据对数似然的变化下界（Kingma＆Welling， 2013 ; Rezende等， 2014 ） 。 VAE很容易训练，但引入了关于近似后验分布的潜在限制性假设（但参见（Rezende＆Mohamed， 2015 ; Kingma等， 2016 ） ）。 自回归模型省去了潜在变量并直接模拟了像素上的条件分布（van den Oord et al。， 2016a ， b ） 。 这些模型产生令人信服的样品，但样品成本高，并且不提供潜在的表示。 可逆密度估计器使用一系列限制为可逆的参数化函数直接转换潜在变量（Dinh等， 2016 ） 。 该技术允许精确的对数似然计算和精确推理，但是可逆性约束是限制性的。</p>
 <p>生成性对抗网络（GAN）提供了一种独特且有前景的方法，侧重于用于训练图像合成模型的游戏理论公式（Goodfellow等， 2014 ） 。 最近的研究表明，GAN可以在具有低可变性和低分辨率的数据集上生成令人信服的图像样本（Denton等， 2015 ; Radford等， 2015 ） 。 然而，GAN努力生成全局一致的高分辨率样本 - 特别是来自具有高可变性的数据集。 此外，对GAN的理论理解是一个持续的研究课题（Uehara等， 2016 ; Mohamed和Lakshminarayanan， 2016 ） 。</p>
-<p><img src="/2018/09/27/ACGAN/a1.png" alt=""></p>
+<p><img src="ACGAN/a1.png" alt=""></p>
 <blockquote>
 <p>图1：来自在ImageNet数据集上训练的AC-GAN的5个等级的 128×128 分辨率样本。请注意，已选择显示的类以突出显示模型的成功，并且不具有代表性。 来自所有ImageNet类的样本将在本文后面链接。</p>
 </blockquote>
@@ -464,7 +464,7 @@
 <p><strong>早期的实验证明，在固定模型的同时增加训练课程的数量会降低模型输出的质量。 AC-GAN 模型的结构允许按类别将大数据集分成子集，并为每个子集训练生成器和鉴别器</strong>。 所有ImageNet实验都是使用100个AC-GAN的集合进行的，每个AC-GAN都采用10级分割进行训练。</p>
 <h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><p>我们在ImageNet数据集上训练了几个AC-GAN模型（Russakovsky等， 2015 ） 。 <strong>从广义上讲，发生器 G 的结构是一系列“反卷积”层，它们将噪声 z 和类 c 转换为图像（Odena等， 2016 ）</strong> 。 我们训练两种模型架构的变体，用于生成 128×128 和 64×64 空间分辨率的图像。 鉴别器 D 是具有Leaky ReLU非线性的深度卷积神经网络（Maas等人， 2013 ） 。 如前所述，我们发现减少所有1000类ImageNet引入的可变性可显着提高培训质量。 我们培训了100个AC-GAN型号 - 每个型号只有10个类别 - 用于50000个100个小批量的批量生产。</p>
 <p><strong>由于概率标准的多样性（Theis等， 2015 ）以及缺乏感知上有意义的图像相似性度量，评估图像合成模型的质量具有挑战性</strong>。 尽管如此，在后面的部分中，我们尝试通过构建图像样本可辨性和多样性的若干临时措施来测量AC-GAN的质量。 我们希望这项工作可以提供可用于辅助图像合成模型的培训和后续开发的量化测量。</p>
-<h2 id="生成高分辨率图像可提高可辨别性"><a href="#生成高分辨率图像可提高可辨别性" class="headerlink" title="生成高分辨率图像可提高可辨别性"></a>生成高分辨率图像可提高可辨别性</h2><p><img src="/2018/09/27/ACGAN/a2.png" alt=""><br>图2：生成高分辨率图像可提高可辨性。 上图：来自斑马类的训练数据和合成图像调整为较低的空间分辨率（如上所示），然后人工调整大小为原始分辨率（红线和黑线为 128×128 ;蓝线为 64×64 ）。 初始精度显示在相应图像下方。 左下：对于 64×64 和 128×128 模型的训练数据和图像样本，不同空间分辨率的精度总结。 误差棒测量10个图像子集的标准偏差。 虚线突出了模型输出空间分辨率的精度。 训练数据（剪裁）在分辨率分别为32,64,128和256时分别达到24％，54％，81％和81％的精度。 右下：比较 128×128 和 32×32 空间分辨率（分别为 x 和 y 轴）的精度分数。 每个点代表一个ImageNet类。 84.4％的班级低于平等线。 绿点对应斑马类。 我们还将 128×128 和 64×64 图像人工调整为 256×256 ，作为一种健全性检查，以证明简单地增加像素数量不会增加可辨别性。</p>
+<h2 id="生成高分辨率图像可提高可辨别性"><a href="#生成高分辨率图像可提高可辨别性" class="headerlink" title="生成高分辨率图像可提高可辨别性"></a>生成高分辨率图像可提高可辨别性</h2><p><img src="ACGAN/a2.png" alt=""><br>图2：生成高分辨率图像可提高可辨性。 上图：来自斑马类的训练数据和合成图像调整为较低的空间分辨率（如上所示），然后人工调整大小为原始分辨率（红线和黑线为 128×128 ;蓝线为 64×64 ）。 初始精度显示在相应图像下方。 左下：对于 64×64 和 128×128 模型的训练数据和图像样本，不同空间分辨率的精度总结。 误差棒测量10个图像子集的标准偏差。 虚线突出了模型输出空间分辨率的精度。 训练数据（剪裁）在分辨率分别为32,64,128和256时分别达到24％，54％，81％和81％的精度。 右下：比较 128×128 和 32×32 空间分辨率（分别为 x 和 y 轴）的精度分数。 每个点代表一个ImageNet类。 84.4％的班级低于平等线。 绿点对应斑马类。 我们还将 128×128 和 64×64 图像人工调整为 256×256 ，作为一种健全性检查，以证明简单地增加像素数量不会增加可辨别性。</p>
 <p>构建类条件图像合成模型需要测量合成图像看起来属于预期类的程度。 特别是，我们想知道高分辨率样本不仅仅是对低分辨率样本进行天真的调整。 考虑一个简单的实验：假装存在一个合成 32x32 图像的模型。 通过执行双线性插值，可以平凡地增加合成图像的分辨率。 这将产生更高分辨率的图像，但是这些图像将仅是不可辨别的低分辨率图像的模糊版本。 因此，图像合成模型的目标不仅仅是产生高分辨率图像，而是产生比低分辨率图像更易辨别的高分辨率图像。</p>
 <p><strong>为了测量可辨性，我们将合成图像提供给预先训练的Inception网络（Szegedy等， 2015 ）并报告Inception网络为其分配正确标签的样本部分</strong>。 我们计算了一系列真实和合成图像的精度测量值，这些图像的空间分辨率通过双线性插值人为地降低（图2 ，上图）。 请注意，随着空间分辨率的降低，精度会降低 - 表明生成的图像包含较少的类信息（图2 ，顶部面板下方的分数）。 我们在所有1000个ImageNet类中总结了这一发现，包括ImageNet训练数据（黑色），图2中的 128×128 分辨率AC-GAN（红色）和 64x64分辨率AC-GAN（蓝色）（左下图）。 黑色曲线（剪裁）提供了真实图像可辨性的上限。</p>
 <p>该分析的目的是表明合成更高分辨率的图像会导致可识别性增加。 128×128 模型的精度达到10.1％ ±2.0％，而7.0％±2.0％，样品尺寸调整为 64x64和5.0％ ±2.0％，样品尺寸调整为 32x32  。 换句话说，将AC-GAN的输出缩小到 32x32 和 64x64 分别将视觉辨别率降低50％和38％。 此外，84.4％的ImageNet类在 128×128 处具有比在 32x32 处更高的精度（图2 ，左下）。</p>
@@ -478,25 +478,25 @@
 <p>第二点是MS-SSIM度量不是作为像素空间中发生器分布的熵的代理，而是作为输出的感知多样性的度量。 生成器输出分布的熵难以计算，成对的MS-SSIM分数不是一个好的代理。 即使它很容易计算，我们仍然认为对感知多样性进行单独测量仍然是有用的。 要了解原因，请考虑生成器熵对对比度的微小变化以及输出的语义内容的变化敏感。 在许多应用中，我们并不关心这种对熵的贡献，并且考虑试图忽略我们认为“在感知上毫无意义”的图像的变化的措施是有用的，因此使用MS-SSIM。</p>
 <h2 id="生成的图像既多样又可辨别"><a href="#生成的图像既多样又可辨别" class="headerlink" title="生成的图像既多样又可辨别"></a>生成的图像既多样又可辨别</h2><p>我们已经提出了量化指标，证明AC-GAN样本可能是多样的和可辨别的，但我们尚未研究这些指标如何相互作用。 图6显示了所有类别的初始准确度和MS-SSIM分数的联合分布。 初始精度和MS-SSIM是反相关的。 相比之下，Inception-v3模型在所有1000个类别中平均达到78.8％的准确度（Szegedy等， 2015 ） 。 AC-GAN样品的一小部分达到这种精度水平。 这表明未来图像合成模型的机会。</p>
 <p>这些结果表明，降低模式的GAN最有可能产生低质量的图像。 这与关于GAN的流行假设形成鲜明对比，GAN是以可变性为代价获得高样本质量的。 我们希望这些发现有助于进一步研究GAN与其他图像合成模型之间不同样本质量的原因。</p>
-<p><img src="/2018/09/27/ACGAN/a3.png" alt=""><br>图6：所有1000个ImageNet类的初始精度与MS-SSIM（$r^2=-0.16$）。 每个数据点代表一个类的样本的平均MS-SSIM值。 如图4所示，红线标记所有ImageNet类的最大MS-SSIM值（用于训练数据）。 来自AC-GAN模型的样本不会以可辨别性为代价实现可变性。</p>
+<p><img src="ACGAN/a3.png" alt=""><br>图6：所有1000个ImageNet类的初始精度与MS-SSIM（$r^2=-0.16$）。 每个数据点代表一个类的样本的平均MS-SSIM值。 如图4所示，红线标记所有ImageNet类的最大MS-SSIM值（用于训练数据）。 来自AC-GAN模型的样本不会以可辨别性为代价实现可变性。</p>
 <h2 id="与先前结果的比较"><a href="#与先前结果的比较" class="headerlink" title="与先前结果的比较"></a>与先前结果的比较</h2><p><strong>在对数似然性方面报告了在ImageNet上训练的图像合成模型的先前定量结果（van den Oord等， 2016a ， b ）</strong> 。 <strong>对数似然是一种粗略且可能不准确的样本质量测量（Theis等， 2015 ）</strong>。 相反，我们使用较低的空间分辨率（32x32）与CIFAR-10上先前的最新结果进行比较。 按照（Salimans等， 2016 ）中的程序 ，我们计算初始分数 3 对于分辨率为（32x32）的AC-GAN的50000个样本，随机分成10组。 我们还计算了25000个额外样本的初始分数，随机分成5组。 我们根据第一个分数选择最佳模型并报告第二个分数。 在27个超参数配置中执行网格搜索，与现有技术8.09 ± 0.07相比，我们能够获得8.25 ± 0.07的分数（Salimans等， 2016 ） 。 此外，我们在不采用该工作中引入的任何新技术（即虚拟批量标准化，小批量区分和标签平滑）的情况下实现了这一点。</p>
 <p>这提供了额外的证据，即AC-GAN即使没有类别分裂的好处也是有效的。 参见图7 ，对AC-GAN样品和模型样品进行定性比较（Salimans等， 2016 ） 。</p>
-<p><img src="/2018/09/27/ACGAN/a4.png" alt=""></p>
+<p><img src="ACGAN/a4.png" alt=""></p>
 <blockquote>
 <p>图7：从ImageNet数据集生成的样本。 （左）从模型中生成的样本（Salimans等， 2016 ） 。 （右）从AC-GAN生成的随机选择的样本。 AC-GAN样品在早期模型的样品中缺乏全局一致性。</p>
 </blockquote>
 <h2 id="搜索过度拟合的证据"><a href="#搜索过度拟合的证据" class="headerlink" title="搜索过度拟合的证据"></a>搜索过度拟合的证据</h2><p>必须研究的一种可能性是AC-GAN在训练数据上过度拟合。 作为网络不记忆训练数据的第一次检查，我们在像素空间中通过L1距离测量的训练数据中识别图像样本的最近邻居（图8 ）。 来自训练数据的最近邻居不与相应的样本相似。 这提供了AC-GAN不仅仅是记忆训练数据的证据。</p>
-<p><img src="/2018/09/27/ACGAN/a5.png" alt=""></p>
+<p><img src="ACGAN/a5.png" alt=""></p>
 <blockquote>
 <p>图8：最近邻分析。 （顶部）来自单个ImageNet类的样本。 （下）每个样本的训练数据中对应的最近邻居（L1距离）。</p>
 </blockquote>
 <p>用于理解模型中过度拟合程度的更复杂方法是​​通过插值来探索该模型的潜在空间。 <strong>在过拟合模型中，可以观察到插值图像中的离散跃迁和潜在空间中与有意义的图像不对应的区域（Bengio等人， 2012 ; Radford等人， 2015 ; Dinh等人， 2016 ）</strong> 。 图9 （顶部）突出显示了几个图像样本之间潜在空间中的插值。 值得注意的是，发生器了解到某些尺寸组合对应于语义上有意义的特征（例如拱的大小，鸟喙的长度），并且在潜在空间中没有离散的过渡或“洞”。</p>
 <p>探索AC-GAN潜在空间的第二种方法是利用模型的结构。 AC-GAN将其表示分解为类信息和类独立的潜在表示z。 <strong>采用z固定但是改变类标签对AC-GAN进行采样对应于在多个类中生成具有相同“风格”的样本（Kingma等， 2014 ）</strong> 。 <strong>图9 （底部）显示了8个鸟类的样本。 同一行的元素具有相同的z。 尽管每列的类都在变化，但全局结构的元素（例如位置，布局，背景）仍然保留，表明AC-GAN可以表示某些类型的“组合性”。</strong></p>
-<p><img src="/2018/09/27/ACGAN/a6.png" alt=""></p>
+<p><img src="ACGAN/a6.png" alt=""></p>
 <blockquote>
 <p>图9：（顶部）所选ImageNet类的潜在空间插值。 最左侧和右侧列显示三对图像样本 - 每对来自不同的类。 中间列突出显示这三对图像之间潜在空间中的线性插值。 （底部）与类无关的信息包含关于合成图像的全局结构。 每列是一个独特的鸟类，而每一行对应一个固定的潜在代码z。</p>
 </blockquote>
-<h2 id="测量类别分裂对图像样本质量的影响"><a href="#测量类别分裂对图像样本质量的影响" class="headerlink" title="测量类别分裂对图像样本质量的影响"></a>测量类别分裂对图像样本质量的影响</h2><p>类条件图像合成提供了基于图像标签划分数据集的机会。 在我们的最终模型中，我们将1000个ImageNet类划分为100个AC-GAN模型。 在本节中，我们将描述实验，这些实验强调了减少用于训练AC-GAN的类别的多样性的好处。 我们采用了标签的排序，并将其分为10个连续的组。这个排序可以在下面的部分中看到，我们在这里显示来自所有1000个类的样本。 分裂绩效讨论的两个方面：每个分裂的类数和分裂内多样性。<strong>我们发现在更多类别上训练固定模型会损害模型生成引人注目的样本的能力（图10 ）</strong>。通过为模型提供更多参数，可以提高较大分割的性能。但是，使用小分割不足以实现良好的性能。我们无法训练GAN （Goodfellow et al。，2014），即使对于1的分割大小也能可靠地收敛。<strong>这就提出了一个问题，即在不同的类别上训练模型是否比在类似的集合上训练更容易课程：我们无法找到确凿的证据表明分组中的课程选择会显着影响样本质量</strong>。<br><img src="/2018/09/27/ACGAN/a7.png" alt=""></p>
+<h2 id="测量类别分裂对图像样本质量的影响"><a href="#测量类别分裂对图像样本质量的影响" class="headerlink" title="测量类别分裂对图像样本质量的影响"></a>测量类别分裂对图像样本质量的影响</h2><p>类条件图像合成提供了基于图像标签划分数据集的机会。 在我们的最终模型中，我们将1000个ImageNet类划分为100个AC-GAN模型。 在本节中，我们将描述实验，这些实验强调了减少用于训练AC-GAN的类别的多样性的好处。 我们采用了标签的排序，并将其分为10个连续的组。这个排序可以在下面的部分中看到，我们在这里显示来自所有1000个类的样本。 分裂绩效讨论的两个方面：每个分裂的类数和分裂内多样性。<strong>我们发现在更多类别上训练固定模型会损害模型生成引人注目的样本的能力（图10 ）</strong>。通过为模型提供更多参数，可以提高较大分割的性能。但是，使用小分割不足以实现良好的性能。我们无法训练GAN （Goodfellow et al。，2014），即使对于1的分割大小也能可靠地收敛。<strong>这就提出了一个问题，即在不同的类别上训练模型是否比在类似的集合上训练更容易课程：我们无法找到确凿的证据表明分组中的课程选择会显着影响样本质量</strong>。<br><img src="ACGAN/a7.png" alt=""></p>
 <blockquote>
 <p>图10：针对训练期间使用的ImageNet类的数量绘制的10个ImageNet类的平均成对MS-SSIM值。我们使用10到100之间的值来修复除训练课程数量之外的所有内容。我们仅报告前10个课程的MS-SSIM值以保持分数可比。随着班级计数的增加，MS-SSIM迅速超过0.25（红线）。使用每个模型的相同数量的训练步骤，使用每个类计数9个随机重启来计算这些分数。由于我们观察到生成器不能从崩溃阶段恢复，因此在这种情况下使用固定数量的训练步骤似乎是合理的。</p>
 </blockquote>
@@ -660,7 +660,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -671,7 +671,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -682,7 +682,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-count">68</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

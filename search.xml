@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[MarkDown问题]]></title>
+    <url>%2F2018%2F10%2F08%2FMarkDown%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[Hexo 公式渲染 标题 内容 时间 如何在 hexo 中支持 Mathjax？ 20171129 Hexo博客next主题数学公式渲染问题 20180515]]></content>
+      <categories>
+        <category>MarkDown</category>
+      </categories>
+      <tags>
+        <tag>MarkDown</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[条件随机场 CRF]]></title>
     <url>%2F2018%2F10%2F04%2F%E6%9D%A1%E4%BB%B6%E9%9A%8F%E6%9C%BA%E5%9C%BA%2F</url>
-    <content type="text"><![CDATA[标题 说明 附加 如何轻松愉快地理解条件随机场（CRF）？ milter 浅析 2017 如何用简单易懂的例子解释条件随机场（CRF）模型？它和HMM有什么区别？ Scofield 详解 2018 zh-NER-keras 基于keras的BiLstm与CRF实现命名实体标注this project is a sample for Chinese Named Entity Recognition(NER) by Keras 2.1.4 2018 bilsm_crf_model.py123456789101112131415161718192021222324252627from keras.models import Sequentialfrom keras.layers import Embedding, Bidirectional, LSTMfrom keras_contrib.layers import CRFimport process_dataimport pickleEMBED_DIM = 200BiRNN_UNITS = 200def create_model(train=True): if train: (train_x, train_y), (test_x, test_y), (vocab, chunk_tags) = process_data.load_data() else: with open('model/config.pkl', 'rb') as inp: (vocab, chunk_tags) = pickle.load(inp) model = Sequential() model.add(Embedding(len(vocab), EMBED_DIM, mask_zero=True)) # Random embedding model.add(Bidirectional(LSTM(BiRNN_UNITS // 2, return_sequences=True))) crf = CRF(len(chunk_tags), sparse_target=True) model.add(crf) model.summary() model.compile('adam', loss=crf.loss_function, metrics=[crf.accuracy]) if train: return model, (train_x, train_y), (test_x, test_y) else: return model, (vocab, chunk_tags)]]></content>
+    <content type="text"><![CDATA[标题 说明 附加 如何轻松愉快地理解条件随机场（CRF）？ milter 浅析 2017 如何用简单易懂的例子解释条件随机场（CRF）模型？它和HMM有什么区别？ Scofield 详解 2018 zh-NER-keras 基于keras的BiLstm与CRF实现命名实体标注this project is a sample for Chinese Named Entity Recognition(NER) by Keras 2.1.4 2018 bilsm_crf_model.py123456789101112131415161718192021222324252627from keras.models import Sequentialfrom keras.layers import Embedding, Bidirectional, LSTMfrom keras_contrib.layers import CRFimport process_dataimport pickleEMBED_DIM = 200BiRNN_UNITS = 200def create_model(train=True): if train: (train_x, train_y), (test_x, test_y), (vocab, chunk_tags) = process_data.load_data() else: with open('model/config.pkl', 'rb') as inp: (vocab, chunk_tags) = pickle.load(inp) model = Sequential() model.add(Embedding(len(vocab), EMBED_DIM, mask_zero=True)) # Random embedding model.add(Bidirectional(LSTM(BiRNN_UNITS // 2, return_sequences=True))) crf = CRF(len(chunk_tags), sparse_target=True) model.add(crf) model.summary() model.compile('adam', loss=crf.loss_function, metrics=[crf.accuracy]) if train: return model, (train_x, train_y), (test_x, test_y) else: return model, (vocab, chunk_tags) 使用条件随机场 CRF 完成命名实体识别 NER]]></content>
       <categories>
         <category>机器学习</category>
       </categories>
