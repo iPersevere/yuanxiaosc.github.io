@@ -87,10 +87,14 @@
 <meta property="og:site_name" content="望江人工智库">
 <meta property="og:description" content="标题 说明 附加     如何轻松愉快地理解条件随机场（CRF）？ milter 浅析 2017   如何用简单易懂的例子解释条件随机场（CRF）模型？它和HMM有什么区别？ Scofield 详解 2018   zh-NER-keras 基于keras的BiLstm与CRF实现命名实体标注this project is a sample for Chinese Named Entity">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-05T03:06:25.955Z">
+<meta property="og:image" content="http://yoursite.com/2018/10/04/条件随机场/a1.jpeg">
+<meta property="og:image" content="http://yoursite.com/2018/10/04/条件随机场/a2.jpeg">
+<meta property="og:image" content="http://yoursite.com/2018/10/04/条件随机场/a3.jpeg">
+<meta property="og:updated_time" content="2018-10-08T03:08:47.974Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="条件随机场 CRF">
 <meta name="twitter:description" content="标题 说明 附加     如何轻松愉快地理解条件随机场（CRF）？ milter 浅析 2017   如何用简单易懂的例子解释条件随机场（CRF）模型？它和HMM有什么区别？ Scofield 详解 2018   zh-NER-keras 基于keras的BiLstm与CRF实现命名实体标注this project is a sample for Chinese Named Entity">
+<meta name="twitter:image" content="http://yoursite.com/2018/10/04/条件随机场/a1.jpeg">
 
 
 
@@ -401,9 +405,18 @@
 <td>基于keras的BiLstm与CRF实现命名实体标注this project is a sample for Chinese Named Entity Recognition(NER) by Keras 2.1.4</td>
 <td>2018</td>
 </tr>
+<tr>
+<td><a href="https://www.cnblogs.com/en-heng/p/6214023.html" target="_blank" rel="noopener">【中文分词】条件随机场CRF</a></td>
+<td></td>
+<td></td>
+</tr>
 </tbody>
 </table>
 </div>
+<h2 id="科普-CRF"><a href="#科普-CRF" class="headerlink" title="科普 CRF"></a><a href="http://www.sohu.com/a/207085690_206784" target="_blank" rel="noopener">科普 CRF</a></h2><h3 id="逐标签Softmax"><a href="#逐标签Softmax" class="headerlink" title="逐标签Softmax"></a>逐标签Softmax</h3><p><img src="/2018/10/04/条件随机场/a1.jpeg" alt=""></p>
+<h3 id="条件随机场"><a href="#条件随机场" class="headerlink" title="条件随机场"></a>条件随机场</h3><p>逐标签softmax是一种简单有效的方法，但有时候会出现不合理的结果。比如我们用sbme来做4标签分词时，逐标签softmax无法排除出现bbbb这样的序列的可能性，但这个序列是违反了我们的解码规则（b后面只能接m或e）。</p>
+<p>因此，有人说逐标签softmax不需要动态规划，那是不对的，这种情况下，我们至少需要一个“非0即1”的转移矩阵，直接把不合理的转移概率设为0（如p(b|b) =0，然后通过动态规划保证得到合理的序列。<br><img src="/2018/10/04/条件随机场/a2.jpeg" alt=""></p>
+<h3 id="线性链CRF"><a href="#线性链CRF" class="headerlink" title="线性链CRF"></a>线性链CRF</h3><p><img src="/2018/10/04/条件随机场/a3.jpeg" alt=""></p>
 <h2 id="bilsm-crf-model-py"><a href="#bilsm-crf-model-py" class="headerlink" title="bilsm_crf_model.py"></a><a href="https://github.com/stephen-v/zh-NER-keras/blob/master/bilsm_crf_model.py" target="_blank" rel="noopener">bilsm_crf_model.py</a></h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Embedding, Bidirectional, LSTM</span><br><span class="line"><span class="keyword">from</span> keras_contrib.layers <span class="keyword">import</span> CRF</span><br><span class="line"><span class="keyword">import</span> process_data</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"></span><br><span class="line">EMBED_DIM = <span class="number">200</span></span><br><span class="line">BiRNN_UNITS = <span class="number">200</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_model</span><span class="params">(train=True)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> train:</span><br><span class="line">        (train_x, train_y), (test_x, test_y), (vocab, chunk_tags) = process_data.load_data()</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">'model/config.pkl'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> inp:</span><br><span class="line">            (vocab, chunk_tags) = pickle.load(inp)</span><br><span class="line">    model = Sequential()</span><br><span class="line">    model.add(Embedding(len(vocab), EMBED_DIM, mask_zero=<span class="keyword">True</span>))  <span class="comment"># Random embedding</span></span><br><span class="line">    model.add(Bidirectional(LSTM(BiRNN_UNITS // <span class="number">2</span>, return_sequences=<span class="keyword">True</span>)))</span><br><span class="line">    crf = CRF(len(chunk_tags), sparse_target=<span class="keyword">True</span>)</span><br><span class="line">    model.add(crf)</span><br><span class="line">    model.summary()</span><br><span class="line">    model.compile(<span class="string">'adam'</span>, loss=crf.loss_function, metrics=[crf.accuracy])</span><br><span class="line">    <span class="keyword">if</span> train:</span><br><span class="line">        <span class="keyword">return</span> model, (train_x, train_y), (test_x, test_y)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> model, (vocab, chunk_tags)</span><br></pre></td></tr></table></figure>
 <h1 id="使用条件随机场-CRF-完成命名实体识别-NER"><a href="#使用条件随机场-CRF-完成命名实体识别-NER" class="headerlink" title="使用条件随机场 CRF 完成命名实体识别 NER"></a>使用条件随机场 CRF 完成命名实体识别 NER</h1>
       
@@ -559,7 +572,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -581,7 +594,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -624,7 +637,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#bilsm-crf-model-py"><span class="nav-number">1.</span> <span class="nav-text">bilsm_crf_model.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用条件随机场-CRF-完成命名实体识别-NER"><span class="nav-number"></span> <span class="nav-text">使用条件随机场 CRF 完成命名实体识别 NER</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#科普-CRF"><span class="nav-number">1.</span> <span class="nav-text">科普 CRF</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#逐标签Softmax"><span class="nav-number">1.1.</span> <span class="nav-text">逐标签Softmax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件随机场"><span class="nav-number">1.2.</span> <span class="nav-text">条件随机场</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性链CRF"><span class="nav-number">1.3.</span> <span class="nav-text">线性链CRF</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bilsm-crf-model-py"><span class="nav-number">2.</span> <span class="nav-text">bilsm_crf_model.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用条件随机场-CRF-完成命名实体识别-NER"><span class="nav-number"></span> <span class="nav-text">使用条件随机场 CRF 完成命名实体识别 NER</span></a></div>
             
 
           </div>

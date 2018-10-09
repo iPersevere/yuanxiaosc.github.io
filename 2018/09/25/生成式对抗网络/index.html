@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/09/25/生成式对抗网络/a2.png">
 <meta property="og:image" content="http://yoursite.com/2018/09/25/生成式对抗网络/a1.png">
-<meta property="og:updated_time" content="2018-09-25T13:25:57.283Z">
+<meta property="og:updated_time" content="2018-10-08T03:40:53.560Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="生成式对抗网络 Generative Adversarial Network (GAN)">
 <meta name="twitter:description" content="生成式对抗网络定义生成式对抗网络（GAN, Generative Adversarial Networks ）是一种深度学习模型，是近年来复杂分布上无监督学习最具前景的方法之一。模型通过框架中（至少）两个模块：生成模型（Generative Model）和判别模型（Discriminative Model）的互相博弈学习产生相当好的输出。原始 GAN 理论中，并不要求 G 和 D 都是神经网络，只">
@@ -380,7 +380,7 @@
 
       
         <h1 id="生成式对抗网络定义"><a href="#生成式对抗网络定义" class="headerlink" title="生成式对抗网络定义"></a><a href="https://baike.baidu.com/item/Gan/22181905?fr=aladdin" target="_blank" rel="noopener">生成式对抗网络定义</a></h1><p>生成式对抗网络（GAN, Generative Adversarial Networks ）是一种深度学习模型，是近年来复杂分布上无监督学习最具前景的方法之一。模型通过框架中（至少）两个模块：生成模型（Generative Model）和判别模型（Discriminative Model）的互相博弈学习产生相当好的输出。原始 GAN 理论中，并不要求 G 和 D 都是神经网络，只需要是能拟合相应生成和判别的函数即可。但实用中一般均使用深度神经网络作为 G 和 D 。一个优秀的GAN应用需要有良好的训练方法，否则可能由于神经网络模型的自由性而导致输出不理想。</p>
-<h1 id="生成式对抗网络资源列表"><a href="#生成式对抗网络资源列表" class="headerlink" title="生成式对抗网络资源列表"></a>生成式对抗网络资源列表</h1><h2 id="2014《Generative-Adversarial-Networks》"><a href="#2014《Generative-Adversarial-Networks》" class="headerlink" title="2014《Generative Adversarial Networks》"></a><a href="https://arxiv.org/abs/1406.2661" target="_blank" rel="noopener">2014《Generative Adversarial Networks》</a></h2><p>Ian J. Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David Warde-Farley, Sherjil Ozair, Aaron Courville, Yoshua Bengio</p>
+<h1 id="生成式对抗网络资源列表"><a href="#生成式对抗网络资源列表" class="headerlink" title="生成式对抗网络资源列表"></a>生成式对抗网络资源列表</h1><h2 id="2014-GAN《Generative-Adversarial-Networks》"><a href="#2014-GAN《Generative-Adversarial-Networks》" class="headerlink" title="2014 GAN《Generative Adversarial Networks》"></a><a href="https://arxiv.org/abs/1406.2661" target="_blank" rel="noopener">2014 GAN《Generative Adversarial Networks》</a></h2><p>Ian J. Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David Warde-Farley, Sherjil Ozair, Aaron Courville, Yoshua Bengio</p>
 <blockquote>
 <p>We propose a new framework for estimating generative models via an adversarial process, in which we simultaneously train two models: a generative model G that captures the data distribution, and a discriminative model D that estimates the probability that a sample came from the training data rather than G. The training procedure for G is to maximize the probability of D making a mistake. This framework corresponds to a minimax two-player game. In the space of arbitrary functions G and D, a unique solution exists, with G recovering the training data distribution and D equal to 1/2 everywhere. In the case where G and D are defined by multilayer perceptrons, the entire system can be trained with backpropagation. There is no need for any Markov chains or unrolled approximate inference networks during either training or generation of samples. Experiments demonstrate the potential of the framework through qualitative and quantitative evaluation of the generated samples.</p>
 </blockquote>
@@ -391,12 +391,15 @@
 <p>This report summarizes the tutorial presented by the author at NIPS 2016 on generative adversarial networks (GANs). The tutorial describes: (1) Why generative modeling is a topic worth studying, (2) how generative models work, and how GANs compare to other generative models, (3) the details of how GANs work, (4) research frontiers in GANs, and (5) state-of-the-art image models that combine GANs with other methods. Finally, the tutorial contains three exercises for readers to complete, and the solutions to these exercises.</p>
 </blockquote>
 <p>Comments:    v2-v4 are all typo fixes. No substantive changes relative to v1<br>Subjects:    Machine Learning (cs.LG)<br>Cite as:    arXiv:1701.00160 [cs.LG]<br>     (or arXiv:1701.00160v4 [cs.LG] for this version)</p>
-<h2 id="2016《Conditional-Image-Synthesis-With-Auxiliary-Classifier-GANs》"><a href="#2016《Conditional-Image-Synthesis-With-Auxiliary-Classifier-GANs》" class="headerlink" title="2016《Conditional Image Synthesis With Auxiliary Classifier GANs》"></a><a href="https://arxiv.org/abs/1610.09585" target="_blank" rel="noopener">2016《Conditional Image Synthesis With Auxiliary Classifier GANs》</a></h2><p>Conditional Image Synthesis With Auxiliary Classifier GANs<br>Augustus Odena, Christopher Olah, Jonathon Shlens<br>(Submitted on 30 Oct 2016 (v1), last revised 20 Jul 2017 (this version, v4))</p>
+<h2 id="2016-ACGAN-《Conditional-Image-Synthesis-With-Auxiliary-Classifier-GANs》"><a href="#2016-ACGAN-《Conditional-Image-Synthesis-With-Auxiliary-Classifier-GANs》" class="headerlink" title="2016 ACGAN 《Conditional Image Synthesis With Auxiliary Classifier GANs》"></a><a href="https://arxiv.org/abs/1610.09585" target="_blank" rel="noopener">2016 ACGAN 《Conditional Image Synthesis With Auxiliary Classifier GANs》</a></h2><p>Conditional Image Synthesis With Auxiliary Classifier GANs<br>Augustus Odena, Christopher Olah, Jonathon Shlens<br>(Submitted on 30 Oct 2016 (v1), last revised 20 Jul 2017 (this version, v4))</p>
 <blockquote>
 <p>Synthesizing high resolution photorealistic images has been a long-standing challenge in machine learning. In this paper we introduce new methods for the improved training of generative adversarial networks (GANs) for image synthesis. We construct a variant of GANs employing label conditioning that results in 128x128 resolution image samples exhibiting global coherence. We expand on previous work for image quality assessment to provide two new analyses for assessing the discriminability and diversity of samples from class-conditional image synthesis models. These analyses demonstrate that high resolution samples provide class information not present in low resolution samples. Across 1000 ImageNet classes, 128x128 samples are more than twice as discriminable as artificially resized 32x32 samples. In addition, 84.7% of the classes have samples exhibiting diversity comparable to real ImageNet data.</p>
 <p>合成高分辨率照片级真实感图像一直是机器学习中的长期挑战。 在本文中，我们介绍了用于图像合成的改进生成对抗网络（GAN）训练的新方法。 我们构建了采用标签调节的GAN变体，其产生128x128分辨率的图像样本，表现出全局一致性。 我们扩展了以前的图像质量评估工作，为评估类条件图像合成模型中样本的可辨性和多样性提供了两个新的分析。 这些分析表明，高分辨率样品提供了低分辨率样品中不存在的类信息。 在1000个ImageNet类中，128x128样本的差异是人工调整大小的32x32样本的两倍多。 此外，84.7％的类别的样本具有与真实ImageNet数据相当的多样性。</p>
 </blockquote>
 <p>Subjects:    Machine Learning (stat.ML); Computer Vision and Pattern Recognition (cs.CV)<br>Cite as:    arXiv:1610.09585 [stat.ML]<br>     (or arXiv:1610.09585v4 [stat.ML] for this version)</p>
+<h1 id="2019-BigGAN-《LARGE-SCALE-GAN-TRAINING-FOR-HIGH-FIDELITY-NATURAL-IMAGE-SYNTHESIS》"><a href="#2019-BigGAN-《LARGE-SCALE-GAN-TRAINING-FOR-HIGH-FIDELITY-NATURAL-IMAGE-SYNTHESIS》" class="headerlink" title="2019 BigGAN 《LARGE SCALE GAN TRAINING FOR HIGH FIDELITY NATURAL IMAGE SYNTHESIS》 "></a><a href="https://www.jiqizhixin.com/articles/2018-10-05-5" target="_blank" rel="noopener">2019 BigGAN 《LARGE SCALE GAN TRAINING FOR HIGH FIDELITY NATURAL IMAGE SYNTHESIS》 </a></h1><blockquote>
+<p>尽管近期由于生成图像建模的研究进展，从复杂数据集例如 ImageNet 中生成高分辨率、多样性的样本仍然是很大的挑战。为此，在这篇提交到 ICLR 2019 的论文中，研究者尝试在最大规模的数据集中训练生成对抗网络，并研究在这种规模的训练下的不稳定性。研究者发现应用垂直正则化（orthogonal regularization）到生成器可以使其服从简单的「截断技巧」（truncation trick），从而允许通过截断隐空间来精调样本保真度和多样性的权衡。这种修改方法可以让模型在类条件的图像合成中达到当前最佳性能。当在 128x128 分辨率的 ImageNet 上训练时，本文提出的模型—BigGAN—可以达到 166.3 的 Inception 分数（IS），以及 9.6 的 Frechet Inception 距离（FID），而之前的最佳 IS 和 FID 仅为 52.52 和 18.65。</p>
+</blockquote>
 
       
     </div>
@@ -551,7 +554,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -573,7 +576,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -616,7 +619,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#生成式对抗网络定义"><span class="nav-number">1.</span> <span class="nav-text">生成式对抗网络定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生成式对抗网络资源列表"><span class="nav-number">2.</span> <span class="nav-text">生成式对抗网络资源列表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2014《Generative-Adversarial-Networks》"><span class="nav-number">2.1.</span> <span class="nav-text">2014《Generative Adversarial Networks》</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GAN-极大极小博弈精髓"><span class="nav-number">2.1.1.</span> <span class="nav-text">GAN 极大极小博弈精髓</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2016《NIPS-2016-Tutorial-Generative-Adversarial-Networks》"><span class="nav-number">2.2.</span> <span class="nav-text">2016《NIPS 2016 Tutorial: Generative Adversarial Networks》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2016《Conditional-Image-Synthesis-With-Auxiliary-Classifier-GANs》"><span class="nav-number">2.3.</span> <span class="nav-text">2016《Conditional Image Synthesis With Auxiliary Classifier GANs》</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#生成式对抗网络定义"><span class="nav-number">1.</span> <span class="nav-text">生成式对抗网络定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生成式对抗网络资源列表"><span class="nav-number">2.</span> <span class="nav-text">生成式对抗网络资源列表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2014-GAN《Generative-Adversarial-Networks》"><span class="nav-number">2.1.</span> <span class="nav-text">2014 GAN《Generative Adversarial Networks》</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GAN-极大极小博弈精髓"><span class="nav-number">2.1.1.</span> <span class="nav-text">GAN 极大极小博弈精髓</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2016《NIPS-2016-Tutorial-Generative-Adversarial-Networks》"><span class="nav-number">2.2.</span> <span class="nav-text">2016《NIPS 2016 Tutorial: Generative Adversarial Networks》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2016-ACGAN-《Conditional-Image-Synthesis-With-Auxiliary-Classifier-GANs》"><span class="nav-number">2.3.</span> <span class="nav-text">2016 ACGAN 《Conditional Image Synthesis With Auxiliary Classifier GANs》</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2019-BigGAN-《LARGE-SCALE-GAN-TRAINING-FOR-HIGH-FIDELITY-NATURAL-IMAGE-SYNTHESIS》"><span class="nav-number">3.</span> <span class="nav-text">2019 BigGAN 《LARGE SCALE GAN TRAINING FOR HIGH FIDELITY NATURAL IMAGE SYNTHESIS》 </span></a></li></ol></div>
             
 
           </div>
