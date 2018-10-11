@@ -93,7 +93,8 @@
 <meta property="og:image" content="http://yoursite.com/2018/10/10/fasttext/a4.png">
 <meta property="og:image" content="http://yoursite.com/2018/10/10/fasttext/a5.png">
 <meta property="og:image" content="http://yoursite.com/2018/10/10/fasttext/a6.png">
-<meta property="og:updated_time" content="2018-10-09T13:25:24.171Z">
+<meta property="og:image" content="http://yoursite.com/2018/10/10/fasttext/d1.png">
+<meta property="og:updated_time" content="2018-10-11T10:28:49.823Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bag of Tricks for Efficient Text Classification">
 <meta name="twitter:description" content="N-gram features词袋模型不考虑词序的问题，若将词序信息添加进去又会造成过高的计算代价。文章取而代之使用bag of n-gram来将词序信息引入：比如 我来到颐和园参观，相应的bigram特征为：我来 来到 到颐 颐和 和园 园参 参观相应的trigram特征为：我来到 来到颐 到颐和 颐和园 和园参 园参观并使用哈希算法高效的存储n-gram信息。     标题 说明 附加">
@@ -428,6 +429,7 @@
 <p>Subjects:    Computation and Language (cs.CL)<br>Cite as:    arXiv:1607.01759 [cs.CL]<br>     (or arXiv:1607.01759v3 [cs.CL] for this version)</p>
 <h1 id="学习该论文的写作方法"><a href="#学习该论文的写作方法" class="headerlink" title="学习该论文的写作方法"></a>学习该论文的写作方法</h1><p><strong>论文目录</strong><br><img src="/2018/10/10/fasttext/a1.png" alt=""></p>
 <p><strong>论文内容</strong><br><img src="/2018/10/10/fasttext/a2.png" alt=""><br><img src="/2018/10/10/fasttext/a3.png" alt=""><br><img src="/2018/10/10/fasttext/a4.png" alt=""><br><img src="/2018/10/10/fasttext/a5.png" alt=""><br><img src="/2018/10/10/fasttext/a6.png" alt=""></p>
+<h1 id="imdb-fasttext-与不使用-N-gram-features-相比"><a href="#imdb-fasttext-与不使用-N-gram-features-相比" class="headerlink" title="imdb_fasttext 与不使用 N-gram features 相比"></a><a href="https://github.com/keras-team/keras/blob/master/examples/imdb_fasttext.py" target="_blank" rel="noopener">imdb_fasttext</a> 与不使用 N-gram features 相比</h1><p>红色线是不使用 N-gram features，绿色线是使用，显然使用 N-gram features 有效果<br><img src="/2018/10/10/fasttext/d1.png" alt=""></p>
 
       
     </div>
@@ -496,6 +498,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/11/SMP2018中文人机对话技术评测（ECDT）/" rel="prev" title="SMP2018中文人机对话技术评测（ECDT）">
+                SMP2018中文人机对话技术评测（ECDT） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -576,7 +582,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -598,7 +604,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -641,7 +647,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#N-gram-features"><span class="nav-number">1.</span> <span class="nav-text">N-gram features</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bag-of-Tricks-for-Efficient-Text-Classification"><span class="nav-number">2.</span> <span class="nav-text">Bag of Tricks for Efficient Text Classification</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#学习该论文的写作方法"><span class="nav-number">3.</span> <span class="nav-text">学习该论文的写作方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#N-gram-features"><span class="nav-number">1.</span> <span class="nav-text">N-gram features</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bag-of-Tricks-for-Efficient-Text-Classification"><span class="nav-number">2.</span> <span class="nav-text">Bag of Tricks for Efficient Text Classification</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#学习该论文的写作方法"><span class="nav-number">3.</span> <span class="nav-text">学习该论文的写作方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#imdb-fasttext-与不使用-N-gram-features-相比"><span class="nav-number">4.</span> <span class="nav-text">imdb_fasttext 与不使用 N-gram features 相比</span></a></li></ol></div>
             
 
           </div>
