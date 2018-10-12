@@ -1,0 +1,2352 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="深度学习,前馈神经网络,证明," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前馈神经网络的符号定义     符号 意义     $m$ 样本个数。   $k$ 样本标签向量的维度。   $d^l$ 神经网络第 l 层神经元的个数。   $\sigma(·)$ 是某一种常用的激活函数。比如 sigmoid、tanh 和 ReLu 函数等。   $\rho(·)$ 神经网络输出层的变换函数。比如 logistic 和 Softmax 函数等。   $C$ 代价函数。   $L">
+<meta name="keywords" content="深度学习,前馈神经网络,证明">
+<meta property="og:type" content="article">
+<meta property="og:title" content="矩阵形式的前馈神经网络">
+<meta property="og:url" content="http://yoursite.com/2018/10/12/矩阵形式的前馈神经网络/index.html">
+<meta property="og:site_name" content="望江人工智库">
+<meta property="og:description" content="前馈神经网络的符号定义     符号 意义     $m$ 样本个数。   $k$ 样本标签向量的维度。   $d^l$ 神经网络第 l 层神经元的个数。   $\sigma(·)$ 是某一种常用的激活函数。比如 sigmoid、tanh 和 ReLu 函数等。   $\rho(·)$ 神经网络输出层的变换函数。比如 logistic 和 Softmax 函数等。   $C$ 代价函数。   $L">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/矩阵形式的前馈神经网络/two_1.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/矩阵形式的前馈神经网络/two_1.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/矩阵形式的前馈神经网络/one_7.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/矩阵形式的前馈神经网络/one_5.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/矩阵形式的前馈神经网络/one_3.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/矩阵形式的前馈神经网络/one_4.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/矩阵形式的前馈神经网络/one_2.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/矩阵形式的前馈神经网络/one_6.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/矩阵形式的前馈神经网络/one_8.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/矩阵形式的前馈神经网络/one_9.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/矩阵形式的前馈神经网络/two_2.png">
+<meta property="og:updated_time" content="2018-10-12T12:33:35.533Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="矩阵形式的前馈神经网络">
+<meta name="twitter:description" content="前馈神经网络的符号定义     符号 意义     $m$ 样本个数。   $k$ 样本标签向量的维度。   $d^l$ 神经网络第 l 层神经元的个数。   $\sigma(·)$ 是某一种常用的激活函数。比如 sigmoid、tanh 和 ReLu 函数等。   $\rho(·)$ 神经网络输出层的变换函数。比如 logistic 和 Softmax 函数等。   $C$ 代价函数。   $L">
+<meta name="twitter:image" content="http://yoursite.com/2018/10/12/矩阵形式的前馈神经网络/two_1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/12/矩阵形式的前馈神经网络/"/>
+
+
+
+
+
+  <title>矩阵形式的前馈神经网络 | 望江人工智库</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">望江人工智库</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/12/矩阵形式的前馈神经网络/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="望江车神">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/16183570?s=400&u=5e09ebb784cfd47de99d249f2be2413adcf4e672&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="望江人工智库">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">矩阵形式的前馈神经网络</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-12T20:00:00+08:00">
+                2018-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/talk-is-cheap-show-me-the-prove/" itemprop="url" rel="index">
+                    <span itemprop="name">talk is cheap show me the prove</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前馈神经网络的符号定义"><a href="#前馈神经网络的符号定义" class="headerlink" title="前馈神经网络的符号定义"></a>前馈神经网络的符号定义</h2><p><img src="/2018/10/12/矩阵形式的前馈神经网络/two_1.png" alt=""></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$m$</td>
+<td>样本个数。</td>
+</tr>
+<tr>
+<td>$k$</td>
+<td>样本标签向量的维度。</td>
+</tr>
+<tr>
+<td>$d^l$</td>
+<td>神经网络第 l 层神经元的个数。</td>
+</tr>
+<tr>
+<td>$\sigma(·)$</td>
+<td>是某一种常用的激活函数。比如 sigmoid、tanh 和 ReLu 函数等。</td>
+</tr>
+<tr>
+<td>$\rho(·)$</td>
+<td>神经网络输出层的变换函数。比如 logistic 和 Softmax 函数等。</td>
+</tr>
+<tr>
+<td>$C$</td>
+<td>代价函数。</td>
+</tr>
+<tr>
+<td>$Loss$</td>
+<td>损失函数，意义同 $C$ 。</td>
+</tr>
+<tr>
+<td>$sum(·)$</td>
+<td>求和函数。可以根据矩阵行或列求和，比如 $sum(D, axis=0)$ 就是按照矩阵 $D$ 的行求和。</td>
+</tr>
+<tr>
+<td>$where(·)$</td>
+<td>条件函数。可以根据矩阵元素满足的条件操作，比如 ${Y}=where(A&gt;=0.5, 1, 0)$ 就是若矩阵 $A$ 中元素 $a_{ij}$ 大于等于 0.5 则 $Y$ 矩阵中对应位置元素 $y_{ij}$ 的值取 1 否则取 0。</td>
+</tr>
+<tr>
+<td>$*$</td>
+<td>按矩阵元素乘积。比如 $A * B$。</td>
+</tr>
+<tr>
+<td>$\odot$</td>
+<td>按矩阵元素乘积。比如 $A \odot B$。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>向量形式</th>
+<th>维度</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$x$</td>
+<td>$[x_0,x_1,…,x_n]^T$</td>
+<td>$(n, 1)$</td>
+<td>$x$ 表示一个有 $n$ 维特征样本实例， $x_i$ 表示向量的第 $i$ 维特征。</td>
+</tr>
+<tr>
+<td>$w_{jk}^{l}$</td>
+<td>标量</td>
+<td>$(1, 1)$</td>
+<td>是从 $l-1$ 层的第 $k$ 个神经元到 $l$ 层的第 $j$ 个神经元的权重。</td>
+</tr>
+<tr>
+<td>$b_j^l$</td>
+<td>标量</td>
+<td>$(1, 1)$</td>
+<td>是第 $l$ 层的第 $j$ 个神经元的偏置。</td>
+</tr>
+<tr>
+<td>$z_j^l$</td>
+<td>标量</td>
+<td>$(1, 1)$</td>
+<td>是第 $l$ 层的第 $j$ 个神经元的带权输入。</td>
+</tr>
+<tr>
+<td>$a_j^l$</td>
+<td>标量</td>
+<td>$(1, 1)$</td>
+<td>是第 $l$ 层的第 $j$ 个神经元的激活值。</td>
+</tr>
+<tr>
+<td>$y_j$</td>
+<td>标量</td>
+<td>$(1, 1)$</td>
+<td>样本标签向量的第 $j$ 个值。</td>
+</tr>
+<tr>
+<td>$\hat y_j$</td>
+<td>标量</td>
+<td>$(1, 1)$</td>
+<td>估计的样本标签向量的第 $j$ 个值。</td>
+</tr>
+<tr>
+<td>$\delta_j^l$</td>
+<td>标量</td>
+<td>$(1, 1)$</td>
+<td>是第 $l$ 层的第 $j$ 个神经元的误差值。</td>
+</tr>
+<tr>
+<td>$z^l$</td>
+<td>$[z_0,z_1,…,z_{d^l}]^T$</td>
+<td>$(d^l, 1)$</td>
+<td>表示第第 $l$ 层的带权输入。第 $j$ 个元素是 $z_j^l$。</td>
+</tr>
+<tr>
+<td>$a^{l}$</td>
+<td>$[a_0,a_1,…,a_{d^l}]^T$</td>
+<td>$(d^l, 1)$</td>
+<td>是激活向量。第 $j$ 行的元素是 $a_j^l$。</td>
+</tr>
+<tr>
+<td>$b^l$</td>
+<td>$[b_0,b_1,…,b_{d^l}]^T$</td>
+<td>$(d^l, 1)$</td>
+<td>偏置向量，第 $j$ 行的元素是 $b_j^l$</td>
+</tr>
+<tr>
+<td>$W^{l}$</td>
+<td>$\left[\begin{matrix} w_{i1}^l &amp; w_{i2}^l &amp;···&amp; w_{ik}^l &amp; \\ \\w_{j1}^l &amp; w_{j2}^l &amp;···&amp; w_{jk}^l\end{matrix} \right]$</td>
+<td>$(d^l, d^{l-1})$</td>
+<td>权重矩阵，第 $j$ 行 $k$ 列的元素是 $w_{jk}^{l}$。</td>
+</tr>
+<tr>
+<td>$\delta^l$</td>
+<td>$[\delta_0,\delta_1,…,\delta_{d^l}]^T$</td>
+<td>$(d^l, 1)$</td>
+<td>是误差向量，$\delta^l$ 的第 $j$ 个元素是 $\delta_j^l$。</td>
+</tr>
+<tr>
+<td>$z^{v,l}$</td>
+<td>$[z_0,z_1,…,z_{d^l}]^T$</td>
+<td>$(d^l, 1)$</td>
+<td>表示神经网络第 $l$ 层的小批量样本中的第 $v$ 个样本的带权输入向量。</td>
+</tr>
+<tr>
+<td>$a^{v,l}$</td>
+<td>$[a_0,a_1,…,a_{d^l}]^T$</td>
+<td>$(d^l, 1)$</td>
+<td>表示神经网络第 $l$ 层的小批量样本中的第 $v$ 个样本的激活向量。</td>
+</tr>
+<tr>
+<td>$\delta^{v,l}$</td>
+<td>$[\delta_0,\delta_1,…,\delta_{d^l}]^T$</td>
+<td>$(d^l, 1)$</td>
+<td>表示神经网络第 $l$ 层的小批量样本中的第 $v$ 个样本的误差。</td>
+</tr>
+<tr>
+<td>$y$</td>
+<td>$[y_0,y_1,…,y_{k}]^T$</td>
+<td>$(k, 1)$</td>
+<td>标签向量，第 $j$ 个值是 $y_j$。</td>
+</tr>
+<tr>
+<td>$\hat y$</td>
+<td>$[\hat y_0,\hat y_1,…,\hat y_{k}]^T$</td>
+<td>$(k, 1)$</td>
+<td>估计的标签向量，第 $j$ 个值是 $\hat y_j$。</td>
+</tr>
+<tr>
+<td>$X$</td>
+<td>$[{(x^{(1)})}^T,{(x^{(2)})}^T,…,{(x^{(m)})}^T]^T$</td>
+<td>$(m, n)$</td>
+<td>样本矩阵，第 $i$ 行是第 $i$ 个样本向量 $x^{(i)}$ 的转置。</td>
+</tr>
+<tr>
+<td>$Y$</td>
+<td>$[{(y^{(1)})}^T,{(y^{(2)})}^T,…,{(y^{(m)})}^T]^T$</td>
+<td>$(m, k)$</td>
+<td>标签矩阵，第 $i$ 行是第 $i$ 个标签向量 $y^{(i)}$ 的转置。</td>
+</tr>
+<tr>
+<td>$\hat Y$</td>
+<td>$[{(\hat y^{(1)})}^T,{(\hat y^{(2)})}^T,…,{(\hat y^{(m)})}^T]^T$</td>
+<td>$(m, k)$</td>
+<td>估计的标签矩阵，第 $i$ 行是第 $i$ 个标签向量 $\hat y^{(i)}$ 的转置。</td>
+</tr>
+<tr>
+<td>$Z^l$</td>
+<td>$[{(z^{1,l})}^T,{(z^{2,l})}^T,…,{(z^{m,l})}^T]^T$</td>
+<td>$(m, d^l)$</td>
+<td>带权输入矩阵，第 $v$ 行是第 $v$ 个样本在第 $l$ 层的带权输入向量 $z^{v,l}$ 的转置。</td>
+</tr>
+<tr>
+<td>$A^l$</td>
+<td>$[{(a^{1,l})}^T,{(a^{2,l})}^T,…,{(a^{m,l})}^T]^T$</td>
+<td>$(m, d^l)$</td>
+<td>激活矩阵，第 $v$ 行是第 $v$ 个样本在第 $l$ 层的激活向量 $a^{v,l}$ 的转置。</td>
+</tr>
+<tr>
+<td>$\Delta^l$</td>
+<td>$[{(\delta^{1,l})}^T,{(\delta^{2,l})}^T,…,{(\delta^{m,l})}^T]^T$</td>
+<td>$(m, d^l)$</td>
+<td>误差矩阵，第 $v$ 行是第 $v$ 个样本在第 $l$ 层的误差向量 $\delta^{v,l}$ 的转置。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="前向传播算法的基本公式"><a href="#前向传播算法的基本公式" class="headerlink" title="前向传播算法的基本公式"></a>前向传播算法的基本公式</h2><p><img src="/2018/10/12/矩阵形式的前馈神经网络/two_1.png" alt=""></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>计算公式</th>
+<th>维度变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$a^1=x$</td>
+<td>$(n, 1) = (n, 1)$</td>
+</tr>
+<tr>
+<td>$z^l = W^l a^{l-1}+b^l$</td>
+<td>$({d}^l, 1) =({d}^{l}, {d}^{l-1}) (d^{l-1}, 1) + (d^l, 1)$</td>
+</tr>
+<tr>
+<td>$a^{l} =\sigma{(z^{l})}$</td>
+<td>$(d^l, 1) = (d^l, 1)$</td>
+</tr>
+<tr>
+<td>$a^{L} =\varphi(z^{L})$</td>
+<td>$(?, 1) \leftarrow (d^L, 1)$</td>
+</tr>
+<tr>
+<td>$\hat{y}=\rho(a^L)$</td>
+<td>$(?, 1) \leftarrow (?, 1)$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>前馈神经网络可以通过逐层信息传递，得到网络最后的输出 $a^L$。整个网络可以看做一个复合函数 $\varphi(x;W,b)$，将向量 $x$ 作为第一层的输入 $a^1$，将第 $L$ 层的输出 $a^L$ 作为整个函数的输出。</p>
+<script type="math/tex; mode=display">x = a^1 \rightarrow z^2 \rightarrow a^2 \rightarrow ··· \rightarrow a^{L-1} \rightarrow z^L \rightarrow a^L=\varphi(x;W,b)</script><p>其中 $W, b$ 表示网络中所有层的连接权重和偏置。</p>
+<h2 id="矩阵形式前向传播算法的计算公式"><a href="#矩阵形式前向传播算法的计算公式" class="headerlink" title="矩阵形式前向传播算法的计算公式"></a>矩阵形式前向传播算法的计算公式</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>计算公式</th>
+<th>维度变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$A^1=X$</td>
+<td>$(m, n) = (m, n)$</td>
+</tr>
+<tr>
+<td>$Z^l=A^{l-1}{(W^{l})}^T + {(b^l)}^T$</td>
+<td>$(m, {d}^l) = (m, {d}^{l-1}) {({d}^{l}, {d}^{l-1})}^T + {(d^{l},1)}^T$</td>
+</tr>
+<tr>
+<td>$A^l=\sigma(Z^l)$</td>
+<td>$(m, d^l) = (m, d^l)$</td>
+</tr>
+<tr>
+<td>$A^L=\varphi(Z^L)$</td>
+<td>$(m, ?) \leftarrow (m, d^L)$</td>
+</tr>
+<tr>
+<td>$\hat{Y}=\rho(A^L)$</td>
+<td>$(m, ?) \leftarrow (m, ?)$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>矩阵形式前向传播算法的计算公式不过是把原来的向量 $x$ 装进了矩阵 $X$ 当中，网络最终的输出变成了 $A^L$。整个网络仍然可以看做一个复合函数 $\varphi(X;W,b)$。</p>
+<script type="math/tex; mode=display">X = A^1 \rightarrow Z^2 \rightarrow A^2 \rightarrow ··· \rightarrow A^{L-1} \rightarrow Z^L \rightarrow A^L=\varphi(X;W,b)</script><p>其中 $W, b$ 表示网络中所有层的连接权重和偏置。</p>
+<h2 id="反向传播算法的四个基本公式"><a href="#反向传播算法的四个基本公式" class="headerlink" title="反向传播算法的四个基本公式"></a>反向传播算法的四个基本公式</h2><p>有关反向传播算法的理解和证明见<a href="https://yuanxiaosc.github.io/2018/06/21/反向传播算法/" target="_blank" rel="noopener">《反向传播算法》</a></p>
+<p><img src="/2018/10/12/矩阵形式的前馈神经网络/one_7.png" alt=""></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>计算公式</th>
+<th>维度变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\delta^L =\nabla_a C\odot \dfrac{\partial \varphi^{(L)}}{\partial z^L} $</td>
+<td>$(d^L, 1) = (d^L, 1) * (d^L, 1)$</td>
+</tr>
+<tr>
+<td>$\delta^{(l)} =({(W^{(l+1)})}^T\delta^{(l+1)})\odot \sigma’(z^l) $</td>
+<td>$(d^l, 1) = {({d}^{l+1}, {d}^{l})}^T (d^{l+1}, 1) * (d^l, 1)$</td>
+</tr>
+<tr>
+<td>$\dfrac{\partial C}{\partial b^{(l)}} =\delta^{(l)}$</td>
+<td>$(d^l, 1) = (d^l, 1)$</td>
+</tr>
+<tr>
+<td>$\dfrac{\partial C}{\partial W^l} = \delta^l (a^{l-1})^T $</td>
+<td>$(d^l, d^{l-1}) = (d^l,1) {(d^{l-1}, 1)}^T$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>对于代价函数函数有两种写法 $C$ 和 $Loss$，它两在本文中是一个意思。</p>
+<h2 id="矩阵形式反向传播四个基本公式"><a href="#矩阵形式反向传播四个基本公式" class="headerlink" title="矩阵形式反向传播四个基本公式"></a>矩阵形式反向传播四个基本公式</h2><p>反向传播算法对一个训练样本计算代价函数的梯度，$C=C_x$。在实践中，通常将反向传播算法和诸如随机梯度下降这样的学习算法进行组合使用，我们会对许多训练样本计算对应的梯度。特别地，给定一个大小为 m 的小批量数据，下面的算法在这个小批量数据的基础上应用梯度下降学习算法：</p>
+<p><img src="/2018/10/12/矩阵形式的前馈神经网络/one_5.png" alt=""></p>
+<p>下面给出矩阵形式的反向传播算法：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>计算公式</th>
+<th>维度变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\Delta^L =\nabla_{A^L} C\odot \dfrac{\partial \varphi^{(L)}}{\partial Z^L}$</td>
+<td>$(m, d^L) = (m, d^L) * (m, d^L)$</td>
+</tr>
+<tr>
+<td>$\Delta^{l} =(\Delta^{l+1}W^{l+1})\odot \sigma’(Z^l)$</td>
+<td>$(m, {d}^l) = (m, {d}^{l+1}) ({d}^{l+1}, {d}^l)$</td>
+</tr>
+<tr>
+<td>$\dfrac{\partial C}{\partial b^{(l)}} =\dfrac{1}{m}{(sum(\Delta^l, axis=0))}^T$</td>
+<td>$(d^l, 1) = {(1, d^l)}^T$</td>
+</tr>
+<tr>
+<td>$\dfrac{\partial C}{\partial W^{(l)}} =\dfrac{1}{m}{(\Delta^l)}^TA^{l-1} $</td>
+<td>$(d^{l}, d^{l-1}) = {(m, d^l)}^T(m, d^{l-1})$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="前馈神经网络与传统机器学习算法的关系"><a href="#前馈神经网络与传统机器学习算法的关系" class="headerlink" title="前馈神经网络与传统机器学习算法的关系"></a>前馈神经网络与传统机器学习算法的关系</h2><h3 id="从理论上的分析"><a href="#从理论上的分析" class="headerlink" title="从理论上的分析"></a>从理论上的分析</h3><p><img src="/2018/10/12/矩阵形式的前馈神经网络/one_3.png" alt=""></p>
+<p>目前大部分的机器学习算法是将特征处理（即前三步）和预测分开的，并且主要关注于最后一步，即构建预测函数。但是实际操作过程中，不同预测模型的性能相差不多，而前三步中的特征处理对最终系统的准确性有着十分关键的作用。由于特征处理一般都需要人工干预完成，利用人类的经验来选取好的“特征”，并最终提高机器学习系统的性能。因此，很多的模式识别问题变成了特征工程（Feature Engineering）问题。开发一个机器学习系统的主要工作量都消耗在了预处理和特提取以及征转换上。</p>
+<p>在处理好特征后，传统机器学习模型主要关注于分类或预测。这类机器学习称为浅层学习（Shallow Learning）。浅层学习的一个重要特点是不涉及特征学习，其特征主要靠人工经验或特征转换方法来抽取。</p>
+<p>为了提高机器学习系统的准确率，我们就需要将输入信息转换为有效的特征（feature），也叫表示（representation）。如果有一种算法可以自动地学习出有效的特征，并提高最终分类器的性能，那么这种学习就是可以叫做表示学习（Representation Learning）。</p>
+<p>深度学习（Deep Learning，DL）是指如何从数据中学习一个“深度模型”的问题，是机器学习的一个子问题。通过构建具有一定“深度”的模型，可以让模型来自动学习好的特征表示（从底层特征，到中层特征，再到高层特征），从而最终提升预测或识别的准确性。下图给出了深度学习的数据处理流程。</p>
+<p><img src="/2018/10/12/矩阵形式的前馈神经网络/one_4.png" alt=""></p>
+<p>深度学习的主要目的是从数据中自动学习到有效的特征，即表示学习。深度学习技术在一定程度上可以看作是一个表示学习技术，通过多层的非线性转换，把原始数据变成为更高层次、更抽象的表示。这些学习到的表示可以替代人工设计的特征，从而避免“特征工程”。</p>
+<h3 id="从数学层面的分析"><a href="#从数学层面的分析" class="headerlink" title="从数学层面的分析"></a>从数学层面的分析</h3><p>前馈神经网络具有很强的拟合能力，常见的连续非线性函数都可以用前馈神经网络来近似。</p>
+<p><img src="/2018/10/12/矩阵形式的前馈神经网络/one_2.png" alt=""></p>
+<p>根据通用近似定理，神经网络在某种程度上可以作为一个“万能”函数来使用，可以用来进行复杂的特征转换，或逼近一个复杂的条件分布。在机器学习中，输入样本的特征对分类器的影响很大。以监督学习为例，好的特征可以极大提高分类器的性能。因此，要取得好的分类效果，需要样本的原始特征向量x 转换到更有效的特征向量φ(x)，这个过程叫做特征抽取。</p>
+<p>多层前馈神经网络可以看作是一个非线性复合函数$\varphi: R^p\rightarrow R^q$，将输入$x\in R^p$ 映射到输出 $\varphi(x)\in R^q$。因此，多层前馈神经网络也可以看成是一种特征转换方法，其输出 $\varphi(x)$ 作为分类器的输入进行分类。</p>
+<p>给定一个训练样本(x, y)，先利用多层前馈神经网络将x 映射到φ(x)，然后再将φ(x) 输入到分类器 $\rho(·)$ 。其中 $\rho(·)$ 为线性或非线性的分类器，$\theta$ 为分类器 $\rho(·)$ 的参数，$\hat y$ 为分类器的输出。</p>
+<script type="math/tex; mode=display">\hat y = \rho(\varphi(x), \theta)</script><p>特别地，如果分类器g(·) 为 logistic 回归分类器或softmax 回归分类器，那么 g(·) 也可以看成是网络的最后一层，即神经网络直接输出不同类别的后验概率。</p>
+<p>对于两类分类问题y 2 {0, 1}，并采用logistic 回归，那么 logistic 回归分类器可以看成神经网络的最后一层。也就是说，网络的最后一层只用一个神经元，并且其激活函数为logistic 函数。网络的输出可以直接可以作为两个类别的后验概率。</p>
+<script type="math/tex; mode=display">p(y=1|x)=a^{(L)}</script><p>其中 $a^{(L)}\in R$ 为第 L 层神经元的激活值。</p>
+<p>对于多类分类问题 $y\in \{1,2,…,K \}$，如果使用 softmax 回归分类器，相当于网络最后一层设置 K 个神经元，其输出经过softmax 函数进行归一化后可以作为每个类的后验概率。</p>
+<script type="math/tex; mode=display">\hat y=softmax(z^{(L)})</script><p>其中 $z^{(L)}\in R$ 为第 L 层神经元的带权输入，$\hat y\in R^K$ 为第 L 层神经元的激活值，分别表示不同类别标签的预测后验概率。</p>
+<p>反之，logistic 回归或 softmax 回归也可以看作是只有一层的神经网络。</p>
+<h3 id="深度学习的优势"><a href="#深度学习的优势" class="headerlink" title="深度学习的优势"></a>深度学习的优势</h3><p>在一些复杂的模式识别任务中，传统机器学习方法需要将一个模式识别任务的输入和输出之间人为地切割成很多子模块（或多个阶段），每个子模块分开学习。比如一个自然语言理解任务，一般需要分词、词性标注、句法分析、语义分析、语义推理等步骤。这种学习方式有两个问题：一是每一个模块都需要单独优化，并且其优化目标和任务总体目标并不能保证一致。二是错误传播，即前一步的错误会对后续的模型造成很大的影响。这样就增加了机器学习方法在实际应用的难度。</p>
+<p>端到端学习（End-to-End Learning），也称端到端训练，是指在学习过程中不进行分模块或分阶段进行训练，直接优化任务的总体目标。在端到端学习中，一般不需要明确地给出不同模块或阶段的功能，中间过程不需要人为干预。端到端学习的训练数据为“输入-输出”对的形式，无需提供其它额外信息。因此，端到端学习和深度学习一样，都是要解决“贡献度分配”问题。</p>
+<h2 id="神经网络应用到逻辑回归"><a href="#神经网络应用到逻辑回归" class="headerlink" title="神经网络应用到逻辑回归"></a>神经网络应用到逻辑回归</h2><p>机器学习中矩阵形式的逻辑回归模型计算公式如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>模型名称</th>
+<th>模型概率输出函数</th>
+<th>模型的分类决策函数</th>
+<th>模型损失函数</th>
+<th>模型损失函数的梯度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>线性回归模型|$\hat{p} = \sigma(\boldsymbol X\theta)$|$\hat{y}=where(\hat{p}&gt;=0.5, 1, 0)$|$J(\boldsymbol{\theta}) =-\dfrac{1}{m}[y^T log(\hat{p})+(1-y^T)log(1-\hat{p})]$|$\nabla_{W} Loss = \frac{1}{m}{X}^T(p-y)$|</p>
+<p>关于上面内容的具体分析见<a href="">《矩阵形式的逻辑回归模型》</a>，下面根据神经网络的符号和定义对上面的符号做一些修改，本质上是一致的。</p>
+<p>神经网络中的逻辑回归模型：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>模型名称</th>
+<th>模型概率输出函数</th>
+<th>模型的分类决策函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>神经网络线性回归模型|$A^{L} = logistic(Z^{L})$|$\hat{Y}=where(A^{L}&gt;=0.5, 1, 0)$|</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>模型损失函数</th>
+<th>模型输出层损失函数的梯度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$Loss =-\dfrac{1}{m}[Y^T log(A^{L})+(1-Y^T)log(1-A^{L})]$</td>
+<td>$\Delta^{L} = A^{(L)}-Y$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="逻辑回归实例分析"><a href="#逻辑回归实例分析" class="headerlink" title="逻辑回归实例分析"></a>逻辑回归实例分析</h3><p><img src="/2018/10/12/矩阵形式的前馈神经网络/one_6.png" alt=""></p>
+<p>针对该例子的符号说明如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>维度</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$X$</td>
+<td>(m,2)</td>
+<td>样本矩阵</td>
+</tr>
+<tr>
+<td>$W^2$</td>
+<td>(3,2)</td>
+<td>第二层的权重矩阵</td>
+</tr>
+<tr>
+<td>$W^3$</td>
+<td>(1,3)</td>
+<td>第三层的权重矩阵</td>
+</tr>
+<tr>
+<td>$b^2$</td>
+<td>(3,1)</td>
+<td>第二层的偏置矩阵</td>
+</tr>
+<tr>
+<td>$b^3$</td>
+<td>(1,1)</td>
+<td>第三层的偏置矩阵</td>
+</tr>
+<tr>
+<td>$Z^2$</td>
+<td>(m,3)</td>
+<td>第二层的带权输入矩阵</td>
+</tr>
+<tr>
+<td>$Z^3$</td>
+<td>(m,1)</td>
+<td>第三层的带权输入矩阵</td>
+</tr>
+<tr>
+<td>$A^1$</td>
+<td>(m,2)</td>
+<td>第一层的激活矩阵</td>
+</tr>
+<tr>
+<td>$A^2$</td>
+<td>(m,3)</td>
+<td>第二层的激活矩阵</td>
+</tr>
+<tr>
+<td>$A^3$</td>
+<td>(m,1)</td>
+<td>第三层的激活矩阵</td>
+</tr>
+<tr>
+<td>$\hat Y$</td>
+<td>(m,1)</td>
+<td>输出矩阵</td>
+</tr>
+<tr>
+<td>$Y$</td>
+<td>(m,1)</td>
+<td>标签矩阵</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>前向传播过程</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>计算公式</th>
+<th>维度变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$A^1=X$</td>
+<td>$(m, 2) = (m, 2)$</td>
+</tr>
+<tr>
+<td>$Z^2=A^1{(W^2)}^T + {(b^2)}^T$</td>
+<td>$(m, 3) = (m, 2) {(3, 2)}^T + {(3, 1)}^T$</td>
+</tr>
+<tr>
+<td>$A^2=\sigma(Z^2)$</td>
+<td>$(m, 3) = (m, 3)$</td>
+</tr>
+<tr>
+<td>$Z^3=A^2{(W^3)}^T + {(b^3)}^T$</td>
+<td>$(m, 1) = (m, 3) {(3, 1)}^T + {(1, 1)}^T$</td>
+</tr>
+<tr>
+<td>$A^3=sigmoid(Z^3)$</td>
+<td>$(m, 1) = (m, 1)$</td>
+</tr>
+<tr>
+<td>$\hat{Y}=where(A^{(3)} &gt;= 0.5, 1, 0)$</td>
+<td>$(m, 1) = (m, 1)$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>反向传播过程</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>计算公式</th>
+<th>维度变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\Delta^3=A^3-Y$</td>
+<td>$(m, 1) = (m, 1) - (m, 1)$</td>
+</tr>
+<tr>
+<td>$\dfrac{\partial C}{\partial b^{3}} =\dfrac{1}{m}{(sum(\Delta^3, axis=0))}^T $</td>
+<td>$(1, 1) = {(1, 1)}^T$</td>
+</tr>
+<tr>
+<td>$\dfrac{\partial C}{\partial W^{3}} =\dfrac{1}{m}{(\Delta^3)}^TA^{2} $</td>
+<td>$(1, 3) = {(m, 1)}^T (m, 3)$</td>
+</tr>
+<tr>
+<td>$\Delta^{2} =(\Delta^{3}W^{3})\odot \sigma’(Z^2) $</td>
+<td>$(m, 3) = ((m, 1) (1, 3)) * (m, 3)$</td>
+</tr>
+<tr>
+<td>$\dfrac{\partial C}{\partial b^{2}} =\dfrac{1}{m}{(sum(\Delta^2, axis=0))}^T $</td>
+<td>$(3, 1) = {(1, 3)}^T$</td>
+</tr>
+<tr>
+<td>$\dfrac{\partial C}{\partial W^{2}} =\dfrac{1}{m}{(\Delta^2)}^TA^{1} $</td>
+<td>$(3, 2) = {(m, 3)}^T (m, 2)$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="神经网络应用到-Softmax-多分类模型"><a href="#神经网络应用到-Softmax-多分类模型" class="headerlink" title="神经网络应用到 Softmax 多分类模型"></a>神经网络应用到 Softmax 多分类模型</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>模型名称</th>
+<th>模型概率输出函数</th>
+<th>模型分类决策函数</th>
+<th>模型损失函数</th>
+<th>模型损失函数的梯度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Softmax分类模型</td>
+<td>$ A =softmax(X W)$</td>
+<td>$\hat{Y} =argmax(softmax(XW), axis=0)$</td>
+<td>$Loss = - \dfrac{1}{m}(sum(Y\odot log (A)))$</td>
+<td>$\nabla_{W} Loss =\frac{1}{m}{X}^T(A-{Y})$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>关于上面内容的具体分析见<a href="">《矩阵形式的Softmax多分类模型》</a>，下面根据神经网络的符号和定义对上面的符号做一些修改，本质上是一致的。</p>
+<p>神经网络应用到 Softmax 多分类模型，</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>模型名称</th>
+<th>模型概率输出函数</th>
+<th>模型分类决策函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>神经网络Softmax分类模型</td>
+<td>$ A^L=softmax(Z^L)$</td>
+<td>$\hat{Y} =argmax(A^L, axis=0)$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>模型损失函数</th>
+<th>模型输出层损失函数的梯度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$Loss = - \dfrac{1}{m}(sum(Y\odot log (A^L)))$</td>
+<td>$\Delta^{(L)} = A^{(L)}-Y$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="Softmax-回归实例分析"><a href="#Softmax-回归实例分析" class="headerlink" title="Softmax 回归实例分析"></a>Softmax 回归实例分析</h3><p><img src="/2018/10/12/矩阵形式的前馈神经网络/one_8.png" alt=""></p>
+<p>针对该例子的符号说明如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>维度</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$X$</td>
+<td>(m,3)</td>
+<td>样本矩阵</td>
+</tr>
+<tr>
+<td>$W^2$</td>
+<td>(5,3)</td>
+<td>第二层的权重矩阵</td>
+</tr>
+<tr>
+<td>$W^3$</td>
+<td>(4,5)</td>
+<td>第三层的权重矩阵</td>
+</tr>
+<tr>
+<td>$b^2$</td>
+<td>(5,1)</td>
+<td>第二层的偏置矩阵</td>
+</tr>
+<tr>
+<td>$b^3$</td>
+<td>(4,1)</td>
+<td>第三层的偏置矩阵</td>
+</tr>
+<tr>
+<td>$Z^2$</td>
+<td>(m,5)</td>
+<td>第二层的带权输入矩阵</td>
+</tr>
+<tr>
+<td>$Z^3$</td>
+<td>(m,4)</td>
+<td>第三层的带权输入矩阵</td>
+</tr>
+<tr>
+<td>$A^1$</td>
+<td>(m,3)</td>
+<td>第一层的激活矩阵</td>
+</tr>
+<tr>
+<td>$A^2$</td>
+<td>(m,5)</td>
+<td>第二层的激活矩阵</td>
+</tr>
+<tr>
+<td>$A^3$</td>
+<td>(m,4)</td>
+<td>第三层的激活矩阵</td>
+</tr>
+<tr>
+<td>$\hat Y$</td>
+<td>(m,1)</td>
+<td>输出矩阵</td>
+</tr>
+<tr>
+<td>$Y$</td>
+<td>(m,1)</td>
+<td>标签矩阵</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>前向传播过程</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>计算公式</th>
+<th>维度变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$A^1=X$</td>
+<td>$(m, 3) = (m, 3)$</td>
+</tr>
+<tr>
+<td>$Z^2=A^1{(W^2)}^T + {(b^2)}^T$</td>
+<td>$(m, 5) = (m, 3) {(5, 3)}^T + {(5, 1)}^T$</td>
+</tr>
+<tr>
+<td>$A^2=\sigma(Z^2)$</td>
+<td>$(m, 5) = (m, 5)$</td>
+</tr>
+<tr>
+<td>$Z^3=A^2{(W^3)}^T + {(b^3)}^T$</td>
+<td>$(m, 4) = (m, 5){(4, 5)}^T + {(4, 1)}^T$</td>
+</tr>
+<tr>
+<td>$A^3=softmax(Z^3)$</td>
+<td>$(m, 4) = (m, 4)$</td>
+</tr>
+<tr>
+<td>$\hat{Y} =argmax(A^3, axis=0)$</td>
+<td>$(m, 1) = (m, 1)$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>反向传播过程</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>计算公式</th>
+<th>维度变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\Delta^3=A^3-Y$</td>
+<td>$(m, 4) = (m, 4) - (m, 4)$</td>
+</tr>
+<tr>
+<td>$\dfrac{\partial C}{\partial b^{3}} =\dfrac{1}{m}{(sum(\Delta^3, axis=0))}^T $</td>
+<td>$(4, 1) = {(1, 4)}^T$</td>
+</tr>
+<tr>
+<td>$\dfrac{\partial C}{\partial W^{3}} =\dfrac{1}{m}{(\Delta^3)}^TA^{2} $</td>
+<td>$(4, 5) = {(m, 4)}^T (m, 5)$</td>
+</tr>
+<tr>
+<td>$\Delta^{2} =(\Delta^{3}W^{3})\odot \sigma’(Z^2) $</td>
+<td>$(m, 5) = ((m, 4) (4, 5)) * (m, 5)$</td>
+</tr>
+<tr>
+<td>$\dfrac{\partial C}{\partial b^{2}} =\dfrac{1}{m}{(sum(\Delta^2, axis=0))}^T $</td>
+<td>$(5, 1) = {(1, 5)}^T$</td>
+</tr>
+<tr>
+<td>$\dfrac{\partial C}{\partial W^{2}} =\dfrac{1}{m}{(\Delta^2)}^TA^{1} $</td>
+<td>$(5, 3) = {(m, 5)}^T (m, 3)$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="神经网络应用到-logistic-多标签分类模型"><a href="#神经网络应用到-logistic-多标签分类模型" class="headerlink" title="神经网络应用到 logistic 多标签分类模型"></a>神经网络应用到 logistic 多标签分类模型</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>模型名称</th>
+<th>模型概率输出函数</th>
+<th>模型分类决策函数</th>
+<th>模型损失函数</th>
+<th>模型损失函数的梯度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sigmoid多标签分类模型</td>
+<td>$A = \sigma(XW)$</td>
+<td>$\hat{Y}=where(A &gt;=0.5, 1, 0)$</td>
+<td>$Loss = - \dfrac{1}{m}(sum(Y\odot log (A)+(1-Y) \odot{A} ))$</td>
+<td>$\nabla_{W} Loss =\frac{1}{m}{X}^T(A-{Y})$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>关于上面内容的具体分析见<a href="">《矩阵形式的Sigmoid多标签分类模型》</a>，下面根据神经网络的符号和定义对上面的符号做一些修改，本质上是一致的。</p>
+<p>神经网络应用到 logistic 多标签分类模型，</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>模型名称</th>
+<th>模型概率输出函数</th>
+<th>模型分类决策函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>神经网络Logistic多标签分类模型</td>
+<td>$ A^L=logistic(Z^L)$</td>
+<td>$\hat{Y}=where(A^L &gt;=0.5, 1, 0), axis=0$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>模型损失函数</th>
+<th>模型输出层损失函数的梯度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$Loss = - \dfrac{1}{m}(sum(Y\odot log (A^L)))$</td>
+<td>$\Delta^{(L)} = A^{(L)}-Y$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="logistic-多标签分类实例分析"><a href="#logistic-多标签分类实例分析" class="headerlink" title="logistic 多标签分类实例分析"></a>logistic 多标签分类实例分析</h3><p><img src="/2018/10/12/矩阵形式的前馈神经网络/one_9.png" alt=""></p>
+<p>针对该例子的符号说明如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>维度</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$X$</td>
+<td>(m,3)</td>
+<td>样本矩阵</td>
+</tr>
+<tr>
+<td>$W^2$</td>
+<td>(5,3)</td>
+<td>第二层的权重矩阵</td>
+</tr>
+<tr>
+<td>$W^3$</td>
+<td>(4,5)</td>
+<td>第三层的权重矩阵</td>
+</tr>
+<tr>
+<td>$b^2$</td>
+<td>(5,1)</td>
+<td>第二层的偏置矩阵</td>
+</tr>
+<tr>
+<td>$b^3$</td>
+<td>(4,1)</td>
+<td>第三层的偏置矩阵</td>
+</tr>
+<tr>
+<td>$Z^2$</td>
+<td>(m,5)</td>
+<td>第二层的带权输入矩阵</td>
+</tr>
+<tr>
+<td>$Z^3$</td>
+<td>(m,4)</td>
+<td>第三层的带权输入矩阵</td>
+</tr>
+<tr>
+<td>$A^1$</td>
+<td>(m,3)</td>
+<td>第一层的激活矩阵</td>
+</tr>
+<tr>
+<td>$A^2$</td>
+<td>(m,5)</td>
+<td>第二层的激活矩阵</td>
+</tr>
+<tr>
+<td>$A^3$</td>
+<td>(m,4)</td>
+<td>第三层的激活矩阵</td>
+</tr>
+<tr>
+<td>$\hat Y$</td>
+<td>(m,1)</td>
+<td>输出矩阵</td>
+</tr>
+<tr>
+<td>$Y$</td>
+<td>(m,1)</td>
+<td>标签矩阵</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>前向传播过程</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>计算公式</th>
+<th>维度变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$A^1=X$</td>
+<td>$(m, 3) = (m, 3)$</td>
+</tr>
+<tr>
+<td>$Z^2=A^1{(W^2)}^T + {(b^2)}^T$</td>
+<td>$(m, 5) = (m, 3) {(5, 3)}^T + {(5, 1)}^T$</td>
+</tr>
+<tr>
+<td>$A^2=\sigma(Z^2)$</td>
+<td>$(m, 5) = (m, 5)$</td>
+</tr>
+<tr>
+<td>$Z^3=A^2{(W^3)}^T + {(b^3)}^T$</td>
+<td>$(m, 4) = (m, 5){(4, 5)}^T + {(4, 1)}^T$</td>
+</tr>
+<tr>
+<td>$A^3=logistic(Z^3), axis=0$</td>
+<td>$(m, 4) = (m, 4)$</td>
+</tr>
+<tr>
+<td>$\hat{Y}=where(A &gt;=0.5, 1, 0), axis=0$</td>
+<td>$(m, 4) = (m, 4)$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>反向传播过程</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>计算公式</th>
+<th>维度变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\Delta^3=A^3-Y$</td>
+<td>$(m, 4) = (m, 4) - (m, 4)$</td>
+</tr>
+<tr>
+<td>$\dfrac{\partial C}{\partial b^{3}} =\dfrac{1}{m}{(sum(\Delta^3, axis=0))}^T $</td>
+<td>$(4, 1) = {(1, 4)}^T$</td>
+</tr>
+<tr>
+<td>$\dfrac{\partial C}{\partial W^{3}} =\dfrac{1}{m}{(\Delta^3)}^TA^{2} $</td>
+<td>$(4, 5) = {(m, 4)}^T (m, 5)$</td>
+</tr>
+<tr>
+<td>$\Delta^{2} =(\Delta^{3}W^{3})\odot \sigma’(Z^2) $</td>
+<td>$(m, 5) = ((m, 4) (4, 5)) * (m, 5)$</td>
+</tr>
+<tr>
+<td>$\dfrac{\partial C}{\partial b^{2}} =\dfrac{1}{m}{(sum(\Delta^2, axis=0))}^T $</td>
+<td>$(5, 1) = {(1, 5)}^T$</td>
+</tr>
+<tr>
+<td>$\dfrac{\partial C}{\partial W^{2}} =\dfrac{1}{m}{(\Delta^2)}^TA^{1} $</td>
+<td>$(5, 3) = {(m, 5)}^T (m, 3)$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="神经网络应用到多元回归模型"><a href="#神经网络应用到多元回归模型" class="headerlink" title="神经网络应用到多元回归模型"></a>神经网络应用到多元回归模型</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>模型名称</th>
+<th>模型输出函数</th>
+<th>模型损失函数</th>
+<th>模型损失函数的梯度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>线性回归模型|$A=X\theta$|$Loss=\frac{1}{m}{\Vert A^L-Y \Vert}^2$|$\nabla_{\boldsymbol{\theta}} Loss= \dfrac{2}{m} {X}^T (A - Y)$|</p>
+<p>关于上面内容的具体分析见<a href="">《矩阵形式的线性回归模型》</a>，下面根据神经网络的符号和定义对上面的符号做一些修改，本质上是一致的。有一点需要注意的是，由于神经网络中使用了非线性的激活函数，所以神经网络有了拟合非线性函数的能力，所以这里是神经网络应用到多元回归模型，而不仅仅是神经网络应用到多元线性回归模型。</p>
+<p>神经网络应用到多元回归模型，</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>模型名称</th>
+<th>模型输出函数</th>
+<th>模型损失函数</th>
+<th>模型输出层损失函数的梯度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>神经网络多元回归模型</td>
+<td>$\hat Y=A^L$</td>
+<td>$Loss=\frac{1}{m}{\Vert A^L-Y \Vert}^2$</td>
+<td>$\Delta^{(L)}= 2(A - Y)$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>多元回归模型实例分析</strong></p>
+<p><img src="/2018/10/12/矩阵形式的前馈神经网络/two_2.png" alt=""></p>
+<p>针对该例子的符号说明如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>维度</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$X$</td>
+<td>(m,3)</td>
+<td>样本矩阵</td>
+</tr>
+<tr>
+<td>$W^2$</td>
+<td>(5,3)</td>
+<td>第二层的权重矩阵</td>
+</tr>
+<tr>
+<td>$W^3$</td>
+<td>(4,5)</td>
+<td>第三层的权重矩阵</td>
+</tr>
+<tr>
+<td>$b^2$</td>
+<td>(5,1)</td>
+<td>第二层的偏置矩阵</td>
+</tr>
+<tr>
+<td>$b^3$</td>
+<td>(4,1)</td>
+<td>第三层的偏置矩阵</td>
+</tr>
+<tr>
+<td>$Z^2$</td>
+<td>(m,5)</td>
+<td>第二层的带权输入矩阵</td>
+</tr>
+<tr>
+<td>$Z^3$</td>
+<td>(m,4)</td>
+<td>第三层的带权输入矩阵</td>
+</tr>
+<tr>
+<td>$A^1$</td>
+<td>(m,3)</td>
+<td>第一层的激活矩阵</td>
+</tr>
+<tr>
+<td>$A^2$</td>
+<td>(m,5)</td>
+<td>第二层的激活矩阵</td>
+</tr>
+<tr>
+<td>$A^3$</td>
+<td>(m,4)</td>
+<td>第三层的激活矩阵</td>
+</tr>
+<tr>
+<td>$\hat Y$</td>
+<td>(m,1)</td>
+<td>输出矩阵</td>
+</tr>
+<tr>
+<td>$Y$</td>
+<td>(m,1)</td>
+<td>标签矩阵</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>前向传播过程</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>计算公式</th>
+<th>维度变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$A^1=X$</td>
+<td>$(m, 3) = (m, 3)$</td>
+</tr>
+<tr>
+<td>$Z^2=A^1{(W^2)}^T + {(b^2)}^T$</td>
+<td>$(m, 5) = (m, 3) {(5, 3)}^T + {(5, 1)}^T$</td>
+</tr>
+<tr>
+<td>$A^2=\sigma(Z^2)$</td>
+<td>$(m, 5) = (m, 5)$</td>
+</tr>
+<tr>
+<td>$Z^3=A^2{(W^3)}^T + {(b^3)}^T$</td>
+<td>$(m, 4) = (m, 5){(4, 5)}^T + {(4, 1)}^T$</td>
+</tr>
+<tr>
+<td>$A^3=Z^3$</td>
+<td>$(m, 4) = (m, 4)$</td>
+</tr>
+<tr>
+<td>$\hat Y = A^3$</td>
+<td>$(m, 4) = (m, 4)$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>反向传播过程</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>计算公式</th>
+<th>维度变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\Delta^3=A^3-Y$</td>
+<td>$(m, 4) = (m, 4) - (m, 4)$</td>
+</tr>
+<tr>
+<td>$\dfrac{\partial C}{\partial b^{3}} =\dfrac{1}{m}{(sum(\Delta^3, axis=0))}^T $</td>
+<td>$(4, 1) = {(1, 4)}^T$</td>
+</tr>
+<tr>
+<td>$\dfrac{\partial C}{\partial W^{3}} =\dfrac{1}{m}{(\Delta^3)}^TA^{2} $</td>
+<td>$(4, 5) = {(m, 4)}^T (m, 5)$</td>
+</tr>
+<tr>
+<td>$\Delta^{2} =(\Delta^{3}W^{3})\odot \sigma’(Z^2) $</td>
+<td>$(m, 5) = ((m, 4) (4, 5)) * (m, 5)$</td>
+</tr>
+<tr>
+<td>$\dfrac{\partial C}{\partial b^{2}} =\dfrac{1}{m}{(sum(\Delta^2, axis=0))}^T $</td>
+<td>$(5, 1) = {(1, 5)}^T$</td>
+</tr>
+<tr>
+<td>$\dfrac{\partial C}{\partial W^{2}} =\dfrac{1}{m}{(\Delta^2)}^TA^{1} $</td>
+<td>$(5, 3) = {(m, 5)}^T (m, 3)$</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢金主！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="望江车神 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="望江车神 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
+          
+            <a href="/tags/前馈神经网络/" rel="tag"># 前馈神经网络</a>
+          
+            <a href="/tags/证明/" rel="tag"># 证明</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/11/SMP2018中文人机对话技术评测（ECDT）/" rel="next" title="SMP2018中文人机对话技术评测（ECDT）">
+                <i class="fa fa-chevron-left"></i> SMP2018中文人机对话技术评测（ECDT）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://avatars0.githubusercontent.com/u/16183570?s=400&u=5e09ebb784cfd47de99d249f2be2413adcf4e672&v=4"
+                alt="望江车神" />
+            
+              <p class="site-author-name" itemprop="name">望江车神</p>
+              <p class="site-description motion-element" itemprop="description">深度学习你~~~</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yuanxiaoSC" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前馈神经网络的符号定义"><span class="nav-number">1.</span> <span class="nav-text">前馈神经网络的符号定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前向传播算法的基本公式"><span class="nav-number">2.</span> <span class="nav-text">前向传播算法的基本公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#矩阵形式前向传播算法的计算公式"><span class="nav-number">3.</span> <span class="nav-text">矩阵形式前向传播算法的计算公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反向传播算法的四个基本公式"><span class="nav-number">4.</span> <span class="nav-text">反向传播算法的四个基本公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#矩阵形式反向传播四个基本公式"><span class="nav-number">5.</span> <span class="nav-text">矩阵形式反向传播四个基本公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前馈神经网络与传统机器学习算法的关系"><span class="nav-number">6.</span> <span class="nav-text">前馈神经网络与传统机器学习算法的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#从理论上的分析"><span class="nav-number">6.1.</span> <span class="nav-text">从理论上的分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从数学层面的分析"><span class="nav-number">6.2.</span> <span class="nav-text">从数学层面的分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度学习的优势"><span class="nav-number">6.3.</span> <span class="nav-text">深度学习的优势</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#神经网络应用到逻辑回归"><span class="nav-number">7.</span> <span class="nav-text">神经网络应用到逻辑回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归实例分析"><span class="nav-number">7.1.</span> <span class="nav-text">逻辑回归实例分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#神经网络应用到-Softmax-多分类模型"><span class="nav-number">8.</span> <span class="nav-text">神经网络应用到 Softmax 多分类模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Softmax-回归实例分析"><span class="nav-number">8.1.</span> <span class="nav-text">Softmax 回归实例分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#神经网络应用到-logistic-多标签分类模型"><span class="nav-number">9.</span> <span class="nav-text">神经网络应用到 logistic 多标签分类模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#logistic-多标签分类实例分析"><span class="nav-number">9.1.</span> <span class="nav-text">logistic 多标签分类实例分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#神经网络应用到多元回归模型"><span class="nav-number">10.</span> <span class="nav-text">神经网络应用到多元回归模型</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">望江车神</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
