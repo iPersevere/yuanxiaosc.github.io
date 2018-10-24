@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="词嵌入,Embedding," />
+  <meta name="keywords" content="ELMO,word representations," />
 
 
 
@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="词嵌入的过程embedding_lookup()词嵌入的过程，注意其中的维度变化只是一种可能的方式。 123456789101112import tensorflow as tfimport numpy as npinput_ids = tf.placeholder(dtype=tf.int32, shape=[None])embedding = tf.Variable(np.identity(5">
-<meta name="keywords" content="词嵌入,Embedding">
+<meta name="description" content="NAACL 2018最佳论文 Deep contextualized word representations：艾伦人工智能研究所提出新型深度语境化词表征（研究者使用从双向 LSTM 中得到的向量，该 LSTM 是使用成对语言模型（LM）目标在大型文本语料库上训练得到的。因此，该表征叫作 ELMo（Embeddings from Language Models）表征。）。  ELMo 使用方法">
+<meta name="keywords" content="ELMO,word representations">
 <meta property="og:type" content="article">
-<meta property="og:title" content="词嵌入Embedding">
-<meta property="og:url" content="http://yoursite.com/2018/10/23/词嵌入Embedding/index.html">
+<meta property="og:title" content="ELMo Deep contextualized word representations">
+<meta property="og:url" content="http://yoursite.com/2018/10/22/ELMo_Deep_contextualized_word_representations/index.html">
 <meta property="og:site_name" content="望江人工智库">
-<meta property="og:description" content="词嵌入的过程embedding_lookup()词嵌入的过程，注意其中的维度变化只是一种可能的方式。 123456789101112import tensorflow as tfimport numpy as npinput_ids = tf.placeholder(dtype=tf.int32, shape=[None])embedding = tf.Variable(np.identity(5">
+<meta property="og:description" content="NAACL 2018最佳论文 Deep contextualized word representations：艾伦人工智能研究所提出新型深度语境化词表征（研究者使用从双向 LSTM 中得到的向量，该 LSTM 是使用成对语言模型（LM）目标在大型文本语料库上训练得到的。因此，该表征叫作 ELMo（Embeddings from Language Models）表征。）。  ELMo 使用方法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/10/23/词嵌入Embedding/c1.png">
-<meta property="og:updated_time" content="2018-10-23T03:12:44.438Z">
+<meta property="og:updated_time" content="2018-10-24T03:05:21.462Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="词嵌入Embedding">
-<meta name="twitter:description" content="词嵌入的过程embedding_lookup()词嵌入的过程，注意其中的维度变化只是一种可能的方式。 123456789101112import tensorflow as tfimport numpy as npinput_ids = tf.placeholder(dtype=tf.int32, shape=[None])embedding = tf.Variable(np.identity(5">
-<meta name="twitter:image" content="http://yoursite.com/2018/10/23/词嵌入Embedding/c1.png">
+<meta name="twitter:title" content="ELMo Deep contextualized word representations">
+<meta name="twitter:description" content="NAACL 2018最佳论文 Deep contextualized word representations：艾伦人工智能研究所提出新型深度语境化词表征（研究者使用从双向 LSTM 中得到的向量，该 LSTM 是使用成对语言模型（LM）目标在大型文本语料库上训练得到的。因此，该表征叫作 ELMo（Embeddings from Language Models）表征。）。  ELMo 使用方法">
 
 
 
@@ -122,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/23/词嵌入Embedding/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/22/ELMo_Deep_contextualized_word_representations/"/>
 
 
 
 
 
-  <title>词嵌入Embedding | 望江人工智库</title>
+  <title>ELMo Deep contextualized word representations | 望江人工智库</title>
   
 
 
@@ -289,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/23/词嵌入Embedding/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/22/ELMo_Deep_contextualized_word_representations/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="望江车神">
@@ -306,7 +304,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">词嵌入Embedding</h1>
+          <h1 class="post-title" itemprop="name headline">ELMo Deep contextualized word representations</h1>
         
 
         <div class="post-meta">
@@ -318,8 +316,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-23T10:35:15+08:00">
-                2018-10-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-22T10:50:50+08:00">
+                2018-10-22
               </time>
             
 
@@ -341,8 +339,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/深度学习/" itemprop="url" rel="index">
-                    <span itemprop="name">深度学习</span>
+                  <a href="/categories/论文/" itemprop="url" rel="index">
+                    <span itemprop="name">论文</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文/论文阅读/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读</span>
                   </a>
                 </span>
 
@@ -378,14 +387,56 @@
       
 
       
-        <h2 id="词嵌入的过程embedding-lookup"><a href="#词嵌入的过程embedding-lookup" class="headerlink" title="词嵌入的过程embedding_lookup()"></a>词嵌入的过程<a href="https://blog.csdn.net/u013041398/article/details/60955847" target="_blank" rel="noopener">embedding_lookup()</a></h2><p><img src="/2018/10/23/词嵌入Embedding/c1.png" alt=""><br>词嵌入的过程，注意其中的维度变化只是一种可能的方式。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">input_ids = tf.placeholder(dtype=tf.int32, shape=[<span class="keyword">None</span>])</span><br><span class="line"></span><br><span class="line">embedding = tf.Variable(np.identity(<span class="number">5</span>, dtype=np.float32))</span><br><span class="line">input_embedding = tf.nn.embedding_lookup(embedding, input_ids)</span><br><span class="line"></span><br><span class="line">sess = tf.InteractiveSession()</span><br><span class="line">sess.run(tf.global_variables_initializer())</span><br><span class="line">print(embedding.eval())</span><br><span class="line">print(sess.run(input_embedding, feed_dict=&#123;input_ids:[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>]&#125;))</span><br></pre></td></tr></table></figure>
-<p>代码中先使用palceholder定义了一个未知变量input_ids用于存储索引，和一个已知变量embedding，是一个5*5的对角矩阵。运行结果为,<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">embedding = [[<span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line">            [<span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line">            [<span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line">            [<span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span>]</span><br><span class="line">            [<span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span>]]</span><br><span class="line">input_embedding = [[<span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line">                   [<span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line">                   [<span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span>]</span><br><span class="line">                   [<span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line">                   [<span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span>]</span><br><span class="line">                   [<span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line">                   [<span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span>]]</span><br></pre></td></tr></table></figure></p>
-<p>简单的讲就是根据input_ids中的id，寻找embedding中的对应元素。比如，input_ids=[1,3,5]，则找出embedding中下标为1,3,5的向量组成一个矩阵返回。</p>
-<p>如果将input_ids改写成下面的格式：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">input_ids = tf.placeholder(dtype=tf.int32, shape=[<span class="keyword">None</span>, <span class="keyword">None</span>])</span><br><span class="line"></span><br><span class="line">embedding = tf.Variable(np.identity(<span class="number">5</span>, dtype=np.float32))</span><br><span class="line">input_embedding = tf.nn.embedding_lookup(embedding, input_ids)</span><br><span class="line"></span><br><span class="line">sess = tf.InteractiveSession()</span><br><span class="line">sess.run(tf.global_variables_initializer())</span><br><span class="line">print(embedding.eval())</span><br><span class="line">print(sess.run(input_embedding, feed_dict=&#123;input_ids:[[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">2</span>, <span class="number">1</span>], [<span class="number">3</span>, <span class="number">3</span>]]&#125;))</span><br></pre></td></tr></table></figure>
-<p>输出结果就会变成如下的格式：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">input_embedding = [[[<span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line">                    [<span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span>]]</span><br><span class="line">                  [[<span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line">                    [<span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]]</span><br><span class="line">                  [[<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span>]</span><br><span class="line">                    [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span>]]]</span><br></pre></td></tr></table></figure></p>
-<p>对比上下两个结果不难发现，相当于在np.array中直接采用下标数组获取数据。需要注意的细节是返回的tensor的dtype和传入的被查询的tensor的dtype保持一致；和ids的dtype无关。</p>
+        <blockquote>
+<p>NAACL 2018最佳论文 <a href="https://arxiv.org/abs/1802.05365v2" target="_blank" rel="noopener">Deep contextualized word representations</a>：艾伦人工智能研究所提出新型深度语境化词表征（研究者使用从双向 LSTM 中得到的向量，该 LSTM 是使用成对语言模型（LM）目标在大型文本语料库上训练得到的。因此，该表征叫作 ELMo（Embeddings from Language Models）表征。）。</p>
+</blockquote>
+<h1 id="ELMo-使用方法"><a href="#ELMo-使用方法" class="headerlink" title="ELMo 使用方法"></a>ELMo 使用方法</h1><ul>
+<li><a href="https://github.com/allenai/allennlp/blob/master/tutorials/how_to/elmo.md" target="_blank" rel="noopener">官方版</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/37915351" target="_blank" rel="noopener">知乎简版</a></li>
+</ul>
+<h1 id="Deep-contextualized-word-representations"><a href="#Deep-contextualized-word-representations" class="headerlink" title="Deep contextualized word representations"></a><a href="https://arxiv.org/abs/1802.05365v2" target="_blank" rel="noopener">Deep contextualized word representations</a></h1><p>Matthew E. Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark, Kenton Lee, Luke Zettlemoyer</p>
+<blockquote>
+<p>Our word vectors are learned functions of the internal states of a deep bidirectional language model (biLM), which is pre-trained on a large text corpus. We show that these representations can be easily added to existing models and significantly improve the state of the art across six challenging NLP problems, including question answering, textual entailment and sentiment analysis. We also present an analysis showing that exposing the deep internals of the pre-trained network is crucial, allowing downstream models to mix different types of semi-supervision signals.</p>
+<p>在本论文中，我们介绍了一种新型深度语境化词表征，可对词使用的复杂特征（如句法和语义）和词使用在语言语境中的变化进行建模（即对多义词进行建模）。我们的词向量是深度双向语言模型（biLM）内部状态的函数，在一个大型文本语料库中预训练而成。本研究表明，这些表征能够被轻易地添加到现有的模型中，并在六个颇具挑战性的 NLP 问题（包括问答、文本蕴涵和情感分析）中显著提高当前最优性能。此外，我们的分析还表明，揭示预训练网络的深层内部状态至关重要，可以允许下游模型综合不同类型的半监督信号。</p>
+</blockquote>
+<p>Comments:    NAACL 2018. Originally posted to openreview 27 Oct 2017. v2 updated for NAACL camera ready<br>Subjects:    Computation and Language (cs.CL)<br>Cite as:    arXiv:1802.05365 [cs.CL]<br>     (or arXiv:1802.05365v2 [cs.CL] for this version)</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>标题</th>
+<th>说明</th>
+<th>附加</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://arxiv.org/abs/1802.05365v2" target="_blank" rel="noopener">Deep contextualized word representations</a></td>
+<td>该研究提出了一种新型深度语境化词表征，可对词使用的复杂特征（如句法和语义）和词使用在语言语境中的变化进行建模（即对多义词进行建模）。这些表征可以轻松添加至已有模型，并在 6 个 NLP 问题中显著提高当前最优性能。</td>
+<td>20180215</td>
+</tr>
+<tr>
+<td><a href="https://allennlp.org/elmo" target="_blank" rel="noopener">allennlp.org - elmo</a></td>
+<td>论文官网 elmo</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/allenai/bilm-tf" target="_blank" rel="noopener">bilm-tf</a></td>
+<td>论文官方实现 Tensorflow implementation of contextualized word representations from bi-directional language models</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://www.jiqizhixin.com/articles/060704" target="_blank" rel="noopener">NAACL 2018最佳论文：艾伦人工智能研究所提出新型深度语境化词表征</a></td>
+<td>机器之心解读</td>
+<td>20180607</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
 
       
     </div>
@@ -432,9 +483,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/词嵌入/" rel="tag"># 词嵌入</a>
+            <a href="/tags/ELMO/" rel="tag"># ELMO</a>
           
-            <a href="/tags/Embedding/" rel="tag"># Embedding</a>
+            <a href="/tags/word-representations/" rel="tag"># word representations</a>
           
         </div>
       
@@ -447,8 +498,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/23/循环神经网络RNN长短期记忆网络LSTM与门控循环网络GRU/" rel="next" title="循环神经网络RNN长短期记忆网络LSTM与门控循环网络GRU">
-                <i class="fa fa-chevron-left"></i> 循环神经网络RNN长短期记忆网络LSTM与门控循环网络GRU
+              <a href="/2018/10/22/Attention_is_All_You_Need/" rel="next" title="Attention is All You Need">
+                <i class="fa fa-chevron-left"></i> Attention is All You Need
               </a>
             
           </div>
@@ -457,8 +508,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/23/SQuAD（Stanford Question Answering Dataset）/" rel="prev" title="待读：SQuAD（Stanford Question Answering Dataset）综述">
-                待读：SQuAD（Stanford Question Answering Dataset）综述 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/23/循环神经网络RNN长短期记忆网络LSTM与门控循环网络GRU/" rel="prev" title="循环神经网络RNN长短期记忆网络LSTM与门控循环网络GRU">
+                循环神经网络RNN长短期记忆网络LSTM与门控循环网络GRU <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -540,7 +591,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -605,7 +656,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#词嵌入的过程embedding-lookup"><span class="nav-number">1.</span> <span class="nav-text">词嵌入的过程embedding_lookup()</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ELMo-使用方法"><span class="nav-number">1.</span> <span class="nav-text">ELMo 使用方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Deep-contextualized-word-representations"><span class="nav-number">2.</span> <span class="nav-text">Deep contextualized word representations</span></a></li></ol></div>
             
 
           </div>
