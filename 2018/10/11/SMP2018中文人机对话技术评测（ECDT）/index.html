@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="望江人工智库">
 <meta property="og:description" content="点击查看GitHub SMP2018 完整代码和解析    标题 说明 时间     CodaLab评测主页 数据下载 20181010   CodaLab 评测教程  20181010   评测排行榜     SMP2018-ECDT评测主页     SMP2018-ECDT评测成绩公告链接      根据SMP2018中文人机对话模型创建的应用简单的说就是给用户的问题分类，效果如下：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-11T11:51:56.877Z">
+<meta property="og:updated_time" content="2018-10-25T07:55:47.621Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SMP2018中文人机对话技术评测（ECDT）">
 <meta name="twitter:description" content="点击查看GitHub SMP2018 完整代码和解析    标题 说明 时间     CodaLab评测主页 数据下载 20181010   CodaLab 评测教程  20181010   评测排行榜     SMP2018-ECDT评测主页     SMP2018-ECDT评测成绩公告链接      根据SMP2018中文人机对话模型创建的应用简单的说就是给用户的问题分类，效果如下：">
@@ -516,20 +516,20 @@ predict label:     chat
 ----------
 </code></pre><p>与实验部分的分割线</p>
 <hr>
-<h1 id="SMP2018中文人机对话技术评测（ECDT）"><a href="#SMP2018中文人机对话技术评测（ECDT）" class="headerlink" title="SMP2018中文人机对话技术评测（ECDT）"></a><a href="http://smp2018.cips-smp.org/ecdt_index.html" target="_blank" rel="noopener">SMP2018中文人机对话技术评测（ECDT）</a></h1><ol>
+<h1 id="SMP2018中文人机对话技术评测（ECDT）"><a href="#SMP2018中文人机对话技术评测（ECDT）" class="headerlink" title="SMP2018中文人机对话技术评测（ECDT）"></a><script type="math/tex">SMP2018中文人机对话技术评测（ECDT）</script></h1><ol>
 <li>下面是一个完整的针对 <a href="http://smp2018.cips-smp.org/ecdt_index.html" target="_blank" rel="noopener">SMP2018中文人机对话技术评测（ECDT）</a> 的实验，由该实验训练的基线模型能达到评测排行榜的前三的水平。</li>
 <li>通过本实验，可以掌握处理自然语言文本数据的一般方法。</li>
 <li>推荐自己修改此文件，达到更好的实验效果，比如改变以下几个超参数</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 词嵌入的维度</span></span><br><span class="line">embedding_word_dims = <span class="number">32</span></span><br><span class="line"><span class="comment"># 批次大小</span></span><br><span class="line">batch_size = <span class="number">30</span></span><br><span class="line"><span class="comment"># 周期</span></span><br><span class="line">epochs = <span class="number">20</span></span><br></pre></td></tr></table></figure>
-<h2 id="本实验还可以改进的地方举例"><a href="#本实验还可以改进的地方举例" class="headerlink" title="本实验还可以改进的地方举例"></a>本实验还可以改进的地方举例</h2><ol>
+<h1 id="本实验还可以改进的地方举例"><a href="#本实验还可以改进的地方举例" class="headerlink" title="本实验还可以改进的地方举例"></a>本实验还可以改进的地方举例</h1><ol>
 <li>预处理阶段使用其它的分词工具</li>
 <li>采用字符向量和词向量结合的方式</li>
 <li>使用预先训练好的词向量</li>
 <li>改变模型结构</li>
 <li>改变模型超参数</li>
 </ol>
-<h1 id="导入依赖库"><a href="#导入依赖库" class="headerlink" title="导入依赖库"></a>导入依赖库</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="keyword">import</span> jieba</span><br><span class="line"><span class="keyword">from</span> keras.preprocessing.sequence <span class="keyword">import</span> pad_sequences</span><br><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Embedding, LSTM, Dense</span><br><span class="line"><span class="keyword">from</span> keras.utils <span class="keyword">import</span> to_categorical,plot_model</span><br><span class="line"><span class="keyword">from</span> keras.callbacks <span class="keyword">import</span> TensorBoard, Callback</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> classification_report</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br></pre></td></tr></table></figure>
+<h1 id="导入依赖库"><a href="#导入依赖库" class="headerlink" title="导入依赖库"></a>导入依赖库</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="keyword">import</span> jieba</span><br><span class="line"><span class="keyword">from</span> keras.preprocessing.text <span class="keyword">import</span> Tokenizer</span><br><span class="line"><span class="keyword">from</span> keras.preprocessing.sequence <span class="keyword">import</span> pad_sequences</span><br><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Embedding, LSTM, Dense</span><br><span class="line"><span class="keyword">from</span> keras.utils <span class="keyword">import</span> to_categorical,plot_model</span><br><span class="line"><span class="keyword">from</span> keras.callbacks <span class="keyword">import</span> TensorBoard, Callback</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> classification_report</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br></pre></td></tr></table></figure>
 <pre><code>Using TensorFlow backend.
 </code></pre><h1 id="辅助函数"><a href="#辅助函数" class="headerlink" title="辅助函数"></a>辅助函数</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras <span class="keyword">import</span> backend <span class="keyword">as</span> K</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算 F1 值的函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span><span class="params">(y_true, y_pred)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">recall</span><span class="params">(y_true, y_pred)</span>:</span></span><br><span class="line">        <span class="string">"""Recall metric.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        Only computes a batch-wise average of recall.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        Computes the recall, a metric for multi-label classification of</span></span><br><span class="line"><span class="string">        how many relevant items are selected.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        true_positives = K.sum(K.round(K.clip(y_true * y_pred, <span class="number">0</span>, <span class="number">1</span>)))</span><br><span class="line">        possible_positives = K.sum(K.round(K.clip(y_true, <span class="number">0</span>, <span class="number">1</span>)))</span><br><span class="line">        recall = true_positives / (possible_positives + K.epsilon())</span><br><span class="line">        <span class="keyword">return</span> recall</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">precision</span><span class="params">(y_true, y_pred)</span>:</span></span><br><span class="line">        <span class="string">"""Precision metric.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        Only computes a batch-wise average of precision.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        Computes the precision, a metric for multi-label classification of</span></span><br><span class="line"><span class="string">        how many selected items are relevant.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        true_positives = K.sum(K.round(K.clip(y_true * y_pred, <span class="number">0</span>, <span class="number">1</span>)))</span><br><span class="line">        predicted_positives = K.sum(K.round(K.clip(y_pred, <span class="number">0</span>, <span class="number">1</span>)))</span><br><span class="line">        precision = true_positives / (predicted_positives + K.epsilon())</span><br><span class="line">        <span class="keyword">return</span> precision</span><br><span class="line">    precision = precision(y_true, y_pred)</span><br><span class="line">    recall = recall(y_true, y_pred)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span>*((precision*recall)/(precision+recall+K.epsilon()))</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取自定义时间格式的字符串</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_customization_time</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># return '2018_10_10_18_11_45' 年月日时分秒</span></span><br><span class="line">    time_tuple = time.localtime(time.time())</span><br><span class="line">    customization_time = <span class="string">"&#123;&#125;_&#123;&#125;_&#123;&#125;_&#123;&#125;_&#123;&#125;_&#123;&#125;"</span>.format(time_tuple[<span class="number">0</span>], time_tuple[<span class="number">1</span>], time_tuple[<span class="number">2</span>], time_tuple[<span class="number">3</span>], time_tuple[<span class="number">4</span>], time_tuple[<span class="number">5</span>])</span><br><span class="line">    <span class="keyword">return</span> customization_time</span><br></pre></td></tr></table></figure>
@@ -591,175 +591,11 @@ predict label:     chat
 
 
 
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test_data_df.head()</span><br></pre></td></tr></table></figure>
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>query</th>
-      <th>label</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>毛泽东的诗哦。</td>
-      <td>poetry</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>有房有车吗微笑</td>
-      <td>chat</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2013年亚洲冠军联赛恒广州恒大比赛时间。</td>
-      <td>match</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>若相惜不弃下一句是什么？</td>
-      <td>poetry</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>苹果翻译成英语</td>
-      <td>translation</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_data_df.describe()</span><br></pre></td></tr></table></figure>
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>query</th>
-      <th>label</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>2299</td>
-      <td>2299</td>
-    </tr>
-    <tr>
-      <th>unique</th>
-      <td>2299</td>
-      <td>31</td>
-    </tr>
-    <tr>
-      <th>top</th>
-      <td>中国新闻网网站</td>
-      <td>chat</td>
-    </tr>
-    <tr>
-      <th>freq</th>
-      <td>1</td>
-      <td>455</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test_data_df.describe()</span><br></pre></td></tr></table></figure>
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>query</th>
-      <th>label</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>770</td>
-      <td>770</td>
-    </tr>
-    <tr>
-      <th>unique</th>
-      <td>770</td>
-      <td>31</td>
-    </tr>
-    <tr>
-      <th>top</th>
-      <td>查下安徽电视台今天节目单</td>
-      <td>chat</td>
-    </tr>
-    <tr>
-      <th>freq</th>
-      <td>1</td>
-      <td>154</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取所以标签，也就是分类的类别</span></span><br><span class="line">labels = list(set(train_data_df[<span class="string">'label'</span>].tolist()))</span><br></pre></td></tr></table></figure>
-<h1 id="All-labels"><a href="#All-labels" class="headerlink" title="All labels"></a>All labels</h1><p>labels = [‘website’, ‘tvchannel’, ‘lottery’, ‘chat’, ‘match’,<br>          ‘datetime’, ‘weather’, ‘bus’, ‘novel’, ‘video’, ‘riddle’,<br>          ‘calc’, ‘telephone’, ‘health’, ‘contacts’, ‘epg’, ‘app’, ‘music’,<br>          ‘cookbook’, ‘stock’, ‘map’, ‘message’, ‘poetry’, ‘cinemas’, ‘news’,<br>          ‘flight’, ‘translation’, ‘train’, ‘schedule’, ‘radio’, ‘email’]</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">label_numbers = len(labels)</span><br><span class="line">print(<span class="string">'label_numbers:\t'</span>, label_numbers)</span><br></pre></td></tr></table></figure>
-<pre><code>label_numbers:     31
-</code></pre><h2 id="标签和对应ID的映射字典"><a href="#标签和对应ID的映射字典" class="headerlink" title="标签和对应ID的映射字典"></a>标签和对应ID的映射字典</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">label_2_index_dict = dict([(label, index) <span class="keyword">for</span> index, label <span class="keyword">in</span> enumerate(labels)])</span><br><span class="line">index_2_label_dict = dict([(index, label) <span class="keyword">for</span> index, label <span class="keyword">in</span> enumerate(labels)])</span><br></pre></td></tr></table></figure>
 <hr>
 <h2 id="结巴分词示例，下面将使用结巴分词对原数据进行处理"><a href="#结巴分词示例，下面将使用结巴分词对原数据进行处理" class="headerlink" title="结巴分词示例，下面将使用结巴分词对原数据进行处理"></a><a href="https://github.com/fxsjy/jieba" target="_blank" rel="noopener">结巴分词</a>示例，下面将使用结巴分词对原数据进行处理</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">seg_list = jieba.cut(<span class="string">"他来到了网易杭研大厦"</span>)  <span class="comment"># 默认是精确模式</span></span><br><span class="line">print(list(seg_list))</span><br></pre></td></tr></table></figure>
 <pre><code>Building prefix dict from the default dictionary ...
 Loading model from cache /tmp/jieba.cache
-Loading model cost 0.903 seconds.
+Loading model cost 1.022 seconds.
 Prefix dict has been built succesfully.
 
 
@@ -857,102 +693,147 @@ Prefix dict has been built succesfully.
 
 
 
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取数据的所有词汇</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_all_vocab_from_data</span><span class="params">(data, colunm_name)</span>:</span></span><br><span class="line">    train_vocab_list = []</span><br><span class="line">    max_cut_query_lenth = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> cut_query <span class="keyword">in</span> data[colunm_name]:</span><br><span class="line">        <span class="keyword">if</span> len(cut_query) &gt; max_cut_query_lenth:</span><br><span class="line">            max_cut_query_lenth = len(cut_query)</span><br><span class="line">        train_vocab_list += cut_query</span><br><span class="line">    <span class="keyword">return</span> train_vocab_list, max_cut_query_lenth</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_vocab_list, max_cut_query_lenth = get_all_vocab_from_data(train_data_df, <span class="string">'cut_query'</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'Number of words：\t'</span>, len(train_vocab_list))</span><br></pre></td></tr></table></figure>
-<pre><code>Number of words：     11498
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'max_cut_query_lenth:\t'</span>, max_cut_query_lenth)</span><br></pre></td></tr></table></figure>
-<pre><code>max_cut_query_lenth:     26
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test_vocab_list, test_max_cut_query_lenth = get_all_vocab_from_data(train_data_df, <span class="string">'cut_query'</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'test_max_cut_query_lenth:\t'</span>, test_max_cut_query_lenth)</span><br></pre></td></tr></table></figure>
-<pre><code>test_max_cut_query_lenth:     26
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_vocab_list[:<span class="number">10</span>]</span><br></pre></td></tr></table></figure>
-<pre><code>[&#39;今天&#39;, &#39;东莞&#39;, &#39;天气&#39;, &#39;如何&#39;, &#39;从&#39;, &#39;观音桥&#39;, &#39;到&#39;, &#39;重庆市&#39;, &#39;图书馆&#39;, &#39;怎么&#39;]
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_vocab_counter = collections.Counter(train_vocab_list)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'Number of different words:\t'</span>, len(train_vocab_counter.keys()))</span><br></pre></td></tr></table></figure>
-<pre><code>Number of different words:     2887
-</code></pre><h2 id="不同种类的词汇个数，预留一个位置给不存在的词汇（不存在的词汇标记为0）"><a href="#不同种类的词汇个数，预留一个位置给不存在的词汇（不存在的词汇标记为0）" class="headerlink" title="不同种类的词汇个数，预留一个位置给不存在的词汇（不存在的词汇标记为0）"></a>不同种类的词汇个数，预留一个位置给不存在的词汇（不存在的词汇标记为0）</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">max_features = len(train_vocab_counter.keys()) + <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(max_features)</span><br></pre></td></tr></table></figure>
-<pre><code>2888
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 10 words with the highest frequency</span></span><br><span class="line">train_vocab_counter.most_common(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>[(&#39;的&#39;, 605),
- (&#39;。&#39;, 341),
- (&#39;我&#39;, 320),
- (&#39;你&#39;, 297),
- (&#39;怎么&#39;, 273),
- (&#39;？&#39;, 251),
- (&#39;什么&#39;, 210),
- (&#39;到&#39;, 165),
- (&#39;给&#39;, 154),
- (&#39;做&#39;, 148)]
-</code></pre><h2 id="统计低频词语"><a href="#统计低频词语" class="headerlink" title="统计低频词语"></a>统计低频词语</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">word_times_zero = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> word, word_times <span class="keyword">in</span> train_vocab_counter.items():</span><br><span class="line">    <span class="keyword">if</span> word_times &lt;=<span class="number">1</span>:</span><br><span class="line">        word_times_zero+=<span class="number">1</span></span><br><span class="line">print(<span class="string">'word_times_zero:\t'</span>, word_times_zero)</span><br><span class="line">print(<span class="string">'word_times_zero/all:\t'</span>, word_times_zero/len(train_vocab_counter))</span><br></pre></td></tr></table></figure>
-<pre><code>word_times_zero:     1978
-word_times_zero/all:     0.685140284031867
-</code></pre><h2 id="制作词汇字典"><a href="#制作词汇字典" class="headerlink" title="制作词汇字典"></a>制作词汇字典</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_train_vocab_dict</span><span class="params">(train_vocab_counter)</span>:</span></span><br><span class="line">    word_2_index, index_2_word = &#123;&#125;, &#123;&#125;</span><br><span class="line">    <span class="comment"># Reserve 0 for masking via pad_sequences</span></span><br><span class="line">    index_number = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> word, word_times <span class="keyword">in</span> train_vocab_counter.most_common():</span><br><span class="line">        word_2_index[word] = index_number</span><br><span class="line">        index_2_word[index_number] = word</span><br><span class="line">        index_number += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> word_2_index, index_2_word</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">word_2_index_dict, index_2_word_dict = create_train_vocab_dict(train_vocab_counter)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(word_2_index_dict[<span class="string">'的'</span>], word_2_index_dict[<span class="string">'。'</span>])</span><br></pre></td></tr></table></figure>
-<pre><code>1 2
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(index_2_word_dict[<span class="number">1</span>], index_2_word_dict[<span class="number">2</span>])</span><br></pre></td></tr></table></figure>
-<pre><code>的 。
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pq= <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> index, row <span class="keyword">in</span> train_data_df.iterrows():</span><br><span class="line">    print(row[<span class="number">0</span>], row[<span class="number">1</span>], row[<span class="number">2</span>])</span><br><span class="line">    pq+=<span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> pq==<span class="number">10</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
-<pre><code>今天东莞天气如何 weather [&#39;今天&#39;, &#39;东莞&#39;, &#39;天气&#39;, &#39;如何&#39;]
-从观音桥到重庆市图书馆怎么走 map [&#39;从&#39;, &#39;观音桥&#39;, &#39;到&#39;, &#39;重庆市&#39;, &#39;图书馆&#39;, &#39;怎么&#39;, &#39;走&#39;]
-鸭蛋怎么腌？ cookbook [&#39;鸭蛋&#39;, &#39;怎么&#39;, &#39;腌&#39;, &#39;？&#39;]
-怎么治疗牛皮癣 health [&#39;怎么&#39;, &#39;治疗&#39;, &#39;牛皮癣&#39;]
-唠什么 chat [&#39;唠&#39;, &#39;什么&#39;]
-阳澄湖大闸蟹的做法。 cookbook [&#39;阳澄湖&#39;, &#39;大闸蟹&#39;, &#39;的&#39;, &#39;做法&#39;, &#39;。&#39;]
-昆山大润发在哪里 map [&#39;昆山&#39;, &#39;大润发&#39;, &#39;在&#39;, &#39;哪里&#39;]
-红烧肉怎么做？嗯？ cookbook [&#39;红烧肉&#39;, &#39;怎么&#39;, &#39;做&#39;, &#39;？&#39;, &#39;嗯&#39;, &#39;？&#39;]
-南京到厦门的火车票 train [&#39;南京&#39;, &#39;到&#39;, &#39;厦门&#39;, &#39;的&#39;, &#39;火车票&#39;]
-6的平方 calc [&#39;6&#39;, &#39;的&#39;, &#39;平方&#39;]
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">word_2_index_dict.get(<span class="string">'的2'</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>0
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">vectorize_data</span><span class="params">(data, label_2_index_dict, word_2_index_dict, max_cut_query_lenth)</span>:</span></span><br><span class="line">    x_train = []</span><br><span class="line">    y_train = []</span><br><span class="line">    <span class="keyword">for</span> index, row <span class="keyword">in</span> data.iterrows():</span><br><span class="line">        query_sentence = row[<span class="number">2</span>]</span><br><span class="line">        label = row[<span class="number">1</span>]</span><br><span class="line">        <span class="comment"># 字典找不到的情况下用 0 填充</span></span><br><span class="line">        x = [word_2_index_dict.get(w, <span class="number">0</span>) <span class="keyword">for</span> w <span class="keyword">in</span> query_sentence]</span><br><span class="line">        y = [label_2_index_dict[label]]</span><br><span class="line">        x_train.append(x)</span><br><span class="line">        y_train.append(y)</span><br><span class="line">    <span class="keyword">return</span> (pad_sequences(x_train, maxlen=max_cut_query_lenth),</span><br><span class="line">            pad_sequences(y_train, maxlen=<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x_train, y_train = vectorize_data(train_data_df, label_2_index_dict, word_2_index_dict, max_cut_query_lenth)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x_test, y_test = vectorize_data(test_data_df, label_2_index_dict, word_2_index_dict, test_max_cut_query_lenth)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(x_train[<span class="number">0</span>], y_train[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
-<pre><code>[  0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
-   0   0   0   0  33 318  27  90] [7]
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y_train = to_categorical(y_train, label_numbers)</span><br><span class="line">y_test = to_categorical(y_test, label_numbers)</span><br></pre></td></tr></table></figure>
+<h2 id="处理特征"><a href="#处理特征" class="headerlink" title="处理特征"></a>处理特征</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tokenizer = Tokenizer()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tokenizer.fit_on_texts(train_data_df[<span class="string">'cut_query'</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">max_features = len(tokenizer.index_word)</span><br><span class="line"></span><br><span class="line">len(tokenizer.index_word)</span><br></pre></td></tr></table></figure>
+<pre><code>2883
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x_train = tokenizer.texts_to_sequences(train_data_df[<span class="string">'cut_query'</span>])</span><br><span class="line"></span><br><span class="line">x_test = tokenizer.texts_to_sequences(test_data_df[<span class="string">'cut_query'</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">max_cut_query_lenth = <span class="number">26</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x_train = pad_sequences(x_train, max_cut_query_lenth)</span><br><span class="line"></span><br><span class="line">x_test = pad_sequences(x_test, max_cut_query_lenth)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x_train.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(2299, 26)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x_test.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(770, 26)
+</code></pre><h2 id="处理标签"><a href="#处理标签" class="headerlink" title="处理标签"></a>处理标签</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">label_tokenizer = Tokenizer()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">label_tokenizer.fit_on_texts(train_data_df[<span class="string">'label'</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">label_numbers = len(label_tokenizer.word_counts)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NUM_CLASSES = len(label_tokenizer.word_counts)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">label_tokenizer.word_counts</span><br></pre></td></tr></table></figure>
+<pre><code>OrderedDict([(&#39;weather&#39;, 66),
+             (&#39;map&#39;, 68),
+             (&#39;cookbook&#39;, 269),
+             (&#39;health&#39;, 55),
+             (&#39;chat&#39;, 455),
+             (&#39;train&#39;, 70),
+             (&#39;calc&#39;, 24),
+             (&#39;translation&#39;, 61),
+             (&#39;music&#39;, 66),
+             (&#39;tvchannel&#39;, 71),
+             (&#39;poetry&#39;, 102),
+             (&#39;telephone&#39;, 63),
+             (&#39;stock&#39;, 71),
+             (&#39;radio&#39;, 24),
+             (&#39;contacts&#39;, 30),
+             (&#39;lottery&#39;, 24),
+             (&#39;website&#39;, 54),
+             (&#39;video&#39;, 182),
+             (&#39;news&#39;, 58),
+             (&#39;bus&#39;, 24),
+             (&#39;app&#39;, 53),
+             (&#39;flight&#39;, 62),
+             (&#39;epg&#39;, 107),
+             (&#39;message&#39;, 63),
+             (&#39;match&#39;, 24),
+             (&#39;schedule&#39;, 29),
+             (&#39;novel&#39;, 24),
+             (&#39;riddle&#39;, 34),
+             (&#39;email&#39;, 24),
+             (&#39;datetime&#39;, 18),
+             (&#39;cinemas&#39;, 24)])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_train = label_tokenizer.texts_to_sequences(train_data_df[<span class="string">'label'</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_train[:<span class="number">10</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>[[10], [9], [2], [17], [1], [2], [9], [2], [8], [23]]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_train = [[y[<span class="number">0</span>]<span class="number">-1</span>] <span class="keyword">for</span> y <span class="keyword">in</span> y_train]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_train[:<span class="number">10</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>[[9], [8], [1], [16], [0], [1], [8], [1], [7], [22]]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y_train = to_categorical(y_train, label_numbers)</span><br><span class="line">y_train.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(2299, 31)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">y_test = label_tokenizer.texts_to_sequences(test_data_df[<span class="string">'label'</span>])</span><br><span class="line">y_test = [y[<span class="number">0</span>]<span class="number">-1</span> <span class="keyword">for</span> y <span class="keyword">in</span> y_test]</span><br><span class="line">y_test = to_categorical(y_test, label_numbers)</span><br><span class="line">y_test.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(770, 31)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_test[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32)
+</code></pre><h1 id="设计模型"><a href="#设计模型" class="headerlink" title="设计模型"></a>设计模型</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_SMP2018_lstm_model</span><span class="params">(max_features, max_cut_query_lenth, label_numbers)</span>:</span></span><br><span class="line">    model = Sequential()</span><br><span class="line">    model.add(Embedding(input_dim=max_features+<span class="number">1</span>, output_dim=<span class="number">32</span>, input_length=max_cut_query_lenth))</span><br><span class="line">    model.add(LSTM(units=<span class="number">64</span>, dropout=<span class="number">0.2</span>, recurrent_dropout=<span class="number">0.2</span>))</span><br><span class="line">    model.add(Dense(label_numbers, activation=<span class="string">'softmax'</span>))</span><br><span class="line">    <span class="comment"># try using different optimizers and different optimizer configs</span></span><br><span class="line">    model.compile(loss=<span class="string">'categorical_crossentropy'</span>,</span><br><span class="line">              optimizer=<span class="string">'adam'</span>,</span><br><span class="line">              metrics=[f1])</span><br><span class="line"></span><br><span class="line">    plot_model(model, to_file=<span class="string">'SMP2018_lstm_model.png'</span>, show_shapes=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> model</span><br></pre></td></tr></table></figure>
+<h1 id="训练模型"><a href="#训练模型" class="headerlink" title="训练模型"></a>训练模型</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="string">'max_features'</span>  <span class="keyword">not</span> <span class="keyword">in</span>  dir():</span><br><span class="line">    max_features = <span class="number">2888</span></span><br><span class="line">    print(<span class="string">'not find max_features variable, use default max_features values:\t&#123;&#125;'</span>.format(max_features))</span><br><span class="line"><span class="keyword">if</span> <span class="string">'max_cut_query_lenth'</span>  <span class="keyword">not</span> <span class="keyword">in</span>  dir():</span><br><span class="line">    max_cut_query_lenth = <span class="number">26</span></span><br><span class="line">    print(<span class="string">'not find max_cut_query_lenth, use default max_features values:\t&#123;&#125;'</span>.format(max_cut_query_lenth))</span><br><span class="line"><span class="keyword">if</span> <span class="string">'label_numbers'</span>  <span class="keyword">not</span> <span class="keyword">in</span>  dir():</span><br><span class="line">    label_numbers = <span class="number">31</span></span><br><span class="line">    print(<span class="string">'not find label_numbers, use default max_features values:\t&#123;&#125;'</span>.format(label_numbers))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model = create_SMP2018_lstm_model(max_features, max_cut_query_lenth, label_numbers)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">batch_size = <span class="number">20</span></span><br><span class="line">epochs = <span class="number">30</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(x_train.shape, y_train.shape)</span><br></pre></td></tr></table></figure>
 <pre><code>(2299, 26) (2299, 31)
 </code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(x_test.shape, y_test.shape)</span><br></pre></td></tr></table></figure>
 <pre><code>(770, 26) (770, 31)
-</code></pre><h1 id="存储预处理过的数据"><a href="#存储预处理过的数据" class="headerlink" title="存储预处理过的数据"></a>存储预处理过的数据</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(type(x_test))</span><br></pre></td></tr></table></figure>
-<pre><code>&lt;class &#39;numpy.ndarray&#39;&gt;
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.savez(<span class="string">"preprocessed_data"</span>, x_train, y_train, x_test, y_test)</span><br></pre></td></tr></table></figure>
-<h2 id="直接加载预处理的数据"><a href="#直接加载预处理的数据" class="headerlink" title="直接加载预处理的数据"></a>直接加载预处理的数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用已经经过预处理的数据，默认不使用</span></span><br><span class="line">use_preprocessed_data = <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> use_preprocessed_data == <span class="keyword">True</span>:</span><br><span class="line">    preprocessed_data = np.load(<span class="string">'preprocessed_data.npz'</span>)</span><br><span class="line">    x_train, y_train, x_test, y_test = preprocessed_data[<span class="string">'arr_0'</span>], preprocessed_data[<span class="string">'arr_1'</span>], preprocessed_data[<span class="string">'arr_2'</span>], preprocessed_data[<span class="string">'arr_3'</span>],</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(x_train.shape, y_train.shape)</span><br></pre></td></tr></table></figure>
-<pre><code>(2299, 26) (2299, 31)
-</code></pre><h1 id="设计模型"><a href="#设计模型" class="headerlink" title="设计模型"></a>设计模型</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_SMP2018_lstm_model</span><span class="params">(max_features, max_cut_query_lenth, label_numbers)</span>:</span></span><br><span class="line">    model = Sequential()</span><br><span class="line">    model.add(Embedding(input_dim=max_features, output_dim=<span class="number">32</span>, input_length=max_cut_query_lenth))</span><br><span class="line">    model.add(LSTM(units=<span class="number">64</span>, dropout=<span class="number">0.2</span>, recurrent_dropout=<span class="number">0.2</span>))</span><br><span class="line">    model.add(Dense(label_numbers, activation=<span class="string">'softmax'</span>))</span><br><span class="line">    <span class="comment"># try using different optimizers and different optimizer configs</span></span><br><span class="line">    model.compile(loss=<span class="string">'categorical_crossentropy'</span>,</span><br><span class="line">              optimizer=<span class="string">'adam'</span>,</span><br><span class="line">              metrics=[f1])</span><br><span class="line"></span><br><span class="line">    plot_model(model, to_file=<span class="string">'SMP2018_lstm_model.png'</span>, show_shapes=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> model</span><br></pre></td></tr></table></figure>
-<h1 id="训练模型"><a href="#训练模型" class="headerlink" title="训练模型"></a>训练模型</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="string">'max_features'</span>  <span class="keyword">not</span> <span class="keyword">in</span>  dir():</span><br><span class="line">    max_features = <span class="number">2888</span></span><br><span class="line">    print(<span class="string">'not find max_features variable, use default max_features values:\t&#123;&#125;'</span>.format(max_features))</span><br><span class="line"><span class="keyword">if</span> <span class="string">'max_cut_query_lenth'</span>  <span class="keyword">not</span> <span class="keyword">in</span>  dir():</span><br><span class="line">    max_cut_query_lenth = <span class="number">26</span></span><br><span class="line">    print(<span class="string">'not find max_cut_query_lenth, use default max_features values:\t&#123;&#125;'</span>.format(max_cut_query_lenth))</span><br><span class="line"><span class="keyword">if</span> <span class="string">'label_numbers'</span>  <span class="keyword">not</span> <span class="keyword">in</span>  dir():</span><br><span class="line">    label_numbers = <span class="number">31</span></span><br><span class="line">    print(<span class="string">'not find label_numbers, use default max_features values:\t&#123;&#125;'</span>.format(label_numbers))</span><br></pre></td></tr></table></figure>
-<pre><code>not find max_features variable, use default max_features values:    2888
-not find max_cut_query_lenth, use default max_features values:    26
-not find label_numbers, use default max_features values:    31
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model = create_SMP2018_lstm_model(max_features, max_cut_query_lenth, label_numbers)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">batch_size = <span class="number">20</span></span><br><span class="line">epochs = <span class="number">300</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'Train...'</span>)</span><br><span class="line">model.fit(x_train, y_train,</span><br><span class="line">          batch_size=batch_size,</span><br><span class="line">          epochs=epochs,</span><br><span class="line">          callbacks=[TensorBoard(log_dir=<span class="string">'../logs/&#123;&#125;'</span>.format(<span class="string">"SMP2018_lstm_&#123;&#125;"</span>.format(get_customization_time())))],</span><br><span class="line">          validation_split=<span class="number">0.2</span></span><br><span class="line">          )</span><br></pre></td></tr></table></figure>
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'Train...'</span>)</span><br><span class="line">model.fit(x_train, y_train,</span><br><span class="line">          batch_size=batch_size,</span><br><span class="line">          epochs=epochs)</span><br></pre></td></tr></table></figure>
 <pre><code>Train...
-Train on 1839 samples, validate on 460 samples
-Epoch 1/300
-1839/1839 [==============================] - 6s 3ms/step - loss: 3.1404 - f1: 0.0000e+00 - val_loss: 2.9658 - val_f1: 0.0000e+00
-Epoch 2/300
-1839/1839 [==============================] - 5s 3ms/step - loss: 2.8634 - f1: 0.0404 - val_loss: 2.5949 - val_f1: 0.1618
-Epoch 3/300
-1839/1839 [==============================] - 5s 3ms/step - loss: 2.3841 - f1: 0.3354 - val_loss: 2.1469 - val_f1: 0.4080
-  1839/1839 [==============================] - 6s 3ms/step - loss: 1.9812e-05 - f1: 1.0000 - val_loss: 1.1848 - val_f1: 0.8351
+Epoch 1/30
+2299/2299 [==============================] - 16s 7ms/step - loss: 3.0916 - f1: 0.0000e+00
+Epoch 2/30
+2299/2299 [==============================] - 14s 6ms/step - loss: 2.6594 - f1: 0.1409
+Epoch 3/30
+2299/2299 [==============================] - 13s 6ms/step - loss: 2.0817 - f1: 0.4055
+Epoch 4/30
+2299/2299 [==============================] - 14s 6ms/step - loss: 1.6032 - f1: 0.4689
+Epoch 5/30
+2299/2299 [==============================] - 14s 6ms/step - loss: 1.1318 - f1: 0.6176
+Epoch 6/30
+2299/2299 [==============================] - 14s 6ms/step - loss: 0.8090 - f1: 0.7399
+Epoch 7/30
+2299/2299 [==============================] - 14s 6ms/step - loss: 0.5704 - f1: 0.8298
+Epoch 8/30
+2299/2299 [==============================] - 14s 6ms/step - loss: 0.4051 - f1: 0.8879
+Epoch 9/30
+2299/2299 [==============================] - 14s 6ms/step - loss: 0.3002 - f1: 0.9280
+Epoch 10/30
+2299/2299 [==============================] - 14s 6ms/step - loss: 0.2317 - f1: 0.9467
+Epoch 11/30
+2299/2299 [==============================] - 14s 6ms/step - loss: 0.1755 - f1: 0.9678
+Epoch 12/30
+2299/2299 [==============================] - 14s 6ms/step - loss: 0.1391 - f1: 0.9758
+Epoch 13/30
+2299/2299 [==============================] - 14s 6ms/step - loss: 0.1131 - f1: 0.9800
+Epoch 14/30
+2299/2299 [==============================] - 14s 6ms/step - loss: 0.0883 - f1: 0.9861
+Epoch 15/30
+2299/2299 [==============================] - 14s 6ms/step - loss: 0.0725 - f1: 0.9894
+Epoch 16/30
+2299/2299 [==============================] - 14s 6ms/step - loss: 0.0615 - f1: 0.9929
+Epoch 17/30
+2299/2299 [==============================] - 14s 6ms/step - loss: 0.0507 - f1: 0.9945
+Epoch 18/30
+2299/2299 [==============================] - 14s 6ms/step - loss: 0.0455 - f1: 0.9963
+Epoch 19/30
+2299/2299 [==============================] - 14s 6ms/step - loss: 0.0398 - f1: 0.9960
+Epoch 20/30
+2299/2299 [==============================] - 14s 6ms/step - loss: 0.0313 - f1: 0.9978
+Epoch 21/30
+2299/2299 [==============================] - 14s 6ms/step - loss: 0.0266 - f1: 0.9984
+Epoch 22/30
+2299/2299 [==============================] - 14s 6ms/step - loss: 0.0279 - f1: 0.9965
+Epoch 23/30
+2299/2299 [==============================] - 14s 6ms/step - loss: 0.0250 - f1: 0.9976
+Epoch 24/30
+2299/2299 [==============================] - 14s 6ms/step - loss: 0.0219 - f1: 0.9982
+Epoch 25/30
+2299/2299 [==============================] - 14s 6ms/step - loss: 0.0195 - f1: 0.9982
+Epoch 26/30
+2299/2299 [==============================] - 14s 6ms/step - loss: 0.0179 - f1: 0.9989
+Epoch 27/30
+2299/2299 [==============================] - 14s 6ms/step - loss: 0.0177 - f1: 0.9974
+Epoch 28/30
+2299/2299 [==============================] - 14s 6ms/step - loss: 0.0139 - f1: 0.9987
+Epoch 29/30
+2299/2299 [==============================] - 14s 6ms/step - loss: 0.0139 - f1: 0.9989
+Epoch 30/30
+2299/2299 [==============================] - 14s 6ms/step - loss: 0.0129 - f1: 0.9987
 
-.....
 
-Epoch 215/300
-1839/1839 [==============================] - 6s 3ms/step - loss: 2.0926e-05 - f1: 1.0000 - val_loss: 1.1944 - val_f1: 0.8318
-Epoch 216/300
-  60/1839 [..............................] - ETA: 5s - loss: 9.7486e-06 - f1: 1.0000
+
+
+
+&lt;keras.callbacks.History at 0x7f84e87c5f28&gt;
 </code></pre><h1 id="评估模型"><a href="#评估模型" class="headerlink" title="评估模型"></a>评估模型</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">score = model.evaluate(x_test, y_test,</span><br><span class="line">                       batch_size=batch_size, verbose=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'Test score:'</span>, score[<span class="number">0</span>])</span><br><span class="line">print(<span class="string">'Test f1:'</span>, score[<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
-<pre><code>770/770 [==============================] - 0s 240us/step
-Test score: 0.7415416103291821
-Test f1: 0.8223602949798882
+<pre><code>770/770 [==============================] - 1s 1ms/step
+Test score: 0.6803552009068526
+Test f1: 0.8464262740952628
 </code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_hat_test = model.predict(x_test)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(y_hat_test.shape)</span><br></pre></td></tr></table></figure>
 <pre><code>(770, 31)
@@ -961,41 +842,41 @@ Test f1: 0.8223602949798882
 <h2 id="查看多分类的-准确率、召回率、F1-值"><a href="#查看多分类的-准确率、召回率、F1-值" class="headerlink" title="查看多分类的 准确率、召回率、F1 值"></a>查看多分类的 准确率、召回率、F1 值</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(classification_report(y_true, y_pred))</span><br></pre></td></tr></table></figure>
 <pre><code>              precision    recall  f1-score   support
 
-           0       1.00      0.90      0.95        21
-           1       0.86      0.75      0.80         8
-           2       1.00      0.95      0.98        21
-           3       0.52      0.57      0.54        23
-           4       0.91      0.91      0.91        11
-           5       0.82      0.97      0.89        34
-           6       0.25      0.17      0.20         6
-           7       0.86      0.86      0.86        22
-           8       1.00      0.88      0.93         8
-           9       0.89      1.00      0.94         8
-          10       0.95      0.95      0.95        21
-          11       1.00      0.62      0.77         8
-          12       0.62      0.70      0.66        60
-          13       0.86      0.90      0.88        20
-          14       0.55      0.58      0.56        19
-          15       0.76      0.78      0.77        36
-          16       0.87      0.90      0.89       154
-          17       0.57      0.50      0.53         8
-          18       0.86      0.75      0.80         8
-          19       0.74      0.95      0.83        21
-          20       0.87      0.83      0.85        24
-          21       1.00      0.75      0.86         8
-          22       0.67      0.67      0.67         9
-          23       1.00      1.00      1.00         8
-          24       0.62      0.56      0.59        18
-          25       0.92      1.00      0.96        24
-          26       0.75      0.30      0.43        10
-          27       0.71      0.55      0.62        22
-          28       0.71      0.65      0.68        23
-          29       0.73      0.61      0.67        18
-          30       0.94      0.94      0.94        89
+           0       0.78      0.93      0.85       154
+           1       0.92      0.97      0.95        89
+           2       0.67      0.62      0.64        60
+           3       0.83      0.83      0.83        36
+           4       0.79      1.00      0.88        34
+           5       0.83      0.65      0.73        23
+           6       1.00      0.83      0.91        24
+           7       1.00      1.00      1.00        24
+           8       0.68      0.65      0.67        23
+           9       0.90      0.86      0.88        22
+          10       0.85      0.50      0.63        22
+          11       0.88      1.00      0.93        21
+          12       1.00      0.90      0.95        21
+          13       0.91      0.95      0.93        21
+          14       1.00      0.95      0.98        21
+          15       0.79      0.95      0.86        20
+          16       0.90      0.47      0.62        19
+          17       0.79      0.61      0.69        18
+          18       0.63      0.67      0.65        18
+          19       0.90      0.82      0.86        11
+          20       1.00      0.70      0.82        10
+          21       1.00      0.67      0.80         9
+          22       1.00      0.88      0.93         8
+          23       1.00      0.62      0.77         8
+          24       1.00      1.00      1.00         8
+          25       1.00      0.88      0.93         8
+          26       0.88      0.88      0.88         8
+          27       0.86      0.75      0.80         8
+          28       1.00      1.00      1.00         8
+          29       0.75      0.75      0.75         8
+          30       0.75      1.00      0.86         6
 
-   micro avg       0.82      0.82      0.82       770
-   macro avg       0.80      0.76      0.77       770
-weighted avg       0.82      0.82      0.81       770
+   micro avg       0.84      0.84      0.84       770
+   macro avg       0.88      0.82      0.84       770
+weighted avg       0.85      0.84      0.84       770
 </code></pre>
       
     </div>
@@ -1148,7 +1029,7 @@ weighted avg       0.82      0.82      0.81       770
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">56</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1159,7 +1040,7 @@ weighted avg       0.82      0.82      0.81       770
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1170,7 +1051,7 @@ weighted avg       0.82      0.82      0.81       770
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">85</span>
+                  <span class="site-state-item-count">88</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1213,7 +1094,7 @@ weighted avg       0.82      0.82      0.81       770
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#点击查看GitHub-SMP2018-完整代码和解析"><span class="nav-number">1.</span> <span class="nav-text">点击查看GitHub SMP2018 完整代码和解析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#根据SMP2018中文人机对话模型创建的应用"><span class="nav-number"></span> <span class="nav-text">根据SMP2018中文人机对话模型创建的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用户意图领域分类"><span class="nav-number">1.</span> <span class="nav-text">用户意图领域分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分类的类别说明"><span class="nav-number">2.</span> <span class="nav-text">分类的类别说明</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SMP2018中文人机对话技术评测（ECDT）"><span class="nav-number"></span> <span class="nav-text">SMP2018中文人机对话技术评测（ECDT）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#本实验还可以改进的地方举例"><span class="nav-number">1.</span> <span class="nav-text">本实验还可以改进的地方举例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#导入依赖库"><span class="nav-number"></span> <span class="nav-text">导入依赖库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#辅助函数"><span class="nav-number"></span> <span class="nav-text">辅助函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#准备数据"><span class="nav-number"></span> <span class="nav-text">准备数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载SMP2018官方数据"><span class="nav-number">1.</span> <span class="nav-text">下载SMP2018官方数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#All-labels"><span class="nav-number"></span> <span class="nav-text">All labels</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#标签和对应ID的映射字典"><span class="nav-number">1.</span> <span class="nav-text">标签和对应ID的映射字典</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结巴分词示例，下面将使用结巴分词对原数据进行处理"><span class="nav-number">2.</span> <span class="nav-text">结巴分词示例，下面将使用结巴分词对原数据进行处理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#序列化"><span class="nav-number"></span> <span class="nav-text">序列化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#不同种类的词汇个数，预留一个位置给不存在的词汇（不存在的词汇标记为0）"><span class="nav-number">1.</span> <span class="nav-text">不同种类的词汇个数，预留一个位置给不存在的词汇（不存在的词汇标记为0）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统计低频词语"><span class="nav-number">2.</span> <span class="nav-text">统计低频词语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#制作词汇字典"><span class="nav-number">3.</span> <span class="nav-text">制作词汇字典</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#存储预处理过的数据"><span class="nav-number"></span> <span class="nav-text">存储预处理过的数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#直接加载预处理的数据"><span class="nav-number">1.</span> <span class="nav-text">直接加载预处理的数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设计模型"><span class="nav-number"></span> <span class="nav-text">设计模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#训练模型"><span class="nav-number"></span> <span class="nav-text">训练模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#评估模型"><span class="nav-number"></span> <span class="nav-text">评估模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#将-one-hot-张量转换成对应的整数"><span class="nav-number">1.</span> <span class="nav-text">将 one-hot 张量转换成对应的整数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看多分类的-准确率、召回率、F1-值"><span class="nav-number">2.</span> <span class="nav-text">查看多分类的 准确率、召回率、F1 值</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#点击查看GitHub-SMP2018-完整代码和解析"><span class="nav-number">1.</span> <span class="nav-text">点击查看GitHub SMP2018 完整代码和解析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#根据SMP2018中文人机对话模型创建的应用"><span class="nav-number"></span> <span class="nav-text">根据SMP2018中文人机对话模型创建的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用户意图领域分类"><span class="nav-number">1.</span> <span class="nav-text">用户意图领域分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分类的类别说明"><span class="nav-number">2.</span> <span class="nav-text">分类的类别说明</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SMP2018中文人机对话技术评测（ECDT）"><span class="nav-number"></span> <span class="nav-text">SMP2018中文人机对话技术评测（ECDT）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#本实验还可以改进的地方举例"><span class="nav-number"></span> <span class="nav-text">本实验还可以改进的地方举例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#导入依赖库"><span class="nav-number"></span> <span class="nav-text">导入依赖库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#辅助函数"><span class="nav-number"></span> <span class="nav-text">辅助函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#准备数据"><span class="nav-number"></span> <span class="nav-text">准备数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载SMP2018官方数据"><span class="nav-number">1.</span> <span class="nav-text">下载SMP2018官方数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结巴分词示例，下面将使用结巴分词对原数据进行处理"><span class="nav-number">2.</span> <span class="nav-text">结巴分词示例，下面将使用结巴分词对原数据进行处理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#序列化"><span class="nav-number"></span> <span class="nav-text">序列化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#处理特征"><span class="nav-number">1.</span> <span class="nav-text">处理特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理标签"><span class="nav-number">2.</span> <span class="nav-text">处理标签</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设计模型"><span class="nav-number"></span> <span class="nav-text">设计模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#训练模型"><span class="nav-number"></span> <span class="nav-text">训练模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#评估模型"><span class="nav-number"></span> <span class="nav-text">评估模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#将-one-hot-张量转换成对应的整数"><span class="nav-number">1.</span> <span class="nav-text">将 one-hot 张量转换成对应的整数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看多分类的-准确率、召回率、F1-值"><span class="nav-number">2.</span> <span class="nav-text">查看多分类的 准确率、召回率、F1 值</span></a></li></ol></div>
             
 
           </div>
