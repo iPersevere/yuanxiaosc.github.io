@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Attention,Transformer," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="通过使用 TensorFlow 对 Attention Is All You Need 中的 Transformer 进行复现，从而真正理解论文，为进一步使用 Transformer 打下基础。       标题 说明 附加     Attention Is All You Need 原始论文 20170612   The Illustrated Transformer Transformer基">
+<meta name="keywords" content="Attention,Transformer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Transformer 代码实现">
+<meta property="og:url" content="http://yoursite.com/2018/11/04/Transformer代码实现/index.html">
+<meta property="og:site_name" content="望江人工智库">
+<meta property="og:description" content="通过使用 TensorFlow 对 Attention Is All You Need 中的 Transformer 进行复现，从而真正理解论文，为进一步使用 Transformer 打下基础。       标题 说明 附加     Attention Is All You Need 原始论文 20170612   The Illustrated Transformer Transformer基">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/11/04/Transformer代码实现/y1.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/04/Transformer代码实现/y2.png">
+<meta property="og:updated_time" content="2018-11-04T09:58:03.870Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Transformer 代码实现">
+<meta name="twitter:description" content="通过使用 TensorFlow 对 Attention Is All You Need 中的 Transformer 进行复现，从而真正理解论文，为进一步使用 Transformer 打下基础。       标题 说明 附加     Attention Is All You Need 原始论文 20170612   The Illustrated Transformer Transformer基">
+<meta name="twitter:image" content="http://yoursite.com/2018/11/04/Transformer代码实现/y1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/04/Transformer代码实现/"/>
+
+
+
+
+
+  <title>Transformer 代码实现 | 望江人工智库</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">望江人工智库</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/04/Transformer代码实现/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="望江车神">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/16183570?s=400&u=5e09ebb784cfd47de99d249f2be2413adcf4e672&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="望江人工智库">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Transformer 代码实现</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-04T17:18:50+08:00">
+                2018-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文/" itemprop="url" rel="index">
+                    <span itemprop="name">论文</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文/论文实现/" itemprop="url" rel="index">
+                    <span itemprop="name">论文实现</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>通过使用 TensorFlow 对 <a href="https://arxiv.org/abs/1706.03762v5" target="_blank" rel="noopener">Attention Is All You Need</a> 中的 Transformer 进行复现，从而真正理解论文，为进一步使用 Transformer 打下基础。</p>
+</blockquote>
+<p><img src="/2018/11/04/Transformer代码实现/y1.png" alt=""></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>标题</th>
+<th>说明</th>
+<th>附加</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://arxiv.org/abs/1706.03762v5" target="_blank" rel="noopener">Attention Is All You Need</a></td>
+<td>原始论文</td>
+<td>20170612</td>
+</tr>
+<tr>
+<td><a href="https://jalammar.github.io/illustrated-transformer/" target="_blank" rel="noopener">The Illustrated Transformer</a></td>
+<td>Transformer基础解读</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="Attention-Is-All-You-Need"><a href="#Attention-Is-All-You-Need" class="headerlink" title="Attention Is All You Need"></a><a href="https://arxiv.org/abs/1706.03762v5" target="_blank" rel="noopener">Attention Is All You Need</a></h1><p>Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, Illia Polosukhin<br>(Submitted on 12 Jun 2017 (v1), last revised 6 Dec 2017 (this version, v5))</p>
+<blockquote>
+<p>The dominant sequence transduction models are based on complex recurrent or convolutional neural networks in an encoder-decoder configuration. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results, including ensembles by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature. We show that the Transformer generalizes well to other tasks by applying it successfully to English constituency parsing both with large and limited training data.</p>
+</blockquote>
+<p>Comments:    15 pages, 5 figures<br>Subjects:    Computation and Language (cs.CL); Machine Learning (cs.LG)<br>Cite as:    arXiv:1706.03762 [cs.CL]<br>     (or arXiv:1706.03762v5 [cs.CL] for this version)</p>
+<blockquote>
+<p><a href="https://github.com/brightmart/bert_language_understanding" target="_blank" rel="noopener">代码来自复现 bert_language_understanding</a></p>
+</blockquote>
+<h2 id="multi-head-attention-py"><a href="#multi-head-attention-py" class="headerlink" title="multi_head_attention.py"></a><a href="https://github.com/brightmart/bert_language_understanding/blob/master/model/multi_head_attention.py" target="_blank" rel="noopener">multi_head_attention.py</a></h2><p><img src="/2018/11/04/Transformer代码实现/y2.png" alt=""><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment">#test self-attention</span></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">multi head attention.</span></span><br><span class="line"><span class="string">1.linearly project the queries,keys and values h times(with different,learned linear projections to d_k,d_k,d_v dimensions)</span></span><br><span class="line"><span class="string">2.scaled dot product attention for each projected version of Q,K,V</span></span><br><span class="line"><span class="string">3.concatenated result</span></span><br><span class="line"><span class="string">4.linear projection to get final result</span></span><br><span class="line"><span class="string">three kinds of usage:</span></span><br><span class="line"><span class="string">1. attention for encoder</span></span><br><span class="line"><span class="string">2. attention for decoder(need a mask to pay attention for only known position)</span></span><br><span class="line"><span class="string">3. attention as bridge of encoder and decoder</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MultiHeadAttention</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">""" multi head attention"""</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,Q,K_s,V_s,d_model,d_k,d_v,sequence_length,h,typee=None,is_training=None,mask=None,dropout_rate=<span class="number">0.1</span>)</span>:</span></span><br><span class="line">        self.d_model=d_model</span><br><span class="line">        self.d_k=d_k</span><br><span class="line">        self.d_v=d_v</span><br><span class="line">        self.sequence_length=sequence_length</span><br><span class="line">        self.h=h</span><br><span class="line">        self.Q=Q</span><br><span class="line">        self.K_s=K_s</span><br><span class="line">        self.V_s=V_s</span><br><span class="line">        self.typee=typee</span><br><span class="line">        self.is_training=is_training</span><br><span class="line">        self.mask=mask</span><br><span class="line">        self.dropout_rate=dropout_rate</span><br><span class="line">        <span class="comment">#print("MultiHeadAttention.self.dropout_rate:",self.dropout_rate)</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">multi_head_attention_fn</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        multi head attention</span></span><br><span class="line"><span class="string">        :param Q: query.  shape:[batch,sequence_length,d_model]</span></span><br><span class="line"><span class="string">        :param K_s: keys. shape:[batch,sequence_length,d_model].</span></span><br><span class="line"><span class="string">        :param V_s:values.shape:[batch,sequence_length,d_model].</span></span><br><span class="line"><span class="string">        :param h: h times</span></span><br><span class="line"><span class="string">        :return: result of scaled dot product attention. shape:[sequence_length,d_model]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment"># 1. linearly project the queries,keys and values h times(with different,learned linear projections to d_k,d_k,d_v dimensions)</span></span><br><span class="line">        Q_projected   = tf.layers.dense(self.Q,units=self.d_model)     <span class="comment"># [batch,sequence_length,d_model]</span></span><br><span class="line">        K_s_projected = tf.layers.dense(self.K_s, units=self.d_model)  <span class="comment"># [batch,sequence_length,d_model]</span></span><br><span class="line">        V_s_projected = tf.layers.dense(self.V_s, units=self.d_model)  <span class="comment"># [batch,sequence_length,d_model]</span></span><br><span class="line">        <span class="comment"># 2. scaled dot product attention for each projected version of Q,K,V</span></span><br><span class="line">        dot_product=self.scaled_dot_product_attention_batch(Q_projected,K_s_projected,V_s_projected) <span class="comment"># [batch,h,sequence_length,d_v]</span></span><br><span class="line">        <span class="comment"># 3. concatenated</span></span><br><span class="line">        batch_size,h,length,d_v=dot_product.get_shape().as_list()</span><br><span class="line">        <span class="comment">#print("dot_product:",dot_product,";self.sequence_length:",self.sequence_length) ##dot_product:(128, 8, 6, 64);5</span></span><br><span class="line">        dot_product=tf.reshape(dot_product,shape=(<span class="number">-1</span>,length,self.d_model)) <span class="comment"># [batch,sequence_length,d_model]</span></span><br><span class="line">        <span class="comment"># 4. linear projection</span></span><br><span class="line">        output=tf.layers.dense(dot_product,units=self.d_model) <span class="comment"># [batch,sequence_length,d_model]</span></span><br><span class="line">        <span class="keyword">return</span> output  <span class="comment">#[batch,sequence_length,d_model]</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">scaled_dot_product_attention_batch</span><span class="params">(self, Q, K_s, V_s)</span>:</span><span class="comment"># scaled dot product attention: implementation style like tensor2tensor from google</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        scaled dot product attention</span></span><br><span class="line"><span class="string">        :param Q:  query.  shape:[batch,sequence_length,d_model]</span></span><br><span class="line"><span class="string">        :param K_s: keys.  shape:[batch,sequence_length,d_model]</span></span><br><span class="line"><span class="string">        :param V_s:values. shape:[batch,sequence_length,d_model]</span></span><br><span class="line"><span class="string">        :param mask:       shape:[sequence_length,sequence_length]</span></span><br><span class="line"><span class="string">        :return: result of scaled dot product attention. shape:[batch,h,sequence_length,d_k]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment"># 1. split Q,K,V</span></span><br><span class="line">        <span class="comment">#K_s=tf.layers.dense(K_s,self.d_model) # transform K_s, while keep as shape. TODO add 2018.10.21. so that Q and K shoud be not the same.</span></span><br><span class="line">        Q_heads = tf.stack(tf.split(Q,self.h,axis=<span class="number">2</span>),axis=<span class="number">1</span>)                    <span class="comment"># [batch,h,sequence_length,d_k]</span></span><br><span class="line">        K_heads = tf.stack(tf.split(K_s, self.h, axis=<span class="number">2</span>), axis=<span class="number">1</span>)               <span class="comment"># [batch,h,sequence_length,d_k]</span></span><br><span class="line">        V_heads = tf.stack(tf.split(V_s, self.h, axis=<span class="number">2</span>), axis=<span class="number">1</span>)               <span class="comment"># [batch,h,sequence_length,d_v]. during implementation, d_v=d_k.</span></span><br><span class="line">        <span class="comment"># 2. dot product of Q,K</span></span><br><span class="line">        dot_product=tf.matmul(Q_heads,K_heads,transpose_b=<span class="keyword">True</span>)                 <span class="comment"># [batch,h,sequence_length,sequence_length]</span></span><br><span class="line">        dot_product=dot_product*(<span class="number">1.0</span>/tf.sqrt(tf.cast(self.d_model,tf.float32))) <span class="comment"># [batch,h,sequence_length,sequence_length]</span></span><br><span class="line">        <span class="comment"># 3. add mask if it is none</span></span><br><span class="line">        <span class="comment">#print("scaled_dot_product_attention_batch.mask is not none?",self.mask is not None)</span></span><br><span class="line">        <span class="keyword">if</span> self.mask <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">            mask_expand=tf.expand_dims(tf.expand_dims(self.mask,axis=<span class="number">0</span>),axis=<span class="number">0</span>) <span class="comment"># [1,1,sequence_length,sequence_length]</span></span><br><span class="line">            <span class="comment">#dot_product:(128, 8, 6, 6);mask_expand:(1, 1, 6, 6)</span></span><br><span class="line">            <span class="comment">#print("scaled_dot_product_attention_batch.dot_product:",dot_product,";mask_expand:",mask_expand)</span></span><br><span class="line">            dot_product=dot_product+mask_expand                                 <span class="comment"># [batch,h,sequence_length,sequence_length]</span></span><br><span class="line">        <span class="comment"># 4.get possibility</span></span><br><span class="line">        weights=tf.nn.softmax(dot_product)                                      <span class="comment"># [batch,h,sequence_length,sequence_length]</span></span><br><span class="line">        <span class="comment"># drop out weights</span></span><br><span class="line">        weights=tf.nn.dropout(weights,<span class="number">1.0</span>-self.dropout_rate)                    <span class="comment"># [batch,h,sequence_length,sequence_length]</span></span><br><span class="line">        <span class="comment"># 5. final output</span></span><br><span class="line">        output=tf.matmul(weights,V_heads)                                       <span class="comment"># [batch,h,sequence_length,d_v]</span></span><br><span class="line">        <span class="keyword">return</span> output</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#vectorized implementation of multi head attention for sentences with batch</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">multi_head_attention_for_sentence_vectorized</span><span class="params">(layer_number)</span>:</span></span><br><span class="line">    print(<span class="string">"started..."</span>)</span><br><span class="line">    start = time.time()</span><br><span class="line">    <span class="comment"># 1.set parameter</span></span><br><span class="line">    d_model = <span class="number">512</span></span><br><span class="line">    d_k = <span class="number">64</span></span><br><span class="line">    d_v = <span class="number">64</span></span><br><span class="line">    sequence_length = <span class="number">1000</span></span><br><span class="line">    h = <span class="number">8</span></span><br><span class="line">    batch_size=<span class="number">128</span></span><br><span class="line">    initializer = tf.random_normal_initializer(stddev=<span class="number">0.1</span>)</span><br><span class="line">    <span class="comment"># 2.set Q,K,V</span></span><br><span class="line">    vocab_size=<span class="number">1000</span></span><br><span class="line">    embed_size=d_model</span><br><span class="line">    typee=<span class="string">'decoder'</span></span><br><span class="line">    Embedding = tf.get_variable(<span class="string">"Embedding_"</span>, shape=[vocab_size, embed_size],initializer=initializer)</span><br><span class="line">    input_x = tf.placeholder(tf.int32, [batch_size,sequence_length], name=<span class="string">"input_x"</span>)</span><br><span class="line">    embedded_words = tf.nn.embedding_lookup(Embedding, input_x) <span class="comment">#[batch_size,sequence_length,embed_size]</span></span><br><span class="line">    mask=get_mask(batch_size,sequence_length) <span class="comment">#tf.ones((batch_size,sequence_length))*-1e8  #[batch,sequence_length]</span></span><br><span class="line">    <span class="keyword">with</span> tf.variable_scope(<span class="string">"query_at_each_sentence"</span>+str(layer_number)):</span><br><span class="line">        Q = embedded_words  <span class="comment"># [batch_size*sequence_length,embed_size]</span></span><br><span class="line">        K_s=embedded_words <span class="comment">#[batch_size*sequence_length,embed_size]</span></span><br><span class="line">        V_s=embedded_words <span class="comment">#tf.get_variable("V_s_original_", shape=embedded_words.get_shape().as_list(),initializer=initializer) #[batch_size,sequence_length,embed_size]</span></span><br><span class="line">        <span class="comment"># 3.call method to get result</span></span><br><span class="line">        multi_head_attention_class = MultiHeadAttention(Q, K_s, V_s, d_model, d_k, d_v, sequence_length, h,typee=<span class="string">'decoder'</span>,mask=mask)</span><br><span class="line">        encoder_output=multi_head_attention_class.multi_head_attention_fn() <span class="comment">#shape:[sequence_length,d_model]</span></span><br><span class="line">        encoder_output=tf.reshape(encoder_output,shape=(batch_size,sequence_length,d_model))</span><br><span class="line">    end = time.time()</span><br><span class="line">    print(<span class="string">"input_x:"</span>,input_x)</span><br><span class="line">    print(<span class="string">"encoder_output:"</span>,encoder_output,<span class="string">";time_spent:"</span>,(end-start))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_mask</span><span class="params">(batch_size,sequence_length)</span>:</span></span><br><span class="line">    lower_triangle=tf.matrix_band_part(tf.ones([sequence_length,sequence_length]),<span class="number">-1</span>,<span class="number">0</span>)</span><br><span class="line">    result=<span class="number">-1e9</span>*(<span class="number">1.0</span>-lower_triangle)</span><br><span class="line">    print(<span class="string">"get_mask==&gt;result:"</span>,result)</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">layer_number=<span class="number">0</span></span><br><span class="line"><span class="comment">#multi_head_attention_for_sentence_vectorized(0)</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="poistion-wise-feed-forward-py"><a href="#poistion-wise-feed-forward-py" class="headerlink" title="poistion_wise_feed_forward.py"></a><a href="https://github.com/brightmart/bert_language_understanding/blob/master/model/poistion_wise_feed_forward.py" target="_blank" rel="noopener">poistion_wise_feed_forward.py</a></h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">Position-wise Feed-Forward Networks</span></span><br><span class="line"><span class="string">In addition to attention sub-layers, each of the layers in our encoder and decoder contains a fully</span></span><br><span class="line"><span class="string">connected feed-forward network, which is applied to each position separately and identically. This</span></span><br><span class="line"><span class="string">consists of two linear transformations with a ReLU activation in between.</span></span><br><span class="line"><span class="string">FFN(x) = max(0,xW1+b1)W2+b2</span></span><br><span class="line"><span class="string">While the linear transformations are the same across different positions, they use different parameters</span></span><br><span class="line"><span class="string">from layer to layer. Another way of describing this is as two convolutions with kernel size 1.</span></span><br><span class="line"><span class="string">The dimensionality of input and output is d_model= 512, and the inner-layer has dimensionalityd_ff= 2048.</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PositionWiseFeedFoward</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    position-wise feed forward networks. formula as below:</span></span><br><span class="line"><span class="string">    FFN(x)=max(0,xW1+b1)W2+b2</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,x,layer_index,d_model=<span class="number">512</span>,d_ff=<span class="number">2048</span>)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :param x: shape should be:[batch,sequence_length,d_model]</span></span><br><span class="line"><span class="string">        :param layer_index:  index of layer</span></span><br><span class="line"><span class="string">        :return: shape:[sequence_length,d_model]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        shape_list=x.get_shape().as_list()</span><br><span class="line">        <span class="keyword">assert</span>(len(shape_list)==<span class="number">3</span>)</span><br><span class="line">        self.x=x</span><br><span class="line">        self.layer_index=layer_index</span><br><span class="line">        self.d_model=d_model</span><br><span class="line">        self.d_ff=d_ff</span><br><span class="line">        self.initializer = tf.random_normal_initializer(stddev=<span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">position_wise_feed_forward_fn</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        positional wise fully connected feed forward implement as two layers of cnn</span></span><br><span class="line"><span class="string">        x:       [batch,sequence_length,d_model]</span></span><br><span class="line"><span class="string">        :return: [batch,sequence_length,d_model]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment"># 1.conv layer 1</span></span><br><span class="line">        input=tf.expand_dims(self.x,axis=<span class="number">3</span>) <span class="comment"># [batch,sequence_length,d_model,1]</span></span><br><span class="line">        <span class="comment"># conv2d.input: [batch,sentence_length,embed_size,1]. filter=[filter_size,self.embed_size,1,self.num_filters]</span></span><br><span class="line">        output_conv1=tf.layers.conv2d(  <span class="comment"># output_conv1: [batch_size,sequence_length,1,d_ff]</span></span><br><span class="line">            input,filters=self.d_ff,kernel_size=[<span class="number">1</span>,self.d_model],padding=<span class="string">"VALID"</span>,</span><br><span class="line">            name=<span class="string">'conv1'</span>,kernel_initializer=self.initializer,activation=tf.nn.relu</span><br><span class="line">        )</span><br><span class="line">        output_conv1 = tf.transpose(output_conv1, [<span class="number">0</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>])  <span class="comment">#output_conv1:[batch_size,sequence_length,d_ff,1]</span></span><br><span class="line">        <span class="comment"># print("output_conv1:",output_conv1)</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 2.conv layer 2</span></span><br><span class="line">        output_conv2 = tf.layers.conv2d( <span class="comment"># output_conv2:[batch_size, sequence_length,1,d_model]</span></span><br><span class="line">            output_conv1,filters=self.d_model,kernel_size=[<span class="number">1</span>,self.d_ff],padding=<span class="string">"VALID"</span>,</span><br><span class="line">            name=<span class="string">'conv2'</span>,kernel_initializer=self.initializer,activation=<span class="keyword">None</span></span><br><span class="line">        )</span><br><span class="line">        output=tf.squeeze(output_conv2) <span class="comment">#[batch,sequence_length,d_model]</span></span><br><span class="line">        <span class="keyword">return</span> output <span class="comment">#[batch,sequence_length,d_model]</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">position_wise_feed_forward_fc_fn</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        positional wise fully connected feed forward implement as original version.</span></span><br><span class="line"><span class="string">        FFN(x) = max(0,xW1+b1)W2+b2</span></span><br><span class="line"><span class="string">        this function provide you as an alternative if you want to use original version, or you don't want to use two layers of cnn,</span></span><br><span class="line"><span class="string">        but may be less efficient as sequence become longer.</span></span><br><span class="line"><span class="string">        x:       [batch,sequence_length,d_model]</span></span><br><span class="line"><span class="string">        :return: [batch,sequence_length,d_model]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment"># 0. pre-process input x</span></span><br><span class="line">        _,sequence_length,d_model=self.x.get_shape().as_list()</span><br><span class="line"></span><br><span class="line">        element_list = tf.split(self.x, sequence_length,axis=<span class="number">1</span>)  <span class="comment"># it is a list,length is sequence_length, each element is [batch_size,1,d_model]</span></span><br><span class="line">        element_list = [tf.squeeze(element, axis=<span class="number">1</span>) <span class="keyword">for</span> element <span class="keyword">in</span> element_list]  <span class="comment"># it is a list,length is sequence_length, each element is [batch_size,d_model]</span></span><br><span class="line">        output_list=[]</span><br><span class="line">        <span class="keyword">for</span> i, element <span class="keyword">in</span> enumerate(element_list):</span><br><span class="line">            <span class="keyword">with</span> tf.variable_scope(<span class="string">"foo"</span>, reuse=<span class="keyword">True</span> <span class="keyword">if</span> i&gt;<span class="number">0</span> <span class="keyword">else</span> <span class="keyword">False</span>):</span><br><span class="line">                <span class="comment"># 1. layer 1</span></span><br><span class="line">                W1 = tf.get_variable(<span class="string">"ff_layer1"</span>, shape=[self.d_model, self.d_ff], initializer=self.initializer)</span><br><span class="line">                z1=tf.nn.relu(tf.matmul(element,W1)) <span class="comment"># z1:[batch_size,d_ff]&lt;--------tf.matmul([batch_size,d_model],[d_model, d_ff])</span></span><br><span class="line">                <span class="comment"># 2. layer 2</span></span><br><span class="line">                W2 = tf.get_variable(<span class="string">"ff_layer2"</span>, shape=[self.d_ff, self.d_model], initializer=self.initializer)</span><br><span class="line">                output_element=tf.matmul(z1,W2) <span class="comment"># output:[batch_size,d_model]&lt;----------tf.matmul([batch_size,d_ff],[d_ff, d_model])</span></span><br><span class="line">                output_list.append(output_element) <span class="comment"># a list, each element is [batch_size,d_model]</span></span><br><span class="line">        output=tf.stack(output_list,axis=<span class="number">1</span>) <span class="comment"># [batch,sequence_length,d_model]</span></span><br><span class="line">        <span class="keyword">return</span> output <span class="comment"># [batch,sequence_length,d_model]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#test function of position_wise_feed_forward_fn</span></span><br><span class="line"><span class="comment">#time spent:OLD VERSION(FC): length=1000,time spent:2.04 s; NEW VERSION(CNN):0.03s, speed up as 68x.</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_position_wise_feed_forward_fn</span><span class="params">()</span>:</span></span><br><span class="line">    start=time.time()</span><br><span class="line">    x=tf.ones((<span class="number">8</span>,<span class="number">1000</span>,<span class="number">512</span>)) <span class="comment">#batch_size=8,sequence_length=10 ;</span></span><br><span class="line">    layer_index=<span class="number">0</span></span><br><span class="line">    postion_wise_feed_forward=PositionWiseFeedFoward(x,layer_index)</span><br><span class="line">    output=postion_wise_feed_forward.position_wise_feed_forward_fn()</span><br><span class="line">    end=time.time()</span><br><span class="line">    print(<span class="string">"x:"</span>,x.shape,<span class="string">";output:"</span>,output.shape)</span><br><span class="line">    print(<span class="string">"time spent:"</span>,(end-start))</span><br><span class="line">    <span class="keyword">return</span> output</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">        result=test_position_wise_feed_forward_fn()</span><br><span class="line">        sess.run(tf.global_variables_initializer())</span><br><span class="line">        result_=sess.run(result)</span><br><span class="line">        print(<span class="string">"result_.shape:"</span>,result_.shape)</span><br><span class="line"></span><br><span class="line"><span class="comment">#test()</span></span><br></pre></td></tr></table></figure>
+<h2 id="layer-norm-residual-conn-py"><a href="#layer-norm-residual-conn-py" class="headerlink" title="layer_norm_residual_conn.py"></a><a href="https://github.com/brightmart/bert_language_understanding/blob/master/model/layer_norm_residual_conn.py" target="_blank" rel="noopener">layer_norm_residual_conn.py</a></h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">We employ a residual connection around each of the two sub-layers, followed by layer normalization.</span></span><br><span class="line"><span class="string">That is, the output of each sub-layer is LayerNorm(x+ Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer itself. """</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LayerNormResidualConnection</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,x,y,layer_index,residual_dropout=<span class="number">0.1</span>,use_residual_conn=True)</span>:</span></span><br><span class="line">        self.x=x</span><br><span class="line">        self.y=y</span><br><span class="line">        self.layer_index=layer_index</span><br><span class="line">        self.residual_dropout=residual_dropout</span><br><span class="line">        <span class="comment">#print("LayerNormResidualConnection.residual_dropout:",self.residual_dropout)</span></span><br><span class="line">        self.use_residual_conn=use_residual_conn</span><br><span class="line"></span><br><span class="line">    <span class="comment">#call residual connection and layer normalization</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">layer_norm_residual_connection</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment">#print("LayerNormResidualConnection.use_residual_conn:",self.use_residual_conn)</span></span><br><span class="line">        <span class="keyword">if</span> self.use_residual_conn: <span class="comment"># todo previously it is removed in a classification task, may be because result become not stable</span></span><br><span class="line">            x_residual=self.residual_connection()</span><br><span class="line">            x_layer_norm=self.layer_normalization(x_residual)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            x_layer_norm = self.layer_normalization(self.x)</span><br><span class="line">        <span class="keyword">return</span> x_layer_norm</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">residual_connection</span><span class="params">(self)</span>:</span></span><br><span class="line">        output=self.x + tf.nn.dropout(self.y, <span class="number">1.0</span> - self.residual_dropout)</span><br><span class="line">        <span class="keyword">return</span> output</span><br><span class="line"></span><br><span class="line">    <span class="comment"># layer normalize the tensor x, averaging over the last dimension.</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">layer_normalization</span><span class="params">(self,x)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        x should be:[batch_size,sequence_length,d_model]</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        filter=x.get_shape()[<span class="number">-1</span>] <span class="comment">#last dimension of x. e.g. 512</span></span><br><span class="line">        <span class="comment">#print("layer_normalization:==================&gt;variable_scope:","layer_normalization"+str(self.layer_index))</span></span><br><span class="line">        <span class="keyword">with</span> tf.variable_scope(<span class="string">"layer_normalization"</span>+str(self.layer_index)):</span><br><span class="line">            <span class="comment"># 1. normalize input by using  mean and variance according to last dimension</span></span><br><span class="line">            mean=tf.reduce_mean(x,axis=<span class="number">-1</span>,keepdims=<span class="keyword">True</span>) <span class="comment">#[batch_size,sequence_length,1]</span></span><br><span class="line">            variance=tf.reduce_mean(tf.square(x-mean),axis=<span class="number">-1</span>,keepdims=<span class="keyword">True</span>) <span class="comment">#[batch_size,sequence_length,1]</span></span><br><span class="line">            norm_x=(x-mean)*tf.rsqrt(variance+<span class="number">1e-6</span>) <span class="comment">#[batch_size,sequence_length,d_model]</span></span><br><span class="line">            <span class="comment"># 2. re-scale normalized input back</span></span><br><span class="line">            scale=tf.get_variable(<span class="string">"layer_norm_scale"</span>,[filter],initializer=tf.ones_initializer) <span class="comment">#[filter]</span></span><br><span class="line">            bias=tf.get_variable(<span class="string">"layer_norm_bias"</span>,[filter],initializer=tf.ones_initializer) <span class="comment">#[filter]</span></span><br><span class="line">            output=norm_x*scale+bias <span class="comment">#[batch_size,sequence_length,d_model]</span></span><br><span class="line">            <span class="keyword">return</span> output <span class="comment">#[batch_size,sequence_length,d_model]</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    start = time.time()</span><br><span class="line"></span><br><span class="line">    batch_size=<span class="number">128</span></span><br><span class="line">    sequence_length=<span class="number">1000</span></span><br><span class="line">    d_model=<span class="number">512</span></span><br><span class="line">    x=tf.ones((batch_size,sequence_length,d_model))</span><br><span class="line">    y=x*<span class="number">3</span><span class="number">-0.5</span></span><br><span class="line">    layer_norm_residual_conn=LayerNormResidualConnection(x,y,<span class="number">0</span>)</span><br><span class="line">    output=layer_norm_residual_conn.layer_norm_residual_connection()</span><br><span class="line"></span><br><span class="line">    end = time.time()</span><br><span class="line">    print(<span class="string">"x:"</span>,x,<span class="string">";y:"</span>,y)</span><br><span class="line">    print(<span class="string">"output:"</span>,output,<span class="string">";time spent:"</span>,(end-start))</span><br><span class="line"></span><br><span class="line"><span class="comment">#test()</span></span><br></pre></td></tr></table></figure>
+<h2 id="base-model-py"><a href="#base-model-py" class="headerlink" title="base_model.py"></a><a href="https://github.com/brightmart/bert_language_understanding/blob/master/model/base_model.py" target="_blank" rel="noopener">base_model.py</a></h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">from</span>  model.multi_head_attention <span class="keyword">import</span> MultiHeadAttention</span><br><span class="line"><span class="keyword">from</span> model.poistion_wise_feed_forward <span class="keyword">import</span> PositionWiseFeedFoward</span><br><span class="line"><span class="keyword">from</span> model.layer_norm_residual_conn <span class="keyword">import</span> LayerNormResidualConnection</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BaseClass</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    base class has some common fields and functions.</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,d_model,d_k,d_v,sequence_length,h,batch_size,num_layer=<span class="number">6</span>,decoder_sent_length=None)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :param d_model:</span></span><br><span class="line"><span class="string">        :param d_k:</span></span><br><span class="line"><span class="string">        :param d_v:</span></span><br><span class="line"><span class="string">        :param sequence_length:</span></span><br><span class="line"><span class="string">        :param h:</span></span><br><span class="line"><span class="string">        :param batch_size:</span></span><br><span class="line"><span class="string">        :param embedded_words: shape:[batch_size,sequence_length,embed_size]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.d_model=d_model</span><br><span class="line">        self.d_k=d_k</span><br><span class="line">        self.d_v=d_v</span><br><span class="line">        self.sequence_length=sequence_length</span><br><span class="line">        self.h=h</span><br><span class="line">        self.num_layer=num_layer</span><br><span class="line">        self.batch_size=batch_size</span><br><span class="line">        self.decoder_sent_length=decoder_sent_length</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sub_layer_postion_wise_feed_forward</span><span class="params">(self, x, layer_index)</span>  :</span><span class="comment"># COMMON FUNCTION</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        position-wise feed forward. you can implement it as feed forward network, or two layers of CNN.</span></span><br><span class="line"><span class="string">        :param x: shape should be:[batch_size,sequence_length,d_model]</span></span><br><span class="line"><span class="string">        :param layer_index: index of layer number</span></span><br><span class="line"><span class="string">        :return: [batch_size,sequence_length,d_model]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment"># use variable scope here with input of layer index, to make sure each layer has different parameters.</span></span><br><span class="line">        <span class="keyword">with</span> tf.variable_scope(<span class="string">"sub_layer_postion_wise_feed_forward"</span>  + str(layer_index)):</span><br><span class="line">            postion_wise_feed_forward = PositionWiseFeedFoward(x, layer_index,d_model=self.d_model,d_ff=self.d_model*<span class="number">4</span>)</span><br><span class="line">            postion_wise_feed_forward_output = postion_wise_feed_forward.position_wise_feed_forward_fn()</span><br><span class="line">        <span class="keyword">return</span> postion_wise_feed_forward_output</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sub_layer_multi_head_attention</span><span class="params">(self ,layer_index ,Q ,K_s,V_s,mask=None,is_training=None,dropout_keep_prob=<span class="number">0.9</span>)</span>  :</span><span class="comment"># COMMON FUNCTION</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        multi head attention as sub layer</span></span><br><span class="line"><span class="string">        :param layer_index: index of layer number</span></span><br><span class="line"><span class="string">        :param Q: shape should be: [batch_size,sequence_length,embed_size]</span></span><br><span class="line"><span class="string">        :param k_s: shape should be: [batch_size,sequence_length,embed_size]</span></span><br><span class="line"><span class="string">        :param mask: when use mask,illegal connection will be mask as huge big negative value.so it's possiblitity will become zero.</span></span><br><span class="line"><span class="string">        :return: output of multi head attention.shape:[batch_size,sequence_length,d_model]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment">#print("sub_layer_multi_head_attention.",";layer_index:",layer_index)</span></span><br><span class="line">        <span class="keyword">with</span> tf.variable_scope(<span class="string">"base_mode_sub_layer_multi_head_attention_"</span> +str(layer_index)):</span><br><span class="line">            <span class="comment">#2. call function of multi head attention to get result</span></span><br><span class="line">            multi_head_attention_class = MultiHeadAttention(Q, K_s, V_s, self.d_model, self.d_k, self.d_v, self.sequence_length,self.h,</span><br><span class="line">                                                            is_training=is_training,mask=mask,dropout_rate=(<span class="number">1.0</span>-dropout_keep_prob))</span><br><span class="line">            sub_layer_multi_head_attention_output = multi_head_attention_class.multi_head_attention_fn()  <span class="comment"># [batch_size*sequence_length,d_model]</span></span><br><span class="line">        <span class="keyword">return</span> sub_layer_multi_head_attention_output  <span class="comment"># [batch_size,sequence_length,d_model]</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sub_layer_layer_norm_residual_connection</span><span class="params">(self,layer_input ,layer_output,layer_index,dropout_keep_prob=<span class="number">0.9</span>,use_residual_conn=True,sub_layer_name=<span class="string">'layer1'</span>)</span>:</span> <span class="comment"># COMMON FUNCTION</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        layer norm &amp; residual connection</span></span><br><span class="line"><span class="string">        :param input: [batch_size,equence_length,d_model]</span></span><br><span class="line"><span class="string">        :param output:[batch_size,sequence_length,d_model]</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment">#print("sub_layer_layer_norm_residual_connection.layer_input:",layer_input,";layer_output:",layer_output,";dropout_keep_prob:",dropout_keep_prob)</span></span><br><span class="line">        <span class="comment">#assert layer_input.get_shape().as_list()==layer_output.get_shape().as_list()</span></span><br><span class="line">        <span class="comment">#layer_output_new= layer_input+ layer_output</span></span><br><span class="line">        variable_scope=<span class="string">"sub_layer_layer_norm_residual_connection_"</span> +str(layer_index)+<span class="string">'_'</span>+sub_layer_name</span><br><span class="line">        <span class="comment">#print("######sub_layer_layer_norm_residual_connection.variable_scope:",variable_scope)</span></span><br><span class="line">        <span class="keyword">with</span> tf.variable_scope(variable_scope):</span><br><span class="line">            layer_norm_residual_conn=LayerNormResidualConnection(layer_input,layer_output,layer_index,residual_dropout=(<span class="number">1</span>-dropout_keep_prob),use_residual_conn=use_residual_conn)</span><br><span class="line">            output = layer_norm_residual_conn.layer_norm_residual_connection()</span><br><span class="line">        <span class="keyword">return</span> output  <span class="comment"># [batch_size,sequence_length,d_model]</span></span><br></pre></td></tr></table></figure>
+<h2 id="encoder-py"><a href="#encoder-py" class="headerlink" title="encoder.py"></a><a href="https://github.com/brightmart/bert_language_understanding/blob/master/model/encoder.py" target="_blank" rel="noopener">encoder.py</a></h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">encoder for the transformer:</span></span><br><span class="line"><span class="string">6 layers.each layers has two sub-layers.</span></span><br><span class="line"><span class="string">the first is multi-head self-attention mechanism;</span></span><br><span class="line"><span class="string">the second is position-wise fully connected feed-forward network.</span></span><br><span class="line"><span class="string">for each sublayer. use LayerNorm(x+Sublayer(x)). all dimension=512.</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">from</span> model.base_model <span class="keyword">import</span> BaseClass</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Encoder</span><span class="params">(BaseClass)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,d_model,d_k,d_v,sequence_length,h,batch_size,num_layer,Q,K_s,mask=None,dropout_keep_prob=<span class="number">0.9</span>,use_residual_conn=True)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :param d_model:</span></span><br><span class="line"><span class="string">        :param d_k:</span></span><br><span class="line"><span class="string">        :param d_v:</span></span><br><span class="line"><span class="string">        :param sequence_length:</span></span><br><span class="line"><span class="string">        :param h:</span></span><br><span class="line"><span class="string">        :param batch_size:</span></span><br><span class="line"><span class="string">        :param embedded_words: shape:[batch_size*sequence_length,embed_size]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        super(Encoder, self).__init__(d_model,d_k,d_v,sequence_length,h,batch_size,num_layer=num_layer)</span><br><span class="line">        self.Q=Q</span><br><span class="line">        self.K_s=K_s</span><br><span class="line">        self.mask=mask</span><br><span class="line">        self.initializer = tf.random_normal_initializer(stddev=<span class="number">0.1</span>)</span><br><span class="line">        self.dropout_keep_prob=dropout_keep_prob</span><br><span class="line">        self.use_residual_conn=use_residual_conn</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">encoder_fn</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        use transformer encoder to encode the input, output a sequence. input: [batch_size,sequence_length,d_embedding]</span></span><br><span class="line"><span class="string">        :return:  output:[batch_size*sequence_length,d_model]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        start = time.time()</span><br><span class="line">        <span class="comment">#print("encoder_fn.started.")</span></span><br><span class="line">        x=self.Q</span><br><span class="line">        <span class="keyword">for</span> layer_index <span class="keyword">in</span> range(self.num_layer):</span><br><span class="line">            x=self.encoder_single_layer(x,x,x,layer_index) <span class="comment"># Q,K_s,V_s</span></span><br><span class="line">            <span class="comment">#print("encoder_fn.",layer_index,".x:",x)</span></span><br><span class="line">        end = time.time()</span><br><span class="line">        <span class="comment">#print("encoder_fn.ended.x:",x)</span></span><br><span class="line">        <span class="comment">#print("time spent:",(end-start))</span></span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">encoder_single_layer</span><span class="params">(self,Q,K_s,V_s,layer_index)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        singel layer for encoder.each layers has two sub-layers:</span></span><br><span class="line"><span class="string">        the first is multi-head self-attention mechanism; the second is position-wise fully connected feed-forward network.</span></span><br><span class="line"><span class="string">        for each sublayer. use LayerNorm(x+Sublayer(x)). input and output of last dimension: d_model</span></span><br><span class="line"><span class="string">        :param Q: shape should be:       [batch_size,sequence_length,d_model]</span></span><br><span class="line"><span class="string">        :param K_s: shape should be:     [batch_size,sequence_length,d_model]</span></span><br><span class="line"><span class="string">        :return:output: shape should be: [batch_size,sequence_length,d_model]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment">#1.1 the first is multi-head self-attention mechanism</span></span><br><span class="line">        multi_head_attention_output=self.sub_layer_multi_head_attention(layer_index,Q,K_s,V_s,mask=self.mask,dropout_keep_prob=self.dropout_keep_prob) <span class="comment">#[batch_size,sequence_length,d_model]</span></span><br><span class="line">        <span class="comment">#1.2 use LayerNorm(x+Sublayer(x)). all dimension=512.</span></span><br><span class="line">        multi_head_attention_output=self.sub_layer_layer_norm_residual_connection(K_s,multi_head_attention_output,layer_index,</span><br><span class="line">                                                                                  dropout_keep_prob=self.dropout_keep_prob,use_residual_conn=self.use_residual_conn,sub_layer_name=<span class="string">'layer1'</span>)</span><br><span class="line">        <span class="comment">#2.1 the second is position-wise fully connected feed-forward network.</span></span><br><span class="line">        postion_wise_feed_forward_output=self.sub_layer_postion_wise_feed_forward(multi_head_attention_output,layer_index)</span><br><span class="line">        <span class="comment">#2.2 use LayerNorm(x+Sublayer(x)). all dimension=512.</span></span><br><span class="line">        postion_wise_feed_forward_output= self.sub_layer_layer_norm_residual_connection(multi_head_attention_output,postion_wise_feed_forward_output,layer_index,</span><br><span class="line">                                                                                        dropout_keep_prob=self.dropout_keep_prob,sub_layer_name=<span class="string">'layer2'</span>)</span><br><span class="line">        <span class="keyword">return</span>  postion_wise_feed_forward_output <span class="comment">#,postion_wise_feed_forward_output</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">init</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment">#1. assign value to fields</span></span><br><span class="line">    vocab_size=<span class="number">1000</span></span><br><span class="line">    d_model = <span class="number">512</span></span><br><span class="line">    d_k = <span class="number">64</span></span><br><span class="line">    d_v = <span class="number">64</span></span><br><span class="line">    sequence_length = <span class="number">5</span>*<span class="number">10</span></span><br><span class="line">    h = <span class="number">8</span></span><br><span class="line">    batch_size=<span class="number">4</span>*<span class="number">32</span></span><br><span class="line">    initializer = tf.random_normal_initializer(stddev=<span class="number">0.1</span>)</span><br><span class="line">    <span class="comment"># 2.set values for Q,K,V</span></span><br><span class="line">    vocab_size=<span class="number">1000</span></span><br><span class="line">    embed_size=d_model</span><br><span class="line">    Embedding = tf.get_variable(<span class="string">"Embedding_E"</span>, shape=[vocab_size, embed_size],initializer=initializer)</span><br><span class="line">    input_x = tf.placeholder(tf.int32, [batch_size,sequence_length], name=<span class="string">"input_x"</span>) <span class="comment">#[4,10]</span></span><br><span class="line">    print(<span class="string">"input_x:"</span>,input_x)</span><br><span class="line">    embedded_words = tf.nn.embedding_lookup(Embedding, input_x) <span class="comment">#[batch_size*sequence_length,embed_size]</span></span><br><span class="line">    Q = embedded_words  <span class="comment"># [batch_size*sequence_length,embed_size]</span></span><br><span class="line">    K_s = embedded_words  <span class="comment"># [batch_size*sequence_length,embed_size]</span></span><br><span class="line">    V_s = embedded_words  <span class="comment"># [batch_size*sequence_length,embed_size]</span></span><br><span class="line">    num_layer=<span class="number">6</span></span><br><span class="line">    mask = get_mask(batch_size, sequence_length)</span><br><span class="line">    <span class="comment">#3. get class object</span></span><br><span class="line">    encoder_class=Encoder(d_model,d_k,d_v,sequence_length,h,batch_size,num_layer,Q,K_s,mask=mask) <span class="comment">#Q,K_s,embedded_words</span></span><br><span class="line">    <span class="keyword">return</span> encoder_class,Q,K_s,V_s</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_mask</span><span class="params">(batch_size,sequence_length)</span>:</span></span><br><span class="line">    lower_triangle=tf.matrix_band_part(tf.ones([sequence_length,sequence_length]),<span class="number">-1</span>,<span class="number">0</span>)</span><br><span class="line">    result=<span class="number">-1e9</span>*(<span class="number">1.0</span>-lower_triangle)</span><br><span class="line">    print(<span class="string">"get_mask==&gt;result:"</span>,result)</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_postion_wise_feed_forward</span><span class="params">(encoder_class,x,layer_index)</span>:</span></span><br><span class="line">    sub_layer_postion_wise_feed_forward_output=encoder_class.sub_layer_postion_wise_feed_forward(x, layer_index)</span><br><span class="line">    <span class="keyword">return</span> sub_layer_postion_wise_feed_forward_output</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_sub_layer_multi_head_attention</span><span class="params">(encoder_class,index_layer,Q,K_s,V_s)</span>:</span></span><br><span class="line">    sub_layer_multi_head_attention_output=encoder_class.sub_layer_multi_head_attention(index_layer,Q,K_s,V_s)</span><br><span class="line">    <span class="keyword">return</span> sub_layer_multi_head_attention_output</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">encoder_class,Q,K_s,V_s=init()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#below is 4 callable codes for testing functions: from sub(small) function to whole function of encoder.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment">#1.test 1: for sub layer of multi head attention</span></span><br><span class="line">    index_layer=<span class="number">0</span></span><br><span class="line">    <span class="comment">#sub_layer_multi_head_attention_output=test_sub_layer_multi_head_attention(encoder_class,index_layer,Q,K_s,V_s)</span></span><br><span class="line">    <span class="comment">#print("sub_layer_multi_head_attention_output1:",sub_layer_multi_head_attention_output)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#2. test 2: for sub layer of multi head attention with poistion-wise feed forward</span></span><br><span class="line">    <span class="comment">#d1,d2,d3=sub_layer_multi_head_attention_output.get_shape().as_list()</span></span><br><span class="line">    <span class="comment">#print("d1:",d1,";d2:",d2,";d3:",d3)</span></span><br><span class="line">    <span class="comment">#postion_wise_ff_input=sub_layer_multi_head_attention_output #tf.reshape(sub_layer_multi_head_attention_output,shape=[-1,d3])</span></span><br><span class="line">    <span class="comment">#print("sub_layer_postion_wise_feed_forward_input:",postion_wise_ff_input)</span></span><br><span class="line">    <span class="comment">#sub_layer_postion_wise_feed_forward_output=test_postion_wise_feed_forward(encoder_class,postion_wise_ff_input,index_layer)</span></span><br><span class="line">    <span class="comment">#sub_layer_postion_wise_feed_forward_output=tf.reshape(sub_layer_postion_wise_feed_forward_output,shape=(d1,d2,d3))</span></span><br><span class="line">    <span class="comment">#print("sub_layer_postion_wise_feed_forward_output:",sub_layer_postion_wise_feed_forward_output)</span></span><br><span class="line">    <span class="comment">#3.test 3: test for single layer of encoder</span></span><br><span class="line">    <span class="comment">#encoder_class.encoder_single_layer(Q,K_s,V_s,index_layer)</span></span><br><span class="line">    <span class="comment">#4.test 4: test for encoder. with N layers</span></span><br><span class="line"></span><br><span class="line">    representation = encoder_class.encoder_fn()</span><br><span class="line">    print(<span class="string">"representation:"</span>,representation)</span><br><span class="line"></span><br><span class="line"><span class="comment">#test()</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢金主！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="望江车神 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="望江车神 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Attention/" rel="tag"># Attention</a>
+          
+            <a href="/tags/Transformer/" rel="tag"># Transformer</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/03/TensorFlow/" rel="next" title="TensorFlow">
+                <i class="fa fa-chevron-left"></i> TensorFlow
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://avatars0.githubusercontent.com/u/16183570?s=400&u=5e09ebb784cfd47de99d249f2be2413adcf4e672&v=4"
+                alt="望江车神" />
+            
+              <p class="site-author-name" itemprop="name">望江车神</p>
+              <p class="site-description motion-element" itemprop="description">深度学习你~~~</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">88</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yuanxiaoSC" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Attention-Is-All-You-Need"><span class="nav-number">1.</span> <span class="nav-text">Attention Is All You Need</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#multi-head-attention-py"><span class="nav-number">1.1.</span> <span class="nav-text">multi_head_attention.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#poistion-wise-feed-forward-py"><span class="nav-number">1.2.</span> <span class="nav-text">poistion_wise_feed_forward.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#layer-norm-residual-conn-py"><span class="nav-number">1.3.</span> <span class="nav-text">layer_norm_residual_conn.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#base-model-py"><span class="nav-number">1.4.</span> <span class="nav-text">base_model.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#encoder-py"><span class="nav-number">1.5.</span> <span class="nav-text">encoder.py</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">望江车神</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
