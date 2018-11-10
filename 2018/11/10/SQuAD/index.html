@@ -79,18 +79,24 @@
 
 
 
-<meta name="description" content="PaperWeekly 第38期 SQuAD综述  SQUAD_DATA_处理解析源代码run_squad.py原始语料‘’’a paragraphs in original SQUAD DATA{‘paragraphs’:[{‘context’: ‘Architecturally, the school has a Catholic ‘            “character. Atop t">
+<meta name="description" content="PaperWeekly 第38期 SQuAD综述  SQUAD_traing 训练结果：{“exact_match”: 81.20151371807, “f1”: 88.56178500169332}  SQUAD_DATA_处理解析源代码run_squad.py原始语料‘’’a paragraphs in original SQUAD DATA{‘paragraphs’:[{‘context’:">
 <meta name="keywords" content="SQuAD">
 <meta property="og:type" content="article">
-<meta property="og:title" content="待读：SQuAD（Stanford Question Answering Dataset）综述">
-<meta property="og:url" content="http://yoursite.com/2018/11/08/SQuAD（Stanford Question Answering Dataset）/index.html">
+<meta property="og:title" content="SQuAD（Stanford Question Answering Dataset）">
+<meta property="og:url" content="http://yoursite.com/2018/11/10/SQuAD/index.html">
 <meta property="og:site_name" content="望江人工智库">
-<meta property="og:description" content="PaperWeekly 第38期 SQuAD综述  SQUAD_DATA_处理解析源代码run_squad.py原始语料‘’’a paragraphs in original SQUAD DATA{‘paragraphs’:[{‘context’: ‘Architecturally, the school has a Catholic ‘            “character. Atop t">
+<meta property="og:description" content="PaperWeekly 第38期 SQuAD综述  SQUAD_traing 训练结果：{“exact_match”: 81.20151371807, “f1”: 88.56178500169332}  SQUAD_DATA_处理解析源代码run_squad.py原始语料‘’’a paragraphs in original SQUAD DATA{‘paragraphs’:[{‘context’:">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-08T10:52:36.572Z">
+<meta property="og:image" content="http://yoursite.com/2018/11/10/SQuAD/SQUAD_examples_per_sec.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/10/SQuAD/SQUAD_step_per_sec.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/10/SQuAD/SQUAD_LOSS.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/10/SQuAD/c1.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/10/SQuAD/c2.png">
+<meta property="og:updated_time" content="2018-11-10T14:23:42.210Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="待读：SQuAD（Stanford Question Answering Dataset）综述">
-<meta name="twitter:description" content="PaperWeekly 第38期 SQuAD综述  SQUAD_DATA_处理解析源代码run_squad.py原始语料‘’’a paragraphs in original SQUAD DATA{‘paragraphs’:[{‘context’: ‘Architecturally, the school has a Catholic ‘            “character. Atop t">
+<meta name="twitter:title" content="SQuAD（Stanford Question Answering Dataset）">
+<meta name="twitter:description" content="PaperWeekly 第38期 SQuAD综述  SQUAD_traing 训练结果：{“exact_match”: 81.20151371807, “f1”: 88.56178500169332}  SQUAD_DATA_处理解析源代码run_squad.py原始语料‘’’a paragraphs in original SQUAD DATA{‘paragraphs’:[{‘context’:">
+<meta name="twitter:image" content="http://yoursite.com/2018/11/10/SQuAD/SQUAD_examples_per_sec.png">
 
 
 
@@ -120,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/08/SQuAD（Stanford Question Answering Dataset）/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/11/10/SQuAD/"/>
 
 
 
 
 
-  <title>待读：SQuAD（Stanford Question Answering Dataset）综述 | 望江人工智库</title>
+  <title>SQuAD（Stanford Question Answering Dataset） | 望江人工智库</title>
   
 
 
@@ -287,7 +293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/08/SQuAD（Stanford Question Answering Dataset）/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/10/SQuAD/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="望江车神">
@@ -304,7 +310,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">待读：SQuAD（Stanford Question Answering Dataset）综述</h1>
+          <h1 class="post-title" itemprop="name headline">SQuAD（Stanford Question Answering Dataset）</h1>
         
 
         <div class="post-meta">
@@ -316,8 +322,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-08T18:51:50+08:00">
-                2018-11-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-10T22:17:50+08:00">
+                2018-11-10
               </time>
             
 
@@ -388,6 +394,9 @@
 
       
         <p><a href="https://mp.weixin.qq.com/s?__biz=MzIwMTc4ODE0Mw==&amp;mid=2247484700&amp;idx=1&amp;sn=1a11af55e71d05ef6f96eed9e260f01f&amp;scene=19#wechat_redirect" target="_blank" rel="noopener">PaperWeekly 第38期 SQuAD综述</a></p>
+<hr>
+<h1 id="SQUAD-traing"><a href="#SQUAD-traing" class="headerlink" title="SQUAD_traing"></a>SQUAD_traing</h1><p><img src="/2018/11/10/SQuAD/SQUAD_examples_per_sec.png" alt=""><br><img src="/2018/11/10/SQuAD/SQUAD_step_per_sec.png" alt=""><br><img src="/2018/11/10/SQuAD/SQUAD_LOSS.png" alt=""></p>
+<p>训练结果：<br>{“exact_match”: 81.20151371807, “f1”: 88.56178500169332}</p>
 <hr>
 <h1 id="SQUAD-DATA-处理解析"><a href="#SQUAD-DATA-处理解析" class="headerlink" title="SQUAD_DATA_处理解析"></a>SQUAD_DATA_处理解析</h1><h2 id="源代码run-squad-py"><a href="#源代码run-squad-py" class="headerlink" title="源代码run_squad.py"></a>源代码<a href="https://github.com/google-research/bert/blob/master/run_squad.py" target="_blank" rel="noopener">run_squad.py</a></h2><h2 id="原始语料"><a href="#原始语料" class="headerlink" title="原始语料"></a>原始语料</h2><p>‘’’<br>a paragraphs in original SQUAD DATA<br>{‘paragraphs’:<br>[{‘context’: ‘Architecturally, the school has a Catholic ‘<br>            “character. Atop the Main Building’s gold dome is “<br>            ‘a golden statue of the Virgin Mary. Immediately ‘<br>            ‘in front of the Main Building and facing it, is a ‘<br>            ‘copper statue of Christ with arms upraised with ‘<br>            ‘the legend “Venite Ad Me Omnes”. Next to the Main ‘<br>            ‘Building is the Basilica of the Sacred Heart. ‘<br>            ‘Immediately behind the basilica is the Grotto, a ‘<br>            ‘Marian place of prayer and reflection. It is a ‘<br>            ‘replica of the grotto at Lourdes, France where ‘<br>            ‘the Virgin Mary reputedly appeared to Saint ‘<br>            ‘Bernadette Soubirous in 1858. At the end of the ‘<br>            ‘main drive (and in a direct line that connects ‘<br>            ‘through 3 statues and the Gold Dome), is a ‘<br>            ‘simple, modern stone statue of Mary.’,<br> ‘qas’: [{‘answers’: [{‘answer_start’: 515,<br>                       ‘text’: ‘Saint Bernadette Soubirous’}],<br>          ‘id’: ‘5733be284776f41900661182’,<br>          ‘question’: ‘To whom did the Virgin Mary allegedly ‘<br>                      ‘appear in 1858 in Lourdes France?’},<br>         {‘answers’: [{‘answer_start’: 188,<br>                       ‘text’: ‘a copper statue of Christ’}],<br>          ‘id’: ‘5733be284776f4190066117f’,<br>          ‘question’: ‘What is in front of the Notre Dame Main ‘<br>                      ‘Building?’},<br>         {‘answers’: [{‘answer_start’: 279,<br>                       ‘text’: ‘the Main Building’}],<br>          ‘id’: ‘5733be284776f41900661180’,<br>          ‘question’: ‘The Basilica of the Sacred heart at ‘<br>                      ‘Notre Dame is beside to which ‘<br>                      ‘structure?’},<br>         {‘answers’: [{‘answer_start’: 381,<br>                       ‘text’: ‘a Marian place of prayer and ‘<br>                               ‘reflection’}],<br>          ‘id’: ‘5733be284776f41900661181’,<br>          ‘question’: ‘What is the Grotto at Notre Dame?’},<br>         {‘answers’: [{‘answer_start’: 92,<br>                       ‘text’: ‘a golden statue of the Virgin ‘<br>                               ‘Mary’}],<br>          ‘id’: ‘5733be284776f4190066117e’,<br>          ‘question’: ‘What sits on top of the Main Building ‘<br>                      ‘at Notre Dame?’}]},<br>‘’’</p>
 <h2 id="程序处理后的语料"><a href="#程序处理后的语料" class="headerlink" title="程序处理后的语料"></a>程序处理后的语料</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#INFO:tensorflow:*** Example ***</span></span><br><span class="line"><span class="comment">#INFO:tensorflow:unique_id: 1000000005</span></span><br><span class="line"><span class="comment">#INFO:tensorflow:example_index: 5</span></span><br><span class="line"><span class="comment">#INFO:tensorflow:doc_span_index: 0</span></span><br><span class="line"><span class="comment">#INFO:tensorflow:tokens: [CLS] what kind of topics began appearing more commonly in poetry and literature during the enlightenment ? [SEP] the influence of science also began appearing more commonly in poetry and literature during the enlightenment . some poetry became infused with scientific metaphor and imagery , while other poems were written directly about scientific topics . sir richard black ##more committed the newton ##ian system to verse in creation , a philosophical poem in seven books ( 1712 ) . after newton ' s death in 1727 , poems were composed in his honour for decades . james thomson ( 1700 – 1748 ) penned his " poem to the memory of newton , " which mo ##urne ##d the loss of newton , but also praised his science and legacy . [SEP]</span></span><br><span class="line"><span class="comment">#INFO:tensorflow:token_to_orig_map: 18:0 19:1 20:2 21:3 22:4 23:5 24:6 25:7 26:8 27:9 28:10 29:11 30:12 31:13 32:14 33:15 34:15 35:16 36:17 37:18 38:19 39:20 40:21 41:22 42:23 43:24 44:24 45:25 46:26 47:27 48:28 49:29 50:30 51:31 52:32 53:33 54:33 55:34 56:35 57:36 58:36 59:37 60:38 61:39 62:39 63:40 64:41 65:42 66:43 67:44 68:44 69:45 70:46 71:47 72:48 73:49 74:50 75:51 76:51 77:51 78:51 79:52 80:53 81:53 82:53 83:54 84:55 85:56 86:56 87:57 88:58 89:59 90:60 91:61 92:62 93:63 94:64 95:64 96:65 97:66 98:67 99:67 100:67 101:67 102:67 103:68 104:69 105:70 106:70 107:71 108:72 109:73 110:74 111:75 112:75 113:75 114:76 115:77 116:77 117:77 118:78 119:79 120:80 121:81 122:81 123:82 124:83 125:84 126:85 127:86 128:87 129:88 130:88</span></span><br><span class="line"><span class="comment">#INFO:tensorflow:token_is_max_context: 18:True 19:True 20:True 21:True 22:True 23:True 24:True 25:True 26:True 27:True 28:True 29:True 30:True 31:True 32:True 33:True 34:True 35:True 36:True 37:True 38:True 39:True 40:True 41:True 42:True 43:True 44:True 45:True 46:True 47:True 48:True 49:True 50:True 51:True 52:True 53:True 54:True 55:True 56:True 57:True 58:True 59:True 60:True 61:True 62:True 63:True 64:True 65:True 66:True 67:True 68:True 69:True 70:True 71:True 72:True 73:True 74:True 75:True 76:True 77:True 78:True 79:True 80:True 81:True 82:True 83:True 84:True 85:True 86:True 87:True 88:True 89:True 90:True 91:True 92:True 93:True 94:True 95:True 96:True 97:True 98:True 99:True 100:True 101:True 102:True 103:True 104:True 105:True 106:True 107:True 108:True 109:True 110:True 111:True 112:True 113:True 114:True 115:True 116:True 117:True 118:True 119:True 120:True 121:True 122:True 123:True 124:True 125:True 126:True 127:True 128:True 129:True 130:True</span></span><br><span class="line"><span class="comment">#INFO:tensorflow:input_ids: 101 2054 2785 1997 7832 2211 6037 2062 4141 1999 4623 1998 3906 2076 1996 16724 1029 102 1996 3747 1997 2671 2036 2211 6037 2062 4141 1999 4623 1998 3906 2076 1996 16724 1012 2070 4623 2150 29592 2007 4045 19240 1998 13425 1010 2096 2060 5878 2020 2517 3495 2055 4045 7832 1012 2909 2957 2304 5974 5462 1996 8446 2937 2291 2000 7893 1999 4325 1010 1037 9569 5961 1999 2698 2808 1006 28460 1007 1012 2044 8446 1005 1055 2331 1999 25350 1010 5878 2020 3605 1999 2010 6225 2005 5109 1012 2508 11161 1006 16601 1516 24445 1007 17430 2010 1000 5961 2000 1996 3638 1997 8446 1010 1000 2029 9587 21737 2094 1996 3279 1997 8446 1010 2021 2036 5868 2010 2671 1998 8027 1012 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</span></span><br><span class="line"><span class="comment">#INFO:tensorflow:input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</span></span><br><span class="line"><span class="comment">#INFO:tensorflow:segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</span></span><br><span class="line"><span class="comment">#INFO:tensorflow:start_position: 52</span></span><br><span class="line"><span class="comment">#INFO:tensorflow:end_position: 53</span></span><br><span class="line"><span class="comment">#INFO:tensorflow:answer: scientific topics</span></span><br></pre></td></tr></table></figure>
@@ -598,8 +607,9 @@ token_to_orig_maplen: 4
  {17: 121, 18: 122, 19: 123, 20: 123}
 
 
-----------------------------------------------------------------------------------------------------
-</code></pre>
+------------------------------------------------------------------
+</code></pre><h2 id="输入模型的一个样本例子"><a href="#输入模型的一个样本例子" class="headerlink" title="输入模型的一个样本例子"></a>输入模型的一个样本例子</h2><p><img src="/2018/11/10/SQuAD/c1.png" alt=""><br><img src="/2018/11/10/SQuAD/c2.png" alt=""></p>
+
       
     </div>
     
@@ -658,8 +668,8 @@ token_to_orig_maplen: 4
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/06/LearningRate模型的学习率/" rel="next" title="LearningRate模型的学习率">
-                <i class="fa fa-chevron-left"></i> LearningRate模型的学习率
+              <a href="/2018/11/09/Python/" rel="next" title="Python">
+                <i class="fa fa-chevron-left"></i> Python
               </a>
             
           </div>
@@ -667,10 +677,6 @@ token_to_orig_maplen: 4
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/08/TensorFlow/" rel="prev" title="TensorFlow">
-                TensorFlow <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -816,7 +822,7 @@ token_to_orig_maplen: 4
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SQUAD-DATA-处理解析"><span class="nav-number">1.</span> <span class="nav-text">SQUAD_DATA_处理解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#源代码run-squad-py"><span class="nav-number">1.1.</span> <span class="nav-text">源代码run_squad.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原始语料"><span class="nav-number">1.2.</span> <span class="nav-text">原始语料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序处理后的语料"><span class="nav-number">1.3.</span> <span class="nav-text">程序处理后的语料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQuAD-data-train-v1-1-json"><span class="nav-number">1.4.</span> <span class="nav-text">SQuAD_data/train-v1.1.json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#paragraph"><span class="nav-number">1.5.</span> <span class="nav-text">paragraph</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#read-squad-examples"><span class="nav-number">2.</span> <span class="nav-text">read_squad_examples</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#examples-doc-tokens"><span class="nav-number">2.1.</span> <span class="nav-text">examples - doc_tokens</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看原始语料转换成的-examples-内容"><span class="nav-number">2.2.</span> <span class="nav-text">查看原始语料转换成的 examples 内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#convert-examples-to-features"><span class="nav-number">3.</span> <span class="nav-text">convert_examples_to_features</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#doc-tokens-2-all-doc-tokens"><span class="nav-number">3.1.</span> <span class="nav-text">doc_tokens 2 all_doc_tokens</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用滑动窗口解决文档太长问题"><span class="nav-number">3.2.</span> <span class="nav-text">使用滑动窗口解决文档太长问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tokens-token-to-orig-map-token-is-max-context-segment-ids"><span class="nav-number">3.3.</span> <span class="nav-text">tokens = [], token_to_orig_map = {}, token_is_max_context = {}, segment_ids = []</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SQUAD-traing"><span class="nav-number">1.</span> <span class="nav-text">SQUAD_traing</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SQUAD-DATA-处理解析"><span class="nav-number">2.</span> <span class="nav-text">SQUAD_DATA_处理解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#源代码run-squad-py"><span class="nav-number">2.1.</span> <span class="nav-text">源代码run_squad.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原始语料"><span class="nav-number">2.2.</span> <span class="nav-text">原始语料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序处理后的语料"><span class="nav-number">2.3.</span> <span class="nav-text">程序处理后的语料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQuAD-data-train-v1-1-json"><span class="nav-number">2.4.</span> <span class="nav-text">SQuAD_data/train-v1.1.json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#paragraph"><span class="nav-number">2.5.</span> <span class="nav-text">paragraph</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#read-squad-examples"><span class="nav-number">3.</span> <span class="nav-text">read_squad_examples</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#examples-doc-tokens"><span class="nav-number">3.1.</span> <span class="nav-text">examples - doc_tokens</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看原始语料转换成的-examples-内容"><span class="nav-number">3.2.</span> <span class="nav-text">查看原始语料转换成的 examples 内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#convert-examples-to-features"><span class="nav-number">4.</span> <span class="nav-text">convert_examples_to_features</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#doc-tokens-2-all-doc-tokens"><span class="nav-number">4.1.</span> <span class="nav-text">doc_tokens 2 all_doc_tokens</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用滑动窗口解决文档太长问题"><span class="nav-number">4.2.</span> <span class="nav-text">使用滑动窗口解决文档太长问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tokens-token-to-orig-map-token-is-max-context-segment-ids"><span class="nav-number">4.3.</span> <span class="nav-text">tokens = [], token_to_orig_map = {}, token_is_max_context = {}, segment_ids = []</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入模型的一个样本例子"><span class="nav-number">4.4.</span> <span class="nav-text">输入模型的一个样本例子</span></a></li></ol></li></ol></div>
             
 
           </div>
