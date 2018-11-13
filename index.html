@@ -287,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/12/自然语言理解与交互技术平台/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/词嵌入Embedding和语言模型LanguageModel/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="望江车神">
@@ -306,7 +306,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/12/自然语言理解与交互技术平台/" itemprop="url">自然语言理解与交互技术平台</a></h1>
+                <a class="post-title-link" href="/2018/11/13/词嵌入Embedding和语言模型LanguageModel/" itemprop="url">Embedding 和语言模型 LanguageModel</a></h1>
         
 
         <div class="post-meta">
@@ -318,8 +318,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-12T09:53:50+08:00">
-                2018-11-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-13T09:30:15+08:00">
+                2018-11-13
               </time>
             
 
@@ -341,19 +341,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/项目/" itemprop="url" rel="index">
-                    <span itemprop="name">项目</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/项目/智能家居/" itemprop="url" rel="index">
-                    <span itemprop="name">智能家居</span>
+                  <a href="/categories/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
                   </a>
                 </span>
 
@@ -391,20 +380,13 @@
       
         
           
-          
-参照百度大脑的项目经验训练我们自己的模型，研发我们的自然语言理解平台。
-
-百度理解与交互技术平台(UNIT)
-【提升篇】酒店语音助手实例教程1 UNIT2.0基本概念https://ai.baidu.com/docs#/UNIT-v2-intro/top
-2 训练智能对话技能的总体流程
-
-    总共分为3个阶段，需求分析并做好前期准备工作→通过UNIT创建最小可用技能模型→持续优化技能模型，具体如下：
-
-    （1）第1阶段：需求分析。当前阶段需要有熟悉业务的人员参加，例如：产品经理、业务负责人等。先分析业务，明确业务中哪里需要通过和用户的对话来完成；再确认相关对话逻辑。最后基于之前的分
+          ELMo Deep contextualized word representations 的目标也仅仅是学习到上下文相关的、更强大的词向量，其目的依然是为下游任务提供一个扎实的根基，还没有想要弑君称王的意思。
+而我们知道，仅仅是对文本进行充分而强大的encoding（即得到每个词位非常精准丰富的特征）是远不够覆盖所有NLP任务的。在QA、机器阅读理解（MRC）、自然语言推理（NLI）、对话等任务中，还有很多更复杂的模式需要捕捉，比如句间关系。为此，下游任务中的网络会加入各种花式attention（参考NLI、MRC、Chatbot中的SOTA们）。
+而随着捕捉更多神奇模式的需要，研究者们为每
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/11/12/自然语言理解与交互技术平台/#more" rel="contents">
+            <a class="btn" href="/2018/11/13/词嵌入Embedding和语言模型LanguageModel/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -578,6 +560,9 @@
 20181111
 
 
+自然语言理解与交互技术平台(UNIT)
+
+
 
 
 资源
@@ -613,12 +598,179 @@
 
 
 
-基本概念训练自然语言理解技能的总体流程
-总共分为3个阶段，需求分析并做好前期准备工作→通过UNIT创建最小可用技能
+基本概念123456在特定场景下的对话理解与交互能力。技能主要用于解决
           ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/11/12/智能家居自然语言理解平台的解决方案/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/12/自然语言理解与交互技术平台/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="望江车神">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/16183570?s=400&u=5e09ebb784cfd47de99d249f2be2413adcf4e672&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="望江人工智库">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/12/自然语言理解与交互技术平台/" itemprop="url">自然语言理解与交互技术平台</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-12T09:53:50+08:00">
+                2018-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/项目/" itemprop="url" rel="index">
+                    <span itemprop="name">项目</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/项目/智能家居/" itemprop="url" rel="index">
+                    <span itemprop="name">智能家居</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+参照百度大脑的项目经验训练我们自己的模型，研发我们的自然语言理解平台。
+
+百度理解与交互技术平台(UNIT)
+【提升篇】酒店语音助手实例教程1 UNIT2.0基本概念https://ai.baidu.com/docs#/UNIT-v2-intro/top
+2 训练智能对话技能的总体流程
+
+    总共分为3个阶段，需求分析并做好前期准备工作→通过UNIT创建最小可用技能模型→持续优化技能模型，具体如下：
+
+    （1）第1阶段：需求分析。当前阶段需要有熟悉业务的人员参加，例如：产品经理、业务负责人等。先分析业务，明确业务中哪里需要通过和用户的对话来完成；再确认相关对话逻辑。最后基于之前的分
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/12/自然语言理解与交互技术平台/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -841,7 +993,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/10/SQuAD/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/10/SQuAD_data_set/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="望江车神">
@@ -860,7 +1012,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/10/SQuAD/" itemprop="url">SQuAD（Stanford Question Answering Dataset）</a></h1>
+                <a class="post-title-link" href="/2018/11/10/SQuAD_data_set/" itemprop="url">SQuAD（Stanford Question Answering Dataset）</a></h1>
         
 
         <div class="post-meta">
@@ -945,16 +1097,16 @@
       
         
           
-          PaperWeekly 第38期 SQuAD综述
+          SQuAD 数据地址PaperWeekly 第38期 SQuAD综述
 
 SQUAD_traing
 训练结果：{“exact_match”: 81.20151371807, “f1”: 88.56178500169332}
 
-SQUAD_DATA_处理解析源代码run_squad.py原始语料‘’’a paragraphs in original SQUAD DATA{‘paragraphs’:[{‘context’: ‘Architecturally, the school has a Catholic ‘            “character. Atop the Main Building’s gold 
+SQUAD_DATA_处理解析源代码run_squad.py原始语料‘’’a paragraphs in original SQUAD DATA{‘paragraphs’:[{‘context’: ‘Architecturally, the school has a Catholic ‘            “character. Atop the Main Buildi
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/11/10/SQuAD/#more" rel="contents">
+            <a class="btn" href="/2018/11/10/SQuAD_data_set/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1818,171 +1970,6 @@ LearningRate 详细解读
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/30/Semi_Supervised_sequence_tagging_with_bidirectional_language_models/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="望江车神">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/16183570?s=400&u=5e09ebb784cfd47de99d249f2be2413adcf4e672&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="望江人工智库">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/30/Semi_Supervised_sequence_tagging_with_bidirectional_language_models/" itemprop="url">Semi-supervised sequence tagging with bidirectional language models</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-30T10:20:50+08:00">
-                2018-10-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/论文/" itemprop="url" rel="index">
-                    <span itemprop="name">论文</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/论文/论文阅读/" itemprop="url" rel="index">
-                    <span itemprop="name">论文阅读</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          
-本文 是 NAACL 2018 最佳论文 Deep contextualized word representations 的前作，详细介绍了一种用预训练的双向语言模型提高其它模型（序列标注）效果的半监督方法。
-
-
-Semi-supervised sequence tagging with bidirectional language modelsMatthew E. Peters, Waleed Ammar, Chandra Bhagavatula, Russell Power(Submitted on 29 Apr 2017)
-
-Pre-trained word embeddings l
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/10/30/Semi_Supervised_sequence_tagging_with_bidirectional_language_models/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2037,7 +2024,7 @@ Pre-trained word embeddings l
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

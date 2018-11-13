@@ -79,14 +79,15 @@
 
 
 
-<meta name="description" content="NAACL 2018最佳论文 Deep contextualized word representations：艾伦人工智能研究所提出新型深度语境化词表征（研究者使用从双向 LSTM 中得到的向量，该 LSTM 是使用成对语言模型（LM）目标在大型文本语料库上训练得到的。因此，该表征叫作 ELMo（Embeddings from Language Models）表征。）。  ELMo 使用方法如">
+<meta name="description" content="NAACL 2018最佳论文 Deep contextualized word representations：艾伦人工智能研究所提出新型深度语境化词表征（研究者使用从双向 LSTM 中得到的向量，该 LSTM 是使用成对语言模型（LM）目标在大型文本语料库上训练得到的。因此，该表征叫作 ELMo（Embeddings from Language Models）表征。）。  ELMo 核心思想">
 <meta name="keywords" content="ELMO,word representations,Language Modeling">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ELMo Deep contextualized word representations">
 <meta property="og:url" content="http://yoursite.com/2018/10/29/ELMo_Deep_contextualized_word_representations/index.html">
 <meta property="og:site_name" content="望江人工智库">
-<meta property="og:description" content="NAACL 2018最佳论文 Deep contextualized word representations：艾伦人工智能研究所提出新型深度语境化词表征（研究者使用从双向 LSTM 中得到的向量，该 LSTM 是使用成对语言模型（LM）目标在大型文本语料库上训练得到的。因此，该表征叫作 ELMo（Embeddings from Language Models）表征。）。  ELMo 使用方法如">
+<meta property="og:description" content="NAACL 2018最佳论文 Deep contextualized word representations：艾伦人工智能研究所提出新型深度语境化词表征（研究者使用从双向 LSTM 中得到的向量，该 LSTM 是使用成对语言模型（LM）目标在大型文本语料库上训练得到的。因此，该表征叫作 ELMo（Embeddings from Language Models）表征。）。  ELMo 核心思想">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/10/29/ELMo_Deep_contextualized_word_representations/e2.png">
 <meta property="og:image" content="http://yoursite.com/2018/10/29/ELMo_Deep_contextualized_word_representations/e1.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/10/29/ELMo_Deep_contextualized_word_representations/ELMo_paper_页面_01.png">
 <meta property="og:image" content="http://yoursite.com/2018/10/29/ELMo_Deep_contextualized_word_representations/ELMo_paper_页面_02.png">
@@ -103,11 +104,11 @@
 <meta property="og:image" content="http://yoursite.com/2018/10/29/ELMo_Deep_contextualized_word_representations/ELMo_paper_页面_13.png">
 <meta property="og:image" content="http://yoursite.com/2018/10/29/ELMo_Deep_contextualized_word_representations/ELMo_paper_页面_14.png">
 <meta property="og:image" content="http://yoursite.com/2018/10/29/ELMo_Deep_contextualized_word_representations/ELMo_paper_页面_15.png">
-<meta property="og:updated_time" content="2018-10-29T10:51:17.489Z">
+<meta property="og:updated_time" content="2018-11-13T13:16:08.065Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ELMo Deep contextualized word representations">
-<meta name="twitter:description" content="NAACL 2018最佳论文 Deep contextualized word representations：艾伦人工智能研究所提出新型深度语境化词表征（研究者使用从双向 LSTM 中得到的向量，该 LSTM 是使用成对语言模型（LM）目标在大型文本语料库上训练得到的。因此，该表征叫作 ELMo（Embeddings from Language Models）表征。）。  ELMo 使用方法如">
-<meta name="twitter:image" content="http://yoursite.com/2018/10/29/ELMo_Deep_contextualized_word_representations/e1.jpg">
+<meta name="twitter:description" content="NAACL 2018最佳论文 Deep contextualized word representations：艾伦人工智能研究所提出新型深度语境化词表征（研究者使用从双向 LSTM 中得到的向量，该 LSTM 是使用成对语言模型（LM）目标在大型文本语料库上训练得到的。因此，该表征叫作 ELMo（Embeddings from Language Models）表征。）。  ELMo 核心思想">
+<meta name="twitter:image" content="http://yoursite.com/2018/10/29/ELMo_Deep_contextualized_word_representations/e2.png">
 
 
 
@@ -407,6 +408,7 @@
         <blockquote>
 <p>NAACL 2018最佳论文 <a href="https://arxiv.org/abs/1802.05365v2" target="_blank" rel="noopener">Deep contextualized word representations</a>：艾伦人工智能研究所提出新型深度语境化词表征（研究者使用从双向 LSTM 中得到的向量，该 LSTM 是使用成对语言模型（LM）目标在大型文本语料库上训练得到的。因此，该表征叫作 ELMo（Embeddings from Language Models）表征。）。</p>
 </blockquote>
+<p><img src="/2018/10/29/ELMo_Deep_contextualized_word_representations/e2.png" alt=""><br>ELMo 核心思想</p>
 <h1 id="ELMo-使用方法"><a href="#ELMo-使用方法" class="headerlink" title="ELMo 使用方法"></a>ELMo 使用方法</h1><p><a href="https://zhuanlan.zhihu.com/p/38254332" target="_blank" rel="noopener">如何使用ELMo的词向量呢？</a>( 论文 3.3 有详细描述)<br>在supervised learning的情况下，可以各种自如的使用:</p>
 <ol>
 <li>直接将ELMo词向量 ELMo_k 与普通的词向量 x_k拼接（concat）[ x_k;ELMo_k ]。</li>
@@ -656,7 +658,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

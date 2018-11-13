@@ -83,17 +83,17 @@
 <meta name="keywords" content="词嵌入,Embedding">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Embedding 和语言模型 LanguageModel">
-<meta property="og:url" content="http://yoursite.com/2018/10/30/词嵌入Embedding和语言模型LanguageModel/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/11/13/词嵌入Embedding和语言模型LanguageModel/index.html">
 <meta property="og:site_name" content="望江人工智库">
 <meta property="og:description" content="ELMo Deep contextualized word representations 的目标也仅仅是学习到上下文相关的、更强大的词向量，其目的依然是为下游任务提供一个扎实的根基，还没有想要弑君称王的意思。 而我们知道，仅仅是对文本进行充分而强大的encoding（即得到每个词位非常精准丰富的特征）是远不够覆盖所有NLP任务的。在QA、机器阅读理解（MRC）、自然语言推理（NLI）、对话等任务">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/10/30/词嵌入Embedding和语言模型LanguageModel/c1.png">
-<meta property="og:image" content="http://yoursite.com/2018/10/30/词嵌入Embedding和语言模型LanguageModel/a1.png">
-<meta property="og:updated_time" content="2018-10-30T12:12:37.698Z">
+<meta property="og:image" content="http://yoursite.com/2018/11/13/词嵌入Embedding和语言模型LanguageModel/d2.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/13/词嵌入Embedding和语言模型LanguageModel/a1.png">
+<meta property="og:updated_time" content="2018-11-13T13:12:59.592Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Embedding 和语言模型 LanguageModel">
 <meta name="twitter:description" content="ELMo Deep contextualized word representations 的目标也仅仅是学习到上下文相关的、更强大的词向量，其目的依然是为下游任务提供一个扎实的根基，还没有想要弑君称王的意思。 而我们知道，仅仅是对文本进行充分而强大的encoding（即得到每个词位非常精准丰富的特征）是远不够覆盖所有NLP任务的。在QA、机器阅读理解（MRC）、自然语言推理（NLI）、对话等任务">
-<meta name="twitter:image" content="http://yoursite.com/2018/10/30/词嵌入Embedding和语言模型LanguageModel/c1.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/11/13/词嵌入Embedding和语言模型LanguageModel/d2.png">
 
 
 
@@ -123,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/30/词嵌入Embedding和语言模型LanguageModel/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/11/13/词嵌入Embedding和语言模型LanguageModel/"/>
 
 
 
@@ -290,7 +290,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/30/词嵌入Embedding和语言模型LanguageModel/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/词嵌入Embedding和语言模型LanguageModel/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="望江车神">
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-30T09:30:15+08:00">
-                2018-10-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-13T09:30:15+08:00">
+                2018-11-13
               </time>
             
 
@@ -383,17 +383,43 @@
 <p>而我们知道，仅仅是对文本进行充分而强大的encoding（即得到每个词位非常精准丰富的特征）是远不够覆盖所有NLP任务的。在QA、机器阅读理解（MRC）、自然语言推理（NLI）、对话等任务中，还有很多更复杂的模式需要捕捉，比如句间关系。为此，下游任务中的网络会加入各种花式attention（参考NLI、MRC、Chatbot中的SOTA们）。</p>
 <p>而随着捕捉更多神奇模式的需要，研究者们为每个下游任务定制出各种各样的网络结构，导致同一个模型，稍微一换任务就挂掉了，甚至在同一个任务的情况下换另一种分布的数据集都会出现显著的性能损失，这显然不符合人类的语言行为呀～要知道人类的generalization能力是非常强的，这就说明，或许现在整个NLP的发展轨迹就是错的，尤其是在SQuAD的带领下，穷尽各种trick和花式结构去刷榜，真正之于NLP的意义多大呢？</p>
 <p>不过所幸，这条越走越偏的道路终于被一个模型 shutdown了，那就是 Google 发布的 <a href="https://arxiv.org/abs/1810.04805" target="_blank" rel="noopener">BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</a></p>
-<h2 id="传统词嵌入的过程embedding-lookup"><a href="#传统词嵌入的过程embedding-lookup" class="headerlink" title="传统词嵌入的过程embedding_lookup()"></a>传统词嵌入的过程<a href="https://blog.csdn.net/u013041398/article/details/60955847" target="_blank" rel="noopener">embedding_lookup()</a></h2><p><img src="/2018/10/30/词嵌入Embedding和语言模型LanguageModel/c1.png" alt=""><br>词嵌入的过程，注意其中的维度变化只是一种可能的方式。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">input_ids = tf.placeholder(dtype=tf.int32, shape=[<span class="keyword">None</span>])</span><br><span class="line"></span><br><span class="line">embedding = tf.Variable(np.identity(<span class="number">5</span>, dtype=np.float32))</span><br><span class="line">input_embedding = tf.nn.embedding_lookup(embedding, input_ids)</span><br><span class="line"></span><br><span class="line">sess = tf.InteractiveSession()</span><br><span class="line">sess.run(tf.global_variables_initializer())</span><br><span class="line">print(embedding.eval())</span><br><span class="line">print(sess.run(input_embedding, feed_dict=&#123;input_ids:[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>]&#125;))</span><br></pre></td></tr></table></figure>
-<p>代码中先使用palceholder定义了一个未知变量input_ids用于存储索引，和一个已知变量embedding，是一个5*5的对角矩阵。运行结果为,<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">embedding = [[<span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line">            [<span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line">            [<span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line">            [<span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span>]</span><br><span class="line">            [<span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span>]]</span><br><span class="line">input_embedding = [[<span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line">                   [<span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line">                   [<span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span>]</span><br><span class="line">                   [<span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line">                   [<span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span>]</span><br><span class="line">                   [<span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line">                   [<span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span>]]</span><br></pre></td></tr></table></figure></p>
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><h2 id=""><a href="#" class="headerlink" title=""></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">机器学习这样的技术比较喜欢被定义好的固定长度的输入和输出，因此不固定输入输出是文本建模的一个问题。</span><br><span class="line"></span><br><span class="line">机器学习算法不能直接处理原始文本，文本必须转换成数字。具体来说，是数字的向量。</span><br><span class="line"></span><br><span class="line">“在语言处理中，向量x是由文本数据派生而来的，以反映文本的各种语言属性。”在自然语言处理中神经网络方法,2017年。</span><br><span class="line"></span><br><span class="line">这被称为特征提取或特征编码。这是一种流行的、简单的文本数据提取方法被称为文本的词汇模型。</span><br><span class="line"></span><br><span class="line">## ```词袋模型</span><br></pre></td></tr></table></figure></h2><p><a href="https://baike.baidu.com/item/%E8%AF%8D%E8%A2%8B%E6%A8%A1%E5%9E%8B/22776998?fr=aladdin" target="_blank" rel="noopener">词袋模型</a>下，像是句子或是文件这样的文字可以用一个袋子装着这些词的方式表现，这种表现方式不考虑文法以及词的顺序。最近词袋模型也被应用在电脑视觉领域 。<br>词袋模型被广泛应用在文件分类，词出现的频率可以用来当作训练分类器的特征。<br><img src="/2018/11/13/词嵌入Embedding和语言模型LanguageModel/d2.png" alt=""></p>
+<h2 id="-1"><a href="#-1" class="headerlink" title=""></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">### ```词向量</span><br></pre></td></tr></table></figure></h2><p><a href="https://baike.baidu.com/item/Word2vec/22660840?fr=aladdin" target="_blank" rel="noopener">词向量</a>具有良好的语义特性，是表示词语特征的常用方式。词向量每一维的值代表一个具有一定的语义和语法上解释的特征。所以，可以将词向量的每一维称为一个词语特征。词向量具有多种形式，distributed representation 是其中一种。一个 distributed representation 是一个稠密、低维的实值向量。distributed representation 的每一维表示词语的一个潜在特征，该特 征捕获了有用的句法和语义特性。可见 ，distributed representation 中的 distributed 一词体现了词向量这样一个特点：将词语的不同句法和语义特征分布到它的每一个维度去表示 。</p>
+<p>自然语言是一套用来表达含义的复杂系统。在这套系统中，词是表义的基本单元。顾名思义，词向量是用来表示词的向量，也可被认为是词的特征向量。</p>
+<p>这通常需要把维数为词典大小的高维空间嵌入到一个更低维数的连续向量空间。把词映射为实数域上向量的技术也叫词嵌入（word embedding）。近年来，词向量已逐渐成为自然语言处理的基础知识。</p>
+<p>语言模型旨在为语句的联合概率函数P(w1,…,wT)建模, 其中wi表示句子中的第i个词。语言模型的目标是，希望模型对有意义的句子赋予大概率，对没意义的句子赋予小概率。 这样的模型可以应用于很多领域，如机器翻译、语音识别、信息检索、词性标注、手写识别等，它们都希望能得到一个连续序列的概率。</p>
+<h2 id="-2"><a href="#-2" class="headerlink" title=""></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">![](词嵌入Embedding和语言模型LanguageModel/d1.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 传统词嵌入的过程[embedding_lookup()](https://blog.csdn.net/u013041398/article/details/60955847)</span><br><span class="line"></span><br><span class="line">![](词嵌入Embedding和语言模型LanguageModel/c1.png)</span><br><span class="line">词嵌入的过程，注意其中的维度变化只是一种可能的方式。</span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">import tensorflow as tf</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">input_ids = tf.placeholder(dtype=tf.int32, shape=[None])</span><br><span class="line"></span><br><span class="line">embedding = tf.Variable(np.identity(5, dtype=np.float32))</span><br><span class="line">input_embedding = tf.nn.embedding_lookup(embedding, input_ids)</span><br><span class="line"></span><br><span class="line">sess = tf.InteractiveSession()</span><br><span class="line">sess.run(tf.global_variables_initializer())</span><br><span class="line">print(embedding.eval())</span><br><span class="line">print(sess.run(input_embedding, feed_dict=&#123;input_ids:[1, 2, 3, 0, 3, 2, 1]&#125;))</span><br></pre></td></tr></table></figure></h2><p>代码中先使用palceholder定义了一个未知变量input_ids用于存储索引，和一个已知变量embedding，是一个5*5的对角矩阵。运行结果为,<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">embedding = [[<span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line">            [<span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line">            [<span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line">            [<span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span>]</span><br><span class="line">            [<span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span>]]</span><br><span class="line">input_embedding = [[<span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line">                   [<span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line">                   [<span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span>]</span><br><span class="line">                   [<span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line">                   [<span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span>]</span><br><span class="line">                   [<span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line">                   [<span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span>]]</span><br></pre></td></tr></table></figure></p>
 <p>简单的讲就是根据input_ids中的id，寻找embedding中的对应元素。比如，input_ids=[1,3,5]，则找出embedding中下标为1,3,5的向量组成一个矩阵返回。</p>
 <p>如果将input_ids改写成下面的格式：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">input_ids = tf.placeholder(dtype=tf.int32, shape=[<span class="keyword">None</span>, <span class="keyword">None</span>])</span><br><span class="line"></span><br><span class="line">embedding = tf.Variable(np.identity(<span class="number">5</span>, dtype=np.float32))</span><br><span class="line">input_embedding = tf.nn.embedding_lookup(embedding, input_ids)</span><br><span class="line"></span><br><span class="line">sess = tf.InteractiveSession()</span><br><span class="line">sess.run(tf.global_variables_initializer())</span><br><span class="line">print(embedding.eval())</span><br><span class="line">print(sess.run(input_embedding, feed_dict=&#123;input_ids:[[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">2</span>, <span class="number">1</span>], [<span class="number">3</span>, <span class="number">3</span>]]&#125;))</span><br></pre></td></tr></table></figure>
 <p>输出结果就会变成如下的格式：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">input_embedding = [[[<span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line">                    [<span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span>]]</span><br><span class="line">                  [[<span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line">                    [<span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]]</span><br><span class="line">                  [[<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span>]</span><br><span class="line">                    [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span>]]]</span><br></pre></td></tr></table></figure></p>
 <p>对比上下两个结果不难发现，相当于在np.array中直接采用下标数组获取数据。需要注意的细节是返回的tensor的dtype和传入的被查询的tensor的dtype保持一致；和ids的dtype无关。</p>
-<h2 id="字符嵌入"><a href="#字符嵌入" class="headerlink" title="字符嵌入"></a><a href="https://www.cnblogs.com/qwangxiao/p/8971924.html" target="_blank" rel="noopener">字符嵌入</a></h2><p>在NLP中，我们通常使用的过滤器会滑过整个矩阵(单词)。因此，过滤器的“宽度（width）”通常与输入矩阵的宽度相同。高度，或区域大小（region size），可能会有所不同，但是滑动窗口一次在2-5个字是典型的。</p>
-<p>一个NLP上的卷积实例是下面这样：<br><img src="/2018/10/30/词嵌入Embedding和语言模型LanguageModel/a1.png" alt=""><br>上图展示了CNN在文本分类的使用，使用了2种过滤器（卷积核），每个过滤器有3种高度（区域大小），即有6种卷积结构（左起第2列），所以会产生6中卷积后的结果（左起第3列），经过最大池化层（后面还会提到池化层），每个卷积的结果将变为1个值（左起第4列），最终生成一个向量（左起第5列），最终经过分类器得到一个二分类结果（最后一列）。来自：<a href="https://arxiv.org/abs/1510.03820v4" target="_blank" rel="noopener">A Sensitivity Analysis of (and Practitioners’ Guide to) Convolutional Neural Networks for Sentence Classification</a>。</p>
-<h2 id="语言模型词嵌入的过程"><a href="#语言模型词嵌入的过程" class="headerlink" title="语言模型词嵌入的过程"></a>语言模型词嵌入的过程</h2><p>参看 <a href="https://allennlp.org/elmo" target="_blank" rel="noopener">allennlp.org - elmo</a></p>
+<h1 id="字符嵌入"><a href="#字符嵌入" class="headerlink" title="字符嵌入"></a><a href="https://www.cnblogs.com/qwangxiao/p/8971924.html" target="_blank" rel="noopener">字符嵌入</a></h1><p>在NLP中，我们通常使用的过滤器会滑过整个矩阵(单词)。因此，过滤器的“宽度（width）”通常与输入矩阵的宽度相同。高度，或区域大小（region size），可能会有所不同，但是滑动窗口一次在2-5个字是典型的。</p>
+<p>一个NLP上的卷积实例是下面这样：<br><img src="/2018/11/13/词嵌入Embedding和语言模型LanguageModel/a1.png" alt=""><br>上图展示了CNN在文本分类的使用，使用了2种过滤器（卷积核），每个过滤器有3种高度（区域大小），即有6种卷积结构（左起第2列），所以会产生6中卷积后的结果（左起第3列），经过最大池化层（后面还会提到池化层），每个卷积的结果将变为1个值（左起第4列），最终生成一个向量（左起第5列），最终经过分类器得到一个二分类结果（最后一列）。来自：<a href="https://arxiv.org/abs/1510.03820v4" target="_blank" rel="noopener">A Sensitivity Analysis of (and Practitioners’ Guide to) Convolutional Neural Networks for Sentence Classification</a>。</p>
+<h1 id="word2vector"><a href="#word2vector" class="headerlink" title="word2vector"></a><a href="https://arxiv.org/abs/1301.3781v3" target="_blank" rel="noopener">word2vector</a></h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>标题</th>
+<th>说明</th>
+<th>附加</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://arxiv.org/abs/1301.3781v3" target="_blank" rel="noopener">Efficient Estimation of Word Representations in Vector Space</a></td>
+<td>word2vector 原文</td>
+<td>20130116</td>
+</tr>
+<tr>
+<td><a href="https://github.com/tensorflow/models/blob/master/tutorials/embedding/word2vec.py" target="_blank" rel="noopener">models/tutorials/embedding/word2vec.py</a></td>
+<td>官方实现</td>
+<td>20171030</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="语言模型词嵌入的过程"><a href="#语言模型词嵌入的过程" class="headerlink" title="语言模型词嵌入的过程"></a>语言模型词嵌入的过程</h1><p>参看 <a href="https://allennlp.org/elmo" target="_blank" rel="noopener">allennlp.org - elmo</a></p>
 <div class="table-container">
 <table>
 <thead>
@@ -443,6 +469,9 @@
 </table>
 </div>
 <p><a href="https://ai.tencent.com/ailab/nlp/embedding.html" target="_blank" rel="noopener">Tencent AI Lab Embedding Corpus for Chinese Words and Phrases</a>|This corpus provides 200-dimension vector representations, a.k.a. embeddings, for over 8 million Chinese words and phrases, which are pre-trained on large-scale high-quality data. These vectors, capturing semantic meanings for Chinese words and phrases, can be widely applied in many downstream Chinese processing tasks (e.g., named entity recognition and text classification) and in further research.<a href="https://www.jiqizhixin.com/articles/2018-10-19-16" target="_blank" rel="noopener">腾讯AI Lab开源大规模高质量中文词向量数据，800万中文词随你用</a>||</p>
+<h1 id="自然语言处理中的语言模型预训练方法"><a href="#自然语言处理中的语言模型预训练方法" class="headerlink" title="自然语言处理中的语言模型预训练方法"></a><a href="https://zhuanlan.zhihu.com/p/47342053" target="_blank" rel="noopener">自然语言处理中的语言模型预训练方法</a></h1><p>语言模型评价</p>
+<p>语言模型构造完成后，如何确定好坏呢？ 目前主要有两种评价方法：</p>
+<p>实用方法：通过查看该模型在实际应用（如拼写检查、机器翻译）中的表现来评价，优点是直观、实用，缺点是缺乏针对性、不够客观；<br>理论方法：迷惑度/困惑度/混乱度（preplexity），其基本思想是给测试集的句子赋予较高概率值的语言模型较好,当语言模型训练完之后，测试集中的句子都是正常的句子，那么训练好的模型就是在测试集上的概率越高越好。</p>
 
       
     </div>
@@ -504,8 +533,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/29/Character_Aware_Neural_Language_Models/" rel="next" title="Character-Aware Neural Language Models">
-                <i class="fa fa-chevron-left"></i> Character-Aware Neural Language Models
+              <a href="/2018/11/12/智能家居自然语言理解平台的解决方案/" rel="next" title="智能家居自然语言理解平台的解决方案">
+                <i class="fa fa-chevron-left"></i> 智能家居自然语言理解平台的解决方案
               </a>
             
           </div>
@@ -513,10 +542,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/30/Semi_Supervised_sequence_tagging_with_bidirectional_language_models/" rel="prev" title="Semi-supervised sequence tagging with bidirectional language models">
-                Semi-supervised sequence tagging with bidirectional language models <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -597,7 +622,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -662,7 +687,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#传统词嵌入的过程embedding-lookup"><span class="nav-number">1.</span> <span class="nav-text">传统词嵌入的过程embedding_lookup()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符嵌入"><span class="nav-number">2.</span> <span class="nav-text">字符嵌入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语言模型词嵌入的过程"><span class="nav-number">3.</span> <span class="nav-text">语言模型词嵌入的过程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#词嵌入资源"><span class="nav-number"></span> <span class="nav-text">词嵌入资源</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.1.</span> <span class="nav-text">123456789机器学习这样的技术比较喜欢被定义好的固定长度的输入和输出，因此不固定输入输出是文本建模的一个问题。机器学习算法不能直接处理原始文本，文本必须转换成数字。具体来说，是数字的向量。“在语言处理中，向量x是由文本数据派生而来的，以反映文本的各种语言属性。”在自然语言处理中神经网络方法,2017年。这被称为特征提取或特征编码。这是一种流行的、简单的文本数据提取方法被称为文本的词汇模型。## ```词袋模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-1"><span class="nav-number">1.2.</span> <span class="nav-text">123### ```词向量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-2"><span class="nav-number">1.3.</span> <span class="nav-text">123456789101112131415161718192021![](词嵌入Embedding和语言模型LanguageModel/d1.png)# 传统词嵌入的过程[embedding_lookup()](https://blog.csdn.net/u013041398/article/details/60955847)![](词嵌入Embedding和语言模型LanguageModel/c1.png)词嵌入的过程，注意其中的维度变化只是一种可能的方式。```pythonimport tensorflow as tfimport numpy as npinput_ids = tf.placeholder(dtype=tf.int32, shape=[None])embedding = tf.Variable(np.identity(5, dtype=np.float32))input_embedding = tf.nn.embedding_lookup(embedding, input_ids)sess = tf.InteractiveSession()sess.run(tf.global_variables_initializer())print(embedding.eval())print(sess.run(input_embedding, feed_dict={input_ids:[1, 2, 3, 0, 3, 2, 1]}))</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符嵌入"><span class="nav-number">2.</span> <span class="nav-text">字符嵌入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#word2vector"><span class="nav-number">3.</span> <span class="nav-text">word2vector</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#语言模型词嵌入的过程"><span class="nav-number">4.</span> <span class="nav-text">语言模型词嵌入的过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#词嵌入资源"><span class="nav-number">5.</span> <span class="nav-text">词嵌入资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自然语言处理中的语言模型预训练方法"><span class="nav-number">6.</span> <span class="nav-text">自然语言处理中的语言模型预训练方法</span></a></li></ol></div>
             
 
           </div>
