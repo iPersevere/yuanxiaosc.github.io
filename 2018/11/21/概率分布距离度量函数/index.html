@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="numpy," />
+  <meta name="keywords" content="交叉熵,信息熵,相对熵,KL散度,Wasserstein距离," />
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="Numpynp.append(sent_list, np.array([new_word]), axis=0) 12345sent_list = np.zeros([0,7])for _  in range(3):    new_word = np.random.randint(0,10,size=7)    sent_list = np.append(sent_list, np.array([n">
-<meta name="keywords" content="numpy">
+<meta name="description" content="概念自信息：符合分布 P 的某一事件 x 出现，传达这条信息所需的最小信息长度为自信息，表达式为： I(x)=log\frac{1}{p(x)}熵：从分布 P 中随机抽选一个事件，传达这条信息所需的最优平均信息长度为香农熵，表达式为： H(P)=\sum_xP(x)log{\frac{1}{P(x)}}交叉熵：用分布 P 的最佳信息传递方式来传递分布 Q 中随机抽选的一个事件，所需的平均信息长度为">
+<meta name="keywords" content="交叉熵,信息熵,相对熵,KL散度,Wasserstein距离">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Numpy_Pandas_Matplotlib">
-<meta property="og:url" content="http://yoursite.com/2018/10/08/Numpy_Pandas_Matplotlib/index.html">
+<meta property="og:title" content="概率分布距离度量函数">
+<meta property="og:url" content="http://yoursite.com/2018/11/21/概率分布距离度量函数/index.html">
 <meta property="og:site_name" content="望江人工智库">
-<meta property="og:description" content="Numpynp.append(sent_list, np.array([new_word]), axis=0) 12345sent_list = np.zeros([0,7])for _  in range(3):    new_word = np.random.randint(0,10,size=7)    sent_list = np.append(sent_list, np.array([n">
+<meta property="og:description" content="概念自信息：符合分布 P 的某一事件 x 出现，传达这条信息所需的最小信息长度为自信息，表达式为： I(x)=log\frac{1}{p(x)}熵：从分布 P 中随机抽选一个事件，传达这条信息所需的最优平均信息长度为香农熵，表达式为： H(P)=\sum_xP(x)log{\frac{1}{P(x)}}交叉熵：用分布 P 的最佳信息传递方式来传递分布 Q 中随机抽选的一个事件，所需的平均信息长度为">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-08T03:21:32.902Z">
+<meta property="og:image" content="http://yoursite.com/2018/11/21/概率分布距离度量函数/a1.png">
+<meta property="og:updated_time" content="2018-11-21T06:38:00.103Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Numpy_Pandas_Matplotlib">
-<meta name="twitter:description" content="Numpynp.append(sent_list, np.array([new_word]), axis=0) 12345sent_list = np.zeros([0,7])for _  in range(3):    new_word = np.random.randint(0,10,size=7)    sent_list = np.append(sent_list, np.array([n">
+<meta name="twitter:title" content="概率分布距离度量函数">
+<meta name="twitter:description" content="概念自信息：符合分布 P 的某一事件 x 出现，传达这条信息所需的最小信息长度为自信息，表达式为： I(x)=log\frac{1}{p(x)}熵：从分布 P 中随机抽选一个事件，传达这条信息所需的最优平均信息长度为香农熵，表达式为： H(P)=\sum_xP(x)log{\frac{1}{P(x)}}交叉熵：用分布 P 的最佳信息传递方式来传递分布 Q 中随机抽选的一个事件，所需的平均信息长度为">
+<meta name="twitter:image" content="http://yoursite.com/2018/11/21/概率分布距离度量函数/a1.png">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/08/Numpy_Pandas_Matplotlib/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/11/21/概率分布距离度量函数/"/>
 
 
 
 
 
-  <title>Numpy_Pandas_Matplotlib | 望江人工智库</title>
+  <title>概率分布距离度量函数 | 望江人工智库</title>
   
 
 
@@ -287,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/08/Numpy_Pandas_Matplotlib/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/21/概率分布距离度量函数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="望江车神">
@@ -304,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Numpy_Pandas_Matplotlib</h1>
+          <h1 class="post-title" itemprop="name headline">概率分布距离度量函数</h1>
         
 
         <div class="post-meta">
@@ -316,8 +318,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-08T11:20:02+08:00">
-                2018-10-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-21T15:20:32+08:00">
+                2018-11-21
               </time>
             
 
@@ -339,8 +341,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
+                  <a href="/categories/概率论与数理统计/" itemprop="url" rel="index">
+                    <span itemprop="name">概率论与数理统计</span>
                   </a>
                 </span>
 
@@ -376,82 +378,58 @@
       
 
       
-        <h1 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h1><p>np.append(sent_list, np.array([new_word]), axis=0)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sent_list = np.zeros([<span class="number">0</span>,<span class="number">7</span>])</span><br><span class="line"><span class="keyword">for</span> _  <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">    new_word = np.random.randint(<span class="number">0</span>,<span class="number">10</span>,size=<span class="number">7</span>)</span><br><span class="line">    sent_list = np.append(sent_list, np.array([new_word]), axis=<span class="number">0</span>)</span><br><span class="line">print(sent_list)</span><br></pre></td></tr></table></figure>
-<p>array_split(X, X.shape[0], axis=0)<br>将数组切分时，会保留原始的数组维度。</p>
-<p>concatenate(x, axis=0)<br>用于将多个数组进行连接，这与stack函数很容易混淆，他们之间的区别是concatenate会把当前要匹配的元素降一维，即去掉最外面那一层括号。</p>
-<h2 id="Reshape、转置、旋转、轴对换区别"><a href="#Reshape、转置、旋转、轴对换区别" class="headerlink" title="Reshape、转置、旋转、轴对换区别"></a>Reshape、转置、旋转、轴对换区别</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X = np.arange(<span class="number">0</span>,<span class="number">15</span>,<span class="number">1</span>).reshape((<span class="number">3</span>,<span class="number">5</span>))</span><br><span class="line">X</span><br></pre></td></tr></table></figure>
-<pre><code>array([[ 0,  1,  2,  3,  4],
-       [ 5,  6,  7,  8,  9],
-       [10, 11, 12, 13, 14]])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X.reshape((<span class="number">5</span>,<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
-<pre><code>array([[ 0,  1,  2],
-       [ 3,  4,  5],
-       [ 6,  7,  8],
-       [ 9, 10, 11],
-       [12, 13, 14]])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X.T</span><br></pre></td></tr></table></figure>
-<pre><code>array([[ 0,  5, 10],
-       [ 1,  6, 11],
-       [ 2,  7, 12],
-       [ 3,  8, 13],
-       [ 4,  9, 14]])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 轴对换</span></span><br><span class="line">X.swapaxes(<span class="number">0</span>,<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>array([[ 0,  5, 10],
-       [ 1,  6, 11],
-       [ 2,  7, 12],
-       [ 3,  8, 13],
-       [ 4,  9, 14]])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 顺时针旋转 1 个 90 度</span></span><br><span class="line">np.rot90(X, <span class="number">1</span>, axes=(<span class="number">1</span>,<span class="number">0</span>))</span><br></pre></td></tr></table></figure>
-<pre><code>array([[10,  5,  0],
-       [11,  6,  1],
-       [12,  7,  2],
-       [13,  8,  3],
-       [14,  9,  4]])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.rot90(X, <span class="number">1</span>, axes=(<span class="number">0</span>,<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
-<pre><code>array([[ 4,  9, 14],
-       [ 3,  8, 13],
-       [ 2,  7, 12],
-       [ 1,  6, 11],
-       [ 0,  5, 10]])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C2 = np.rot90(X, <span class="number">2</span>, axes=(<span class="number">1</span>,<span class="number">0</span>))</span><br><span class="line">C2</span><br></pre></td></tr></table></figure>
-<pre><code>array([[14, 13, 12, 11, 10],
-       [ 9,  8,  7,  6,  5],
-       [ 4,  3,  2,  1,  0]])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.rot90(C2, <span class="number">2</span>, axes=(<span class="number">0</span>,<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
-<pre><code>array([[ 0,  1,  2,  3,  4],
-       [ 5,  6,  7,  8,  9],
-       [10, 11, 12, 13, 14]])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X2 = np.arange(<span class="number">0</span>,<span class="number">24</span>,<span class="number">1</span>).reshape((<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>))</span><br><span class="line">X2</span><br></pre></td></tr></table></figure>
-<pre><code>array([[[ 0,  1,  2,  3],
-        [ 4,  5,  6,  7],
-        [ 8,  9, 10, 11]],
-
-       [[12, 13, 14, 15],
-        [16, 17, 18, 19],
-        [20, 21, 22, 23]]])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X2.swapaxes(<span class="number">1</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>array([[[ 0,  4,  8],
-        [ 1,  5,  9],
-        [ 2,  6, 10],
-        [ 3,  7, 11]],
-
-       [[12, 16, 20],
-        [13, 17, 21],
-        [14, 18, 22],
-        [15, 19, 23]]])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X2.transpose(<span class="number">0</span>,<span class="number">2</span>,<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>array([[[ 0,  4,  8],
-        [ 1,  5,  9],
-        [ 2,  6, 10],
-        [ 3,  7, 11]],
-
-       [[12, 16, 20],
-        [13, 17, 21],
-        [14, 18, 22],
-        [15, 19, 23]]])
-</code></pre><h1 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h1><p><a href="https://www.jiqizhixin.com/articles/2018-09-28-3" target="_blank" rel="noopener">手把手：如何方便地使用Python和Pandas来匿名信息</a></p>
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>自信息：符合分布 P 的某一事件 x 出现，传达这条信息所需的最小信息长度为自信息，表达式为：</p>
+<script type="math/tex; mode=display">I(x)=log\frac{1}{p(x)}</script><p>熵：从分布 P 中随机抽选一个事件，传达这条信息所需的最优平均信息长度为香农熵，表达式为：</p>
+<script type="math/tex; mode=display">H(P)=\sum_xP(x)log{\frac{1}{P(x)}}</script><p>交叉熵：用分布 P 的最佳信息传递方式来传递分布 Q 中随机抽选的一个事件，所需的平均信息长度为交叉熵，表达式为：</p>
+<script type="math/tex; mode=display">H_p(Q)=\sum_xQ(x)log\frac{1}{P(x)}</script><p>KL 散度，用分布 P 的最佳信息传递方式来传达分布 Q，比用分布 Q 自己的最佳信息传递方式来传达分布 Q，平均多耗费的信息长度为 KL 散度，表达为 $D_p(Q)$ 或 $KL(Q||P)$，KL 散度衡量了两个分布之间的差异。</p>
+<script type="math/tex; mode=display">D_p(Q)=KL(Q||P)=\sum_xQ(x)log\frac{1}{P(x)}-\sum_xQ(x)log\frac{1}{Q(x)}=\sum_xQ(x)log\frac{Q(x)}{P(x)}</script><p>$D_p(Q)$ 或 $KL(Q||P)$ 涉及两个分布：</p>
+<ul>
+<li>要传达的信息来自哪个分布，答案是 Q</li>
+<li>信息传递的方式由哪个分布决定，答案是 P</li>
+</ul>
+<h3 id="KL-散度概念解读"><a href="#KL-散度概念解读" class="headerlink" title="KL 散度概念解读"></a><a href="https://www.jiqizhixin.com/articles/0224" target="_blank" rel="noopener">KL 散度概念解读</a></h3><p>由 KL 散度的公式可知，分布 Q 里可能性越大的事件，对 $D_P(Q)$ 影响力越大。如果想让 $D_P(Q)$ 尽量小，就要优先关注分布 Q 里的常见事件（假设为 x），确保它们在分布 P 里不是特别罕见。</p>
+<p>因为一旦事件 x 在分布 P 里罕见，意味着在设计分布 P 的信息传递方式时，没有着重优化传递 x 的成本，传达事件 x 所需的成本，log(1/P(x)) 会特别大。所以，当这一套传递方式被用于传达分布 Q 的时候，我们会发现，传达常见事件需要的成本特别大，整体成本也就特别大。</p>
+<p>类似地，想让 $D_Q(P)$ 特别小，就要优先考虑分布 P 里那些常见的事件们了。这时，分布 Q 里的常见事件，就不再是我们的关注重点。</p>
+<h2 id="信息熵"><a href="#信息熵" class="headerlink" title="信息熵"></a><a href="https://baike.baidu.com/item/%E4%BF%A1%E6%81%AF%E7%86%B5" target="_blank" rel="noopener">信息熵</a></h2><p><strong>熵是传输一个随机变量状态值所需的比特位的下界</strong>。</p>
+<p>信息论之父 C. E. Shannon 在 1948 年发表的论文“通信的数学理论（ A Mathematical Theory of Communication ）”中， Shannon 指出，任何信息都存在冗余，冗余大小与信息中每个符号（数字、字母或单词）的出现概率或者说不确定性有关。<br>Shannon 借鉴了热力学的概念，把信息中排除了冗余后的平均信息量称为“信息熵”，并给出了计算信息熵的数学表达式。</p>
+<h3 id="信息熵基本内容"><a href="#信息熵基本内容" class="headerlink" title="信息熵基本内容"></a>信息熵基本内容</h3><p>通常，一个信源发送出什么符号是不确定的，衡量它可以根据其出现的概率来度量。概率大，出现机会多，不确定性小；反之就大。<br>不确定性函数 f 是概率 P 的单调递降函数；两个独立符号所产生的不确定性应等于各自不确定性之和，即f（P1，P2）=f（P1）+ f（P2），这称为可加性。同时满足这两个条件的函数f是对数函数，即 $f(P)=log(\dfrac{1}{p})=-log(p)$。</p>
+<p>在信源中，考虑的不是某一单个符号发生的不确定性，而是要考虑这个信源所有可能发生情况的平均不确定性。若信源符号有n种取值：U1…Ui…Un，对应概率为：P1…Pi…Pn，且各种符号的出现彼此独立。这时，信源的平均不确定性应当为单个符号不确定性-logPi的统计平均值（E），可称为信息熵，即 $H(U)=E[-logp_i]=-\sum_{i=1}^N p_ilogp_i$，式中对数一般取2为底，单位为比特。</p>
+<p>当所有的 $p(x_i)$ 值都相等，且值为 $p(x_i)=\dfrac{1}{N}$ 时，熵取得最大值。$H(U) = log(N)$。</p>
+<h2 id="交叉熵"><a href="#交叉熵" class="headerlink" title="交叉熵"></a><a href="https://baike.baidu.com/item/%E4%BA%A4%E5%8F%89%E7%86%B5/8983241" target="_blank" rel="noopener">交叉熵</a></h2><p>交叉熵（Cross Entropy）是Shannon信息论中一个重要概念，<strong>主要用于度量两个概率分布间的差异性信息</strong>。语言模型的性能通常用交叉熵和复杂度（perplexity）来衡量。交叉熵的意义是用该模型对文本识别的难度，或者从压缩的角度来看，每个词平均要用几个位来编码。复杂度的意义是用该模型表示这一文本平均的分支数，其倒数可视为每个词的平均概率。</p>
+<h3 id="交叉熵的介绍"><a href="#交叉熵的介绍" class="headerlink" title="交叉熵的介绍"></a>交叉熵的介绍</h3><p>在信息论中，交叉熵是表示两个概率分布p,q，其中p表示真实分布，q表示非真实分布，在相同的一组事件中，其中，用非真实分布q来表示某个事件发生所需要的平均比特数。从这个定义中，我们很难理解交叉熵的定义。下面举个例子来描述一下：<br>假设现在有一个样本集中两个概率分布p,q，其中p为真实分布，q为非真实分布。假如，按照真实分布p来衡量识别一个样本所需要的编码长度的期望为：</p>
+<script type="math/tex; mode=display">H(p)=\sum_i{p(i)}log(\dfrac{1}{p(i)})</script><p>但是，如果采用错误的分布q来表示来自真实分布p的平均编码长度，则应该是：</p>
+<script type="math/tex; mode=display">H(p,q)=\sum_i{p(i)}log(\dfrac{1}{q(i)})</script><p>此时就将H(p,q)称之为交叉熵。交叉熵的计算方式如下：</p>
+<p>对于离散变量采用以下的方式计算：$H(p,q)=\sum_x p(x)log(\dfrac{1}{q(x)})$</p>
+<p>对于连续变量采用以下的方式计算：$-\int _XP(x)logQ(x)dx=E_p[-logQ]$</p>
+<blockquote>
+<p>注意：<script type="math/tex">E_{x\sim p(x)}[f(x)]=\int{f(x)p(x)}dx \approx \dfrac{1}{n}\sum_{i=1}^nf(x_i), x_i \sim p(x)</script></p>
+</blockquote>
+<h3 id="交叉熵的应用"><a href="#交叉熵的应用" class="headerlink" title="交叉熵的应用"></a>交叉熵的应用</h3><ol>
+<li>交叉熵可在神经网络(机器学习)中作为损失函数，p表示真实标记的分布，q则为训练后的模型的预测标记分布，交叉熵损失函数可以衡量p与q的相似性。交叉熵作为损失函数还有一个好处是使用sigmoid函数在梯度下降时能避免均方误差损失函数学习速率降低的问题，因为学习速率可以被输出的误差所控制。</li>
+<li>在特征工程中，可以用来衡量两个随机变量之间的相似度。</li>
+<li>在语言模型中（NLP）中，由于真实的分布p是未知的，在语言模型中，模型是通过训练集得到的，交叉熵就是衡量这个模型在测试集上的正确率。</li>
+</ol>
+<h2 id="相对熵"><a href="#相对熵" class="headerlink" title="相对熵"></a><a href="https://baike.baidu.com/item/%E7%9B%B8%E5%AF%B9%E7%86%B5" target="_blank" rel="noopener">相对熵</a></h2><p><strong>相对熵，又称KL散度( Kullback–Leibler divergence)，是描述两个概率分布P和Q差异的一种方法。它是非对称的</strong>，这意味着D(P||Q) ≠ D(Q||P)。特别的，在信息论中，D(P||Q)表示当用概率分布Q来拟合真实分布P时，产生的信息损耗，其中P表示真实分布，Q表示P的拟合分布。<br>有人将KL散度称为KL距离，但事实上，KL散度并不满足距离的概念，因为：(1)KL散度不是对称的；(2)KL散度不满足三角不等式。</p>
+<h3 id="相对熵的定义"><a href="#相对熵的定义" class="headerlink" title="相对熵的定义"></a>相对熵的定义</h3><p>对熵（relative entropy）又称为KL散度（Kullback–Leibler divergence，简称KLD），信息散度（information divergence）。<br>设 $P(x)$ 和 $Q(x)$ 是两个取值的两个离散概率分布，则 $P$ 对 $Q$ 的相对熵为：</p>
+<script type="math/tex; mode=display">D(P||Q)=\sum P(x)log(\dfrac{P(x)}{Q(x)})</script><p>对于连续的随机变量，定义为：</p>
+<script type="math/tex; mode=display">D(P||Q)=\int P(x)log(\dfrac{P(x)}{Q(x)})dx</script><p>相对熵是两个概率分布 $P(x)$ 和 $Q(x)$ 差别的非对称性的度量。</p>
+<h3 id="相对熵物理意义"><a href="#相对熵物理意义" class="headerlink" title="相对熵物理意义"></a>相对熵物理意义</h3><p>相对熵是用来度量使用基于 $Q$ 的编码来编码来自 $P$ 的样本平均所需的额外的比特个数。 典型情况下，$P$ 表示数据的真实分布，$Q$ 表示数据的理论分布，模型分布，或 $P$ 的近似分布。<br>根据shannon的信息论，给定一个字符集的概率分布，我们可以设计一种编码，使得表示该字符集组成的字符串平均需要的比特数最少。假设这个字符集是 $X$ ，对 $x \in X$  ，其出现概率为 $P$，那么其最优编码平均需要的比特数等于这个字符集的熵：</p>
+<script type="math/tex; mode=display">H(p)=\sum_{x \in X}{P(x)}log(\dfrac{1}{P(x)})</script><p>在同样的字符集上，假设存在另一个概率分布 $Q$，如果用概率分布 $P$ 的最优编码（即字符  $x$ 的编码长度等于  $log(\dfrac{1}{p(x)})$），来为符合分布 $Q$ 的字符编码，那么表示这些字符就会比理想情况多用一些比特数。<strong>相对熵就是用来衡量这种情况下平均每个字符多用的比特数，因此可以用来衡量两个分布的距离</strong>，即：</p>
+<script type="math/tex; mode=display">D_{KL}(P||Q)=-\sum_{x \in X}{P(x)}log(\dfrac{1}{P(x)}) + \sum_{x \in X}{P(x)}log(\dfrac{1}{Q(x)})=\sum_{x\in X} P(x)log(\dfrac{P(x)}{Q(x)})</script><h3 id="相对熵的性质"><a href="#相对熵的性质" class="headerlink" title="相对熵的性质"></a>相对熵的性质</h3><p>相对熵（KL散度）有两个主要的性质，如下：<br>（1）不对称性<br>尽管KL散度从直观上是个度量或距离函数，但它并不是一个真正的度量或者距离，因为它不具有对称性，即<br>（2）非负性<br>相对熵的值为非负值，即  ，证明可用吉布斯不等式。</p>
+<blockquote>
+<p>吉布斯不等式<br>若 $\sum_{i=1}^{n}p_i=\sum_{i=1}^{n}q_i=1$，且 $p_i, q_i \in (0,1]$，则有：<br>$-\sum_{i=1}^{n}p_ilog(p_i)\leq -\sum_{i=1}^{n}p_ilog(q_i)$，等号当且仅当 $\forall i, p_i=q_i$</p>
+</blockquote>
+<h3 id="相对熵的应用"><a href="#相对熵的应用" class="headerlink" title="相对熵的应用"></a>相对熵的应用</h3><p>相对熵可以衡量两个随机分布之间的距离，当两个随机分布相同时，它们的相对熵为零，当两个随机分布的差别增大时，它们的相对熵也会增大。所以相对熵（KL散度）可以用于比较文本的相似度，先统计出词的频率，然后计算相对熵。另外，在多指标系统评估中，指标权重分配 [2]  是一个重点和难点，也通过相对熵可以处理。</p>
+<h2 id="JS散度（Jensen–Shannon-divergence）"><a href="#JS散度（Jensen–Shannon-divergence）" class="headerlink" title="JS散度（Jensen–Shannon divergence）"></a><a href="https://en.wikipedia.org/wiki/Jensen%E2%80%93Shannon_divergence" target="_blank" rel="noopener">JS散度（Jensen–Shannon divergence）</a></h2><p>JS散度度量了两个概率分布的相似度，基于KL散度的变体，解决了KL散度非对称的问题。一般地，JS散度是对称的，其取值是0到1之间。定义如下：</p>
+<script type="math/tex; mode=display">JSD(P_1||P_2)=\dfrac{1}{2}KL(P_1||\dfrac{P_1+P_2}{2})+\dfrac{1}{2}KL(P_2||\dfrac{P_1+P_2}{2})</script><p>KL散度和JS散度度量的时候有一个问题：如果两个分配P,Q离得很远，完全没有重叠的时候，那么KL散度值是没有意义的，而JS散度值是一个常数。这在学习算法中是比较致命的，这就意味这这一点的梯度为0。梯度消失了。</p>
+<h2 id="Wasserstein距离"><a href="#Wasserstein距离" class="headerlink" title="Wasserstein距离"></a>Wasserstein距离</h2><p><img src="/2018/11/21/概率分布距离度量函数/a1.png" alt=""></p>
+<hr>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] ajiao_nihao‏. 交叉熵[DB/OL]. <a href="https://baike.baidu.com/item/%E4%BA%A4%E5%8F%89%E7%86%B5/8983241" target="_blank" rel="noopener">https://baike.baidu.com/item/%E4%BA%A4%E5%8F%89%E7%86%B5/8983241</a>, 2018-08-28.</p>
+<p>[2] 蒙牛纯爷们‏. 相对熵[DB/OL]. <a href="https://baike.baidu.com/item/%E7%9B%B8%E5%AF%B9%E7%86%B5" target="_blank" rel="noopener">https://baike.baidu.com/item/%E7%9B%B8%E5%AF%B9%E7%86%B5</a>, 2018-08-28.</p>
+<p>[3] miaoweijun‏. 信息熵[DB/OL]. <a href="https://baike.baidu.com/item/%E4%BF%A1%E6%81%AF%E7%86%B5" target="_blank" rel="noopener">https://baike.baidu.com/item/%E4%BF%A1%E6%81%AF%E7%86%B5</a>, 2018-08-28.</p>
+<p>[4] 维基百科. Jensen–Shannon divergence[DB/OL]. <a href="https://en.wikipedia.org/wiki/Jensen%E2%80%93Shannon_divergence" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Jensen%E2%80%93Shannon_divergence</a>, 2018-08-28.</p>
+<p>[5] CodeTutor. 概率论——Wasserstein距离[DB/OL]. <a href="https://blog.csdn.net/victoriaw/article/details/56674777" target="_blank" rel="noopener">https://blog.csdn.net/victoriaw/article/details/56674777</a>, 2018-08-28.</p>
+<p>[6] 邱陆陆. 如何理解KL散度的不对称性[DB/OL]. <a href="https://www.jiqizhixin.com/articles/0224" target="_blank" rel="noopener">https://www.jiqizhixin.com/articles/0224</a>, 2018-11-21.</p>
 
       
     </div>
@@ -498,7 +476,15 @@
       
         <div class="post-tags">
           
-            <a href="/tags/numpy/" rel="tag"># numpy</a>
+            <a href="/tags/交叉熵/" rel="tag"># 交叉熵</a>
+          
+            <a href="/tags/信息熵/" rel="tag"># 信息熵</a>
+          
+            <a href="/tags/相对熵/" rel="tag"># 相对熵</a>
+          
+            <a href="/tags/KL散度/" rel="tag"># KL散度</a>
+          
+            <a href="/tags/Wasserstein距离/" rel="tag"># Wasserstein距离</a>
           
         </div>
       
@@ -511,8 +497,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/08/MarkDown问题/" rel="next" title="MarkDown问题">
-                <i class="fa fa-chevron-left"></i> MarkDown问题
+              <a href="/2018/11/21/似然函数、先验概率、后验概率以及共轭先验概念/" rel="next" title="期望、似然函数、先验概率、后验概率以及共轭先验概念">
+                <i class="fa fa-chevron-left"></i> 期望、似然函数、先验概率、后验概率以及共轭先验概念
               </a>
             
           </div>
@@ -521,8 +507,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/10/fasttext/" rel="prev" title="Bag of Tricks for Efficient Text Classification">
-                Bag of Tricks for Efficient Text Classification <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/22/支持向量机/" rel="prev" title="支持向量机 Support Vector Machines">
+                支持向量机 Support Vector Machines <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -615,7 +601,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -669,7 +655,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Numpy"><span class="nav-number">1.</span> <span class="nav-text">Numpy</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reshape、转置、旋转、轴对换区别"><span class="nav-number">1.1.</span> <span class="nav-text">Reshape、转置、旋转、轴对换区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pandas"><span class="nav-number">2.</span> <span class="nav-text">Pandas</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#KL-散度概念解读"><span class="nav-number">1.1.</span> <span class="nav-text">KL 散度概念解读</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信息熵"><span class="nav-number">2.</span> <span class="nav-text">信息熵</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#信息熵基本内容"><span class="nav-number">2.1.</span> <span class="nav-text">信息熵基本内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#交叉熵"><span class="nav-number">3.</span> <span class="nav-text">交叉熵</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#交叉熵的介绍"><span class="nav-number">3.1.</span> <span class="nav-text">交叉熵的介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交叉熵的应用"><span class="nav-number">3.2.</span> <span class="nav-text">交叉熵的应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相对熵"><span class="nav-number">4.</span> <span class="nav-text">相对熵</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#相对熵的定义"><span class="nav-number">4.1.</span> <span class="nav-text">相对熵的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相对熵物理意义"><span class="nav-number">4.2.</span> <span class="nav-text">相对熵物理意义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相对熵的性质"><span class="nav-number">4.3.</span> <span class="nav-text">相对熵的性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相对熵的应用"><span class="nav-number">4.4.</span> <span class="nav-text">相对熵的应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS散度（Jensen–Shannon-divergence）"><span class="nav-number">5.</span> <span class="nav-text">JS散度（Jensen–Shannon divergence）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Wasserstein距离"><span class="nav-number">6.</span> <span class="nav-text">Wasserstein距离</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">7.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>
