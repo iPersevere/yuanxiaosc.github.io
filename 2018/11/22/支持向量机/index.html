@@ -87,6 +87,7 @@
 <meta property="og:site_name" content="望江人工智库">
 <meta property="og:description" content="经典支持向量机 Support Vector Machines在机器学习中，支持向量机是在分类与回归分析中分析数据的监督式学习模型与相关的学习算法。给定一组训练实例，每个训练实例被标记为属于两个类别中的一个或另一个，SVM训练算法创建一个将新的实例分配给两个类别之一的模型，使其成为非概率二元线性分类器。SVM模型是将实例表示为空间中的点，这样映射就使得单独类别的实例被尽可能宽的明显的间隔分开。然后">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/11/22/支持向量机/点到直线距离公式.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/11/22/支持向量机/01_introduction.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/22/支持向量机/output_23_0.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/22/支持向量机/output_23_1.png">
@@ -106,11 +107,11 @@
 <meta property="og:image" content="http://yoursite.com/2018/11/22/支持向量机/output_25_0.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/22/支持向量机/output_25_1.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/22/支持向量机/output_25_2.png">
-<meta property="og:updated_time" content="2018-11-22T02:38:49.923Z">
+<meta property="og:updated_time" content="2018-11-22T13:23:40.019Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="支持向量机 Support Vector Machines">
 <meta name="twitter:description" content="经典支持向量机 Support Vector Machines在机器学习中，支持向量机是在分类与回归分析中分析数据的监督式学习模型与相关的学习算法。给定一组训练实例，每个训练实例被标记为属于两个类别中的一个或另一个，SVM训练算法创建一个将新的实例分配给两个类别之一的模型，使其成为非概率二元线性分类器。SVM模型是将实例表示为空间中的点，这样映射就使得单独类别的实例被尽可能宽的明显的间隔分开。然后">
-<meta name="twitter:image" content="http://yoursite.com/2018/11/22/支持向量机/01_introduction.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/11/22/支持向量机/点到直线距离公式.jpg">
 
 
 
@@ -419,6 +420,16 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="http://www.cnblogs.com/v-July-v/archive/2012/06/01/2539022.html" target="_blank" rel="noopener">支持向量机通俗导论（理解SVM的三层境界）</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://www.zhihu.com/question/21094489" target="_blank" rel="noopener">支持向量机(SVM)是什么意思？</a></td>
+<td>知乎</td>
+<td></td>
+</tr>
+<tr>
 <td><a href="https://www.jiqizhixin.com/articles/2018-10-17-20?from=synced&amp;keyword=%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA" target="_blank" rel="noopener">学习SVM，这篇文章就够了！（附详细代码）</a></td>
 <td><a href="https://www.jiqizhixin.com/users/20d5e621-141a-4560-87f6-636271e1df5e" target="_blank" rel="noopener">贪心科技</a></td>
 <td>20181017</td>
@@ -436,10 +447,17 @@
 <tr>
 <td><a href="https://github.com/ageron/handson-ml" target="_blank" rel="noopener">Hands-on Machine Learning with Scikit-Learn and TensorFlow 中文版</a></td>
 <td><a href="https://wizardforcel.gitbooks.io/hands-on-ml-with-sklearn-and-tf/content/docs/5.%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA.html" target="_blank" rel="noopener">五、支持向量机</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://zhiyuanliplus.github.io/SVM-SMO" target="_blank" rel="noopener">支持向量机的序列最小最优化算法SMO实现</a></td>
+<td></td>
+<td>20170409</td>
 </tr>
 </tbody>
 </table>
 </div>
+<p>点到直线距离公式<br><img src="/2018/11/22/支持向量机/点到直线距离公式.jpg" alt=""></p>
 <h1 id="Support-Vector-Machines"><a href="#Support-Vector-Machines" class="headerlink" title="Support Vector Machines"></a><a href="https://github.com/nfmcclure/tensorflow_cookbook/tree/master/04_Support_Vector_Machines" target="_blank" rel="noopener">Support Vector Machines</a></h1><p>This chapter shows how to implement various SVM methods with TensorFlow.  We first create a linear SVM and also show how it can be used for regression.  We then introduce kernels (RBF Gaussian kernel) and show how to use it to split up non-linear data. We finish with a multi-dimensional implementation of non-linear SVMs to work with multiple classes.</p>
 <h2 id="1-Linear-Support-Vector-Machine-Soft-Margin"><a href="#1-Linear-Support-Vector-Machine-Soft-Margin" class="headerlink" title="1. Linear Support Vector Machine: Soft Margin"></a><a href="https://github.com/nfmcclure/tensorflow_cookbook/tree/master/04_Support_Vector_Machines/02_Working_with_Linear_SVMs" target="_blank" rel="noopener">1. Linear Support Vector Machine: Soft Margin</a></h2><p><strong>Model</strong><br>We will aim to maximize the margin width, 2/||A||, or minimize ||A||.  We allow for a soft margin by having an error term in the loss function which is the max(0, 1-pred*actual).</p>
 <p><img src="/2018/11/22/支持向量机/01_introduction.png" alt="Linear Separator" title="Linear Separator"></p>
@@ -931,7 +949,7 @@ Loss = -1307.6366
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-count">68</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -942,7 +960,7 @@ Loss = -1307.6366
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="Python 及相关资源    标题 说明 附加     《Python进阶》（Intermediate Python 中文版） 英文原版 http://book.pythontips.com/en/latest/    《The Hitchhiker’s Guide to Python》 Python best practices guidebook, written for humans.">
+<meta name="description" content="Python 及相关资源    标题 说明 附加     《Python Cookbook》 3rd Edition Translation 《Python Cookbook》 在线阅读地址 Code samples from the “Python Cookbook, 3rd Edition”     《Python进阶》（Intermediate Python 中文版） 英文原版 http:/">
 <meta name="keywords" content="Python,Python 基础知识">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python3">
 <meta property="og:url" content="http://yoursite.com/2018/11/22/Python/index.html">
 <meta property="og:site_name" content="望江人工智库">
-<meta property="og:description" content="Python 及相关资源    标题 说明 附加     《Python进阶》（Intermediate Python 中文版） 英文原版 http://book.pythontips.com/en/latest/    《The Hitchhiker’s Guide to Python》 Python best practices guidebook, written for humans.">
+<meta property="og:description" content="Python 及相关资源    标题 说明 附加     《Python Cookbook》 3rd Edition Translation 《Python Cookbook》 在线阅读地址 Code samples from the “Python Cookbook, 3rd Edition”     《Python进阶》（Intermediate Python 中文版） 英文原版 http:/">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/11/22/Python/p1.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/22/Python/p3.png">
-<meta property="og:updated_time" content="2018-11-22T06:44:22.214Z">
+<meta property="og:updated_time" content="2018-11-22T07:31:09.014Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python3">
-<meta name="twitter:description" content="Python 及相关资源    标题 说明 附加     《Python进阶》（Intermediate Python 中文版） 英文原版 http://book.pythontips.com/en/latest/    《The Hitchhiker’s Guide to Python》 Python best practices guidebook, written for humans.">
+<meta name="twitter:description" content="Python 及相关资源    标题 说明 附加     《Python Cookbook》 3rd Edition Translation 《Python Cookbook》 在线阅读地址 Code samples from the “Python Cookbook, 3rd Edition”     《Python进阶》（Intermediate Python 中文版） 英文原版 http:/">
 <meta name="twitter:image" content="http://yoursite.com/2018/11/22/Python/p1.png">
 
 
@@ -390,6 +390,13 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="https://github.com/yidao620c/python3-cookbook" target="_blank" rel="noopener">《Python Cookbook》 3rd Edition Translation</a></td>
+<td><a href="https://python3-cookbook.readthedocs.io/zh_CN/latest/" target="_blank" rel="noopener">《Python Cookbook》 在线阅读地址</a></td>
+<td><a href="https://github.com/dabeaz/python-cookbook" target="_blank" rel="noopener">Code samples from the “Python Cookbook, 3rd Edition”</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td><a href="https://github.com/eastlakeside/interpy-zh" target="_blank" rel="noopener">《Python进阶》（Intermediate Python 中文版）</a></td>
 <td>英文原版 <a href="http://book.pythontips.com/en/latest/" target="_blank" rel="noopener">http://book.pythontips.com/en/latest/</a></td>
 <td></td>
@@ -433,80 +440,6 @@
 <p>Python中为了区分Unicode编码与字节码，分别在开头加“u”和“b”以示区分。在Python 3中，因为Unicode成了默认编码格式，所以“u”被省略掉了。</p>
 <p>总结一下，<strong>Python 3 中的字符串是由Unicode码点组成的不可变序列，也即是，由采用Unicode标准编码的字符组成的不可变序列。Unicode编码将书写系统的字符映射成了计算机二进制数字，为了方便，通常显示为十六进制；在运算内存中，字符以Unicode编码呈现，当写入磁盘或用于网络传输时，一般采用UTF-8方式编码</strong>。</p>
 <p><img src="/2018/11/22/Python/p3.png" alt=""></p>
-<h3 id=""><a href="#" class="headerlink" title=""></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ord() 函数是 chr() 函数（对于8位的ASCII字符串）或 unichr() 函数（对于Unicode对象）的配对函数，它以一个字符（长度为1的字符串）作为参数，返回对应的 ASCII 数值，或者 Unicode 数值，如果所给的 Unicode 字符超出了你的 Python 定义范围，则会引发一个 TypeError 的异常。</span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">ord(c) c 是字符</span><br></pre></td></tr></table></figure></h3><h3 id="-1"><a href="#-1" class="headerlink" title=""></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### [Python __dict__与dir()](https://www.cnblogs.com/zjchao/p/7894477.html)</span><br><span class="line"></span><br><span class="line">Python下一切皆对象，每个对象都有多个属性(attribute)，Python对属性有一套统一的管理方案。</span><br><span class="line">__dict__与dir()的区别：</span><br><span class="line">+ dir()是一个函数，返回的是list；</span><br><span class="line">+ __dict__是一个字典，键为属性名，值为属性值；</span><br><span class="line">+ dir()用来寻找一个对象的所有属性，包括__dict__中的属性，__dict__是dir()的子集;</span><br><span class="line">+ 并不是所有对象都拥有__dict__属性。许多内建类型就没有__dict__属性，如list，此时就需要用dir()来列出对象的所有属性。</span><br><span class="line"></span><br><span class="line">#### [Python __dict__属性详解](https://www.cnblogs.com/alvin2010/p/9102344.html)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### ```__dict__``` [用法案例](https://github.com/google-research/bert/blob/master/modeling.py)</span><br><span class="line">```python</span><br><span class="line">import json</span><br><span class="line">import re</span><br><span class="line">import six</span><br><span class="line">import copy</span><br><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line">class BertConfig(object):</span><br><span class="line">    &quot;&quot;&quot;Configuration for `BertModel`.&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">    def __init__(self,</span><br><span class="line">                 vocab_size,</span><br><span class="line">                 hidden_size=768,</span><br><span class="line">                 initializer_range=0.02):</span><br><span class="line">        self.vocab_size = vocab_size</span><br><span class="line">        self.hidden_size = hidden_size</span><br><span class="line">        self.initializer_range = initializer_range</span><br><span class="line">        &quot;&quot;&quot;Constructs BertConfig.</span><br><span class="line"></span><br><span class="line">        Args:</span><br><span class="line">          vocab_size: Vocabulary size of `inputs_ids` in `BertModel`.</span><br><span class="line">          hidden_size: Size of the encoder layers and the pooler layer.</span><br><span class="line">          initializer_range: The stdev of the truncated_normal_initializer for</span><br><span class="line">            initializing all weight matrices.</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">    @classmethod</span><br><span class="line">    def from_dict(cls, json_object):</span><br><span class="line">        &quot;&quot;&quot;Constructs a `BertConfig` from a Python dictionary of parameters.&quot;&quot;&quot;</span><br><span class="line">        config = BertConfig(vocab_size=None)</span><br><span class="line">        for (key, value) in six.iteritems(json_object):</span><br><span class="line">            config.__dict__[key] = value</span><br><span class="line">        return config</span><br><span class="line"></span><br><span class="line">    @classmethod</span><br><span class="line">    def from_json_file(cls, json_file):</span><br><span class="line">        &quot;&quot;&quot;Constructs a `BertConfig` from a json file of parameters.&quot;&quot;&quot;</span><br><span class="line">        with tf.gfile.GFile(json_file, &quot;r&quot;) as reader:</span><br><span class="line">            text = reader.read()</span><br><span class="line">        return cls.from_dict(json.loads(text))</span><br><span class="line"></span><br><span class="line">    def to_dict(self):</span><br><span class="line">        &quot;&quot;&quot;Serializes this instance to a Python dictionary.&quot;&quot;&quot;</span><br><span class="line">        output = copy.deepcopy(self.__dict__)</span><br><span class="line">        return output</span><br><span class="line"></span><br><span class="line">    def to_json_string(self):</span><br><span class="line">        &quot;&quot;&quot;Serializes this instance to a JSON string.&quot;&quot;&quot;</span><br><span class="line">        return json.dumps(self.to_dict(), indent=2, sort_keys=True) + &quot;\n&quot;</span><br></pre></td></tr></table></figure></h3><h2 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h2><h3 id="-2"><a href="#-2" class="headerlink" title=""></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### [使用@property ](https://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001386820062641f3bcc60a4b164f8d91df476445697b9e000)</span><br><span class="line">#### [python中 @property](https://www.cnblogs.com/Lambda721/p/6132206.html)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Numpy</span><br><span class="line"></span><br><span class="line">np.append(sent_list, np.array([new_word]), axis=0)</span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">sent_list = np.zeros([0,7])</span><br><span class="line">for _  in range(3):</span><br><span class="line">    new_word = np.random.randint(0,10,size=7)</span><br><span class="line">    sent_list = np.append(sent_list, np.array([new_word]), axis=0)</span><br><span class="line">print(sent_list)</span><br></pre></td></tr></table></figure></h3><p>array_split(X, X.shape[0], axis=0)<br>将数组切分时，会保留原始的数组维度。</p>
-<p>concatenate(x, axis=0)<br>用于将多个数组进行连接，这与stack函数很容易混淆，他们之间的区别是concatenate会把当前要匹配的元素降一维，即去掉最外面那一层括号。</p>
-<h2 id="Reshape、转置、旋转、轴对换区别"><a href="#Reshape、转置、旋转、轴对换区别" class="headerlink" title="Reshape、转置、旋转、轴对换区别"></a>Reshape、转置、旋转、轴对换区别</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X = np.arange(<span class="number">0</span>,<span class="number">15</span>,<span class="number">1</span>).reshape((<span class="number">3</span>,<span class="number">5</span>))</span><br><span class="line">X</span><br></pre></td></tr></table></figure>
-<pre><code>array([[ 0,  1,  2,  3,  4],
-       [ 5,  6,  7,  8,  9],
-       [10, 11, 12, 13, 14]])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X.reshape((<span class="number">5</span>,<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
-<pre><code>array([[ 0,  1,  2],
-       [ 3,  4,  5],
-       [ 6,  7,  8],
-       [ 9, 10, 11],
-       [12, 13, 14]])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X.T</span><br></pre></td></tr></table></figure>
-<pre><code>array([[ 0,  5, 10],
-       [ 1,  6, 11],
-       [ 2,  7, 12],
-       [ 3,  8, 13],
-       [ 4,  9, 14]])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 轴对换</span></span><br><span class="line">X.swapaxes(<span class="number">0</span>,<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>array([[ 0,  5, 10],
-       [ 1,  6, 11],
-       [ 2,  7, 12],
-       [ 3,  8, 13],
-       [ 4,  9, 14]])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 顺时针旋转 1 个 90 度</span></span><br><span class="line">np.rot90(X, <span class="number">1</span>, axes=(<span class="number">1</span>,<span class="number">0</span>))</span><br></pre></td></tr></table></figure>
-<pre><code>array([[10,  5,  0],
-       [11,  6,  1],
-       [12,  7,  2],
-       [13,  8,  3],
-       [14,  9,  4]])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.rot90(X, <span class="number">1</span>, axes=(<span class="number">0</span>,<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
-<pre><code>array([[ 4,  9, 14],
-       [ 3,  8, 13],
-       [ 2,  7, 12],
-       [ 1,  6, 11],
-       [ 0,  5, 10]])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C2 = np.rot90(X, <span class="number">2</span>, axes=(<span class="number">1</span>,<span class="number">0</span>))</span><br><span class="line">C2</span><br></pre></td></tr></table></figure>
-<pre><code>array([[14, 13, 12, 11, 10],
-       [ 9,  8,  7,  6,  5],
-       [ 4,  3,  2,  1,  0]])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.rot90(C2, <span class="number">2</span>, axes=(<span class="number">0</span>,<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
-<pre><code>array([[ 0,  1,  2,  3,  4],
-       [ 5,  6,  7,  8,  9],
-       [10, 11, 12, 13, 14]])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X2 = np.arange(<span class="number">0</span>,<span class="number">24</span>,<span class="number">1</span>).reshape((<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>))</span><br><span class="line">X2</span><br></pre></td></tr></table></figure>
-<pre><code>array([[[ 0,  1,  2,  3],
-        [ 4,  5,  6,  7],
-        [ 8,  9, 10, 11]],
-
-       [[12, 13, 14, 15],
-        [16, 17, 18, 19],
-        [20, 21, 22, 23]]])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X2.swapaxes(<span class="number">1</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>array([[[ 0,  4,  8],
-        [ 1,  5,  9],
-        [ 2,  6, 10],
-        [ 3,  7, 11]],
-
-       [[12, 16, 20],
-        [13, 17, 21],
-        [14, 18, 22],
-        [15, 19, 23]]])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X2.transpose(<span class="number">0</span>,<span class="number">2</span>,<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>array([[[ 0,  4,  8],
-        [ 1,  5,  9],
-        [ 2,  6, 10],
-        [ 3,  7, 11]],
-
-       [[12, 16, 20],
-        [13, 17, 21],
-        [14, 18, 22],
-        [15, 19, 23]]])
-</code></pre><h1 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h1><p><a href="https://www.jiqizhixin.com/articles/2018-09-28-3" target="_blank" rel="noopener">手把手：如何方便地使用Python和Pandas来匿名信息</a></p>
 
       
     </div>
@@ -661,7 +594,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-count">68</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -672,7 +605,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -726,7 +659,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-及相关资源"><span class="nav-number">1.</span> <span class="nav-text">Python 及相关资源</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据集切分"><span class="nav-number">1.1.</span> <span class="nav-text">数据集切分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Numpy-np-random-choice-方法"><span class="nav-number">1.1.1.</span> <span class="nav-text">Numpy np.random.choice 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sklearn-train-test-split-放法"><span class="nav-number">1.1.2.</span> <span class="nav-text">sklearn train_test_split 放法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串"><span class="nav-number">1.2.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">1.2.1.</span> <span class="nav-text">1234ord() 函数是 chr() 函数（对于8位的ASCII字符串）或 unichr() 函数（对于Unicode对象）的配对函数，它以一个字符（长度为1的字符串）作为参数，返回对应的 ASCII 数值，或者 Unicode 数值，如果所给的 Unicode 字符超出了你的 Python 定义范围，则会引发一个 TypeError 的异常。```pythonord(c) c 是字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263#### [Python __dict__与dir()](https://www.cnblogs.com/zjchao/p/7894477.html)Python下一切皆对象，每个对象都有多个属性(attribute)，Python对属性有一套统一的管理方案。__dict__与dir()的区别：+ dir()是一个函数，返回的是list；+ __dict__是一个字典，键为属性名，值为属性值；+ dir()用来寻找一个对象的所有属性，包括__dict__中的属性，__dict__是dir()的子集;+ 并不是所有对象都拥有__dict__属性。许多内建类型就没有__dict__属性，如list，此时就需要用dir()来列出对象的所有属性。#### [Python __dict__属性详解](https://www.cnblogs.com/alvin2010/p/9102344.html)#### ```__dict__``` [用法案例](https://github.com/google-research/bert/blob/master/modeling.py)```pythonimport jsonimport reimport siximport copyimport tensorflow as tfclass BertConfig(object):    &quot;&quot;&quot;Configuration for `BertModel`.&quot;&quot;&quot;    def __init__(self,                 vocab_size,                 hidden_size=768,                 initializer_range=0.02):        self.vocab_size = vocab_size        self.hidden_size = hidden_size        self.initializer_range = initializer_range        &quot;&quot;&quot;Constructs BertConfig.        Args:          vocab_size: Vocabulary size of `inputs_ids` in `BertModel`.          hidden_size: Size of the encoder layers and the pooler layer.          initializer_range: The stdev of the truncated_normal_initializer for            initializing all weight matrices.        &quot;&quot;&quot;    @classmethod    def from_dict(cls, json_object):        &quot;&quot;&quot;Constructs a `BertConfig` from a Python dictionary of parameters.&quot;&quot;&quot;        config = BertConfig(vocab_size=None)        for (key, value) in six.iteritems(json_object):            config.__dict__[key] = value        return config    @classmethod    def from_json_file(cls, json_file):        &quot;&quot;&quot;Constructs a `BertConfig` from a json file of parameters.&quot;&quot;&quot;        with tf.gfile.GFile(json_file, &quot;r&quot;) as reader:            text = reader.read()        return cls.from_dict(json.loads(text))    def to_dict(self):        &quot;&quot;&quot;Serializes this instance to a Python dictionary.&quot;&quot;&quot;        output = copy.deepcopy(self.__dict__)        return output    def to_json_string(self):        &quot;&quot;&quot;Serializes this instance to a JSON string.&quot;&quot;&quot;        return json.dumps(self.to_dict(), indent=2, sort_keys=True) + &quot;\n&quot;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#装饰器"><span class="nav-number">1.3.</span> <span class="nav-text">装饰器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">123456789101112131415#### [使用@property ](https://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001386820062641f3bcc60a4b164f8d91df476445697b9e000)#### [python中 @property](https://www.cnblogs.com/Lambda721/p/6132206.html)# Numpynp.append(sent_list, np.array([new_word]), axis=0)```pythonsent_list = np.zeros([0,7])for _  in range(3):    new_word = np.random.randint(0,10,size=7)    sent_list = np.append(sent_list, np.array([new_word]), axis=0)print(sent_list)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reshape、转置、旋转、轴对换区别"><span class="nav-number">1.4.</span> <span class="nav-text">Reshape、转置、旋转、轴对换区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pandas"><span class="nav-number">2.</span> <span class="nav-text">Pandas</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-及相关资源"><span class="nav-number">1.</span> <span class="nav-text">Python 及相关资源</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据集切分"><span class="nav-number">1.1.</span> <span class="nav-text">数据集切分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Numpy-np-random-choice-方法"><span class="nav-number">1.1.1.</span> <span class="nav-text">Numpy np.random.choice 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sklearn-train-test-split-放法"><span class="nav-number">1.1.2.</span> <span class="nav-text">sklearn train_test_split 放法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串"><span class="nav-number">1.2.</span> <span class="nav-text">字符串</span></a></li></ol></li></ol></div>
             
 
           </div>
