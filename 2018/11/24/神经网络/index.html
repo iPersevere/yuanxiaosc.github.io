@@ -94,8 +94,8 @@
 <meta property="og:image" content="http://yoursite.com/2018/11/24/神经网络/output_9_0.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/24/神经网络/output_9_1.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/24/神经网络/08_tictactoe_layout.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/24/神经网络/神经网络">
-<meta property="og:updated_time" content="2018-11-24T13:57:25.827Z">
+<meta property="og:image" content="http://yoursite.com/2018/11/24/神经网络/08_tic_tac_toe_architecture.png">
+<meta property="og:updated_time" content="2018-11-24T14:04:23.299Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="神经网络 Neural Networks">
 <meta name="twitter:description" content="神经网络Neural Network（人工）神经网络是一种起源于 20 世纪 50 年代的监督式机器学习模型，那时候研究者构想了「感知器（perceptron）」的想法。这一领域的研究者通常被称为「联结主义者（Connectionist）」，因为这种模型模拟了人脑的功能。神经网络模型通常是通过反向传播算法应用梯度下降训练的。目前神经网络有两大主要类型，它们是前馈神经网络（主要是卷积神经网络-CNN">
@@ -633,7 +633,7 @@ Loss = 0.5264541
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line"><span class="comment"># Plot loss over time</span></span><br><span class="line">plt.plot(loss_vec, <span class="string">'k-'</span>)</span><br><span class="line">plt.title(<span class="string">'Cross Entropy Loss per Generation'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'Generation'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'Cross Entropy Loss'</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Plot train and test accuracy</span></span><br><span class="line">plt.plot(train_acc, <span class="string">'k-'</span>, label=<span class="string">'Train Set Accuracy'</span>)</span><br><span class="line">plt.plot(test_acc, <span class="string">'r--'</span>, label=<span class="string">'Test Set Accuracy'</span>)</span><br><span class="line">plt.title(<span class="string">'Train and Test Accuracy'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'Generation'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'Accuracy'</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'lower right'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/11/24/神经网络/output_9_0.png" alt="png"><br><img src="/2018/11/24/神经网络/output_9_1.png" alt="png"></p>
 <h2 id="Learning-to-Play-Tic-Tac-Toe"><a href="#Learning-to-Play-Tic-Tac-Toe" class="headerlink" title="Learning to Play Tic-Tac-Toe"></a><a href="https://github.com/nfmcclure/tensorflow_cookbook/tree/master/06_Neural_Networks/08_Learning_Tic_Tac_Toe" target="_blank" rel="noopener">Learning to Play Tic-Tac-Toe</a></h2><p><strong>Tic-Tac-Toe Game</strong><br><img src="/2018/11/24/神经网络/08_tictactoe_layout.png" alt="TicTacToeIndexing" title="TicTacToeIndexing"></p>
-<p><strong>Model</strong><br><img src="/2018/11/24/神经网络/神经网络" alt="TicTacToe Architecture"></p>
+<p><strong>Model</strong><br><img src="/2018/11/24/神经网络/08_tic_tac_toe_architecture.png" alt="TicTacToe Architecture" title="TicTacToe Architecture"></p>
 
       
     </div>
