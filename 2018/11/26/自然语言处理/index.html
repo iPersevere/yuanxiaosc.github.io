@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Natural Language ProcessingUp to this point, we have only considered machine learning algorithms that mostly operate on numerical inputs. If we want to use text, we must find a way to convert the text">
+<meta name="keywords" content="深度学习;机器学习;人工智能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自然语言处理 Natural Language Processing">
+<meta property="og:url" content="http://yoursite.com/2018/11/26/自然语言处理/index.html">
+<meta property="og:site_name" content="望江人工智库">
+<meta property="og:description" content="Natural Language ProcessingUp to this point, we have only considered machine learning algorithms that mostly operate on numerical inputs. If we want to use text, we must find a way to convert the text">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/11/26/自然语言处理/output_9_0.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/26/自然语言处理/output_27_0.png">
+<meta property="og:updated_time" content="2018-11-26T13:22:04.240Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="自然语言处理 Natural Language Processing">
+<meta name="twitter:description" content="Natural Language ProcessingUp to this point, we have only considered machine learning algorithms that mostly operate on numerical inputs. If we want to use text, we must find a way to convert the text">
+<meta name="twitter:image" content="http://yoursite.com/2018/11/26/自然语言处理/output_9_0.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/26/自然语言处理/"/>
+
+
+
+
+
+  <title>自然语言处理 Natural Language Processing | 望江人工智库</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">望江人工智库</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/26/自然语言处理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="望江车神">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/16183570?s=400&u=5e09ebb784cfd47de99d249f2be2413adcf4e672&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="望江人工智库">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">自然语言处理 Natural Language Processing</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-26T20:50:15+08:00">
+                2018-11-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/深度学习/自然语言处理/" itemprop="url" rel="index">
+                    <span itemprop="name">自然语言处理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Natural-Language-Processing"><a href="#Natural-Language-Processing" class="headerlink" title="Natural Language Processing"></a><a href="https://github.com/nfmcclure/tensorflow_cookbook/tree/master/07_Natural_Language_Processing" target="_blank" rel="noopener">Natural Language Processing</a></h1><p>Up to this point, we have only considered machine learning algorithms that mostly operate on numerical inputs. If we want to use text, we must find a way to convert the text into numbers. There are many ways to do this and we will explore a few common ways this is achieved.”</p>
+<p>If we consider the sentence “tensorflow makes m<br>achine learning easy”, we could convert the words t<br>o numbers in the order that we observe them. This would make the sentence become “1 2 3 4 5”. Then when we see a new sentence, “machine learning is easy”, we can translate this as “3 4 0 5”. Denoting words we haven’t seen bore with an index of zero. With these two examples, we have limited our vocabulary to 6 numbers. With large texts we can choose how many words we want to keep, and usually keep the most frequent words, labeling everything else with the index of zero.</p>
+<p>If the word “learning” has a numerical value of 4, and the word “makes” has a numerical value of 2, then it would be natural to assume that “learning” is twice “makes”. Since we do not want this type of numerical relationship between words, we assume these numbers represent categories and not relational numbers.</p>
+<p>Another problem is that these two sentences are of different size. Each observation we make (sentences in this case) need to have the same size input to a model we wish to create. To get around this, we create each sentence into a sparse vector that has that value of one in a specific index if that word occurs in that index.</p>
+<h2 id="Natural-Language-Processing-NLP-Introduction"><a href="#Natural-Language-Processing-NLP-Introduction" class="headerlink" title="Natural Language Processing (NLP) Introduction"></a>Natural Language Processing (NLP) Introduction</h2><p>In this chapter we cover the following topics:</p>
+<ul>
+<li>Working with Bag of Words</li>
+<li>Implementing TF-IDF</li>
+<li>Working with Skip-gram Embeddings</li>
+<li>Working with CBOW Embeddings</li>
+<li>Making Predictions with Word2vec</li>
+<li><p>Using Doc2vec for Sentiment Analysis</p>
+<p>Up to this point, we have only considered machine learning algorithms that mostly operate on numerical inputs.  If we want to use text, we must find a way to convert the text into numbers.  There are many ways to do this and we will explore a few common ways this is achieved.</p>
+</li>
+</ul>
+<p>If we consider the sentence <strong>“tensorflow makes machine learning easy”</strong>, we could convert the words to numbers in the order that we observe them.  This would make the sentence become “1 2 3 4 5”.  Then when we see a new sentence, <strong>“machine learning is easy”</strong>, we can translate this as “3 4 0 5”. Denoting words we haven’t seen bore with an index of zero.  With these two examples, we have limited our vocabulary to 6 numbers.  With large texts we can choose how many words we want to keep, and usually keep the most frequent words, labeling everything else with the index of zero.</p>
+<p>If the word “learning” has a numerical value of 4, and the word “makes” has a numerical value of 2, then it would be natural to assume that “learning” is twice “makes”.  Since we do not want this type of numerical relationship between words, we assume these numbers represent categories and not relational numbers.<br>Another problem is that these two sentences are of different size. Each observation we make (sentences in this case) need to have the same size input to a model we wish to create.  To get around this, we create each sentence into a sparse vector that has that value of one in a specific index if that word occurs in that index.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">word —&gt;</th>
+<th style="text-align:center">tensorflow</th>
+<th style="text-align:center">makes</th>
+<th style="text-align:center">machine</th>
+<th style="text-align:center">learning</th>
+<th style="text-align:center">easy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">word index —&gt;</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">5</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The occurrence vector would then be:</p>
+<pre><code>sentence1 = [0, 1, 1, 1, 1, 1]
+</code></pre><p>This is a vector of length 6 because we have 5 words in our vocabulary and we reserve the 0-th index for unknown or rare words</p>
+<p>Now consider the sentence, <strong>‘machine learning is easy’</strong>.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">word —&gt;</th>
+<th style="text-align:center">machine</th>
+<th style="text-align:center">learning</th>
+<th style="text-align:center">is</th>
+<th style="text-align:center">easy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">word index —&gt;</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">5</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The occurrence vector for this sentence is now:</p>
+<pre><code>sentence2 = [1, 0, 0, 1, 1, 1]
+</code></pre><p>Notice that we now have a procedure that converts any sentence to a fixed length numerical vector.</p>
+<p>A disadvantage to this method is that we lose any indication of word order.  The two sentences “tensorflow makes machine learning easy” and “machine learning makes tensorflow easy” would result in the same sentence vector.<br>It is also worthwhile to note that the length of these vectors is equal to the size of our vocabulary that we pick.<br>It is common to pick a very large vocabulary, so these sentence vectors can be very sparse.  This type of embedding that we have covered in this introduction is called “bag of words”.  We will implement this in the next section.</p>
+<p>Another drawback is that the words “is” and “tensorflow” have the same numerical index value of one.  We can imagine that the word “is” might be less important that the occurrence of the word “tensorflow”.<br>We will explore different types of embeddings in this chapter that attempt to address these ideas, but first we start with an implementation of bag of words.</p>
+<h2 id="Working-with-Bag-of-Words"><a href="#Working-with-Bag-of-Words" class="headerlink" title="Working with Bag of Words"></a><a href="https://github.com/nfmcclure/tensorflow_cookbook/tree/master/07_Natural_Language_Processing/02_Working_with_Bag_of_Words" target="_blank" rel="noopener">Working with Bag of Words</a></h2><p>In this example, we will download and preprocess the ham/spam text data.  We will then use a one-hot-encoding to make a bag of words set of features to use in logistic regression.</p>
+<p>We will use these one-hot-vectors for logistic regression to predict if a text is spam or ham.</p>
+<p>We start by loading the necessary libraries.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> io</span><br><span class="line"><span class="keyword">from</span> zipfile <span class="keyword">import</span> ZipFile</span><br><span class="line"><span class="keyword">from</span> tensorflow.contrib <span class="keyword">import</span> learn</span><br><span class="line"><span class="keyword">from</span> tensorflow.python.framework <span class="keyword">import</span> ops</span><br><span class="line">ops.reset_default_graph()</span><br></pre></td></tr></table></figure>
+<p>We start a computation graph session.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Start a graph session</span></span><br><span class="line">sess = tf.Session()</span><br></pre></td></tr></table></figure>
+<p>Check if data was downloaded, otherwise download it and save for future use</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">save_file_name = os.path.join(<span class="string">'temp'</span>,<span class="string">'temp_spam_data.csv'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create directory if it doesn't exist</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="string">'temp'</span>):</span><br><span class="line">    os.makedirs(<span class="string">'temp'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> os.path.isfile(save_file_name):</span><br><span class="line">    text_data = []</span><br><span class="line">    <span class="keyword">with</span> open(save_file_name, <span class="string">'r'</span>) <span class="keyword">as</span> temp_output_file:</span><br><span class="line">        reader = csv.reader(temp_output_file)</span><br><span class="line">        <span class="keyword">for</span> row <span class="keyword">in</span> reader:</span><br><span class="line">            <span class="keyword">if</span> len(row)==<span class="number">2</span>:</span><br><span class="line">                text_data.append(row)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    zip_url = <span class="string">'http://archive.ics.uci.edu/ml/machine-learning-databases/00228/smsspamcollection.zip'</span></span><br><span class="line">    r = requests.get(zip_url)</span><br><span class="line">    z = ZipFile(io.BytesIO(r.content))</span><br><span class="line">    file = z.read(<span class="string">'SMSSpamCollection'</span>)</span><br><span class="line">    <span class="comment"># Format Data</span></span><br><span class="line">    text_data = file.decode()</span><br><span class="line">    text_data = text_data.encode(<span class="string">'ascii'</span>,errors=<span class="string">'ignore'</span>)</span><br><span class="line">    text_data = text_data.decode().split(<span class="string">'\n'</span>)</span><br><span class="line">    text_data = [x.split(<span class="string">'\t'</span>) <span class="keyword">for</span> x <span class="keyword">in</span> text_data <span class="keyword">if</span> len(x)&gt;=<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># And write to csv</span></span><br><span class="line">    <span class="keyword">with</span> open(save_file_name, <span class="string">'w'</span>) <span class="keyword">as</span> temp_output_file:</span><br><span class="line">        writer = csv.writer(temp_output_file)</span><br><span class="line">        writer.writerows(text_data)</span><br><span class="line"></span><br><span class="line">texts = [x[<span class="number">1</span>] <span class="keyword">for</span> x <span class="keyword">in</span> text_data]</span><br><span class="line">target = [x[<span class="number">0</span>] <span class="keyword">for</span> x <span class="keyword">in</span> text_data]</span><br></pre></td></tr></table></figure>
+<p>To reduce the potential vocabulary size, we normalize the text. To do this, we remove the influence of capitalization and numbers in the text.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Relabel 'spam' as 1, 'ham' as 0</span></span><br><span class="line">target = [<span class="number">1</span> <span class="keyword">if</span> x==<span class="string">'spam'</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">for</span> x <span class="keyword">in</span> target]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Normalize text</span></span><br><span class="line"><span class="comment"># Lower case</span></span><br><span class="line">texts = [x.lower() <span class="keyword">for</span> x <span class="keyword">in</span> texts]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Remove punctuation</span></span><br><span class="line">texts = [<span class="string">''</span>.join(c <span class="keyword">for</span> c <span class="keyword">in</span> x <span class="keyword">if</span> c <span class="keyword">not</span> <span class="keyword">in</span> string.punctuation) <span class="keyword">for</span> x <span class="keyword">in</span> texts]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Remove numbers</span></span><br><span class="line">texts = [<span class="string">''</span>.join(c <span class="keyword">for</span> c <span class="keyword">in</span> x <span class="keyword">if</span> c <span class="keyword">not</span> <span class="keyword">in</span> <span class="string">'0123456789'</span>) <span class="keyword">for</span> x <span class="keyword">in</span> texts]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Trim extra whitespace</span></span><br><span class="line">texts = [<span class="string">' '</span>.join(x.split()) <span class="keyword">for</span> x <span class="keyword">in</span> texts]</span><br></pre></td></tr></table></figure>
+<p>To determine a good sentence length to pad/crop at, we plot a histogram of text lengths (in words).</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line"><span class="comment"># Plot histogram of text lengths</span></span><br><span class="line">text_lengths = [len(x.split()) <span class="keyword">for</span> x <span class="keyword">in</span> texts]</span><br><span class="line">text_lengths = [x <span class="keyword">for</span> x <span class="keyword">in</span> text_lengths <span class="keyword">if</span> x &lt; <span class="number">50</span>]</span><br><span class="line">plt.hist(text_lengths, bins=<span class="number">25</span>)</span><br><span class="line">plt.title(<span class="string">'Histogram of # of Words in Texts'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/11/26/自然语言处理/output_9_0.png" alt="png"></p>
+<p>We crop/pad all texts to be 25 words long.  We also will filter out any words that do not appear at least 3 times.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Choose max text word length at 25</span></span><br><span class="line">sentence_size = <span class="number">25</span></span><br><span class="line">min_word_freq = <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>TensorFlow has a built in text processing function called <code>VocabularyProcessor()</code>. We use this function to process the texts.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Setup vocabulary processor</span></span><br><span class="line">vocab_processor = learn.preprocessing.VocabularyProcessor(sentence_size, min_frequency=min_word_freq)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Have to fit transform to get length of unique words.</span></span><br><span class="line">vocab_processor.transform(texts)</span><br><span class="line">transformed_texts = np.array([x <span class="keyword">for</span> x <span class="keyword">in</span> vocab_processor.transform(texts)])</span><br><span class="line">embedding_size = len(np.unique(transformed_texts))</span><br></pre></td></tr></table></figure>
+<p>To test our logistic model (predicting spam/ham), we split the texts into a train and test set.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Split up data set into train/test</span></span><br><span class="line">train_indices = np.random.choice(len(texts), round(len(texts)*<span class="number">0.8</span>), replace=<span class="keyword">False</span>)</span><br><span class="line">test_indices = np.array(list(set(range(len(texts))) - set(train_indices)))</span><br><span class="line">texts_train = [x <span class="keyword">for</span> ix, x <span class="keyword">in</span> enumerate(texts) <span class="keyword">if</span> ix <span class="keyword">in</span> train_indices]</span><br><span class="line">texts_test = [x <span class="keyword">for</span> ix, x <span class="keyword">in</span> enumerate(texts) <span class="keyword">if</span> ix <span class="keyword">in</span> test_indices]</span><br><span class="line">target_train = [x <span class="keyword">for</span> ix, x <span class="keyword">in</span> enumerate(target) <span class="keyword">if</span> ix <span class="keyword">in</span> train_indices]</span><br><span class="line">target_test = [x <span class="keyword">for</span> ix, x <span class="keyword">in</span> enumerate(target) <span class="keyword">if</span> ix <span class="keyword">in</span> test_indices]</span><br></pre></td></tr></table></figure>
+<p>For one-hot-encoding, we setup an identity matrix for the TensorFlow embedding lookup.</p>
+<p>We also create the variables and placeholders for the logistic regression we will perform.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Setup Index Matrix for one-hot-encoding</span></span><br><span class="line">identity_mat = tf.diag(tf.ones(shape=[embedding_size]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create variables for logistic regression</span></span><br><span class="line">A = tf.Variable(tf.random_normal(shape=[embedding_size,<span class="number">1</span>]))</span><br><span class="line">b = tf.Variable(tf.random_normal(shape=[<span class="number">1</span>,<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Initialize placeholders</span></span><br><span class="line">x_data = tf.placeholder(shape=[sentence_size], dtype=tf.int32)</span><br><span class="line">y_target = tf.placeholder(shape=[<span class="number">1</span>, <span class="number">1</span>], dtype=tf.float32)</span><br></pre></td></tr></table></figure>
+<p>Next, we create the text-word embedding lookup with the prior identity matrix.</p>
+<p>Our logistic regression will use the counts of the words as the input.  The counts are created by summing the embedding output across the rows.</p>
+<p>Then we declare the logistic regression operations. Note that we do not wrap the logistic operations in the sigmoid function because this will be done in the loss function later on.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Text-Vocab Embedding</span></span><br><span class="line">x_embed = tf.nn.embedding_lookup(identity_mat, x_data)</span><br><span class="line">x_col_sums = tf.reduce_sum(x_embed, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Declare model operations</span></span><br><span class="line">x_col_sums_2D = tf.expand_dims(x_col_sums, <span class="number">0</span>)</span><br><span class="line">model_output = tf.add(tf.matmul(x_col_sums_2D, A), b)</span><br></pre></td></tr></table></figure>
+<p>Now we declare our loss function (which has the sigmoid built in), prediction operations, optimizer, and initialize the variables.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Declare loss function (Cross Entropy loss)</span></span><br><span class="line">loss = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits=model_output, labels=y_target))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Prediction operation</span></span><br><span class="line">prediction = tf.sigmoid(model_output)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Declare optimizer</span></span><br><span class="line">my_opt = tf.train.GradientDescentOptimizer(<span class="number">0.001</span>)</span><br><span class="line">train_step = my_opt.minimize(loss)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Intitialize Variables</span></span><br><span class="line">init = tf.global_variables_initializer()</span><br><span class="line">sess.run(init)</span><br></pre></td></tr></table></figure>
+<p>Now we loop through the iterations and fit the logistic regression on wether or not the text is spam or ham.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Start Logistic Regression</span></span><br><span class="line">print(<span class="string">'Starting Training Over &#123;&#125; Sentences.'</span>.format(len(texts_train)))</span><br><span class="line">loss_vec = []</span><br><span class="line">train_acc_all = []</span><br><span class="line">train_acc_avg = []</span><br><span class="line"><span class="keyword">for</span> ix, t <span class="keyword">in</span> enumerate(vocab_processor.fit_transform(texts_train)):</span><br><span class="line">    y_data = [[target_train[ix]]]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    sess.run(train_step, feed_dict=&#123;x_data: t, y_target: y_data&#125;)</span><br><span class="line">    temp_loss = sess.run(loss, feed_dict=&#123;x_data: t, y_target: y_data&#125;)</span><br><span class="line">    loss_vec.append(temp_loss)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (ix+<span class="number">1</span>)%<span class="number">50</span>==<span class="number">0</span>:</span><br><span class="line">        print(<span class="string">'Training Observation #'</span> + str(ix+<span class="number">1</span>) + <span class="string">': Loss = '</span> + str(temp_loss))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Keep trailing average of past 50 observations accuracy</span></span><br><span class="line">    <span class="comment"># Get prediction of single observation</span></span><br><span class="line">    [[temp_pred]] = sess.run(prediction, feed_dict=&#123;x_data:t, y_target:y_data&#125;)</span><br><span class="line">    <span class="comment"># Get True/False if prediction is accurate</span></span><br><span class="line">    train_acc_temp = target_train[ix]==np.round(temp_pred)</span><br><span class="line">    train_acc_all.append(train_acc_temp)</span><br><span class="line">    <span class="keyword">if</span> len(train_acc_all) &gt;= <span class="number">50</span>:</span><br><span class="line">        train_acc_avg.append(np.mean(train_acc_all[<span class="number">-50</span>:]))</span><br></pre></td></tr></table></figure>
+<pre><code>Starting Training Over 4459 Sentences.
+Training Observation #50: Loss = 4.7342416e-14
+...
+Training Observation #4450: Loss = 3.811978e-11
+</code></pre><p>Now that we have a logistic model, we can evaluate the accuracy on the test dataset.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Get test set accuracy</span></span><br><span class="line">print(<span class="string">'Getting Test Set Accuracy For &#123;&#125; Sentences.'</span>.format(len(texts_test)))</span><br><span class="line">test_acc_all = []</span><br><span class="line"><span class="keyword">for</span> ix, t <span class="keyword">in</span> enumerate(vocab_processor.fit_transform(texts_test)):</span><br><span class="line">    y_data = [[target_test[ix]]]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (ix+<span class="number">1</span>)%<span class="number">100</span>==<span class="number">0</span>:</span><br><span class="line">        print(<span class="string">'Test Observation #'</span> + str(ix+<span class="number">1</span>))    </span><br><span class="line"></span><br><span class="line">    <span class="comment"># Keep trailing average of past 50 observations accuracy</span></span><br><span class="line">    <span class="comment"># Get prediction of single observation</span></span><br><span class="line">    [[temp_pred]] = sess.run(prediction, feed_dict=&#123;x_data:t, y_target:y_data&#125;)</span><br><span class="line">    <span class="comment"># Get True/False if prediction is accurate</span></span><br><span class="line">    test_acc_temp = target_test[ix]==np.round(temp_pred)</span><br><span class="line">    test_acc_all.append(test_acc_temp)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'\nOverall Test Accuracy: &#123;&#125;'</span>.format(np.mean(test_acc_all)))</span><br></pre></td></tr></table></figure>
+<pre><code>Getting Test Set Accuracy For 1115 Sentences.
+Test Observation #100
+Test Observation #200
+Test Observation #300
+Test Observation #400
+Test Observation #500
+Test Observation #600
+</code></pre><p>Let’s look at the training accuracy over all the iterations.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Plot training accuracy over time</span></span><br><span class="line">plt.plot(range(len(train_acc_avg)), train_acc_avg, <span class="string">'k-'</span>, label=<span class="string">'Train Accuracy'</span>)</span><br><span class="line">plt.title(<span class="string">'Avg Training Acc Over Past 50 Iterations'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'Iterations'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'Training Accuracy'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/11/26/自然语言处理/output_27_0.png" alt="png"></p>
+<p>It is worthwhile to mention the motivation of limiting the sentence (or text) size.  In this example we limited the text size to 25 words.  This is a common practice with bag of words because it limits the effect of text length on the prediction.  You can imagine that if we find a word, “meeting” for example, that is predictive of a text being ham (not spam), then a spam message might get through by putting in many occurrences of that word at the end.  In fact, this is a common problem with imbalanced target data.  Imbalanced data might occur in this situation, since spam may be hard to find and ham may be easy to find.  Because of this fact, our vocabulary that we create might be heavily skewed toward words represented in the ham part of our data (more ham means more words are represented in ham than spam).  If we allow unlimited length of texts, then spammers might take advantage of this and create very long texts, which have a higher probability of triggering non-spam word factors in our logistic model.</p>
+<p>In the next section, we attempt to tackle this problem in a better way using the frequency of word occurrence to determine the values of the word embeddings.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢金主！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="望江车神 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="望江车神 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/25/神经网络资源/" rel="next" title="神经网络资源">
+                <i class="fa fa-chevron-left"></i> 神经网络资源
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/27/Efficient Estimation of Word Representations in Vector Space/" rel="prev" title="Efficient Estimation of Word Representations in Vector Space">
+                Efficient Estimation of Word Representations in Vector Space <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://avatars0.githubusercontent.com/u/16183570?s=400&u=5e09ebb784cfd47de99d249f2be2413adcf4e672&v=4"
+                alt="望江车神" />
+            
+              <p class="site-author-name" itemprop="name">望江车神</p>
+              <p class="site-description motion-element" itemprop="description">深度学习你~~~</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yuanxiaoSC" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Natural-Language-Processing"><span class="nav-number">1.</span> <span class="nav-text">Natural Language Processing</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Natural-Language-Processing-NLP-Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Natural Language Processing (NLP) Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Working-with-Bag-of-Words"><span class="nav-number">1.2.</span> <span class="nav-text">Working with Bag of Words</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">望江车神</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
