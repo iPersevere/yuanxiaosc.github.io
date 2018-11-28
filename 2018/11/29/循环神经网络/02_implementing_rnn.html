@@ -1,0 +1,325 @@
+<h1 id="Implementing-an-RNN-in-TensorFlow"><a href="#Implementing-an-RNN-in-TensorFlow" class="headerlink" title="Implementing an RNN in TensorFlow"></a>Implementing an RNN in TensorFlow</h1><p>This script implements an RNN in TensorFlow to predict spam/ham from texts.</p>
+<p>We start by loading the necessary libraries and initializing a computation graph in TensorFlow.</p>
+<pre><code class="lang-python">import os
+import re
+import io
+import requests
+import numpy as np
+import matplotlib.pyplot as plt
+import tensorflow as tf
+from zipfile import ZipFile
+from tensorflow.python.framework import ops
+ops.reset_default_graph()
+# Start a graph
+sess = tf.Session()
+</code></pre>
+<p>Next we set the parameters for the RNN model.</p>
+<pre><code class="lang-python"># Set RNN parameters
+epochs = 50
+batch_size = 250
+max_sequence_length = 25
+rnn_size = 10
+embedding_size = 50
+min_word_frequency = 10
+learning_rate = 0.0005
+dropout_keep_prob = tf.placeholder(tf.float32)
+</code></pre>
+<p>We download and save the data next.  First we check if we have saved it before and load it locally, if not, we load it from the internet (UCI machine learning data repository).</p>
+<pre><code class="lang-python"># Download or open data
+data_dir = &#39;temp&#39;
+data_file = &#39;text_data.txt&#39;
+if not os.path.exists(data_dir):
+    os.makedirs(data_dir)
+
+if not os.path.isfile(os.path.join(data_dir, data_file)):
+    zip_url = &#39;http://archive.ics.uci.edu/ml/machine-learning-databases/00228/smsspamcollection.zip&#39;
+    r = requests.get(zip_url)
+    z = ZipFile(io.BytesIO(r.content))
+    file = z.read(&#39;SMSSpamCollection&#39;)
+    # Format Data
+    text_data = file.decode()
+    text_data = text_data.encode(&#39;ascii&#39;, errors=&#39;ignore&#39;)
+    text_data = text_data.decode().split(&#39;\n&#39;)
+
+    # Save data to text file
+    with open(os.path.join(data_dir, data_file), &#39;w&#39;) as file_conn:
+        for text in text_data:
+            file_conn.write(&quot;{}\n&quot;.format(text))
+else:
+    # Open data from text file
+    text_data = []
+    with open(os.path.join(data_dir, data_file), &#39;r&#39;) as file_conn:
+        for row in file_conn:
+            text_data.append(row)
+    text_data = text_data[:-1]
+
+text_data = [x.split(&#39;\t&#39;) for x in text_data if len(x) &gt;= 1]
+[text_data_target, text_data_train] = [list(x) for x in zip(*text_data)]
+</code></pre>
+<p>Next, we process the texts and turn them into numeric representations (words —&gt; indices).</p>
+<pre><code class="lang-python"># Create a text cleaning function
+def clean_text(text_string):
+    text_string = re.sub(r&#39;([^\s\w]|_|[0-9])+&#39;, &#39;&#39;, text_string)
+    text_string = &quot; &quot;.join(text_string.split())
+    text_string = text_string.lower()
+    return text_string
+
+
+# Clean texts
+text_data_train = [clean_text(x) for x in text_data_train]
+
+# Change texts into numeric vectors
+vocab_processor = tf.contrib.learn.preprocessing.VocabularyProcessor(max_sequence_length,
+                                                                     min_frequency=min_word_frequency)
+text_processed = np.array(list(vocab_processor.fit_transform(text_data_train)))
+</code></pre>
+<pre><code>WARNING:tensorflow:From &lt;ipython-input-5-4e6c02d47d3d&gt;:14: VocabularyProcessor.__init__ (from tensorflow.contrib.learn.python.learn.preprocessing.text) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use tensorflow/transform or tf.data.
+WARNING:tensorflow:From /home/b418/anaconda3/envs/yuanxiao/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/preprocessing/text.py:154: CategoricalVocabulary.__init__ (from tensorflow.contrib.learn.python.learn.preprocessing.categorical_vocabulary) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use tensorflow/transform or tf.data.
+WARNING:tensorflow:From /home/b418/anaconda3/envs/yuanxiao/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/preprocessing/text.py:170: tokenizer (from tensorflow.contrib.learn.python.learn.preprocessing.text) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use tensorflow/transform or tf.data.
+</code></pre><blockquote>
+<p>Note: there will be a WARNING:… use tensorflow/transform or tf.data.  Ignore this for now- there is an issue with getting tensorflow/transform to work. Hopefully this will be fixed soon and the code here will be updated.</p>
+</blockquote>
+<p>Now we shuffle and split the texts into train/tests (80% training, 20% testing).</p>
+<pre><code class="lang-python"># Shuffle and split data
+text_processed = np.array(text_processed)
+text_data_target = np.array([1 if x == &#39;ham&#39; else 0 for x in text_data_target])
+shuffled_ix = np.random.permutation(np.arange(len(text_data_target)))
+x_shuffled = text_processed[shuffled_ix]
+y_shuffled = text_data_target[shuffled_ix]
+
+# Split train/test set
+ix_cutoff = int(len(y_shuffled)*0.80)
+x_train, x_test = x_shuffled[:ix_cutoff], x_shuffled[ix_cutoff:]
+y_train, y_test = y_shuffled[:ix_cutoff], y_shuffled[ix_cutoff:]
+vocab_size = len(vocab_processor.vocabulary_)
+print(&quot;Vocabulary Size: {:d}&quot;.format(vocab_size))
+print(&quot;80-20 Train Test split: {:d} -- {:d}&quot;.format(len(y_train), len(y_test)))
+</code></pre>
+<pre><code>Vocabulary Size: 933
+80-20 Train Test split: 4459 -- 1115
+</code></pre><p>Here we can define our RNN model.  We create the placeholders for the data, word embedding matrices (and embedding lookups), and define the rest of the model.</p>
+<p>The rest of the RNN model will create a dynamic RNN cell (regular RNN type), which will vary the number of RNNs needed for variable input length (different amount of words for input texts), and then output into a fully connected logistic layer to predict spam or ham as output.</p>
+<pre><code class="lang-python"># Create placeholders
+x_data = tf.placeholder(tf.int32, [None, max_sequence_length])
+y_output = tf.placeholder(tf.int32, [None])
+
+# Create embedding
+embedding_mat = tf.Variable(tf.random_uniform([vocab_size, embedding_size], -1.0, 1.0))
+embedding_output = tf.nn.embedding_lookup(embedding_mat, x_data)
+
+# Define the RNN cell
+# tensorflow change &gt;= 1.0, rnn is put into tensorflow.contrib directory. Prior version not test.
+if tf.__version__[0] &gt;= &#39;1&#39;:
+    cell = tf.contrib.rnn.BasicRNNCell(num_units=rnn_size)
+else:
+    cell = tf.nn.rnn_cell.BasicRNNCell(num_units=rnn_size)
+
+output, state = tf.nn.dynamic_rnn(cell, embedding_output, dtype=tf.float32)
+output = tf.nn.dropout(output, dropout_keep_prob)
+
+# Get output of RNN sequence
+#output = tf.transpose(output, [1, 0, 2])
+#last = tf.gather(output, int(output.get_shape()[0]) - 1)
+
+last = output[:,-1,:]
+
+weight = tf.Variable(tf.truncated_normal([rnn_size, 2], stddev=0.1))
+bias = tf.Variable(tf.constant(0.1, shape=[2]))
+logits_out = tf.matmul(last, weight) + bias
+</code></pre>
+<p>Next we declare the loss function (softmax cross entropy), an accuracy function, and optimization function (RMSProp).</p>
+<pre><code class="lang-python"># Loss function
+losses = tf.nn.sparse_softmax_cross_entropy_with_logits(logits=logits_out, labels=y_output)
+loss = tf.reduce_mean(losses)
+
+accuracy = tf.reduce_mean(tf.cast(tf.equal(tf.argmax(logits_out, 1), tf.cast(y_output, tf.int64)), tf.float32))
+
+optimizer = tf.train.RMSPropOptimizer(learning_rate)
+train_step = optimizer.minimize(loss)
+</code></pre>
+<blockquote>
+<p>You may ignore the warning, as the texts are small and our batch size is only 100.  If you increase the batch size and/or have longer sequences of texts, this model may consume too much memory.</p>
+</blockquote>
+<p>Next we initialize the variables in the computational graph.</p>
+<pre><code class="lang-python">init = tf.global_variables_initializer()
+sess.run(init)
+
+train_loss = []
+test_loss = []
+train_accuracy = []
+test_accuracy = []
+</code></pre>
+<p>Now we can start our training!</p>
+<pre><code class="lang-python"># Start training
+for epoch in range(epochs):
+
+    # Shuffle training data
+    shuffled_ix = np.random.permutation(np.arange(len(x_train)))
+    x_train = x_train[shuffled_ix]
+    y_train = y_train[shuffled_ix]
+    num_batches = int(len(x_train)/batch_size) + 1
+    # TO DO CALCULATE GENERATIONS ExACTLY
+    for i in range(num_batches):
+        # Select train data
+        min_ix = i * batch_size
+        max_ix = np.min([len(x_train), ((i+1) * batch_size)])
+        x_train_batch = x_train[min_ix:max_ix]
+        y_train_batch = y_train[min_ix:max_ix]
+
+        # Run train step
+        train_dict = {x_data: x_train_batch, y_output: y_train_batch, dropout_keep_prob:0.5}
+        sess.run(train_step, feed_dict=train_dict)
+
+    # Run loss and accuracy for training
+    temp_train_loss, temp_train_acc = sess.run([loss, accuracy], feed_dict=train_dict)
+    train_loss.append(temp_train_loss)
+    train_accuracy.append(temp_train_acc)
+
+    # Run Eval Step
+    test_dict = {x_data: x_test, y_output: y_test, dropout_keep_prob:1.0}
+    temp_test_loss, temp_test_acc = sess.run([loss, accuracy], feed_dict=test_dict)
+    test_loss.append(temp_test_loss)
+    test_accuracy.append(temp_test_acc)
+    print(&#39;Epoch: {}, Test Loss: {:.2}, Test Acc: {:.2}&#39;.format(epoch+1, temp_test_loss, temp_test_acc))
+</code></pre>
+<pre><code>Epoch: 1, Test Loss: 0.71, Test Acc: 0.17
+Epoch: 2, Test Loss: 0.68, Test Acc: 0.82
+Epoch: 3, Test Loss: 0.63, Test Acc: 0.82
+Epoch: 4, Test Loss: 0.57, Test Acc: 0.83
+Epoch: 5, Test Loss: 0.51, Test Acc: 0.83
+Epoch: 6, Test Loss: 0.46, Test Acc: 0.83
+Epoch: 7, Test Loss: 0.43, Test Acc: 0.83
+Epoch: 8, Test Loss: 0.42, Test Acc: 0.84
+Epoch: 9, Test Loss: 0.41, Test Acc: 0.84
+Epoch: 10, Test Loss: 0.4, Test Acc: 0.85
+Epoch: 11, Test Loss: 0.4, Test Acc: 0.85
+Epoch: 12, Test Loss: 0.4, Test Acc: 0.85
+Epoch: 13, Test Loss: 0.4, Test Acc: 0.86
+Epoch: 14, Test Loss: 0.39, Test Acc: 0.86
+Epoch: 15, Test Loss: 0.39, Test Acc: 0.86
+Epoch: 16, Test Loss: 0.39, Test Acc: 0.86
+Epoch: 17, Test Loss: 0.38, Test Acc: 0.86
+Epoch: 18, Test Loss: 0.38, Test Acc: 0.87
+Epoch: 19, Test Loss: 0.37, Test Acc: 0.87
+Epoch: 20, Test Loss: 0.37, Test Acc: 0.87
+Epoch: 21, Test Loss: 0.35, Test Acc: 0.87
+Epoch: 22, Test Loss: 0.33, Test Acc: 0.88
+Epoch: 23, Test Loss: 0.3, Test Acc: 0.89
+Epoch: 24, Test Loss: 0.28, Test Acc: 0.91
+Epoch: 25, Test Loss: 0.25, Test Acc: 0.92
+Epoch: 26, Test Loss: 0.24, Test Acc: 0.92
+Epoch: 27, Test Loss: 0.22, Test Acc: 0.93
+Epoch: 28, Test Loss: 0.21, Test Acc: 0.94
+Epoch: 29, Test Loss: 0.2, Test Acc: 0.94
+Epoch: 30, Test Loss: 0.21, Test Acc: 0.94
+Epoch: 31, Test Loss: 0.19, Test Acc: 0.95
+Epoch: 32, Test Loss: 0.19, Test Acc: 0.95
+Epoch: 33, Test Loss: 0.19, Test Acc: 0.95
+Epoch: 34, Test Loss: 0.16, Test Acc: 0.95
+Epoch: 35, Test Loss: 0.16, Test Acc: 0.95
+Epoch: 36, Test Loss: 0.15, Test Acc: 0.96
+Epoch: 37, Test Loss: 0.15, Test Acc: 0.96
+Epoch: 38, Test Loss: 0.15, Test Acc: 0.94
+Epoch: 39, Test Loss: 0.15, Test Acc: 0.96
+Epoch: 40, Test Loss: 0.15, Test Acc: 0.96
+Epoch: 41, Test Loss: 0.14, Test Acc: 0.96
+Epoch: 42, Test Loss: 0.15, Test Acc: 0.96
+Epoch: 43, Test Loss: 0.15, Test Acc: 0.94
+Epoch: 44, Test Loss: 0.14, Test Acc: 0.96
+Epoch: 45, Test Loss: 0.14, Test Acc: 0.96
+Epoch: 46, Test Loss: 0.13, Test Acc: 0.96
+Epoch: 47, Test Loss: 0.14, Test Acc: 0.96
+Epoch: 48, Test Loss: 0.13, Test Acc: 0.96
+Epoch: 49, Test Loss: 0.13, Test Acc: 0.96
+Epoch: 50, Test Loss: 0.12, Test Acc: 0.96
+</code></pre><p>Here is matplotlib code to plot the loss and accuracy over the training generations for both the train and test sets.</p>
+<pre><code class="lang-python">%matplotlib inline
+
+# Plot loss over time
+epoch_seq = np.arange(1, epochs+1)
+plt.plot(epoch_seq, train_loss, &#39;k--&#39;, label=&#39;Train Set&#39;)
+plt.plot(epoch_seq, test_loss, &#39;r-&#39;, label=&#39;Test Set&#39;)
+plt.title(&#39;Softmax Loss&#39;)
+plt.xlabel(&#39;Epochs&#39;)
+plt.ylabel(&#39;Softmax Loss&#39;)
+plt.legend(loc=&#39;upper left&#39;)
+plt.show()
+
+# Plot accuracy over time
+plt.plot(epoch_seq, train_accuracy, &#39;k--&#39;, label=&#39;Train Set&#39;)
+plt.plot(epoch_seq, test_accuracy, &#39;r-&#39;, label=&#39;Test Set&#39;)
+plt.title(&#39;Test Accuracy&#39;)
+plt.xlabel(&#39;Epochs&#39;)
+plt.ylabel(&#39;Accuracy&#39;)
+plt.legend(loc=&#39;lower right&#39;)
+plt.show()
+</code></pre>
+<p><img src="output_19_0.png" alt="png"></p>
+<p><img src="output_19_1.png" alt="png"></p>
+<h3 id="Evaluating-New-Texts"><a href="#Evaluating-New-Texts" class="headerlink" title="Evaluating New Texts"></a>Evaluating New Texts</h3><p>Here, we show how to use our trained model to evaluate new texts (which may or may not be spam/ham)</p>
+<pre><code class="lang-python">sample_texts = [&#39;Hi, please respond 1111 asap to claim your change to win now!&#39;,
+                &#39;Hey what are you doing for dinner tonight?&#39;,
+                &#39;New offer, show this text for 50% off of our inagural sale!&#39;,
+                &#39;Can you take the dog to the vet tomorrow?&#39;,
+                &#39;Congratulations! You have been randomly selected to receive account credit!&#39;]
+</code></pre>
+<p>Now we clean our sample texts.</p>
+<pre><code class="lang-python">clean_texts = [clean_text(text) for text in sample_texts]
+print(clean_texts)
+</code></pre>
+<pre><code>[&#39;hi please respond asap to claim your change to win now&#39;, &#39;hey what are you doing for dinner tonight&#39;, &#39;new offer show this text for off of our inagural sale&#39;, &#39;can you take the dog to the vet tomorrow&#39;, &#39;congratulations you have been randomly selected to receive account credit&#39;]
+</code></pre><p>Next, we transform each text as a sequence of words into a sequence of vocabulary indices.</p>
+<pre><code class="lang-python">processed_texts = np.array(list(vocab_processor.transform(clean_texts)))
+print(processed_texts)
+</code></pre>
+<pre><code>[[ 93  99   0   0   1 114  13 524   1 178  21   0   0   0   0   0   0   0
+    0   0   0   0   0   0   0]
+ [121  52  20   3 151  12 332 208   0   0   0   0   0   0   0   0   0   0
+    0   0   0   0   0   0   0]
+ [ 92 376 483  39  69  12 203  15  86   0   0   0   0   0   0   0   0   0
+    0   0   0   0   0   0   0]
+ [ 28   3 104   5   0   1   5   0 143   0   0   0   0   0   0   0   0   0
+    0   0   0   0   0   0   0]
+ [701   3  17  98   0 420   1 318 301 738   0   0   0   0   0   0   0   0
+    0   0   0   0   0   0   0]]
+</code></pre><p>Now we can run each of the texts through our model and get the output logits.</p>
+<pre><code class="lang-python"># Remember to wrap the resulting logits in a softmax to get probabilities
+eval_feed_dict = {x_data: processed_texts, dropout_keep_prob: 1.0}
+model_results = sess.run(tf.nn.softmax(logits_out), feed_dict=eval_feed_dict)
+
+print(model_results)
+</code></pre>
+<pre><code>[[0.86792374 0.13207628]
+ [0.00838861 0.9916114 ]
+ [0.00871871 0.99128133]
+ [0.00838833 0.99161166]
+ [0.6345383  0.36546162]]
+</code></pre><p>Now print results</p>
+<pre><code class="lang-python">categories = [&#39;spam&#39;, &#39;ham&#39;]
+
+for ix, result in enumerate(model_results):
+    prediction = categories[np.argmax(result)]
+
+    print(&#39;Text: {}, \nPrediction: {}\n&#39;.format(sample_texts[ix], prediction))
+</code></pre>
+<pre><code>Text: Hi, please respond 1111 asap to claim your change to win now!, 
+Prediction: spam
+
+Text: Hey what are you doing for dinner tonight?, 
+Prediction: ham
+
+Text: New offer, show this text for 50% off of our inagural sale!, 
+Prediction: ham
+
+Text: Can you take the dog to the vet tomorrow?, 
+Prediction: ham
+
+Text: Congratulations! You have been randomly selected to receive account credit!, 
+Prediction: spam
+</code></pre>
