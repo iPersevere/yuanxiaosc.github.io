@@ -83,17 +83,17 @@
 <meta name="keywords" content="Python,Python基础知识">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python">
-<meta property="og:url" content="http://yoursite.com/2018/11/22/Python/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/12/02/Python/index.html">
 <meta property="og:site_name" content="望江人工智库">
 <meta property="og:description" content="Python 相关资源    标题 说明 附加     《Python Cookbook》 3rd Edition Translation 《Python Cookbook》 在线阅读地址 Code samples from the “Python Cookbook, 3rd Edition”     《Python进阶》（Intermediate Python 中文版） 英文原版 http://">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/11/22/Python/p1.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/22/Python/p3.png">
-<meta property="og:updated_time" content="2018-11-28T12:51:03.862Z">
+<meta property="og:image" content="http://yoursite.com/2018/12/02/Python/p1.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/02/Python/p3.png">
+<meta property="og:updated_time" content="2018-12-02T13:24:47.147Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python">
 <meta name="twitter:description" content="Python 相关资源    标题 说明 附加     《Python Cookbook》 3rd Edition Translation 《Python Cookbook》 在线阅读地址 Code samples from the “Python Cookbook, 3rd Edition”     《Python进阶》（Intermediate Python 中文版） 英文原版 http://">
-<meta name="twitter:image" content="http://yoursite.com/2018/11/22/Python/p1.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/12/02/Python/p1.png">
 
 
 
@@ -123,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/22/Python/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/12/02/Python/"/>
 
 
 
@@ -290,7 +290,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/22/Python/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/02/Python/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="望江车神">
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-22T08:50:00+08:00">
-                2018-11-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-02T08:50:00+08:00">
+                2018-12-02
               </time>
             
 
@@ -434,6 +434,11 @@
 <tr>
 <td><a href="https://github.com/Jack-Cherish/Machine-Learning" target="_blank" rel="noopener">机器学习实战（Python3）</a></td>
 <td>机器学习实战（Python3）：kNN、决策树、贝叶斯、逻辑回归、SVM、线性回归、树回归</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/satwikkansal/wtfpython" target="_blank" rel="noopener">wtfpython</a></td>
+<td><a href="https://www.jiqizhixin.com/articles/2018-11-30-2" target="_blank" rel="noopener">WTF Python：有趣且鲜为人知的Python特性</a></td>
 </tr>
 </tbody>
 </table>
@@ -446,11 +451,11 @@
 <p><strong>字符串序列是一种不可变序列，这意味着它不能像可变序列一样，进行就地修改</strong>。例如，在字符串“Python”的基础上拼接“Cat”，得到字符串“PythonCat”，新的字符串是一个独立的存在，它与基础字符串“Python”并没有关联关系。</p>
 <p>历史上，人类创造了多种多样的字符编码标准，例如 ASCII（1963年）编码，以西欧语言的字符为主，它的缺点是只能编码 128 个字符；例如 GB2312（1981年），这是中国推出的编码标准，在兼容ASCII标准的基础上，还加入了对日文、俄文等字符的编码，但缺点仍是编码范围有限，无法表示古汉语、繁体字及更多书写系统的字符。</p>
 <p><strong>Unicode</strong> 编码标准于1991年推出，至今 (2018) 迭代到了第11版，已经能够编码146个书写系统的130000个字符，可谓是无所不包，真不愧是“国际码”。<strong>Unicode 编码其实是一个二进制字符集，它建立了从书写字符映射成唯一的数字字符的关系，但是，由于各系统平台对字符的理解差异，以及出于节省空间的考虑，Unicode编码还需要再做一次转换，转换后的新的二进制数字才能作为实际存储及网络传输时的编码</strong>。</p>
-<p>这种转换方式被称为 Unicode 转换格式 <strong>（Unicode Transformation Format，简称为UTF），它又细分为UTF-8、UTF-16、UTF-32等等方式</strong>。我们最常用的是UTF-8。为什么UTF-8最常用呢？因为它是可变长度的编码方案，针对不同的字符使用不同的字节数来编码，例如编码英文字母时，只需要一个字节（8个比特），而编码较复杂的汉字时，就会用到三个字节（24个比特）。<br><img src="/2018/11/22/Python/p1.png" alt=""></p>
+<p>这种转换方式被称为 Unicode 转换格式 <strong>（Unicode Transformation Format，简称为UTF），它又细分为UTF-8、UTF-16、UTF-32等等方式</strong>。我们最常用的是UTF-8。为什么UTF-8最常用呢？因为它是可变长度的编码方案，针对不同的字符使用不同的字节数来编码，例如编码英文字母时，只需要一个字节（8个比特），而编码较复杂的汉字时，就会用到三个字节（24个比特）。<br><img src="/2018/12/02/Python/p1.png" alt=""></p>
 <p>二进制的编码串可以说是给机器阅读的，为了方便，我们通常会将其转化为十六进制，例如“中”字的Unicode编码可以表示成0x4e2d ，其UTF-8编码可以表示为0xe4b8ad，’0x’用于开头表示十六进制，这样就简洁多了。不过，UTF-8编码的结果会被表示成以字节为单位的形式，例如“中”字用UTF-8编码后的字节形式是 \xe4\xb8\xad 。</p>
 <p>Python中为了区分Unicode编码与字节码，分别在开头加“u”和“b”以示区分。在Python 3中，因为Unicode成了默认编码格式，所以“u”被省略掉了。</p>
 <p>总结一下，<strong>Python 3 中的字符串是由Unicode码点组成的不可变序列，也即是，由采用Unicode标准编码的字符组成的不可变序列。Unicode编码将书写系统的字符映射成了计算机二进制数字，为了方便，通常显示为十六进制；在运算内存中，字符以Unicode编码呈现，当写入磁盘或用于网络传输时，一般采用UTF-8方式编码</strong>。</p>
-<p><img src="/2018/11/22/Python/p3.png" alt=""></p>
+<p><img src="/2018/12/02/Python/p3.png" alt=""></p>
 
       
     </div>
@@ -512,8 +517,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/22/支持向量机/" rel="next" title="支持向量机 Support Vector Machines">
-                <i class="fa fa-chevron-left"></i> 支持向量机 Support Vector Machines
+              <a href="/2018/11/29/循环神经网络/" rel="next" title="循环神经网络 Recurrent Neural Networks">
+                <i class="fa fa-chevron-left"></i> 循环神经网络 Recurrent Neural Networks
               </a>
             
           </div>
@@ -522,8 +527,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/23/最近邻算法/" rel="prev" title="最近邻方法 Nearest Neighbor Methords">
-                最近邻方法 Nearest Neighbor Methords <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/02/动手学深度学习Gluon/" rel="prev" title="动手学深度学习Gluon">
+                动手学深度学习Gluon <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
