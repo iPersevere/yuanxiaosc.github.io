@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Language Model," />
 
 
 
@@ -79,24 +79,18 @@
 
 
 
-<meta name="description" content="长短期记忆（LSTM）本节将介绍另一种常用的门控循环神经网络：长短期记忆（long short-term memory，简称LSTM）[1]。它比门控循环单元的结构稍微复杂一点。 长短期记忆LSTM 中引入了三个门：输入门（input gate）、遗忘门（forget gate）和输出门（output gate），以及与隐藏状态形状相同的记忆细胞（某些文献把记忆细胞当成一种特殊的隐藏状态），从而记">
-<meta name="keywords" content="深度学习;机器学习;人工智能">
+<meta name="description" content="深度学习你~~~">
+<meta name="keywords" content="Language Model">
 <meta property="og:type" content="article">
-<meta property="og:title" content="望江人工智库">
-<meta property="og:url" content="http://yoursite.com/2018/12/03/rnn_cell_impl/lstm/index.html">
+<meta property="og:title" content="(待读)Universal Language Model Fine-tuning for Text Classification">
+<meta property="og:url" content="http://yoursite.com/2018/12/03/Universal Language Model Fine-tuning for Text Classification/index.html">
 <meta property="og:site_name" content="望江人工智库">
-<meta property="og:description" content="长短期记忆（LSTM）本节将介绍另一种常用的门控循环神经网络：长短期记忆（long short-term memory，简称LSTM）[1]。它比门控循环单元的结构稍微复杂一点。 长短期记忆LSTM 中引入了三个门：输入门（input gate）、遗忘门（forget gate）和输出门（output gate），以及与隐藏状态形状相同的记忆细胞（某些文献把记忆细胞当成一种特殊的隐藏状态），从而记">
+<meta property="og:description" content="深度学习你~~~">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/12/03/rnn_cell_impl/lstm/img/lstm_0.svg">
-<meta property="og:image" content="http://yoursite.com/2018/12/03/rnn_cell_impl/lstm/img/lstm_1.svg">
-<meta property="og:image" content="http://yoursite.com/2018/12/03/rnn_cell_impl/lstm/img/lstm_2.svg">
-<meta property="og:image" content="http://yoursite.com/2018/12/03/rnn_cell_impl/lstm/img/lstm_3.svg">
-<meta property="og:image" content="http://yoursite.com/2018/12/03/rnn_cell_impl/lstm/img/qr_lstm.svg">
-<meta property="og:updated_time" content="2018-12-03T02:28:17.939Z">
+<meta property="og:updated_time" content="2018-12-03T10:46:22.713Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="望江人工智库">
-<meta name="twitter:description" content="长短期记忆（LSTM）本节将介绍另一种常用的门控循环神经网络：长短期记忆（long short-term memory，简称LSTM）[1]。它比门控循环单元的结构稍微复杂一点。 长短期记忆LSTM 中引入了三个门：输入门（input gate）、遗忘门（forget gate）和输出门（output gate），以及与隐藏状态形状相同的记忆细胞（某些文献把记忆细胞当成一种特殊的隐藏状态），从而记">
-<meta name="twitter:image" content="http://yoursite.com/2018/12/03/rnn_cell_impl/lstm/img/lstm_0.svg">
+<meta name="twitter:title" content="(待读)Universal Language Model Fine-tuning for Text Classification">
+<meta name="twitter:description" content="深度学习你~~~">
 
 
 
@@ -126,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/03/rnn_cell_impl/lstm/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/12/03/Universal Language Model Fine-tuning for Text Classification/"/>
 
 
 
 
 
-  <title> | 望江人工智库</title>
+  <title>(待读)Universal Language Model Fine-tuning for Text Classification | 望江人工智库</title>
   
 
 
@@ -293,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/03/rnn_cell_impl/lstm/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/03/Universal Language Model Fine-tuning for Text Classification/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="望江车神">
@@ -310,7 +304,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">(待读)Universal Language Model Fine-tuning for Text Classification</h1>
         
 
         <div class="post-meta">
@@ -322,7 +316,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-03T10:28:17+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-03T10:30:00+08:00">
                 2018-12-03
               </time>
             
@@ -332,6 +326,39 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文/" itemprop="url" rel="index">
+                    <span itemprop="name">论文</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文/论文阅读/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -360,55 +387,7 @@
       
 
       
-        <h1 id="长短期记忆（LSTM）"><a href="#长短期记忆（LSTM）" class="headerlink" title="长短期记忆（LSTM）"></a>长短期记忆（LSTM）</h1><p>本节将介绍另一种常用的门控循环神经网络：长短期记忆（long short-term memory，简称LSTM）[1]。它比门控循环单元的结构稍微复杂一点。</p>
-<h2 id="长短期记忆"><a href="#长短期记忆" class="headerlink" title="长短期记忆"></a>长短期记忆</h2><p>LSTM 中引入了三个门：输入门（input gate）、遗忘门（forget gate）和输出门（output gate），以及与隐藏状态形状相同的记忆细胞（某些文献把记忆细胞当成一种特殊的隐藏状态），从而记录额外的信息。</p>
-<h3 id="输入门、遗忘门和输出门"><a href="#输入门、遗忘门和输出门" class="headerlink" title="输入门、遗忘门和输出门"></a>输入门、遗忘门和输出门</h3><p>同门控循环单元中的重置门和更新门一样，如图6.7所示，长短期记忆的门的输入均为当前时间步输入$\boldsymbol{X}_t$与上一时间步隐藏状态$\boldsymbol{H}_{t-1}$，输出由激活函数为sigmoid函数的全连接层计算得到。如此一来，这三个门元素的值域均为$[0,1]$。</p>
-<p><img src="/2018/12/03/rnn_cell_impl/lstm/img/lstm_0.svg" alt="长短期记忆中输入门、遗忘门和输出门的计算。"></p>
-<p>具体来说，假设隐藏单元个数为$h$，给定时间步$t$的小批量输入$\boldsymbol{X}_t \in \mathbb{R}^{n \times d}$（样本数为$n$，输入个数为$d$）和上一时间步隐藏状态$\boldsymbol{H}_{t-1} \in \mathbb{R}^{n \times h}$。<br>时间步$t$的输入门$\boldsymbol{I}_t \in \mathbb{R}^{n \times h}$、遗忘门$\boldsymbol{F}_t \in \mathbb{R}^{n \times h}$和输出门$\boldsymbol{O}_t \in \mathbb{R}^{n \times h}$分别计算如下：</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-\boldsymbol{I}_t &= \sigma(\boldsymbol{X}_t \boldsymbol{W}_{xi} + \boldsymbol{H}_{t-1} \boldsymbol{W}_{hi} + \boldsymbol{b}_i),\\
-\boldsymbol{F}_t &= \sigma(\boldsymbol{X}_t \boldsymbol{W}_{xf} + \boldsymbol{H}_{t-1} \boldsymbol{W}_{hf} + \boldsymbol{b}_f),\\
-\boldsymbol{O}_t &= \sigma(\boldsymbol{X}_t \boldsymbol{W}_{xo} + \boldsymbol{H}_{t-1} \boldsymbol{W}_{ho} + \boldsymbol{b}_o),
-\end{aligned}</script><p>其中的$\boldsymbol{W}_{xi}, \boldsymbol{W}_{xf}, \boldsymbol{W}_{xo} \in \mathbb{R}^{d \times h}$和$\boldsymbol{W}_{hi}, \boldsymbol{W}_{hf}, \boldsymbol{W}_{ho} \in \mathbb{R}^{h \times h}$是权重参数，$\boldsymbol{b}_i, \boldsymbol{b}_f, \boldsymbol{b}_o \in \mathbb{R}^{1 \times h}$是偏差参数。</p>
-<h3 id="候选记忆细胞"><a href="#候选记忆细胞" class="headerlink" title="候选记忆细胞"></a>候选记忆细胞</h3><p>接下来，长短期记忆需要计算候选记忆细胞$\tilde{\boldsymbol{C}}_t$。它的计算同上面介绍的三个门类似，但使用了值域在$[-1, 1]$的tanh函数做激活函数，如图6.8所示。</p>
-<p><img src="/2018/12/03/rnn_cell_impl/lstm/img/lstm_1.svg" alt="长短期记忆中候选记忆细胞的计算。"></p>
-<p>具体来说，时间步$t$的候选记忆细胞$\tilde{\boldsymbol{C}}_t \in \mathbb{R}^{n \times h}$的计算为</p>
-<script type="math/tex; mode=display">\tilde{\boldsymbol{C}}_t = \text{tanh}(\boldsymbol{X}_t \boldsymbol{W}_{xc} + \boldsymbol{H}_{t-1} \boldsymbol{W}_{hc} + \boldsymbol{b}_c),</script><p>其中的$\boldsymbol{W}_{xc} \in \mathbb{R}^{d \times h}$和$\boldsymbol{W}_{hc} \in \mathbb{R}^{h \times h}$是权重参数，$\boldsymbol{b}_c \in \mathbb{R}^{1 \times h}$是偏差参数。</p>
-<h3 id="记忆细胞"><a href="#记忆细胞" class="headerlink" title="记忆细胞"></a>记忆细胞</h3><p>我们可以通过元素值域在$[0, 1]$的输入门、遗忘门和输出门来控制隐藏状态中信息的流动：这一般也是通过使用按元素乘法（符号为$\odot$）来实现。当前时间步记忆细胞$\boldsymbol{C}_t \in \mathbb{R}^{n \times h}$的计算组合了上一时间步记忆细胞和当前时间步候选记忆细胞的信息，并通过遗忘门和输入门来控制信息的流动：</p>
-<script type="math/tex; mode=display">\boldsymbol{C}_t = \boldsymbol{F}_t \odot \boldsymbol{C}_{t-1} + \boldsymbol{I}_t \odot \tilde{\boldsymbol{C}}_t.</script><p>如图6.9所示，遗忘门控制上一时间步的记忆细胞$\boldsymbol{C}_{t-1}$中的信息是否传递到当前时间步，而输入门则可以控制当前时间步的输入$\boldsymbol{X}_t$通过候选记忆细胞$\tilde{\boldsymbol{C}}_t$如何流入当前时间步的记忆细胞。如果遗忘门一直近似1且输入门一直近似0，过去的记忆细胞将一直通过时间保存并传递至当前时间步。这个设计可以应对循环神经网络中的梯度衰减问题，并更好地捕捉时间序列中时间步距离较大的依赖关系。</p>
-<p><img src="/2018/12/03/rnn_cell_impl/lstm/img/lstm_2.svg" alt="长短期记忆中记忆细胞的计算。这里的乘号是按元素乘法。"></p>
-<h3 id="隐藏状态"><a href="#隐藏状态" class="headerlink" title="隐藏状态"></a>隐藏状态</h3><p>有了记忆细胞以后，接下来我们还可以通过输出门来控制从记忆细胞到隐藏状态$\boldsymbol{H}_t \in \mathbb{R}^{n \times h}$的信息的流动：</p>
-<script type="math/tex; mode=display">\boldsymbol{H}_t = \boldsymbol{O}_t \odot \text{tanh}(\boldsymbol{C}_t).</script><p>这里的tanh函数确保隐藏状态元素值在-1到1之间。需要注意的是，当输出门近似1时，记忆细胞信息将传递到隐藏状态供输出层使用；当输出门近似0时，记忆细胞信息只自己保留。图6.10展示了长短期记忆中隐藏状态的计算。</p>
-<p><img src="/2018/12/03/rnn_cell_impl/lstm/img/lstm_3.svg" alt="长短期记忆中隐藏状态的计算。这里的乘号是按元素乘法。"></p>
-<h2 id="读取数据集"><a href="#读取数据集" class="headerlink" title="读取数据集"></a>读取数据集</h2><p>下面我们开始实现并展示长短期记忆。和前几节中的实验一样，我们依然使用周杰伦歌词数据集来训练模型作词。</p>
-<figure class="highlight plain"><figcaption><span>.input  n</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import gluonbook as gb</span><br><span class="line">from mxnet import nd</span><br><span class="line">from mxnet.gluon import rnn</span><br><span class="line"></span><br><span class="line">(corpus_indices, char_to_idx, idx_to_char,</span><br><span class="line"> vocab_size) = gb.load_data_jay_lyrics()</span><br></pre></td></tr></table></figure>
-<h2 id="从零开始实现"><a href="#从零开始实现" class="headerlink" title="从零开始实现"></a>从零开始实现</h2><p>我们先介绍如何从零开始实现长短期记忆。</p>
-<h3 id="初始化模型参数"><a href="#初始化模型参数" class="headerlink" title="初始化模型参数"></a>初始化模型参数</h3><p>以下部分对模型参数进行初始化。超参数<code>num_hiddens</code>定义了隐藏单元的个数。</p>
-<figure class="highlight plain"><figcaption><span>.input  n</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">num_inputs, num_hiddens, num_outputs = vocab_size, 256, vocab_size</span><br><span class="line">ctx = gb.try_gpu()</span><br><span class="line"></span><br><span class="line">def get_params():</span><br><span class="line">    def _one(shape):</span><br><span class="line">        return nd.random.normal(scale=0.01, shape=shape, ctx=ctx)</span><br><span class="line"></span><br><span class="line">    def _three():</span><br><span class="line">        return (_one((num_inputs, num_hiddens)),</span><br><span class="line">                _one((num_hiddens, num_hiddens)),</span><br><span class="line">                nd.zeros(num_hiddens, ctx=ctx))</span><br><span class="line"></span><br><span class="line">    W_xi, W_hi, b_i = _three()  # 输入门参数。</span><br><span class="line">    W_xf, W_hf, b_f = _three()  # 遗忘门参数。</span><br><span class="line">    W_xo, W_ho, b_o = _three()  # 输出门参数。</span><br><span class="line">    W_xc, W_hc, b_c = _three()  # 候选细胞参数。</span><br><span class="line">    # 输出层参数。</span><br><span class="line">    W_hq = _one((num_hiddens, num_outputs))</span><br><span class="line">    b_q = nd.zeros(num_outputs, ctx=ctx)</span><br><span class="line">    # 创建梯度。</span><br><span class="line">    params = [W_xi, W_hi, b_i, W_xf, W_hf, b_f, W_xo, W_ho, b_o, W_xc, W_hc,</span><br><span class="line">              b_c, W_hq, b_q]</span><br><span class="line">    for param in params:</span><br><span class="line">        param.attach_grad()</span><br><span class="line">    return params</span><br></pre></td></tr></table></figure>
-<h2 id="定义模型"><a href="#定义模型" class="headerlink" title="定义模型"></a>定义模型</h2><p>在初始化函数中，长短期记忆的隐藏状态需要返回额外的形状为（批量大小，隐藏单元个数）的值为0的记忆细胞。</p>
-<figure class="highlight plain"><figcaption><span>.input  n</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def init_lstm_state(batch_size, num_hiddens, ctx):</span><br><span class="line">    return (nd.zeros(shape=(batch_size, num_hiddens), ctx=ctx),</span><br><span class="line">            nd.zeros(shape=(batch_size, num_hiddens), ctx=ctx))</span><br></pre></td></tr></table></figure>
-<p>下面根据长短期记忆的计算表达式定义模型。需要注意的是，只有隐藏状态会传递进输出层，而记忆细胞不参与输出层的计算。</p>
-<figure class="highlight plain"><figcaption><span>.input  n</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def lstm(inputs, state, params):</span><br><span class="line">    [W_xi, W_hi, b_i, W_xf, W_hf, b_f, W_xo, W_ho, b_o, W_xc, W_hc, b_c,</span><br><span class="line">     W_hq, b_q] = params</span><br><span class="line">    (H, C) = state</span><br><span class="line">    outputs = []</span><br><span class="line">    for X in inputs:</span><br><span class="line">        I = nd.sigmoid(nd.dot(X, W_xi) + nd.dot(H, W_hi) + b_i)</span><br><span class="line">        F = nd.sigmoid(nd.dot(X, W_xf) + nd.dot(H, W_hf) + b_f)</span><br><span class="line">        O = nd.sigmoid(nd.dot(X, W_xo) + nd.dot(H, W_ho) + b_o)</span><br><span class="line">        C_tilda = nd.tanh(nd.dot(X, W_xc) + nd.dot(H, W_hc) + b_c)</span><br><span class="line">        C = F * C + I * C_tilda</span><br><span class="line">        H = O * C.tanh()</span><br><span class="line">        Y = nd.dot(H, W_hq) + b_q</span><br><span class="line">        outputs.append(Y)</span><br><span class="line">    return outputs, (H, C)</span><br></pre></td></tr></table></figure>
-<h3 id="训练模型并创作歌词"><a href="#训练模型并创作歌词" class="headerlink" title="训练模型并创作歌词"></a>训练模型并创作歌词</h3><p>同上一节一样，我们在训练模型时只使用相邻采样。设置好超参数后，我们将训练模型并根据前缀“分开”和“不分开”分别创作长度为50个字符的一段歌词。</p>
-<figure class="highlight plain"><figcaption><span>.input  n</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">num_epochs, num_steps, batch_size, lr, clipping_theta = 160, 35, 32, 1e2, 1e-2</span><br><span class="line">pred_period, pred_len, prefixes = 40, 50, [&apos;分开&apos;, &apos;不分开&apos;]</span><br></pre></td></tr></table></figure>
-<p>我们每过40个迭代周期便根据当前训练的模型创作一段歌词。</p>
-<figure class="highlight plain"><figcaption><span>.input&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gb.train_and_predict_rnn(lstm, get_params, init_lstm_state, num_hiddens,</span><br><span class="line">                         vocab_size, ctx, corpus_indices, idx_to_char,</span><br><span class="line">                         char_to_idx, False, num_epochs, num_steps, lr,</span><br><span class="line">                         clipping_theta, batch_size, pred_period, pred_len,</span><br><span class="line">                         prefixes)</span><br></pre></td></tr></table></figure>
-<h2 id="Gluon实现"><a href="#Gluon实现" class="headerlink" title="Gluon实现"></a>Gluon实现</h2><p>在Gluon中我们可以直接调用<code>rnn</code>模块中的<code>LSTM</code>类。</p>
-<figure class="highlight plain"><figcaption><span>.input  n</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">lstm_layer = rnn.LSTM(num_hiddens)</span><br><span class="line">model = gb.RNNModel(lstm_layer, vocab_size)</span><br><span class="line">gb.train_and_predict_rnn_gluon(model, num_hiddens, vocab_size, ctx,</span><br><span class="line">                               corpus_indices, idx_to_char, char_to_idx,</span><br><span class="line">                               num_epochs, num_steps, lr, clipping_theta,</span><br><span class="line">                               batch_size, pred_period, pred_len, prefixes)</span><br></pre></td></tr></table></figure>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
-<li>长短期记忆的隐藏层输出包括隐藏状态和记忆细胞。只有隐藏状态会传递进输出层。</li>
-<li>长短期记忆的输入门、遗忘门和输出门可以控制信息的流动。</li>
-<li>长短期记忆可以应对循环神经网络中的梯度衰减问题，并更好地捕捉时间序列中时间步距离较大的依赖关系。</li>
-</ul>
-<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ul>
-<li>调节超参数，观察并分析对运行时间、困惑度以及创作歌词的结果造成的影响。</li>
-<li>在相同条件下，比较长短期记忆、门控循环单元和不带门控的循环神经网络的运行时间。</li>
-<li>既然候选记忆细胞已通过使用tanh函数确保值域在-1到1之间，为什么隐藏状态还需再次使用tanh函数来确保输出值域在-1到1之间？</li>
-</ul>
-<h2 id="扫码直达讨论区"><a href="#扫码直达讨论区" class="headerlink" title="扫码直达讨论区"></a>扫码直达<a href="https://discuss.gluon.ai/t/topic/4049" target="_blank" rel="noopener">讨论区</a></h2><p><img src="/2018/12/03/rnn_cell_impl/lstm/img/qr_lstm.svg" alt=""></p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] Hochreiter, S., &amp; Schmidhuber, J. (1997). Long short-term memory. Neural computation, 9(8), 1735-1780.</p>
-
+        
       
     </div>
     
@@ -451,6 +430,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Language-Model/" rel="tag"># Language Model</a>
+          
+        </div>
       
 
       
@@ -525,17 +510,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -554,7 +530,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-count">82</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -565,7 +541,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -576,7 +552,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-count">100</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -609,22 +585,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#长短期记忆（LSTM）"><span class="nav-number">1.</span> <span class="nav-text">长短期记忆（LSTM）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#长短期记忆"><span class="nav-number">1.1.</span> <span class="nav-text">长短期记忆</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入门、遗忘门和输出门"><span class="nav-number">1.1.1.</span> <span class="nav-text">输入门、遗忘门和输出门</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#候选记忆细胞"><span class="nav-number">1.1.2.</span> <span class="nav-text">候选记忆细胞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#记忆细胞"><span class="nav-number">1.1.3.</span> <span class="nav-text">记忆细胞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐藏状态"><span class="nav-number">1.1.4.</span> <span class="nav-text">隐藏状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取数据集"><span class="nav-number">1.2.</span> <span class="nav-text">读取数据集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从零开始实现"><span class="nav-number">1.3.</span> <span class="nav-text">从零开始实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化模型参数"><span class="nav-number">1.3.1.</span> <span class="nav-text">初始化模型参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义模型"><span class="nav-number">1.4.</span> <span class="nav-text">定义模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#训练模型并创作歌词"><span class="nav-number">1.4.1.</span> <span class="nav-text">训练模型并创作歌词</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gluon实现"><span class="nav-number">1.5.</span> <span class="nav-text">Gluon实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">1.6.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">1.7.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扫码直达讨论区"><span class="nav-number">1.8.</span> <span class="nav-text">扫码直达讨论区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">1.9.</span> <span class="nav-text">参考文献</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -1150,6 +1110,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
