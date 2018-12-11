@@ -90,7 +90,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/11/15/词嵌入Embedding和语言模型LanguageModel/d2.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/15/词嵌入Embedding和语言模型LanguageModel/c1.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/15/词嵌入Embedding和语言模型LanguageModel/a1.png">
-<meta property="og:updated_time" content="2018-11-15T11:08:27.185Z">
+<meta property="og:updated_time" content="2018-12-11T12:11:34.003Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Embedding 和语言模型 LanguageModel">
 <meta name="twitter:description" content="ELMo Deep contextualized word representations 的目标也仅仅是学习到上下文相关的、更强大的词向量，其目的依然是为下游任务提供一个扎实的根基，还没有想要弑君称王的意思。 而我们知道，仅仅是对文本进行充分而强大的encoding（即得到每个词位非常精准丰富的特征）是远不够覆盖所有NLP任务的。在QA、机器阅读理解（MRC）、自然语言推理（NLI）、对话等任务">
@@ -479,6 +479,121 @@
 <h1 id="自然语言处理中的语言模型预训练方法"><a href="#自然语言处理中的语言模型预训练方法" class="headerlink" title="自然语言处理中的语言模型预训练方法"></a><a href="https://zhuanlan.zhihu.com/p/47342053" target="_blank" rel="noopener">自然语言处理中的语言模型预训练方法</a></h1><p>语言模型评价</p>
 <p>语言模型构造完成后，如何确定好坏呢？ 目前主要有两种评价方法：</p>
 <p>实用方法：通过查看该模型在实际应用（如拼写检查、机器翻译）中的表现来评价，优点是直观、实用，缺点是缺乏针对性、不够客观；<br>理论方法：迷惑度/困惑度/混乱度（preplexity），其基本思想是给测试集的句子赋予较高概率值的语言模型较好,当语言模型训练完之后，测试集中的句子都是正常的句子，那么训练好的模型就是在测试集上的概率越高越好。</p>
+<h1 id="深度长文：NLP的巨人肩膀（上）"><a href="#深度长文：NLP的巨人肩膀（上）" class="headerlink" title="深度长文：NLP的巨人肩膀（上）"></a><a href="https://www.jiqizhixin.com/articles/2018-12-10-17" target="_blank" rel="noopener">深度长文：NLP的巨人肩膀（上）</a></h1><blockquote>
+<p>纵览2003-2018年自然语言处理中词语表示的发展史。</p>
+</blockquote>
+<p>本质上，自然语言理解 NLU 的核心问题其实就是如何从语言文字的表象符号中抽取出来蕴含在文字背后的真实意义，并将其用计算机能够读懂的方式表征出来。当然这通常对应的是数学语言，表征是如此重要，以至于 2012 年的时候 Yoshua Bengio 作为第一作者发表了一篇表征学习的综述 Representation Learning: A Review and New Perspectives，并随后在 2013 年和深度学习三大巨头的另一位巨头 Yann LeCun 牵头创办 ICLR，这一会议至今才过去 5 年时间，如今已是 AI 领域最负盛名的顶级会议之一。可以说，探究 NLP 或 NLU 的历史，同样也是探究文本如何更有效表征的历史。</p>
+<p>1954 年 Harris 提出分布假说（distributional hypothesis），这一假说认为：上下文相似的词，其语义也相似，1957 年 Firth 对分布假说进行了进一步阐述和明确：词的语义由其上下文决定（a word is characterized by the company it keeps），30 年后，深度学习 Hinton 也于 1986 年尝试过词的分布式表示。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>词语表示的特征</th>
+<th>论文</th>
+<th>解析</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-2003</td>
+<td>没有统一表示词语的方法，一般采取统计分析模式</td>
+<td></td>
+<td>NLP 中并没有一个统一的方法去表示一段文本，各位前辈和大师们发明了许多的方法：从 one-hot 表示一个词到用 bag-of-words 来表示一段文本，从 k-shingles 把一段文本切分成一些文字片段，到汉语中用各种序列标注方法将文本按语义进行分割，从 tf-idf 中用频率的手段来表征词语的重要性，到 text-rank 中借鉴 page-rank 的方法来表征词语的权重，从基于 SVD 纯数学分解词文档矩阵的 LSA，到 pLSA 中用概率手段来表征文档形成过程并将词文档矩阵的求解结果赋予概率含义，再到 LDA 中引入两个共轭分布从而完美引入先验……</td>
+</tr>
+<tr>
+<td>2003</td>
+<td>词语的分布式表示</td>
+<td>A Neural Probabilistic Language Model</td>
+<td>Bengio 在他的经典论文 A Neural Probabilistic Language Model 中，首次将深度学习的思想融入到语言模型中，并发现将训练得到的 NNLM（Neural Net Language Model，神经网络语言模型）模型的第一层参数当做词的分布式表征时，能够很好地获取词语之间的相似度。NNLM 的最主要贡献是非常有创见性地将模型的第一层特征映射矩阵当做词的分布式表示，从而可以将一个词表征为一个向量形式，这直接启发了后来的 word2vec 的工作。</td>
+</tr>
+<tr>
+<td>2007</td>
+<td></td>
+<td></td>
+<td>2007 年 Mnih 和 Hinton 提出的 LBL 以及后续的一系列相关模型，省去了 NNLM 中的激活函数，直接把模型变成了一个线性变换，尤其是后来将 Hierarchical Softmax 引入到 LBL 后，训练效率进一步增强，但是表达能力不如 NNLM 这种神经网络的结构。</td>
+</tr>
+<tr>
+<td>2008</td>
+<td></td>
+<td></td>
+<td>2008 年 Collobert 和 Weston 提出的 C&amp;W 模型不再利用语言模型的结构，而是将目标文本片段整体当做输入，然后预测这个片段是真实文本的概率，所以它的工作主要是改变了目标输出。由于输出只是一个概率大小，不再是词典大小，因此训练效率大大提升，但由于使用了这种比较“别致”的目标输出，使得它的词向量表征能力有限。</td>
+</tr>
+<tr>
+<td>2010</td>
+<td></td>
+<td></td>
+<td>2010 年 Mikolov 提出的 RNNLM 主要是为了解决长程依赖关系，时间复杂度问题依然存在。</td>
+</tr>
+<tr>
+<td>2013</td>
+<td><a href="https://baike.baidu.com/item/Word2vec/22660840?fr=aladdin" target="_blank" rel="noopener">word2vec</a>;CBOW 模型;Skip-gram 模型</td>
+<td><a href="https://arxiv.org/abs/1301.3781" target="_blank" rel="noopener">Efficient estimation of word representations in vector space</a>;<a href="https://arxiv.org/abs/1310.4546" target="_blank" rel="noopener">Distributed Representations of Words and Phrases and their Compositionality</a></td>
+<td>其实 word2vec 只是一个工具，背后的模型是 CBOW 或者 Skip-gram，并且使用了 Hierarchical Softmax 或 Negative Sampling 这些训练的优化方法。word2vec 对于前人的优化，主要是两方面的工作：模型的简化和训练技巧的优化。word2vec 的出现，极大促进了 NLP 的发展，尤其是促进了深度学习在 NLP 中的应用（不过有意思的是，word2vec 算法本身其实并不是一个深度模型，它只有两层全连接），利用预训练好的词向量来初始化网络结构的第一层几乎已经成了标配，尤其是在只有少量监督数据的情况下，如果不拿预训练的 embedding 初始化第一层，几乎可以被认为是在蛮干。</td>
+</tr>
+<tr>
+<td>2014</td>
+<td>Glove</td>
+<td><a href="https://nlp.stanford.edu/projects/glove/" target="_blank" rel="noopener">GloVe: Global Vectors for Word Representation</a></td>
+<td>它整个的算法框架都是基于矩阵分解的做法来获取词向量的，本质上和诸如 LSA 这种基于 SVD 的矩阵分解方法没有什么不同，只不过 SVD 分解太过于耗时，运算量巨大，相同点是 LSA 也是输入共现矩阵，不过一般主要以词-文档共现矩阵为主，另外，LSA 中的共现矩阵没有做特殊处理，而 GloVe 考虑到了对距离较远的词对做相应的惩罚等等。然而，相比 word2vec，GloVe 却更加充分的利用了词的共现信息，word2vec 中则是直接粗暴的让两个向量的点乘相比其他词的点乘最大，至少在表面上看来似乎是没有用到词的共现信息，不像 GloVe 这里明确的就是拟合词对的共现频率。</td>
+</tr>
+<tr>
+<td>2015</td>
+<td>Skip-shoughts</td>
+<td><a href="https://papers.nips.cc/paper/5950-skip-thought-vectors.pdf" target="_blank" rel="noopener">Skip-Thought Vectors</a></td>
+<td>2015 年，多伦多大学的 Kiros 等人提出了一个很有意思的方法叫 Skip-thoughts。同样也是借鉴了 Skip-gram 的思想，但是和 PV-DBOW 中利用文档来预测词的做法不一样的是，Skip-thoughts 直接在句子间进行预测，也就是将 Skip-gram 中以词为基本单位，替换成了以句子为基本单位，具体做法就是选定一个窗口，遍历其中的句子，然后分别利用当前句子去预测和输出它的上一句和下一句。对于句子的建模利用的 RNN 的 sequence 结构，预测上一个和下一个句子时候，也是利用的一个 sequence 的 RNN 来生成句子中的每一个词，所以这个结构本质上就是一个 Encoder-Decoder 框架，只不过和普通框架不一样的是，Skip-thoughts 有两个 Decoder。</td>
+</tr>
+<tr>
+<td>2016</td>
+<td><a href="https://github.com/facebookresearch/fastText" target="_blank" rel="noopener">fasttext</a></td>
+<td><a href="https://arxiv.org/abs/1612.03651" target="_blank" rel="noopener">FastText.zip: Compressing text classification models</a></td>
+<td>word2vec 和 GloVe 都不需要人工标记的监督数据，只需要语言内部存在的监督信号即可以完成训练。而与此相对应的，fastText 则是利用带有监督标记的文本分类数据完成训练。在输入数据上，CBOW 输入的是一段区间中除去目标词之外的所有其他词的向量加和或平均，而 fastText 为了利用更多的语序信息，将 bag-of-words 变成了 bag-of-features，也就是下图中的输入 x 不再仅仅是一个词，还可以加上 bigram 或者是 trigram 的信息等等。第二个不同在于，CBOW 预测目标是语境中的一个词，而 fastText 预测目标是当前这段输入文本的类别。fastText 最大的特点在于快。</td>
+</tr>
+<tr>
+<td>2017</td>
+<td>InferSent 框架</td>
+<td><a href="https://arxiv.org/abs/1705.02364" target="_blank" rel="noopener">Supervised Learning of Universal Sentence Representations from Natural Language Inference Data</a></td>
+<td>除了 Skip-thoughts 和 Quick-thoughts 这两种不需要人工标记数据的模型之外，还有一些从监督数据中学习句子表示的方法。比如 2017 年 Facebook 的研究人员 Conneau 等人提出的 InferSent 框架，它的思想特别简单，先设计一个模型在斯坦福的 SNLI（Stanford Natural Language Inference）数据集上训练，而后将训练好的模型当做特征提取器，以此来获得一个句子的向量表示，再将这个句子的表示应用在新的分类任务上，来评估句子向量的优劣。</td>
+</tr>
+<tr>
+<td>2018_2</td>
+<td><a href="https://allennlp.org/elmo" target="_blank" rel="noopener">ELMo</a></td>
+<td><a href="https://arxiv.org/abs/1802.05365v2" target="_blank" rel="noopener">Deep contextualized word representations</a></td>
+<td>该研究提出了一种新型深度语境化词表征，可对词使用的复杂特征（如句法和语义）和词使用在语言语境中的变化进行建模（即对多义词进行建模）。这些表征可以轻松添加至已有模型，并在 6 个 NLP 问题中显著提高当前最优性能。</td>
+</tr>
+<tr>
+<td>2018_3</td>
+<td>Quick thoughts</td>
+<td><a href="https://arxiv.org/abs/1803.02893" target="_blank" rel="noopener">An efficient framework for learning sentence representations</a></td>
+<td>2018 年的时候，在 Skip-thoughts 的基础上，Google Brain 的 Logeswaran 等人将这一思想做了进一步改进，他们认为 Skip-thoughts 的 Decoder 效率太低，且无法在大规模语料上很好的训练（这是 RNN 结构的通病）。所以他们把 Skip-thoughts 的生成任务改进成为了一个分类任务，具体说来就是把同一个上下文窗口中的句子对标记为正例，把不是出现在同一个上下文窗口中的句子对标记为负例，并将这些句子对输入模型，让模型判断这些句子对是否是同一个上下文窗口中，很明显，这是一个分类任务。可以说，仅仅几个月之后的 BERT 正是利用的这种思路。而这些方法都和 Skip-thoughts 一脉相承。</td>
+</tr>
+<tr>
+<td>2018_3</td>
+<td></td>
+<td><a href="https://arxiv.org/abs/1804.00079" target="_blank" rel="noopener">Learning General Purpose Distributed Sentence Representations via Large Scale Multi-task Learning</a></td>
+<td>提出了利用四种不同的监督任务来联合学习句子的表征，这四种任务分别是：Natural Language Inference，Skip-thougts，Neural Machine Translation 以及 Constituency Parsing 等。</td>
+</tr>
+<tr>
+<td>2018_3</td>
+<td></td>
+<td><a href="https://arxiv.org/abs/1803.11175" target="_blank" rel="noopener">Universal Sentence Encoder</a></td>
+<td>谷歌的 Daniel Cer 等人在论文 Universal Sentence Encoder 中提出的思路基本和 General Purpose Sentence Representation 的工作一样，只不过作者提出了利用 Transformer 和 DAN（上文提到过的和 CBOW 与 fastText 都神似的 Deep Unordered Composition Rivals Syntactic Methods for Text Classification）两种框架作为句子的 Encoder。</td>
+</tr>
+<tr>
+<td>2018_6</td>
+<td><a href="https://github.com/openai/finetune-transformer-lm" target="_blank" rel="noopener">openai-GPT</a></td>
+<td><a href="https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf" target="_blank" rel="noopener">Improving Language Understanding by Generative Pre-Training</a></td>
+<td>OpenAI 最近通过一个与任务无关的可扩展系统在一系列语言任务中获得了当前最优的性能，目前他们已经发布了该系统。OpenAI 表示他们的方法主要结合了两个已存的研究，即 Transformer 和无监督预训练。实验结果提供了非常令人信服的证据，其表明联合监督学习方法和无监督预训练能够得到非常好的性能。这其实是很多研究者过去探索过的领域，OpenAI 也希望他们这次的实验结果能激发更加深入的研究，并在更大和更多的数据集上测试联合监督学习与无监督预训练的性能。</td>
+</tr>
+<tr>
+<td>2018_10</td>
+<td><a href="https://github.com/google-research/bert" target="_blank" rel="noopener">Google-BERT</a></td>
+<td><a href="https://arxiv.org/abs/1810.04805v1" target="_blank" rel="noopener">BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</a></td>
+<td>论文介绍了一种新的语言表征模型 BERT，意为来自 Transformer 的双向编码器表征（Bidirectional Encoder Representations from Transformers）。与最近的语言表征模型（Peters et al., 2018; Radford et al., 2018）不同，BERT 旨在基于所有层的左、右语境来预训练深度双向表征。因此，预训练的 BERT 表征可以仅用一个额外的输出层进行微调，进而为很多任务（如问答和语言推断任务）创建当前最优模型，无需对任务特定架构做出大量修改。BERT 的概念很简单，但实验效果很强大。它刷新了 11 个 NLP 任务的当前最优结果，包括将 GLUE 基准提升至 80.4%（7.6% 的绝对改进）、将 MultiNLI 的准确率提高到 86.7%（5.6% 的绝对改进），以及将 SQuAD v1.1 的问答测试 F1 得分提高至 93.2 分（提高 1.5 分）——比人类表现还高出 2 分。</td>
+</tr>
+</tbody>
+</table>
+</div>
 
       
     </div>
@@ -633,7 +748,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">85</span>
+                  <span class="site-state-item-count">86</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -644,7 +759,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -698,7 +813,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NLP-词嵌入学习笔记"><span class="nav-number">1.</span> <span class="nav-text">NLP-词嵌入学习笔记</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number">2.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要使用Word-Embedding"><span class="nav-number">2.1.</span> <span class="nav-text">为什么要使用Word Embedding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#向量空间模型"><span class="nav-number">2.2.</span> <span class="nav-text">向量空间模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">2.3.</span> <span class="nav-text">123456789机器学习这样的技术比较喜欢被定义好的固定长度的输入和输出，因此不固定输入输出是文本建模的一个问题。机器学习算法不能直接处理原始文本，文本必须转换成数字。具体来说，是数字的向量。“在语言处理中，向量x是由文本数据派生而来的，以反映文本的各种语言属性。”在自然语言处理中神经网络方法,2017年。这被称为特征提取或特征编码。这是一种流行的、简单的文本数据提取方法被称为文本的词汇模型。## ```词袋模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-1"><span class="nav-number">2.4.</span> <span class="nav-text">123### ```词向量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-2"><span class="nav-number">2.5.</span> <span class="nav-text">123![](词嵌入Embedding和语言模型LanguageModel/d1.png)## ```基于神经网络的分布表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Neural-net-language-models"><span class="nav-number">2.6.</span> <span class="nav-text">Neural net language models</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#传统词嵌入的过程embedding-lookup"><span class="nav-number">3.</span> <span class="nav-text">传统词嵌入的过程embedding_lookup()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符嵌入"><span class="nav-number">4.</span> <span class="nav-text">字符嵌入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#word2vector"><span class="nav-number">5.</span> <span class="nav-text">word2vector</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#语言模型词嵌入的过程"><span class="nav-number">6.</span> <span class="nav-text">语言模型词嵌入的过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#词嵌入资源"><span class="nav-number">7.</span> <span class="nav-text">词嵌入资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自然语言处理中的语言模型预训练方法"><span class="nav-number">8.</span> <span class="nav-text">自然语言处理中的语言模型预训练方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NLP-词嵌入学习笔记"><span class="nav-number">1.</span> <span class="nav-text">NLP-词嵌入学习笔记</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number">2.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要使用Word-Embedding"><span class="nav-number">2.1.</span> <span class="nav-text">为什么要使用Word Embedding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#向量空间模型"><span class="nav-number">2.2.</span> <span class="nav-text">向量空间模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">2.3.</span> <span class="nav-text">123456789机器学习这样的技术比较喜欢被定义好的固定长度的输入和输出，因此不固定输入输出是文本建模的一个问题。机器学习算法不能直接处理原始文本，文本必须转换成数字。具体来说，是数字的向量。“在语言处理中，向量x是由文本数据派生而来的，以反映文本的各种语言属性。”在自然语言处理中神经网络方法,2017年。这被称为特征提取或特征编码。这是一种流行的、简单的文本数据提取方法被称为文本的词汇模型。## ```词袋模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-1"><span class="nav-number">2.4.</span> <span class="nav-text">123### ```词向量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-2"><span class="nav-number">2.5.</span> <span class="nav-text">123![](词嵌入Embedding和语言模型LanguageModel/d1.png)## ```基于神经网络的分布表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Neural-net-language-models"><span class="nav-number">2.6.</span> <span class="nav-text">Neural net language models</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#传统词嵌入的过程embedding-lookup"><span class="nav-number">3.</span> <span class="nav-text">传统词嵌入的过程embedding_lookup()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符嵌入"><span class="nav-number">4.</span> <span class="nav-text">字符嵌入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#word2vector"><span class="nav-number">5.</span> <span class="nav-text">word2vector</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#语言模型词嵌入的过程"><span class="nav-number">6.</span> <span class="nav-text">语言模型词嵌入的过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#词嵌入资源"><span class="nav-number">7.</span> <span class="nav-text">词嵌入资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自然语言处理中的语言模型预训练方法"><span class="nav-number">8.</span> <span class="nav-text">自然语言处理中的语言模型预训练方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#深度长文：NLP的巨人肩膀（上）"><span class="nav-number">9.</span> <span class="nav-text">深度长文：NLP的巨人肩膀（上）</span></a></li></ol></div>
             
 
           </div>
