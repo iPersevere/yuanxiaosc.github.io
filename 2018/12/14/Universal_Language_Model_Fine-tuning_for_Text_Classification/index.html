@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/12/14/Universal_Language_Model_Fine-tuning_for_Text_Classification/a1.png">
 <meta property="og:image" content="http://yoursite.com/2018/12/14/Universal_Language_Model_Fine-tuning_for_Text_Classification/c2.png">
 <meta property="og:image" content="http://yoursite.com/2018/12/14/Universal_Language_Model_Fine-tuning_for_Text_Classification/c3.png">
-<meta property="og:updated_time" content="2018-12-14T04:33:05.674Z">
+<meta property="og:updated_time" content="2018-12-14T04:37:30.699Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Universal Language Model Fine-tuning for Text Classification">
 <meta name="twitter:description" content="摘要：迁移学习为计算机视觉带来了巨大改变，但是现有的NLP技术仍需要针对具体任务改进模型，并且从零开始训练。我们提出了一种有效的迁移学习方法，可以应用到NLP领域的任何一种任务上，同时提出的技术对调整语言模型来说非常关键。我们的方法在六种文本分类任务上比现有的技术都要优秀，除此之外，这种方法仅用100个带有标签的样本进行训练，最终的性能就达到了从零开始、拥有上万个训练数据的模型性能。 Univer">
@@ -458,16 +458,16 @@
 <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>迁移学习为计算机视觉带来了巨大改变，但是现有的NLP技术仍需要针对具体任务改进模型，并且从零开始训练。我们提出了一种有效的迁移学习方法，可以应用到NLP领域的任何一种任务上，同时提出的技术对调整语言模型来说非常关键。我们的方法在六种文本分类任务上比现有的技术都要优秀，除此之外，这种方法仅用100个带有标签的样本进行训练，最终的性能就达到了从零开始、拥有上万个训练数据的模型性能。</p>
 <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>迁移学习对计算机视觉（CV）产生了很大影响。应用CV模型（包括对象检测，分类和分割）很少从头开始训练，而是通过在ImageNet，MS-COCO和其他数据集上预训练的模型进行微调，Sharif Razavian等。（2014）; 龙等人。（2015a）; 他等人。（2016）; 黄等人。（2017）。</p>
 <p>文本分类是自然语言处理（NLP）任务的一个类别，具有许多重要的实际应用程序，如垃圾邮件，欺诈和机器人检测Jindal和Liu（2007）; Ngai等。（2011）; 楚等人。（2012），紧急响应Caragea等。（2011），和商业文件分类，如法律发现Roitblat等。（2010年）。</p>
-<p>虽然深度学习模型已经在许多NLP任务中实现了最先进的技术，但这些模型从头开始训练，需要大量数据集，并且需要数天才能收敛。NLP迁移学习的采用率落后于CV。微调预训练词嵌入Mikolov等。（2013）; Pennington等。（2014），一种仅针对模型第一层的简单转移学习技术，在实践中产生了巨大的影响，并在大多数最先进的模型中使用。鉴于预训练Erhan等人的好处。（2010），我们应该能够比随机初始化模型的其余参数做得更好。</p>
+<p>虽然深度学习模型已经在许多NLP任务中实现了最先进的技术，但这些模型从头开始训练，需要大量数据集，并且需要数天才能收敛。NLP迁移学习的采用率落后于CV。微调预训练词嵌入Mikolov等。（2013）; Pennington等。（2014），一种仅针对模型第一层的简单迁移学习技术，在实践中产生了巨大的影响，并在大多数最先进的模型中使用。鉴于预训练Erhan等人的好处。（2010），我们应该能够比随机初始化模型的其余参数做得更好。</p>
 <p>最近的方法将来自其他任务（例如语言建模或机器翻译）的嵌入与不同层的输入相连接.Peters等人。（2017）; 麦肯等人。（2017）; 匿名（2018）。然而，这些方法仍然从头开始训练主要任务模型，并将预训练嵌入作为固定参数处理，限制了它们的实用性。</p>
-<p>可以说，成功的NLP转移学习技术应该满足与CV对应类似的标准：a）该方法应该能够利用大量可用数据; b）它应该利用可以独立优化的任务，从而进一步改善下游; c）它应该依赖于可以按原样用于大多数NLP任务的单个模型; d）在实践中应该易于使用。</p>
+<p>可以说，成功的NLP迁移学习技术应该满足与CV对应类似的标准：a）该方法应该能够利用大量可用数据; b）它应该利用可以独立优化的任务，从而进一步改善下游; c）它应该依赖于可以按原样用于大多数NLP任务的单个模型; d）在实践中应该易于使用。</p>
 <p>我们建议使用微调语言模型（FitLaM）作为满足上述标准的NLP迁移学习的有效形式。我们的方法使用语言建模，这是一项具有几乎无限量数据的任务，以及推动最新技术发展的最新进展。它通过预训练无缝集成了大量外部数据和域内数据。</p>
 <p>FitLaM依赖于简单的递归神经网络（RNN）而无需任何额外的修改; 我们只使用一个或多个任务特定的线性层来扩充模型，相对于现有方法占少量参数。我们提出了一种新的微调技术，即区分性微调，它可以在较低层次上对较低层进行微调，以保留通过语言建模获得的知识。我们还介绍了几种技术，这些技术对于良好的微调性能和更快的培训至关重要。</p>
-<p>我们在五种广泛研究的不同大小和类型的文本分类任务中评估我们的转移学习方法，在这些任务上我们明显优于高度任务特定的先前工作和现有的转移学习方法。</p>
+<p>我们在五种广泛研究的不同大小和类型的文本分类任务中评估我们的迁移学习方法，在这些任务上我们明显优于高度任务特定的先前工作和现有的迁移学习方法。</p>
 <p>我们的贡献如下：</p>
 <ol>
-<li>我们在CV和NLP中绘制了转移学习的相似之处，并为NLP提供了一种有效的转移学习方法。</li>
-<li>我们提出了微调语言模型（FitLaM），这种方法可用于为NLP的任何任务实现类似CV的转移学习。</li>
+<li>我们在CV和NLP中绘制了迁移学习的相似之处，并为NLP提供了一种有效的迁移学习方法。</li>
+<li>我们提出了微调语言模型（FitLaM），这种方法可用于为NLP的任何任务实现类似CV的迁移学习。</li>
 <li>我们建议使用判别性微调来保留先前的知识并避免在微调期间发生灾难性的遗忘。</li>
 <li>我们引入了通过时间进行反向传播的文本分类（BPT3C），这是一种通过线性层将分类器丢失反向传播到任何序列大小的RNN输出的新方法。</li>
 <li>我们介绍了对预训练语言模型进行微调的关键技术。</li>
@@ -500,21 +500,21 @@
 <p><strong>BPTT for Text Classification (BPT3C)</strong><br>通过时间反向传播（BPTT）训练语言模型，以实现大输入序列的梯度传播。为了使大型文档的分类器微调可行，我们提出了BPTT for Text Classification（BPT3C）：我们将文档划分为大小为<br>b的固定长度批次。在每个批次的开头，模型初始化为前一批次的最终状态; 我们跟踪平均值和最大池的隐藏状态; 梯度被反向传播到批次，其隐藏状态有助于文档末尾的分类器预测。在实践中，我们使用可变长度反向传播序列Merity等。（2017a）。</p>
 <p><strong>Bidirectional language model</strong><br>与Peters等人的现有工作相似。（2017）; 匿名（2018），我们不仅限于微调单向语言模型。对于我们所有的实验，我们预先训练前向和后向LM。我们使用BPT3C独立微调每个LM的分类器并平均其预测。</p>
 <h3 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h3><p>虽然我们的方法同样适用于序列标记任务，但由于其重要的实际应用，我们专注于此工作中的文本分类任务。</p>
-<h4 id="Experimental-setup"><a href="#Experimental-setup" class="headerlink" title="Experimental setup"></a>Experimental setup</h4><p><strong>Datasets and tasks</strong><br>我们在五个广泛研究的不同大小的数据集上评估我们的方法，这些数据集由最先进的文本分类和转移学习方法使用Johnson和Zhang（2017）; 麦肯等人。（2017）作为三个常见文本分类任务的实例：情感分析，问题分类和主题分类。我们显示表1中每个数据集和任务的统计数据</p>
+<h4 id="Experimental-setup"><a href="#Experimental-setup" class="headerlink" title="Experimental setup"></a>Experimental setup</h4><p><strong>Datasets and tasks</strong><br>我们在五个广泛研究的不同大小的数据集上评估我们的方法，这些数据集由最先进的文本分类和迁移学习方法使用Johnson和Zhang（2017）; 麦肯等人。（2017）作为三个常见文本分类任务的实例：情感分析，问题分类和主题分类。我们显示表1中每个数据集和任务的统计数据</p>
 <p><strong>Sentiment Analysis</strong><br>对于情绪分析，我们评估我们对二元电影评论IMDb数据集  Maas等人的方法。（2011）和由 zhang2015character 编译的二进制Yelp审查数据集。</p>
 <p><strong>Question Classification</strong><br>我们使用六类版本的小型TREC数据集  Voorhees和Tice（1999）将开放域，基于事实的问题数据集划分为广泛的语义类别。</p>
 <p><strong>Topic classification</strong><br>对于主题分类，我们评估由 zhang2015character 创建的大型AG-News和DBpedia本体数据集。</p>
 <p><strong>Pre-processing</strong><br>我们使用与早期工作相同的预处理Johnson和Zhang（2017）; 麦肯等人。（2017）。此外，为了使语言模型能够捕获可能与分类相关的方面，我们为大写单词，伸长和重复添加了特殊标记。</p>
 <p><strong>Hyperparameters</strong><br>We are interested in a model that performs robustly across a diverse set of tasks. To this end, if not mentioned otherwise, we use the same set of hyperparameters across tasks, which we tune on the IMDb validation set. We use the AWD-LSTM language model (Merity et al., 2017a) with an embedding size of 400, 3 layers, 1150 hidden activations per layer, and a BPTT batch size of 70. We apply dropout of 0.4 to layers, 0.3 to RNN layers, 0.4 to input embed-ding layers, 0.05 to embedding layers, and weight dropout of 0.5 to the RNN hidden-to-hidden ma-trix. The classifier has a hidden layer of size 50. We use Adam with β1 = 0.7 instead of the de-fault β1 = 0.9 and β2 = 0.99, similar to (Dozat and Manning, 2017). We use a batch size of 64, a base learning rate of 0.004 and 0.01 for fine-tuning the LM and the classifier respectively, and tune the number of epochs on the validation set of each task7. We otherwise use the same practices used in (Merity et al., 2017a).</p>
 <p><strong>Baselines and comparison models</strong><br>对于每项任务，我们都会与当前最先进的技术进行比较。对于IMDb和TREC-6数据集，我们与CoVe McCann等人进行了比较。（2017），NLP的最先进的迁移学习方法。对于 AG, Yelp 和 DBpeadia 数据集我们与由Johnson and Zhang (2017) 提出的最先进的文本分类方法比较。</p>
-<h3 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h3><p>我们在表2中的 Mccann2017 使用的IMDb和TREC-6数据集上显示测试准确度分数。我们的方法优于CoVe，这是一种基于超级列的最先进的转移学习方法，以及两个数据集的最新技术。在IMDb上，我们分别在CoVe和最新技术方面将误差显着降低了43.9％和22％。这是特别有希望的，因为现有的现有技术需要复杂的架构Anonymous（2018），多种形式的关注McCann等人。（2017）和复杂的嵌入方案Johnson和Zhang（2016），而我们的方法采用标准的Bi-LSTM，具有压差。</p>
+<h3 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h3><p>我们在表2中的 Mccann2017 使用的IMDb和TREC-6数据集上显示测试准确度分数。我们的方法优于CoVe，这是一种基于超级列的最先进的迁移学习方法，以及两个数据集的最新技术。在IMDb上，我们分别在CoVe和最新技术方面将误差显着降低了43.9％和22％。这是特别有希望的，因为现有的现有技术需要复杂的架构Anonymous（2018），多种形式的关注McCann等人。（2017）和复杂的嵌入方案Johnson和Zhang（2016），而我们的方法采用标准的Bi-LSTM，具有压差。</p>
 <p>在TREC-6上，我们的改进 - 与最先进方法的改进类似 - 在统计上并不显着，因为测试的尺寸很小，仅包含500个例子。我们建议停止使用此数据集来评估文本分类算法。然而，小型TREC-6数据集的竞争性表现仍然表明，即使对于小型数据集，微调语言模型和目标任务分类器也是可行的。请注意，尽管预训练的数据比\ newcite Mccann2017 使用的700万个句子对的数据少两个数量级，但我们在两个数据集上的表现始终优于他们的方法。</p>
 <p>我们在表3中的 johnson2017deep 使用的较大的AG-News，DBpedia和Yelp-bi数据集上显示测试错误率。我们的方法再次显着优于最先进的技术。在AG-News上，我们观察到与现有技术相比，同样显着的误差减少了23.7％。在DBpedia和Yelp-bi上，我们将误差分别减少了4.8％和18.2％。</p>
-<h3 id="Discussion-and-future-directions"><a href="#Discussion-and-future-directions" class="headerlink" title="Discussion and future directions"></a>Discussion and future directions</h3><p>虽然我们的方法仍然需要一些技巧和手动调整学习率和辍学权重来实现最佳性能，但我们认为它类似于AlexNet Krizhevsky等人。（2012）作为必将的第一步，将导致创新浪潮。我们相信，随着越来越多的研究专注于改善NLP的转移学习，微调语言模型将变得更加健壮。在这条道路上迈出的重要一步将是仔细消融研究，以了解这里描述的模型和培训程序的每个组成部分的影响。</p>
+<h3 id="Discussion-and-future-directions"><a href="#Discussion-and-future-directions" class="headerlink" title="Discussion and future directions"></a>Discussion and future directions</h3><p>虽然我们的方法仍然需要一些技巧和手动调整学习率和辍学权重来实现最佳性能，但我们认为它类似于AlexNet Krizhevsky等人。（2012）作为必将的第一步，将导致创新浪潮。我们相信，随着越来越多的研究专注于改善NLP的迁移学习，微调语言模型将变得更加健壮。在这条道路上迈出的重要一步将是仔细消融研究，以了解这里描述的模型和培训程序的每个组成部分的影响。</p>
 <p>鉴于NLP的迁移学习（尤其是微调）未得到充分研究，未来的许多方向都是可能的。一个可能的方向是改进语言模型预训练任务并使其更具可扩展性：对于ImageNet，预测更少的类只会导致性能下降小Huh等。（2016） -专注于预测最频繁的单词可能会保留大部分性能，同时加快培训速度。语言建模还可以通过多任务学习方式Caruana（1993）中的其他任务来增强，或者通过额外的监督来丰富，例如语法敏感的依赖性Linzen等。（2016） 创建一个更通用或更适合某些下游任务的模型。</p>
 <p>另一个方向是将该方法应用于新颖的任务和模型。虽然序列标记任务的扩展很简单，但其他任务（例如蕴涵和问答）使用更复杂的交互，这需要新颖的方式来预训练和微调。</p>
 <p>最后，虽然微调是迁移学习的一个组成部分，但它很少受到关注，即使在简历中（至少在学术界 - 它是商业系统如Clarifai的关键基础）。所有常见基准测试仍然评估我们从头开始训练模型的能力，而不是微调预训练模型。创建微调基准将使我们能够开发更复杂的微调方法，这将使我们能够充分挖掘预训练模型的新潜力。</p>
-<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>我们已经提出了ULMFiT，一种有效的NLP转移学习方法，以及一种有效的微调方法，一种有效的微调方法，可以将不同的层调整到不同的程度，以避免灾难性的遗忘。我们已经引入了BPT3C，一种将分类器丢失反向传播到任何序列大小的RNN输出的方法，以及几种技术，这些技术对于良好的微调性能和快速训练至关重要。我们的方法明显优于现有的转移学习技术和五个代表性文本分类任务的最新技术。总的来说，我们已经证明了迁移学习对NLP的好处，并希望我们的结果能够促进NLP迁移学习的新发展。</p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>我们已经提出了ULMFiT，一种可以应用到任何 NLP 的有效的迁移学习方法。以及一种有效的微调方法，一种有效的微调方法，可以将不同的层调整到不同的程度，以避免灾难性的遗忘和让模型在不同范围的任务中更加鲁棒性的学习。我们的方法明显优于现有的迁移学习技术和六个具有代表性文本分类任务的最新技术。我们希望我们的结果能够促进 NLP 迁移学习的新发展。</p>
 
       
     </div>
