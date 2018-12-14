@@ -83,18 +83,21 @@
 <meta name="keywords" content="Language Model">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Universal Language Model Fine-tuning for Text Classification">
-<meta property="og:url" content="http://yoursite.com/2018/12/10/Universal_Language_Model_Fine-tuning_for_Text_Classification/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/12/14/Universal_Language_Model_Fine-tuning_for_Text_Classification/index.html">
 <meta property="og:site_name" content="望江人工智库">
 <meta property="og:description" content="摘要：迁移学习为计算机视觉带来了巨大改变，但是现有的NLP技术仍需要针对具体任务改进模型，并且从零开始训练。我们提出了一种有效的迁移学习方法，可以应用到NLP领域的任何一种任务上，同时提出的技术对调整语言模型来说非常关键。我们的方法在六种文本分类任务上比现有的技术都要优秀，除此之外，这种方法仅用100个带有标签的样本进行训练，最终的性能就达到了从零开始、拥有上万个训练数据的模型性能。 Univer">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/12/10/Universal_Language_Model_Fine-tuning_for_Text_Classification/a1.png">
-<meta property="og:image" content="http://yoursite.com/2018/12/10/Universal_Language_Model_Fine-tuning_for_Text_Classification/a2.png">
-<meta property="og:image" content="http://yoursite.com/2018/12/10/Universal_Language_Model_Fine-tuning_for_Text_Classification/a3.png">
-<meta property="og:updated_time" content="2018-12-10T07:38:19.738Z">
+<meta property="og:image" content="http://yoursite.com/2018/12/14/Universal_Language_Model_Fine-tuning_for_Text_Classification/a1.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/14/Universal_Language_Model_Fine-tuning_for_Text_Classification/a2.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/14/Universal_Language_Model_Fine-tuning_for_Text_Classification/a3.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/14/Universal_Language_Model_Fine-tuning_for_Text_Classification/a1.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/14/Universal_Language_Model_Fine-tuning_for_Text_Classification/c2.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/14/Universal_Language_Model_Fine-tuning_for_Text_Classification/c3.png">
+<meta property="og:updated_time" content="2018-12-14T04:33:05.674Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Universal Language Model Fine-tuning for Text Classification">
 <meta name="twitter:description" content="摘要：迁移学习为计算机视觉带来了巨大改变，但是现有的NLP技术仍需要针对具体任务改进模型，并且从零开始训练。我们提出了一种有效的迁移学习方法，可以应用到NLP领域的任何一种任务上，同时提出的技术对调整语言模型来说非常关键。我们的方法在六种文本分类任务上比现有的技术都要优秀，除此之外，这种方法仅用100个带有标签的样本进行训练，最终的性能就达到了从零开始、拥有上万个训练数据的模型性能。 Univer">
-<meta name="twitter:image" content="http://yoursite.com/2018/12/10/Universal_Language_Model_Fine-tuning_for_Text_Classification/a1.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/12/14/Universal_Language_Model_Fine-tuning_for_Text_Classification/a1.png">
 
 
 
@@ -124,7 +127,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/10/Universal_Language_Model_Fine-tuning_for_Text_Classification/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/12/14/Universal_Language_Model_Fine-tuning_for_Text_Classification/"/>
 
 
 
@@ -291,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/10/Universal_Language_Model_Fine-tuning_for_Text_Classification/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/14/Universal_Language_Model_Fine-tuning_for_Text_Classification/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="望江车神">
@@ -320,8 +323,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-10T09:00:00+08:00">
-                2018-12-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-14T09:00:00+08:00">
+                2018-12-14
               </time>
             
 
@@ -422,18 +425,96 @@
 <p>本文主要对ELMo、ULMFiT以及OpenAI GPT三种预训练语言模型作简要介绍。</p>
 </blockquote>
 <p>ULMFiT是一种有效的NLP迁移学习方法，核心思想是通过精调预训练的语言模型完成其他NLP任务。文中所用的语言模型参考了<a href="http://link.zhihu.com/?target=https%3A//arxiv.org/abs/1708.02182" target="_blank" rel="noopener">Merity et al. 2017a</a>的AWD-LSTM模型，即没有attention或shortcut的三层LSTM模型。</p>
-<p>ULMFiT的过程分为三步：<br><img src="/2018/12/10/Universal_Language_Model_Fine-tuning_for_Text_Classification/a1.png" alt=""></p>
+<p>ULMFiT的过程分为三步：<br><img src="/2018/12/14/Universal_Language_Model_Fine-tuning_for_Text_Classification/a1.png" alt=""></p>
 <h3 id="General-domain-LM-pre-train"><a href="#General-domain-LM-pre-train" class="headerlink" title="General-domain LM pre-train"></a>General-domain LM pre-train</h3><p>在Wikitext-103上进行语言模型的预训练。<br>预训练的语料要求：large &amp; capture general properties of language<br>预训练对小数据集十分有效，之后仅有少量样本就可以使模型泛化。</p>
 <h3 id="Target-task-LM-fine-tuning"><a href="#Target-task-LM-fine-tuning" class="headerlink" title="Target task LM fine-tuning"></a>Target task LM fine-tuning</h3><p>文中介绍了两种fine-tuning方法：</p>
 <h4 id="Discriminative-fine-tuning"><a href="#Discriminative-fine-tuning" class="headerlink" title="Discriminative fine-tuning"></a>Discriminative fine-tuning</h4><p>因为网络中不同层可以捕获不同类型的信息，因此在精调时也应该使用不同的learning rate。作者为每一层赋予一个学习率  $\eta^{l}$ ，实验后发现，首先通过精调模型的最后一层L确定学习率  $\eta^{L}$ ，再递推地选择上一层学习率进行精调的效果最好，递推公式为:  $\eta^{l-1} = \eta^{l}/2.6$</p>
 <h4 id="Slanted-triangular-learning-rates-STLR"><a href="#Slanted-triangular-learning-rates-STLR" class="headerlink" title="Slanted triangular learning rates (STLR)"></a>Slanted triangular learning rates (STLR)</h4><p>为了针对特定任务选择参数，理想情况下需要在训练开始时让参数快速收敛到一个合适的区域，之后进行精调。为了达到这种效果，作者提出STLR方法，即让LR在训练初期短暂递增，在之后下降。如图b的右上角所示。具体的公式为：</p>
-<p><img src="/2018/12/10/Universal_Language_Model_Fine-tuning_for_Text_Classification/a2.png" alt=""><br>where T is the number of training iterations;cut frac is the fraction of iterations we increase the LR;p is the fraction of the number of iterations we have increased or will decrease the LR respectively, ratio specifies how much smaller the lowest LR is from the maximum LR ηmax, and ηt is the learning rate at iteration t.<br>We generally use cut frac = 0:1, ratio = 32 and max = 0:01.</p>
-<p>简单地说就是在一个训练周期内学习率以 cut 为界呈斜三角变化，在 cut 之前学习率快速升高，在 cut 之后学习率缓慢减小，如下图所示。<br><img src="/2018/12/10/Universal_Language_Model_Fine-tuning_for_Text_Classification/a3.png" alt=""></p>
+<p><img src="/2018/12/14/Universal_Language_Model_Fine-tuning_for_Text_Classification/a2.png" alt=""><br>where T is the number of training iterations;cut frac is the fraction of iterations we increase the LR;p is the fraction of the number of iterations we have increased or will decrease the LR respectively, ratio specifies how much smaller the lowest LR is from the maximum LR ηmax, and ηt is the learning rate at iteration t.<br>We generally use cut frac = 0:1, ratio = 32 and max = 0:01.</p>
+<p>简单地说就是在一个训练周期内学习率以 cut 为界呈斜三角变化，在 cut 之前学习率快速升高，在 cut 之后学习率缓慢减小，如下图所示。<br><img src="/2018/12/14/Universal_Language_Model_Fine-tuning_for_Text_Classification/a3.png" alt=""></p>
 <h3 id="Target-task-classifier-fine-tuning"><a href="#Target-task-classifier-fine-tuning" class="headerlink" title="Target task classifier fine-tuning"></a>Target task classifier fine-tuning</h3><p>为了完成分类任务的精调，作者在最后一层添加了两个线性block，每个都有batch-norm和dropout，使用ReLU作为中间层激活函数，最后经过softmax输出分类的概率分布。最后的精调涉及的环节如下：</p>
 <h4 id="Concat-pooling"><a href="#Concat-pooling" class="headerlink" title="Concat pooling"></a>Concat pooling</h4><p>第一个线性层的输入是最后一个隐层状态的池化。因为文本分类的关键信息可能在文本的任何地方，所以只是用最后时间步的输出是不够的。作者将最后时间步   h_{T} 与尽可能多的时间步 $H= {h_{1},… , h_{T}} $ 池化后拼接起来，以   $h_{c} = [h_{T}, maxpool(H), meanpool(H)] $ 作为输入。</p>
 <h4 id="Gradual-unfreezing"><a href="#Gradual-unfreezing" class="headerlink" title="Gradual unfreezing"></a>Gradual unfreezing</h4><p>由于过度精调会导致模型遗忘之前预训练得到的信息，作者提出逐渐unfreez网络层的方法，从最后一层开始unfreez和精调，由后向前地unfreez并精调所有层。</p>
 <h4 id="BPTT-for-Text-Classification-BPT3C"><a href="#BPTT-for-Text-Classification-BPT3C" class="headerlink" title="BPTT for Text Classification (BPT3C)"></a>BPTT for Text Classification (BPT3C)</h4><p>为了在large documents上进行模型精调，作者将文档分为固定长度为b的batches，并在每个batch训练时记录mean和max池化，梯度会被反向传播到对最终预测有贡献的batches。</p>
 <h4 id="Bidirectional-language-model"><a href="#Bidirectional-language-model" class="headerlink" title="Bidirectional language model"></a>Bidirectional language model</h4><p>在作者的实验中，分别独立地对前向和后向LM做了精调，并将两者的预测结果平均。两者结合后结果有0.5-0.7的提升。</p>
+<h2 id="使用-ULMFiT"><a href="#使用-ULMFiT" class="headerlink" title="使用 ULMFiT"></a>使用 ULMFiT</h2><p><a href="https://github.com/fastai/fastai/tree/master/courses/dl2/imdb_scripts" target="_blank" rel="noopener">https://github.com/fastai/fastai/tree/master/courses/dl2/imdb_scripts</a></p>
+<p>更多参见 FAST.AI NLP <a href="http://nlp.fast.ai/category/classification.html" target="_blank" rel="noopener">http://nlp.fast.ai/category/classification.html</a></p>
+<blockquote>
+<p>fine-tuned language model with gradual unfreezing, discriminative fine-tuning, and slanted triangular learning rates.</p>
+</blockquote>
+<p>Instructions</p>
+<ol>
+<li>Preparing Wikipedia</li>
+<li>Tokenization</li>
+<li>Mapping tokens to ids</li>
+<li>Fine-tune the LM(download the pre-trained models) or Pretrain the Wikipedia language model(from scrach)</li>
+<li>Train the classifier</li>
+<li>Evaluate the classifier</li>
+<li>Try the classifier on text</li>
+</ol>
+<hr>
+<p>以下内容为，通用语言模型 ULMFiT 的简单翻译</p>
+<h2 id="Universal-Language-Model-Fine-tuning-for-Text-Classification-1"><a href="#Universal-Language-Model-Fine-tuning-for-Text-Classification-1" class="headerlink" title="Universal Language Model Fine-tuning for Text Classification"></a>Universal Language Model Fine-tuning for Text Classification</h2><p>用于文本分类的微调语言模型</p>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>迁移学习为计算机视觉带来了巨大改变，但是现有的NLP技术仍需要针对具体任务改进模型，并且从零开始训练。我们提出了一种有效的迁移学习方法，可以应用到NLP领域的任何一种任务上，同时提出的技术对调整语言模型来说非常关键。我们的方法在六种文本分类任务上比现有的技术都要优秀，除此之外，这种方法仅用100个带有标签的样本进行训练，最终的性能就达到了从零开始、拥有上万个训练数据的模型性能。</p>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>迁移学习对计算机视觉（CV）产生了很大影响。应用CV模型（包括对象检测，分类和分割）很少从头开始训练，而是通过在ImageNet，MS-COCO和其他数据集上预训练的模型进行微调，Sharif Razavian等。（2014）; 龙等人。（2015a）; 他等人。（2016）; 黄等人。（2017）。</p>
+<p>文本分类是自然语言处理（NLP）任务的一个类别，具有许多重要的实际应用程序，如垃圾邮件，欺诈和机器人检测Jindal和Liu（2007）; Ngai等。（2011）; 楚等人。（2012），紧急响应Caragea等。（2011），和商业文件分类，如法律发现Roitblat等。（2010年）。</p>
+<p>虽然深度学习模型已经在许多NLP任务中实现了最先进的技术，但这些模型从头开始训练，需要大量数据集，并且需要数天才能收敛。NLP迁移学习的采用率落后于CV。微调预训练词嵌入Mikolov等。（2013）; Pennington等。（2014），一种仅针对模型第一层的简单转移学习技术，在实践中产生了巨大的影响，并在大多数最先进的模型中使用。鉴于预训练Erhan等人的好处。（2010），我们应该能够比随机初始化模型的其余参数做得更好。</p>
+<p>最近的方法将来自其他任务（例如语言建模或机器翻译）的嵌入与不同层的输入相连接.Peters等人。（2017）; 麦肯等人。（2017）; 匿名（2018）。然而，这些方法仍然从头开始训练主要任务模型，并将预训练嵌入作为固定参数处理，限制了它们的实用性。</p>
+<p>可以说，成功的NLP转移学习技术应该满足与CV对应类似的标准：a）该方法应该能够利用大量可用数据; b）它应该利用可以独立优化的任务，从而进一步改善下游; c）它应该依赖于可以按原样用于大多数NLP任务的单个模型; d）在实践中应该易于使用。</p>
+<p>我们建议使用微调语言模型（FitLaM）作为满足上述标准的NLP迁移学习的有效形式。我们的方法使用语言建模，这是一项具有几乎无限量数据的任务，以及推动最新技术发展的最新进展。它通过预训练无缝集成了大量外部数据和域内数据。</p>
+<p>FitLaM依赖于简单的递归神经网络（RNN）而无需任何额外的修改; 我们只使用一个或多个任务特定的线性层来扩充模型，相对于现有方法占少量参数。我们提出了一种新的微调技术，即区分性微调，它可以在较低层次上对较低层进行微调，以保留通过语言建模获得的知识。我们还介绍了几种技术，这些技术对于良好的微调性能和更快的培训至关重要。</p>
+<p>我们在五种广泛研究的不同大小和类型的文本分类任务中评估我们的转移学习方法，在这些任务上我们明显优于高度任务特定的先前工作和现有的转移学习方法。</p>
+<p>我们的贡献如下：</p>
+<ol>
+<li>我们在CV和NLP中绘制了转移学习的相似之处，并为NLP提供了一种有效的转移学习方法。</li>
+<li>我们提出了微调语言模型（FitLaM），这种方法可用于为NLP的任何任务实现类似CV的转移学习。</li>
+<li>我们建议使用判别性微调来保留先前的知识并避免在微调期间发生灾难性的遗忘。</li>
+<li>我们引入了通过时间进行反向传播的文本分类（BPT3C），这是一种通过线性层将分类器丢失反向传播到任何序列大小的RNN输出的新方法。</li>
+<li>我们介绍了对预训练语言模型进行微调的关键技术。</li>
+<li>我们在五个代表性文本分类数据集上的表现明显优于最新技术，大多数数据集的误差降低了18-24％。</li>
+<li>我们制作预训练模型和代码，以实现更广泛的采用。</li>
+</ol>
+<h3 id="Related-work"><a href="#Related-work" class="headerlink" title="Related work"></a>Related work</h3><h4 id="TRANSFER-LEARNING-IN-CV-计算机视觉中的迁移学习"><a href="#TRANSFER-LEARNING-IN-CV-计算机视觉中的迁移学习" class="headerlink" title="TRANSFER LEARNING IN CV 计算机视觉中的迁移学习"></a>TRANSFER LEARNING IN CV 计算机视觉中的迁移学习</h4><p><strong>已经观察到CV中的深度神经网络中的特征从任务特定性迁移一般性从第一层到最后一层递减Yosinski等人</strong>。（2014年）。出于这个原因，CV中的大部分工作都集中在转移模型Long等人的最后几层。（2015b）。sharif2014cnn使用ImageNet模型的特征作为简单分类器的输入来实现最先进的结果。近年来，这种方法已被最后Donahue等人的微调所取代。（2014年）或预训练模型的最后几层，并留下其余层冻结Long等。（2015a）。</p>
+<h4 id="Hypercolumns-超级列"><a href="#Hypercolumns-超级列" class="headerlink" title="Hypercolumns 超级列"></a>Hypercolumns 超级列</h4><p>在NLP中，最近才提出的方法不仅仅是迁移字嵌入。流行的方法是预先嵌入通过其他任务捕获额外上下文的嵌入。然后将嵌入与单词嵌入或中间层的输入连接起来。<strong>这种方法在CV Hariharan等人中被称为超级列</strong>。（2015）并由 peters2017semi， deepcontext2017和 Mccann2017分别使用语言建模和机器翻译（MT）进行预训练。使用类似的方法Conneau2017用于学习句子表示。在CV中，超级列几乎完全被端到端的微调Long等人所取代。（2015a）。</p>
+<h4 id="MULTI-TASK-LEARNING-多任务学习"><a href="#MULTI-TASK-LEARNING-多任务学习" class="headerlink" title="MULTI-TASK LEARNING 多任务学习"></a>MULTI-TASK LEARNING 多任务学习</h4><p>一个相关的方向是多任务学习（MTL）（Caruana,1993）。这个方法被 Rei,2017 和 Liu 2018 所采用，他们把语言模型的目标添加到主任务模型目标中联合训练。多任务学习要求每次都从头开始训练，所以它比较低效。而且多任务学习需要仔细权衡任务模型目标的权重。</p>
+<h4 id="Fine-tuning-微调"><a href="#Fine-tuning-微调" class="headerlink" title="Fine-tuning 微调"></a>Fine-tuning 微调</h4><p>微调已经在相似任务之间的迁移学习中获得了成功，比如 （Min 等，2017）在问答任务中，远程监督情感分析（Severyn and Moschitti, 2015），亦或是机器翻译领域（(Sennrich et al., 2015）。但是也有在不相关领域迁移失败的例子（(Mou et al.,2016）。Dai and Le (2015)也微调了一个语言模型，但是在 10K 标记样本集上过拟合了，而且需要数百万同领域文档来获得更好的表现。相反，ULMFiT 利用通用领域的文档进行预训练，同时提出新的微调技术来阻止过拟合当仅仅只有 100 个标签的样本集，并且取得了最优的效果在小数据集上。</p>
+<h3 id="Universal-Language-Model-Fine-tuning"><a href="#Universal-Language-Model-Fine-tuning" class="headerlink" title="Universal Language Model Fine-tuning"></a>Universal Language Model Fine-tuning</h3><p>我们对自然语言处理最通用场景下的迁移学习感兴趣：考虑一个静态的原任务 $T_S$ 和任何一个目标任务 $T_T$，其中 $T_S \ne T_T$，并且我们想提高在 $T_T$ 中的表现。语言模型可以被视作一个理想的原任务就像是自然语言处理界的 ImageNet：语言模型可以为下游任务捕获许多语言方面的特征，比如长短期依赖，层次关系，情感等等。不像机器翻译模型，语言模型在大多数领域和语言上有几乎无限的数据。此外，一个预训练的语言模型可以很容易地适应目标任务的特质，我们将在第五小节展示这种语言模型带来的显著提升。同时，语言模型还是现存任务的重要组成成分，比如机器翻译和对话模型。形式上，语言模型引入了一个假设空间 $H$ 可以对其它许多自然语言处理任务有用(Vapnik and Kotz, 1982; Baxter, 2000)。</p>
+<p>我们提出的统一微调语言模型（ULMFiT），它先在大规模通用领域语料上预训练然后使用新的技术在目标任务上微调。这个新的方法在某种程度上是通用的，因为它满足以下实践标准：1)它在不同大小、数量和标签类型的任务中都有效；2）它使用单一的结构和简单的训练过程；3）它不需要特征工程和特殊的预处理；4）它不需要额外的任务领域内的文档和标签数据。</p>
+<p><strong>在我们的实验中，我们使用最优语言模型 AWD-LSTM (Merity et al.,2017a)</strong>，一个普通的 LSTM （它没有注意力机制、捷径连接、精致复杂的附加结构），只是含有可以改变 dropout 率。类似于计算机视觉，我们期待未来下游的表现可以显著地提高通过使用表现优异的语言模型。</p>
+<p>ULMFiT 含有以下步骤：我们在图 1 中展示：a）通用领域语言模型预训练3.1；b）目标领域语言模型微调3.2；c）目标任务分类任务微调3.3。我们将在下面几个小节中讨论它们。<br><img src="/2018/12/14/Universal_Language_Model_Fine-tuning_for_Text_Classification/a1.png" alt=""></p>
+<h4 id="General-domain-LM-pretraining"><a href="#General-domain-LM-pretraining" class="headerlink" title="General-domain LM pretraining"></a>General-domain LM pretraining</h4><p>我们在Wikitext-103 Merity等人上预先训练了语言模型。（2017b）由28,595个预处理的维基百科文章组成。预先训练更多和更多样化的数据集可以提高性能。这个阶段是最昂贵的，但因为它只需要执行一次，所以通过改进下游模型的性能和融合，它在以下阶段中受益匪浅。我们使预训练模型的权重可用于促进实验。</p>
+<h4 id="Target-task-LM-fine-tuning-1"><a href="#Target-task-LM-fine-tuning-1" class="headerlink" title="Target task LM fine-tuning"></a>Target task LM fine-tuning</h4><p>无论用于预训练的通用域数据多么多样，目标任务的数据可能来自不同的分布。因此，我们在目标任务的训练示例上微调语言模型。给定一个预训练的通用域LM，这个阶段收敛得更快，因为它只需要适应目标数据的特性，它允许我们训练一个强大的LM，即使对于小数据集。我们提出 discriminative fine-tuning 判别性微调 和 slanted triangular learning rates 斜三角形学习率为微调语言模型, 接下来我们逐一介绍。</p>
+<p><strong>Discriminative fine-tuning</strong><br>因为不同的层捕获不同类型的信息(Yosinski et al., 2014)，它们应该被不同程度的微调。为了这个目的，我们提出了一个新的微调方法，判别性微调。</p>
+<p>不是对模型所有的层使用相同的学习率，我们为模型每一层使用有区别的微调学习率。通常使用随机梯度下降在时间步 $t$ 来更新模型参数 $\theta$ 就像下面这样(Ruder, 2016)：</p>
+<script type="math/tex; mode=display">\theta_t=\theta_{t-1} - \eta \nabla_{\theta}J(\theta)</script><p>其中 $\eta$ 是学习率，$\nabla_{\theta}J(\theta)$ 是模型的目标函数对参数的梯度。为了判别式微调我们把模型参数 $\theta$ 分为 $\{\theta^1,…,\theta^L\}$ 其中 $\theta^l$ 包含模型第 $l$ 层的参数。同样我们使用 $\{\eta^1,…,\eta^L\}$，其中 $\eta^l$ 是模型第 $l$ 层的学习率。</p>
+<p>这样随机梯度下降更新使用判别式微调之后就像下面这样：</p>
+<script type="math/tex; mode=display">\theta_t^l=\theta_{t-1}^l - \eta^l \nabla_{\theta^l}J(\theta)</script><p>我们经验地发现模型工作地很好当首先为模型最后一层选择 $\eta^L$ 进行微调，然后层与层之间使用 $\eta^{l-1}=\eta^l/2.6$ 的规律计算。</p>
+<p><strong>Slanted triangular learning rates</strong><br>为了让参数适用于特定任务的特征，我们想让模型参数在训练的开始阶段迅速地汇聚到合适的参数空间然后再精调参数。使用相同的学习率或者一个退火学习率在训练模型时不是一个最佳的方式。我们提出一个斜三角形学习率，它首先线性增加然后线性递减根据安排的时间表，就如图 2所示：<br><img src="/2018/12/14/Universal_Language_Model_Fine-tuning_for_Text_Classification/c2.png" alt=""></p>
+<p>Slanted triangular learning rates 计算式子如下：<br><img src="/2018/12/14/Universal_Language_Model_Fine-tuning_for_Text_Classification/c3.png" alt=""><br>其中 $T$ 是训练迭代次数（4In other words, the number of epochs times the number of updates per epoch）；$cut_frac$ 是我们增加学习率的部占比；$cut$ 是学习率由增到减的转折点，$p$ 是我们分别增加或减少学习率的迭代次数的分数；$ratio$ 指定最小学习率比最大学习率小的比率；$\eta_t$ 是学习率的第 $t$ 次迭代。我们通常的设定是 $cut_frac = 0.1, ratio = 32, \eta_{max} = 0.01$。</p>
+<h3 id="Target-task-classifier-fine-tuning-1"><a href="#Target-task-classifier-fine-tuning-1" class="headerlink" title="Target task classifier fine-tuning"></a>Target task classifier fine-tuning</h3><p>对于目标任务分类器微调，我们使用一个或多个附加线性块来扩充预训练语言模型。就像计算机视觉中的标准实践，每一个块使用批次正则化 normalization 和 dropout ，使用 ReLU 激活函数给中间连接层，并且softmax激活在最后一层的目标任务类上输出概率分布。请注意，这些特定于任务的分类器层中的参数是唯一需要从头学习的参数。第一个线性层将合并的最后隐藏层状态作为输入。</p>
+<p><strong>Concat pooling</strong><br>文本分类任务中的信号通常包含在几个单词中，这些单词可能出现在文档中的任何位置。由于输入文档可能包含数百个单词，如果我们只考虑模型的最后隐藏状态，信息可能会丢失。出于这个原因，我们将文档的最后一个步骤 $H={h_1,..,h_T}$ 的隐藏状态与隐藏状态的 max-pooled 和 mean-pooled 表示相结合，在GPU内存中适合尽可能多的时间步长。</p>
+<script type="math/tex; mode=display">h_c = [h_T, maxpool(H), meanpool(H)]</script><p>其中 [] 表示连接操作。</p>
+<p>微调分类模型是迁移学习中最关键的一个部分。过度激进的微调会造成灾难性的遗忘，会消除了语言模型捕捉的信息的好处；太谨慎的微调会收敛的很慢而且会导致过拟合。除了判别性微调和斜三角形学习率，我们提出逐层解冻为分类微调。</p>
+<p><strong>Gradual unfreezing</strong><br>不是一下微调所有的层，它可能导致灾难性遗忘。我们从最后一层到第一层提出逐层解冻，因为最后一层包含最少的一般性知识(Yosinski et al., 2014)：我们解冻最后一层然后微调所有解冻的层。我们然后解冻倒数第二层重复开始的过程直到我们微调了所有的层。这和“链式解冻”很相似(Felbo et al.,2017)，除了每次我们增加一个已经解冻的层，而不是每次训练一个层。</p>
+<p>虽然模型能从 discriminative fine-tuning, slanted triangular learning rates, and gradual unfreezing 单独获益，如第五小节，这些方法会相互补充，联合起来让我们在不同的数据集上获益。</p>
+<p><strong>BPTT for Text Classification (BPT3C)</strong><br>通过时间反向传播（BPTT）训练语言模型，以实现大输入序列的梯度传播。为了使大型文档的分类器微调可行，我们提出了BPTT for Text Classification（BPT3C）：我们将文档划分为大小为<br>b的固定长度批次。在每个批次的开头，模型初始化为前一批次的最终状态; 我们跟踪平均值和最大池的隐藏状态; 梯度被反向传播到批次，其隐藏状态有助于文档末尾的分类器预测。在实践中，我们使用可变长度反向传播序列Merity等。（2017a）。</p>
+<p><strong>Bidirectional language model</strong><br>与Peters等人的现有工作相似。（2017）; 匿名（2018），我们不仅限于微调单向语言模型。对于我们所有的实验，我们预先训练前向和后向LM。我们使用BPT3C独立微调每个LM的分类器并平均其预测。</p>
+<h3 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h3><p>虽然我们的方法同样适用于序列标记任务，但由于其重要的实际应用，我们专注于此工作中的文本分类任务。</p>
+<h4 id="Experimental-setup"><a href="#Experimental-setup" class="headerlink" title="Experimental setup"></a>Experimental setup</h4><p><strong>Datasets and tasks</strong><br>我们在五个广泛研究的不同大小的数据集上评估我们的方法，这些数据集由最先进的文本分类和转移学习方法使用Johnson和Zhang（2017）; 麦肯等人。（2017）作为三个常见文本分类任务的实例：情感分析，问题分类和主题分类。我们显示表1中每个数据集和任务的统计数据</p>
+<p><strong>Sentiment Analysis</strong><br>对于情绪分析，我们评估我们对二元电影评论IMDb数据集  Maas等人的方法。（2011）和由 zhang2015character 编译的二进制Yelp审查数据集。</p>
+<p><strong>Question Classification</strong><br>我们使用六类版本的小型TREC数据集  Voorhees和Tice（1999）将开放域，基于事实的问题数据集划分为广泛的语义类别。</p>
+<p><strong>Topic classification</strong><br>对于主题分类，我们评估由 zhang2015character 创建的大型AG-News和DBpedia本体数据集。</p>
+<p><strong>Pre-processing</strong><br>我们使用与早期工作相同的预处理Johnson和Zhang（2017）; 麦肯等人。（2017）。此外，为了使语言模型能够捕获可能与分类相关的方面，我们为大写单词，伸长和重复添加了特殊标记。</p>
+<p><strong>Hyperparameters</strong><br>We are interested in a model that performs robustly across a diverse set of tasks. To this end, if not mentioned otherwise, we use the same set of hyperparameters across tasks, which we tune on the IMDb validation set. We use the AWD-LSTM language model (Merity et al., 2017a) with an embedding size of 400, 3 layers, 1150 hidden activations per layer, and a BPTT batch size of 70. We apply dropout of 0.4 to layers, 0.3 to RNN layers, 0.4 to input embed-ding layers, 0.05 to embedding layers, and weight dropout of 0.5 to the RNN hidden-to-hidden ma-trix. The classifier has a hidden layer of size 50. We use Adam with β1 = 0.7 instead of the de-fault β1 = 0.9 and β2 = 0.99, similar to (Dozat and Manning, 2017). We use a batch size of 64, a base learning rate of 0.004 and 0.01 for fine-tuning the LM and the classifier respectively, and tune the number of epochs on the validation set of each task7. We otherwise use the same practices used in (Merity et al., 2017a).</p>
+<p><strong>Baselines and comparison models</strong><br>对于每项任务，我们都会与当前最先进的技术进行比较。对于IMDb和TREC-6数据集，我们与CoVe McCann等人进行了比较。（2017），NLP的最先进的迁移学习方法。对于 AG, Yelp 和 DBpeadia 数据集我们与由Johnson and Zhang (2017) 提出的最先进的文本分类方法比较。</p>
+<h3 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h3><p>我们在表2中的 Mccann2017 使用的IMDb和TREC-6数据集上显示测试准确度分数。我们的方法优于CoVe，这是一种基于超级列的最先进的转移学习方法，以及两个数据集的最新技术。在IMDb上，我们分别在CoVe和最新技术方面将误差显着降低了43.9％和22％。这是特别有希望的，因为现有的现有技术需要复杂的架构Anonymous（2018），多种形式的关注McCann等人。（2017）和复杂的嵌入方案Johnson和Zhang（2016），而我们的方法采用标准的Bi-LSTM，具有压差。</p>
+<p>在TREC-6上，我们的改进 - 与最先进方法的改进类似 - 在统计上并不显着，因为测试的尺寸很小，仅包含500个例子。我们建议停止使用此数据集来评估文本分类算法。然而，小型TREC-6数据集的竞争性表现仍然表明，即使对于小型数据集，微调语言模型和目标任务分类器也是可行的。请注意，尽管预训练的数据比\ newcite Mccann2017 使用的700万个句子对的数据少两个数量级，但我们在两个数据集上的表现始终优于他们的方法。</p>
+<p>我们在表3中的 johnson2017deep 使用的较大的AG-News，DBpedia和Yelp-bi数据集上显示测试错误率。我们的方法再次显着优于最先进的技术。在AG-News上，我们观察到与现有技术相比，同样显着的误差减少了23.7％。在DBpedia和Yelp-bi上，我们将误差分别减少了4.8％和18.2％。</p>
+<h3 id="Discussion-and-future-directions"><a href="#Discussion-and-future-directions" class="headerlink" title="Discussion and future directions"></a>Discussion and future directions</h3><p>虽然我们的方法仍然需要一些技巧和手动调整学习率和辍学权重来实现最佳性能，但我们认为它类似于AlexNet Krizhevsky等人。（2012）作为必将的第一步，将导致创新浪潮。我们相信，随着越来越多的研究专注于改善NLP的转移学习，微调语言模型将变得更加健壮。在这条道路上迈出的重要一步将是仔细消融研究，以了解这里描述的模型和培训程序的每个组成部分的影响。</p>
+<p>鉴于NLP的迁移学习（尤其是微调）未得到充分研究，未来的许多方向都是可能的。一个可能的方向是改进语言模型预训练任务并使其更具可扩展性：对于ImageNet，预测更少的类只会导致性能下降小Huh等。（2016） -专注于预测最频繁的单词可能会保留大部分性能，同时加快培训速度。语言建模还可以通过多任务学习方式Caruana（1993）中的其他任务来增强，或者通过额外的监督来丰富，例如语法敏感的依赖性Linzen等。（2016） 创建一个更通用或更适合某些下游任务的模型。</p>
+<p>另一个方向是将该方法应用于新颖的任务和模型。虽然序列标记任务的扩展很简单，但其他任务（例如蕴涵和问答）使用更复杂的交互，这需要新颖的方式来预训练和微调。</p>
+<p>最后，虽然微调是迁移学习的一个组成部分，但它很少受到关注，即使在简历中（至少在学术界 - 它是商业系统如Clarifai的关键基础）。所有常见基准测试仍然评估我们从头开始训练模型的能力，而不是微调预训练模型。创建微调基准将使我们能够开发更复杂的微调方法，这将使我们能够充分挖掘预训练模型的新潜力。</p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>我们已经提出了ULMFiT，一种有效的NLP转移学习方法，以及一种有效的微调方法，一种有效的微调方法，可以将不同的层调整到不同的程度，以避免灾难性的遗忘。我们已经引入了BPT3C，一种将分类器丢失反向传播到任何序列大小的RNN输出的方法，以及几种技术，这些技术对于良好的微调性能和快速训练至关重要。我们的方法明显优于现有的转移学习技术和五个代表性文本分类任务的最新技术。总的来说，我们已经证明了迁移学习对NLP的好处，并希望我们的结果能够促进NLP迁移学习的新发展。</p>
 
       
     </div>
@@ -493,8 +574,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/07/卷积神经网络/" rel="next" title="卷积神经网络 Convolutional Neural Networks">
-                <i class="fa fa-chevron-left"></i> 卷积神经网络 Convolutional Neural Networks
+              <a href="/2018/12/11/创造者的传记/" rel="next" title="创造者的传记 Biography of the Creator">
+                <i class="fa fa-chevron-left"></i> 创造者的传记 Biography of the Creator
               </a>
             
           </div>
@@ -503,8 +584,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/10/Bag_of_Tricks_for_Image_Classification_with_Convolutional_Neural_Networks/" rel="prev" title="Bag of Tricks for Image Classification with Convolutional Neural Networks">
-                Bag of Tricks for Image Classification with Convolutional Neural Networks <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/14/词嵌入Embedding和语言模型LanguageModel/" rel="prev" title="Embedding 和语言模型 LanguageModel">
+                Embedding 和语言模型 LanguageModel <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -651,7 +732,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Universal-Language-Model-Fine-tuning-for-Text-Classification"><span class="nav-number">1.</span> <span class="nav-text">Universal Language Model Fine-tuning for Text Classification</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ULMFiT-相关资源"><span class="nav-number">2.</span> <span class="nav-text">ULMFiT 相关资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#【NLP】语言模型和迁移学习"><span class="nav-number">3.</span> <span class="nav-text">【NLP】语言模型和迁移学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#General-domain-LM-pre-train"><span class="nav-number">3.1.</span> <span class="nav-text">General-domain LM pre-train</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Target-task-LM-fine-tuning"><span class="nav-number">3.2.</span> <span class="nav-text">Target task LM fine-tuning</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Discriminative-fine-tuning"><span class="nav-number">3.2.1.</span> <span class="nav-text">Discriminative fine-tuning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Slanted-triangular-learning-rates-STLR"><span class="nav-number">3.2.2.</span> <span class="nav-text">Slanted triangular learning rates (STLR)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Target-task-classifier-fine-tuning"><span class="nav-number">3.3.</span> <span class="nav-text">Target task classifier fine-tuning</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Concat-pooling"><span class="nav-number">3.3.1.</span> <span class="nav-text">Concat pooling</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradual-unfreezing"><span class="nav-number">3.3.2.</span> <span class="nav-text">Gradual unfreezing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BPTT-for-Text-Classification-BPT3C"><span class="nav-number">3.3.3.</span> <span class="nav-text">BPTT for Text Classification (BPT3C)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bidirectional-language-model"><span class="nav-number">3.3.4.</span> <span class="nav-text">Bidirectional language model</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Universal-Language-Model-Fine-tuning-for-Text-Classification"><span class="nav-number">1.</span> <span class="nav-text">Universal Language Model Fine-tuning for Text Classification</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ULMFiT-相关资源"><span class="nav-number">2.</span> <span class="nav-text">ULMFiT 相关资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#【NLP】语言模型和迁移学习"><span class="nav-number">3.</span> <span class="nav-text">【NLP】语言模型和迁移学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#General-domain-LM-pre-train"><span class="nav-number">3.1.</span> <span class="nav-text">General-domain LM pre-train</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Target-task-LM-fine-tuning"><span class="nav-number">3.2.</span> <span class="nav-text">Target task LM fine-tuning</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Discriminative-fine-tuning"><span class="nav-number">3.2.1.</span> <span class="nav-text">Discriminative fine-tuning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Slanted-triangular-learning-rates-STLR"><span class="nav-number">3.2.2.</span> <span class="nav-text">Slanted triangular learning rates (STLR)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Target-task-classifier-fine-tuning"><span class="nav-number">3.3.</span> <span class="nav-text">Target task classifier fine-tuning</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Concat-pooling"><span class="nav-number">3.3.1.</span> <span class="nav-text">Concat pooling</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradual-unfreezing"><span class="nav-number">3.3.2.</span> <span class="nav-text">Gradual unfreezing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BPTT-for-Text-Classification-BPT3C"><span class="nav-number">3.3.3.</span> <span class="nav-text">BPTT for Text Classification (BPT3C)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bidirectional-language-model"><span class="nav-number">3.3.4.</span> <span class="nav-text">Bidirectional language model</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-ULMFiT"><span class="nav-number">4.</span> <span class="nav-text">使用 ULMFiT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Universal-Language-Model-Fine-tuning-for-Text-Classification-1"><span class="nav-number">5.</span> <span class="nav-text">Universal Language Model Fine-tuning for Text Classification</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract"><span class="nav-number">5.1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction"><span class="nav-number">5.2.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Related-work"><span class="nav-number">5.3.</span> <span class="nav-text">Related work</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TRANSFER-LEARNING-IN-CV-计算机视觉中的迁移学习"><span class="nav-number">5.3.1.</span> <span class="nav-text">TRANSFER LEARNING IN CV 计算机视觉中的迁移学习</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hypercolumns-超级列"><span class="nav-number">5.3.2.</span> <span class="nav-text">Hypercolumns 超级列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MULTI-TASK-LEARNING-多任务学习"><span class="nav-number">5.3.3.</span> <span class="nav-text">MULTI-TASK LEARNING 多任务学习</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Fine-tuning-微调"><span class="nav-number">5.3.4.</span> <span class="nav-text">Fine-tuning 微调</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Universal-Language-Model-Fine-tuning"><span class="nav-number">5.4.</span> <span class="nav-text">Universal Language Model Fine-tuning</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#General-domain-LM-pretraining"><span class="nav-number">5.4.1.</span> <span class="nav-text">General-domain LM pretraining</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Target-task-LM-fine-tuning-1"><span class="nav-number">5.4.2.</span> <span class="nav-text">Target task LM fine-tuning</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Target-task-classifier-fine-tuning-1"><span class="nav-number">5.5.</span> <span class="nav-text">Target task classifier fine-tuning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Experiments"><span class="nav-number">5.6.</span> <span class="nav-text">Experiments</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Experimental-setup"><span class="nav-number">5.6.1.</span> <span class="nav-text">Experimental setup</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Results"><span class="nav-number">5.7.</span> <span class="nav-text">Results</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Discussion-and-future-directions"><span class="nav-number">5.8.</span> <span class="nav-text">Discussion and future directions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conclusion"><span class="nav-number">5.9.</span> <span class="nav-text">Conclusion</span></a></li></ol></li></ol></div>
             
 
           </div>
