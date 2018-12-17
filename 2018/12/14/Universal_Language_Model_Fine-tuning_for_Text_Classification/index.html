@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/12/14/Universal_Language_Model_Fine-tuning_for_Text_Classification/a1.png">
 <meta property="og:image" content="http://yoursite.com/2018/12/14/Universal_Language_Model_Fine-tuning_for_Text_Classification/c2.png">
 <meta property="og:image" content="http://yoursite.com/2018/12/14/Universal_Language_Model_Fine-tuning_for_Text_Classification/c3.png">
-<meta property="og:updated_time" content="2018-12-14T04:37:30.699Z">
+<meta property="og:updated_time" content="2018-12-14T04:43:44.324Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Universal Language Model Fine-tuning for Text Classification">
 <meta name="twitter:description" content="摘要：迁移学习为计算机视觉带来了巨大改变，但是现有的NLP技术仍需要针对具体任务改进模型，并且从零开始训练。我们提出了一种有效的迁移学习方法，可以应用到NLP领域的任何一种任务上，同时提出的技术对调整语言模型来说非常关键。我们的方法在六种文本分类任务上比现有的技术都要优秀，除此之外，这种方法仅用100个带有标签的样本进行训练，最终的性能就达到了从零开始、拥有上万个训练数据的模型性能。 Univer">
@@ -513,7 +513,7 @@
 <h3 id="Discussion-and-future-directions"><a href="#Discussion-and-future-directions" class="headerlink" title="Discussion and future directions"></a>Discussion and future directions</h3><p>虽然我们的方法仍然需要一些技巧和手动调整学习率和辍学权重来实现最佳性能，但我们认为它类似于AlexNet Krizhevsky等人。（2012）作为必将的第一步，将导致创新浪潮。我们相信，随着越来越多的研究专注于改善NLP的迁移学习，微调语言模型将变得更加健壮。在这条道路上迈出的重要一步将是仔细消融研究，以了解这里描述的模型和培训程序的每个组成部分的影响。</p>
 <p>鉴于NLP的迁移学习（尤其是微调）未得到充分研究，未来的许多方向都是可能的。一个可能的方向是改进语言模型预训练任务并使其更具可扩展性：对于ImageNet，预测更少的类只会导致性能下降小Huh等。（2016） -专注于预测最频繁的单词可能会保留大部分性能，同时加快培训速度。语言建模还可以通过多任务学习方式Caruana（1993）中的其他任务来增强，或者通过额外的监督来丰富，例如语法敏感的依赖性Linzen等。（2016） 创建一个更通用或更适合某些下游任务的模型。</p>
 <p>另一个方向是将该方法应用于新颖的任务和模型。虽然序列标记任务的扩展很简单，但其他任务（例如蕴涵和问答）使用更复杂的交互，这需要新颖的方式来预训练和微调。</p>
-<p>最后，虽然微调是迁移学习的一个组成部分，但它很少受到关注，即使在简历中（至少在学术界 - 它是商业系统如Clarifai的关键基础）。所有常见基准测试仍然评估我们从头开始训练模型的能力，而不是微调预训练模型。创建微调基准将使我们能够开发更复杂的微调方法，这将使我们能够充分挖掘预训练模型的新潜力。</p>
+<p>最后，虽然微调是迁移学习的一个组成部分，但它很少受到关注，即使在计算机视觉中（至少在学术界 - 它是商业系统如Clarifai的关键基础）。所有常见基准测试仍然评估我们从头开始训练模型的能力，而不是微调预训练模型。创建微调基准将使我们能够开发更复杂的微调方法，这将使我们能够充分挖掘预训练模型的新潜力。</p>
 <h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>我们已经提出了ULMFiT，一种可以应用到任何 NLP 的有效的迁移学习方法。以及一种有效的微调方法，一种有效的微调方法，可以将不同的层调整到不同的程度，以避免灾难性的遗忘和让模型在不同范围的任务中更加鲁棒性的学习。我们的方法明显优于现有的迁移学习技术和六个具有代表性文本分类任务的最新技术。我们希望我们的结果能够促进 NLP 迁移学习的新发展。</p>
 
       
