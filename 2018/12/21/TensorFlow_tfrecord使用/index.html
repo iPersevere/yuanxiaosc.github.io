@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="重要博客    标题 说明 时间     TensorFlow中层API：Datasets+TFRecord的数据导入 对应代码TensorFlow Dataset + TFRecords.ipynb 20180126">
+<meta name="description" content="重要博客    标题 说明 时间     导入数据 TensorFlow Guide 持续更新   TensorFlow中层API：Datasets+TFRecord的数据导入 对应代码TensorFlow Dataset + TFRecords.ipynb 20180126   Tensorflow-tf-estimator lanhong 20181103     tfrecord basic">
 <meta name="keywords" content="TensorFlow,TensorFlow Function Usage">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tensorflow_tfrecord基本使用">
-<meta property="og:url" content="http://yoursite.com/2018/12/20/TensorFlow_tfrecord使用/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/12/21/TensorFlow_tfrecord使用/index.html">
 <meta property="og:site_name" content="望江人工智库">
-<meta property="og:description" content="重要博客    标题 说明 时间     TensorFlow中层API：Datasets+TFRecord的数据导入 对应代码TensorFlow Dataset + TFRecords.ipynb 20180126">
+<meta property="og:description" content="重要博客    标题 说明 时间     导入数据 TensorFlow Guide 持续更新   TensorFlow中层API：Datasets+TFRecord的数据导入 对应代码TensorFlow Dataset + TFRecords.ipynb 20180126   Tensorflow-tf-estimator lanhong 20181103     tfrecord basic">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-20T08:44:42.660Z">
+<meta property="og:updated_time" content="2018-12-21T07:33:02.732Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tensorflow_tfrecord基本使用">
-<meta name="twitter:description" content="重要博客    标题 说明 时间     TensorFlow中层API：Datasets+TFRecord的数据导入 对应代码TensorFlow Dataset + TFRecords.ipynb 20180126">
+<meta name="twitter:description" content="重要博客    标题 说明 时间     导入数据 TensorFlow Guide 持续更新   TensorFlow中层API：Datasets+TFRecord的数据导入 对应代码TensorFlow Dataset + TFRecords.ipynb 20180126   Tensorflow-tf-estimator lanhong 20181103     tfrecord basic">
 
 
 
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/20/TensorFlow_tfrecord使用/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/12/21/TensorFlow_tfrecord使用/"/>
 
 
 
@@ -287,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/20/TensorFlow_tfrecord使用/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/21/TensorFlow_tfrecord使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="望江车神">
@@ -316,8 +316,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-20T09:32:00+08:00">
-                2018-12-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-21T09:32:00+08:00">
+                2018-12-21
               </time>
             
 
@@ -376,7 +376,7 @@
       
 
       
-        <h1 id="重要博客"><a href="#重要博客" class="headerlink" title="重要博客"></a>重要博客</h1><div class="table-container">
+        <h2 id="重要博客"><a href="#重要博客" class="headerlink" title="重要博客"></a>重要博客</h2><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -387,17 +387,62 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="https://www.tensorflow.org/guide/datasets" target="_blank" rel="noopener">导入数据</a></td>
+<td>TensorFlow Guide</td>
+<td>持续更新</td>
+</tr>
+<tr>
 <td><a href="https://zhuanlan.zhihu.com/p/33223782" target="_blank" rel="noopener">TensorFlow中层API：Datasets+TFRecord的数据导入</a></td>
 <td>对应代码<a href="https://github.com/YJango/TFRecord-Dataset-Estimator-API/blob/master/TensorFlow%20Dataset%20%2B%20TFRecords.ipynb" target="_blank" rel="noopener">TensorFlow Dataset + TFRecords.ipynb</a></td>
 <td>20180126</td>
 </tr>
 <tr>
-<td><a href=""></a></td>
-<td></td>
+<td><a href="https://lanhongvp.github.io/2018/11/03/Tensorflow-tf-estimator/" target="_blank" rel="noopener">Tensorflow-tf-estimator</a></td>
+<td>lanhong</td>
+<td>20181103</td>
 </tr>
 </tbody>
 </table>
 </div>
+<h2 id="tfrecord-basic-explanation"><a href="#tfrecord-basic-explanation" class="headerlink" title="tfrecord basic explanation"></a>tfrecord basic explanation</h2><blockquote>
+<p>For example, see the <a href="https://github.com/yuanxiaosc/TensorFlow_iris_estimator" target="_blank" rel="noopener">code</a></p>
+<h3 id="Producte-tfrecord-files"><a href="#Producte-tfrecord-files" class="headerlink" title="Producte tfrecord files"></a>Producte tfrecord files</h3><h4 id="1-Open-TFRecordWriter"><a href="#1-Open-TFRecordWriter" class="headerlink" title="1. Open TFRecordWriter"></a>1. Open TFRecordWriter</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">writer = tf.python_io.TFRecordWriter(tfrecord_store_path)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="2-prepater-to-feature-dict"><a href="#2-prepater-to-feature-dict" class="headerlink" title="2. prepater to feature_dict"></a>2. prepater to feature_dict</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">for index, row in pandas_datafram_data.iterrows():</span><br><span class="line">    dict_row = dict(row)</span><br><span class="line">    feature_dict = &#123;&#125;</span><br><span class="line">    # prepater to feature_dict</span><br><span class="line">    for k,v in dict_row.items():</span><br><span class="line">        if k in [&apos;feature1&apos;, &apos;feature2&apos;,...,&apos;featureN&apos;]:</span><br><span class="line">            feature_dict[k] = tf.train.Feature(float_list=tf.train.FloatList(value=[v]))</span><br><span class="line">        elif k in [&apos;feature1&apos;, &apos;feature2&apos;,...,&apos;featureN&apos;]:</span><br><span class="line">            feature_dict[k] = tf.train.Feature(int64_list=tf.train.Int64List(value=[v])</span><br><span class="line">        else:</span><br><span class="line">            feature_dict[k] = tf.train.Feature(int64_list=tf.train.BytesList(value=[v)])</span><br></pre></td></tr></table></figure>
+<h4 id="3-producte-data-example"><a href="#3-producte-data-example" class="headerlink" title="3. producte data example"></a>3. producte data example</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">example = tf.train.Example(features=tf.train.Features(feature=feature_dict))</span><br></pre></td></tr></table></figure>
+<h4 id="4-serialize-to-string"><a href="#4-serialize-to-string" class="headerlink" title="4. serialize to string"></a>4. serialize to string</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">serialized = example.SerializeToString()</span><br></pre></td></tr></table></figure>
+<h4 id="5-write-a-example-to-tfrecord-file"><a href="#5-write-a-example-to-tfrecord-file" class="headerlink" title="5. write a example to tfrecord file"></a>5. write a example to tfrecord file</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">writer.write(serialized)</span><br></pre></td></tr></table></figure>
+<h4 id="6-Close-TFRecordWriter"><a href="#6-Close-TFRecordWriter" class="headerlink" title="6. Close TFRecordWriter"></a>6. Close TFRecordWriter</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">writer.close()</span><br></pre></td></tr></table></figure>
+<h3 id="Using-tfrecord-files"><a href="#Using-tfrecord-files" class="headerlink" title="Using tfrecord files"></a>Using tfrecord files</h3><h4 id="1-Open-TFRecordDataset"><a href="#1-Open-TFRecordDataset" class="headerlink" title="1. Open TFRecordDataset"></a>1. Open TFRecordDataset</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">filenames = [&apos;tfrecord_file_name1&apos;,&apos;tfrecord_file_name2&apos;]</span><br><span class="line">tf_dataset = tf.data.TFRecordDataset(filenames)</span><br></pre></td></tr></table></figure>
+<h4 id="2-Parse-dataset"><a href="#2-Parse-dataset" class="headerlink" title="2. Parse dataset"></a>2. Parse dataset</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def _parse_function(record):</span><br><span class="line">    features = &#123;&quot;feature1&quot;: tf.FixedLenFeature((), tf.float32, default_value=0.0),</span><br><span class="line">                &quot;feature2&quot;: tf.FixedLenFeature((), tf.int64, default_value=0)&#125;</span><br><span class="line">    parsed_features = tf.parse_single_example(record, features)</span><br><span class="line">    return &#123;&quot;feature1&quot;: parsed_features[&quot;feature1&quot;]&#125;, parsed_features[&quot;Species&quot;]</span><br><span class="line">dataset = tf_dataset.map(_parse_function)</span><br></pre></td></tr></table></figure>
+<h4 id="3-Shuffle-repeat-and-batch-the-examples"><a href="#3-Shuffle-repeat-and-batch-the-examples" class="headerlink" title="3. Shuffle, repeat, and batch the examples"></a>3. Shuffle, repeat, and batch the examples</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf_dataset = dataset.shuffle(1000).repeat().batch(batch_size)</span><br></pre></td></tr></table></figure>
+<h4 id="4-Iterate-dataset"><a href="#4-Iterate-dataset" class="headerlink" title="4. Iterate dataset"></a>4. Iterate dataset</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tf_iterator = tf_dataset.make_one_shot_iterator()</span><br><span class="line">next_element = tf_iterator.get_next()</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    for i in range(show_numbers):</span><br><span class="line">        a_data = sess.run(next_element)</span><br><span class="line">        print(a_data)</span><br></pre></td></tr></table></figure>
+<h2 id="TensorFlow-iris-estimator"><a href="#TensorFlow-iris-estimator" class="headerlink" title="TensorFlow_iris_estimator"></a><a href="https://github.com/yuanxiaosc/TensorFlow_iris_estimator" target="_blank" rel="noopener">TensorFlow_iris_estimator</a></h2><h3 id="Rely-on"><a href="#Rely-on" class="headerlink" title="Rely on"></a>Rely on</h3><ul>
+<li>python 3.6</li>
+<li>TensorFlow 1.12.0</li>
+</ul>
+<h3 id="Usage-method"><a href="#Usage-method" class="headerlink" title="Usage method"></a>Usage method</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python run_iris_estimator.py</span><br></pre></td></tr></table></figure>
+<h3 id="Possible-output"><a href="#Possible-output" class="headerlink" title="Possible output"></a>Possible output</h3><ul>
+<li><p>Producte data files</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">store data to data/iris_training.tfrecord</span><br><span class="line">store data to data/iris_test.tfrecord</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Create model</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">INFO:tensorflow:Using default config.</span><br><span class="line">INFO:tensorflow:Using config: &#123;&apos;_model_dir&apos;: &apos;model/tf_record_iris&apos;, &apos;_tf_random_seed&apos;: None, &apos;_save_summary_steps&apos;: 100, &apos;_save_checkpoints_steps&apos;: None, &apos;_save_checkpoints_secs&apos;: 600, &apos;_session_config&apos;: allow_soft_placement: true</span><br><span class="line">graph_options &#123;</span><br><span class="line">  rewrite_options &#123;</span><br><span class="line">    meta_optimizer_iterations: ONE</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">, &apos;_keep_checkpoint_max&apos;: 5, &apos;_keep_checkpoint_every_n_hours&apos;: 10000, &apos;_log_step_count_steps&apos;: 100, &apos;_train_distribute&apos;: None, &apos;_device_fn&apos;: None, &apos;_protocol&apos;: None, &apos;_eval_distribute&apos;: None, &apos;_experimental_distribute&apos;: None, &apos;_service&apos;: None, &apos;_cluster_spec&apos;: &lt;tensorflow.python.training.server_lib.ClusterSpec object at 0x7f2b56401278&gt;, &apos;_task_type&apos;: &apos;worker&apos;, &apos;_task_id&apos;: 0, &apos;_global_id_in_cluster&apos;: 0, &apos;_master&apos;: &apos;&apos;, &apos;_evaluation_master&apos;: &apos;&apos;, &apos;_is_chief&apos;: True, &apos;_num_ps_replicas&apos;: 0, &apos;_num_worker_replicas&apos;: 1&#125;</span><br><span class="line">INFO:tensorflow:Calling model_fn.</span><br><span class="line">INFO:tensorflow:Done calling model_fn.</span><br><span class="line">INFO:tensorflow:Create CheckpointSaverHook.</span><br><span class="line">INFO:tensorflow:Graph was finalized.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Training model</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">INFO:tensorflow:Running local_init_op.</span><br><span class="line">INFO:tensorflow:Done running local_init_op.</span><br><span class="line">INFO:tensorflow:Saving checkpoints for 0 into model/tf_record_iris/model.ckpt.</span><br><span class="line">INFO:tensorflow:loss = 1.9349309, step = 1</span><br><span class="line">INFO:tensorflow:global_step/sec: 84.0476</span><br><span class="line">INFO:tensorflow:loss = 0.13681199, step = 101 (1.195 sec)</span><br><span class="line">INFO:tensorflow:global_step/sec: 73.8782</span><br><span class="line">INFO:tensorflow:loss = 0.06917934, step = 201 (1.349 sec)</span><br><span class="line">INFO:tensorflow:global_step/sec: 80.3087</span><br><span class="line">INFO:tensorflow:loss = 0.07953491, step = 301 (1.246 sec)</span><br><span class="line">INFO:tensorflow:global_step/sec: 82.9652</span><br><span class="line">INFO:tensorflow:loss = 0.08498424, step = 401 (1.205 sec)</span><br><span class="line">INFO:tensorflow:global_step/sec: 82.1202</span><br><span class="line">INFO:tensorflow:loss = 0.06799353, step = 501 (1.218 sec)</span><br><span class="line">INFO:tensorflow:global_step/sec: 90.6455</span><br><span class="line">INFO:tensorflow:loss = 0.064572886, step = 601 (1.103 sec)</span><br><span class="line">INFO:tensorflow:global_step/sec: 80.6642</span><br><span class="line">INFO:tensorflow:loss = 0.046872936, step = 701 (1.239 sec)</span><br><span class="line">INFO:tensorflow:global_step/sec: 88.4239</span><br><span class="line">INFO:tensorflow:loss = 0.041766435, step = 801 (1.131 sec)</span><br><span class="line">INFO:tensorflow:global_step/sec: 82.1831</span><br><span class="line">INFO:tensorflow:loss = 0.055104688, step = 901 (1.217 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Storage model</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INFO:tensorflow:Saving checkpoints for 1000 into model/tf_record_iris/model.ckpt.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Evaluation model</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">INFO:tensorflow:Restoring parameters from model/tf_record_iris/model.ckpt-1000</span><br><span class="line">INFO:tensorflow:Running local_init_op.</span><br><span class="line">INFO:tensorflow:Done running local_init_op.</span><br><span class="line">INFO:tensorflow:Finished evaluation at 2018-12-20-12:49:27</span><br><span class="line">INFO:tensorflow:Saving dict for global step 1000: accuracy = 0.96666664, global_step = 1000, loss = 0.06140284</span><br><span class="line">INFO:tensorflow:Saving &apos;checkpoint_path&apos; summary for global step 1000: model/tf_record_iris/model.ckpt-1000</span><br><span class="line"></span><br><span class="line">Test set accuracy: 0.967</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Model prediction</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">INFO:tensorflow:Restoring parameters from model/tf_record_iris/model.ckpt-1000</span><br><span class="line">INFO:tensorflow:Running local_init_op.</span><br><span class="line">INFO:tensorflow:Done running local_init_op.</span><br><span class="line"></span><br><span class="line">Prediction is &quot;Setosa&quot; (99.8%), expected &quot;Setosa&quot;</span><br><span class="line"></span><br><span class="line">Prediction is &quot;Versicolor&quot; (99.9%), expected &quot;Versicolor&quot;</span><br><span class="line"></span><br><span class="line">Prediction is &quot;Virginica&quot; (98.1%), expected &quot;Virginica&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Main-References"><a href="#Main-References" class="headerlink" title="Main References"></a>Main References</h3><p><a href="https://github.com/tensorflow/models/blob/master/samples/core/get_started/iris_data.py" target="_blank" rel="noopener">iris_data.py</a><br><a href="https://github.com/tensorflow/models/blob/master/samples/core/get_started/custom_estimator.py" target="_blank" rel="noopener">custom_estimator.py</a></p>
 
       
     </div>
@@ -613,7 +658,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#重要博客"><span class="nav-number">1.</span> <span class="nav-text">重要博客</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重要博客"><span class="nav-number">1.</span> <span class="nav-text">重要博客</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tfrecord-basic-explanation"><span class="nav-number">2.</span> <span class="nav-text">tfrecord basic explanation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Producte-tfrecord-files"><span class="nav-number">2.1.</span> <span class="nav-text">Producte tfrecord files</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Open-TFRecordWriter"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. Open TFRecordWriter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-prepater-to-feature-dict"><span class="nav-number">2.1.2.</span> <span class="nav-text">2. prepater to feature_dict</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-producte-data-example"><span class="nav-number">2.1.3.</span> <span class="nav-text">3. producte data example</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-serialize-to-string"><span class="nav-number">2.1.4.</span> <span class="nav-text">4. serialize to string</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-write-a-example-to-tfrecord-file"><span class="nav-number">2.1.5.</span> <span class="nav-text">5. write a example to tfrecord file</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-Close-TFRecordWriter"><span class="nav-number">2.1.6.</span> <span class="nav-text">6. Close TFRecordWriter</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-tfrecord-files"><span class="nav-number">2.2.</span> <span class="nav-text">Using tfrecord files</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Open-TFRecordDataset"><span class="nav-number">2.2.1.</span> <span class="nav-text">1. Open TFRecordDataset</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Parse-dataset"><span class="nav-number">2.2.2.</span> <span class="nav-text">2. Parse dataset</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Shuffle-repeat-and-batch-the-examples"><span class="nav-number">2.2.3.</span> <span class="nav-text">3. Shuffle, repeat, and batch the examples</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Iterate-dataset"><span class="nav-number">2.2.4.</span> <span class="nav-text">4. Iterate dataset</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TensorFlow-iris-estimator"><span class="nav-number">3.</span> <span class="nav-text">TensorFlow_iris_estimator</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Rely-on"><span class="nav-number">3.1.</span> <span class="nav-text">Rely on</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Usage-method"><span class="nav-number">3.2.</span> <span class="nav-text">Usage method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Possible-output"><span class="nav-number">3.3.</span> <span class="nav-text">Possible output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Main-References"><span class="nav-number">3.4.</span> <span class="nav-text">Main References</span></a></li></ol></li></ol></div>
             
 
           </div>
