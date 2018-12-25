@@ -101,7 +101,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/12/25/Bidirectional_Encoder_Representations_Transformers翻译/table_6.png">
 <meta property="og:image" content="http://yoursite.com/2018/12/25/Bidirectional_Encoder_Representations_Transformers翻译/figure_4.png">
 <meta property="og:image" content="http://yoursite.com/2018/12/25/Bidirectional_Encoder_Representations_Transformers翻译/table_7.png">
-<meta property="og:updated_time" content="2018-12-25T11:21:08.244Z">
+<meta property="og:updated_time" content="2018-12-25T11:53:01.318Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BERT Pre-training of Deep Bidirectional Transformers for Language Understanding 翻译">
 <meta name="twitter:description" content="BERT：预训练的深度双向 Transformer 语言模型Jacob Devlin；Ming-Wei Chang；Kenton Lee；Kristina ToutanovaGoogle AI Language{jacobdevlin,mingweichang,kentonl,kristout}@google.com 摘要我们提出了一种新的称为 BERT 的语言表示模型，BERT 代表来自 Tra">
@@ -575,12 +575,280 @@
 <h2 id="6-结论"><a href="#6-结论" class="headerlink" title="6. 结论"></a>6. 结论</h2><p>最近，由于使用语言模型进行迁移学习而取得的实验提升表明，丰富的、无监督的预训练是许多语言理解系统不可或缺的组成部分。特别是，这些结果使得即使是低资源（少量标签的数据集）的任务也能从非常深的单向结构模型中受益。我们的主要贡献是将这些发现进一步推广到深层的双向结构，使同样的预训练模型能够成功地广泛地处理 NLP 任务。</p>
 <p>虽然这些实证结果很有说服力，在某些情况下甚至超过了人类的表现，但未来重要的工作是研究 BERT 可能捕捉到的或不捕捉到的语言现象。</p>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>所有参考文献按论文各小节中引用顺序排列，多次引用会多次出现在下面的列表中。</p>
-<p><strong>Abstract 摘要中的参考文献</strong><br>|BERT 文中简写|原始标论文标题|其它|<br>|-|-|-|<br>|Peters et al., 2018|<a href="https://arxiv.org/abs/1802.05365v2" target="_blank" rel="noopener">Deep contextualized word representations</a>|ELMo|<br>|Radford et al., 2018|<a href="https://blog.openai.com/language-unsupervised/" target="_blank" rel="noopener">Improving Language Understanding with Unsupervised Learning</a>|OpenAI GPT|</p>
-<p><strong>1. Introduction 介绍中的参考文献</strong><br>|BERT 文中简写|原始标论文标题|其它|<br>|-|-|-|<br>|Peters et al., 2018|<a href="https://arxiv.org/abs/1802.05365v2" target="_blank" rel="noopener">Deep contextualized word representations</a>|ELMo|<br>|Radford et al., 2018|<a href="https://blog.openai.com/language-unsupervised/" target="_blank" rel="noopener">Improving Language Understanding with Unsupervised Learning</a>|OpenAI GPT|<br>|Dai and Le, 2015|<a href="http://papers.nips.cc/paper/5949-semi-supervised-sequence-learning" target="_blank" rel="noopener">Semi-supervised sequence learning. In Advances in neural information processing systems, pages 3079–3087</a>|AndrewMDai and Quoc V Le. 2015|<br>|Howard and Ruder, 2018|<a href="https://arxiv.org/abs/1801.06146v5" target="_blank" rel="noopener">Universal Language Model Fine-tuning for Text Classification</a>|<strong>ULMFiT</strong>；Jeremy Howard and Sebastian Ruder.|<br>|Bow-man et al., 2015|<a href="https://arxiv.org/abs/1508.05326v1" target="_blank" rel="noopener">A large annotated corpus for learning natural language inference</a>|Samuel R. Bowman, Gabor Angeli, Christopher Potts, and Christopher D. Manning.|<br>|Williams et al., 2018|<a href="https://arxiv.org/abs/1704.05426v4" target="_blank" rel="noopener">A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference</a>|Adina Williams, Nikita Nangia, and Samuel R Bowman.|<br>|Dolan and Brockett, 2005|<a href="https://www.researchgate.net/publication/228613673_Automatically_constructing_a_corpus_of_sentential_paraphrases" target="_blank" rel="noopener">Automatically constructing a corpus of sentential paraphrases</a>|William B Dolan and Chris Brockett. 2005.|<br>|Tjong Kim Sang and De Meulder, 2003|<a href="http://www.oalib.com/paper/4018980" target="_blank" rel="noopener">Introduction to the CoNLL-2003 Shared Task: Language-Independent Named Entity Recognition</a>|Erik F Tjong Kim Sang and Fien De Meulder. 2003.|<br>|Rajpurkar et al., 2016|<a href="https://arxiv.org/abs/1606.05250v3" target="_blank" rel="noopener">SQuAD: 100,000+ Questions for Machine Comprehension of Text</a>|SQuAD|<br>|Taylor, 1953|<a href="https://www.researchgate.net/publication/232539913_Cloze_Procedure_A_New_Tool_For_Measuring_Readability" target="_blank" rel="noopener">“Cloze Procedure”: A New Tool For Measuring Readability</a>|Wilson L Taylor. 1953.|</p>
-<p><strong>2. Related Work 相关工作中的参考文献</strong><br>|BERT 文中简写|原始标论文标题|其它|<br>|-|-|-|<br>|Brown et al., 1992|<a href="https://dl.acm.org/citation.cfm?id=176316" target="_blank" rel="noopener">Class-based n-gram models of natural language</a>|Peter F Brown, Peter V Desouza, Robert L Mercer, Vincent J Della Pietra, and Jenifer C Lai. 1992.|<br>|Ando and Zhang, 2005|<a href="http://academictorrents.com/details/f4470eb8bc3a6f697df61bde319fd56e3a9d6733" target="_blank" rel="noopener">A Framework for Learning Predictive Structures from Multiple Tasks and Unlabeled Data</a>|Rie Kubota Ando and Tong Zhang. 2005.|<br>|Blitzer et al., 2006|<a href="https://dl.acm.org/citation.cfm?id=1610094" target="_blank" rel="noopener">Domain adaptation with structural correspondence learning</a>|John Blitzer, Ryan McDonald, and Fernando Pereira.<br>2006.|<br>|Collobert and Weston, 2008|<a href="https://www.researchgate.net/publication/200044432_A_Unified_Architecture_for_Natural_Language_Processing" target="_blank" rel="noopener">A Unified Architecture for Natural Language Processing</a>|Ronan Collobert and Jason Weston. 2008.|<br>|Mikolov et al., 2013|<a href="https://arxiv.org/abs/1310.4546v1" target="_blank" rel="noopener">Distributed Representations of Words and Phrases and their Compositionality</a>|CBOW Model；Skip-gram Model|<br>|Pennington et al., 2014|<a href="http://www.aclweb.org/anthology/D14-1162" target="_blank" rel="noopener">GloVe: Global Vectors for Word Representation</a>|GloVe|<br>|Turian et al., 2010|<a href="https://www.researchgate.net/publication/220873681_Word_Representations_A_Simple_and_General_Method_for_Semi-Supervised_Learning" target="_blank" rel="noopener">Word Representations: A Simple and General Method for Semi-Supervised Learning</a>|Joseph Turian, Lev Ratinov, and Yoshua Bengio. 2010.|<br>|Kiros et al., 2015|<a href="https://arxiv.org/abs/1506.06726v1" target="_blank" rel="noopener">Skip-Thought Vectors</a>|Skip-Thought Vectors|<br>|Logeswaran and Lee, 2018|<a href="https://arxiv.org/abs/1803.02893v1" target="_blank" rel="noopener">An efficient framework for learning sentence representations</a>|Lajanugen Logeswaran and Honglak Lee. 2018.|<br>|Le and Mikolov, 2014|<a href="https://arxiv.org/abs/1405.4053v2" target="_blank" rel="noopener">Distributed Representations of Sentences and Documents</a>|Quoc Le and Tomas Mikolov. 2014.|<br>|Peters et al., 2017|<a href="https://arxiv.org/abs/1705.00108v1" target="_blank" rel="noopener">Semi-supervised sequence tagging with bidirectional language models</a>|Matthew Peters, Waleed Ammar, Chandra Bhagavatula, and Russell Power. 2017.|<br>|Peters et al., 2018|<a href="https://arxiv.org/abs/1802.05365v2" target="_blank" rel="noopener">Deep contextualized word representations</a>|ELMo|<br>|Rajpurkar et al., 2016|<a href="https://arxiv.org/abs/1606.05250v3" target="_blank" rel="noopener">SQuAD: 100,000+ Questions for Machine Comprehension of Text</a>|SQuAD|<br>|Socher et al., 2013|<a href="https://nlp.stanford.edu/sentiment/" target="_blank" rel="noopener">Deeply Moving: Deep Learning for Sentiment Analysis</a>|SST-2|<br>|Tjong Kim Sang and De Meulder, 2003|<a href="http://www.oalib.com/paper/4018980" target="_blank" rel="noopener">Introduction to the CoNLL-2003 Shared Task: Language-Independent Named Entity Recognition</a>|Erik F Tjong Kim Sang and Fien De Meulder. 2003.|<br>|Dai and Le, 2015|<a href="http://papers.nips.cc/paper/5949-semi-supervised-sequence-learning" target="_blank" rel="noopener">Semi-supervised sequence learning. In Advances in neural information processing systems, pages 3079–3087</a>|AndrewMDai and Quoc V Le. 2015|<br>|Howard and Ruder, 2018|<a href="https://arxiv.org/abs/1801.06146v5" target="_blank" rel="noopener">Universal Language Model Fine-tuning for Text Classification</a>|<strong>ULMFiT</strong>；Jeremy Howard and Sebastian Ruder.|<br>|Radford et al., 2018|<a href="https://blog.openai.com/language-unsupervised/" target="_blank" rel="noopener">Improving Language Understanding with Unsupervised Learning</a>|OpenAI GPT|<br>|Wang et al.(2018)|<a href="https://arxiv.org/abs/1804.07461v2" target="_blank" rel="noopener">GLUE: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding</a>|GLUE|<br>|Con-neau et al., 2017|<a href="https://www.aclweb.org/anthology/D17-1070" target="_blank" rel="noopener">Supervised Learning of Universal Sentence Representations from Natural Language Inference Data</a>|Alexis Conneau, Douwe Kiela, Holger Schwenk, Loic Barrault, and Antoine Bordes. 2017.|<br>|McCann et al., 2017|<a href="https://einstein.ai/static/images/pages/research/cove/McCann2017LearnedIT.pdf" target="_blank" rel="noopener">Learned in Translation: Contextualized Word Vectors</a>|Bryan McCann, James Bradbury, Caiming Xiong, and Richard Socher. 2017.|<br>|Deng et al.|<a href="https://ieeexplore.ieee.org/document/5206848" target="_blank" rel="noopener">ImageNet: A large-scale hierarchical image database</a>|J. Deng,W. Dong, R. Socher, L.-J. Li, K. Li, and L. FeiFei. 2009.|<br>|Yosinski et al., 2014|<a href="https://arxiv.org/abs/1411.1792v1" target="_blank" rel="noopener">How transferable are features in deep neural networks?</a>|Jason Yosinski, Jeff Clune, Yoshua Bengio, and Hod Lipson. 2014.|</p>
-<p><strong>3. BERT 中的参考文献</strong><br>|BERT 文中简写|原始标论文标题|其它|<br>|-|-|-|<br>|Vaswani et al. (2017)|<a href="https://arxiv.org/abs/1706.03762v5" target="_blank" rel="noopener">Attention Is All You Need</a>|Transformer|<br>|Wu et al., 2016|<a href="https://arxiv.org/abs/1609.08144v2" target="_blank" rel="noopener">Google’s Neural Machine Translation System: Bridging the Gap between Human and Machine Translation</a>|WordPiece|<br>|Taylor, 1953|<a href="https://www.researchgate.net/publication/232539913_Cloze_Procedure_A_New_Tool_For_Measuring_Readability" target="_blank" rel="noopener">“Cloze Procedure”: A New Tool For Measuring Readability</a>|Wilson L Taylor. 1953.|<br>|Vincent et al., 2008|<a href="https://www.researchgate.net/publication/221346269_Extracting_and_composing_robust_features_with_denoising_autoencoders" target="_blank" rel="noopener">Extracting and composing robust features with denoising autoencoders</a>|denoising auto-encoders|<br>|Zhu et al., 2015|<a href="https://arxiv.org/abs/1506.06724v1" target="_blank" rel="noopener">Aligning Books and Movies: Towards Story-like Visual Explanations by Watching Movies and Reading Books</a>|BooksCorpus (800M words)|<br>|Chelba et al., 2013|<a href="https://arxiv.org/abs/1312.3005v3" target="_blank" rel="noopener">One Billion Word Benchmark for Measuring Progress in Statistical Language Modeling</a>|Billion Word Benchmark corpus|<br>|Hendrycks and Gimpel, 2016|<a href="https://arxiv.org/abs/1606.08415v3" target="_blank" rel="noopener">Gaussian Error Linear Units (GELUs)</a>|GELUs|</p>
-<p><strong>4. Experiments 实验中的参考文献</strong><br>|BERT 文中简写|原始标论文标题|其它|<br>|-|-|-|<br>|Wang et al.(2018)|<a href="https://arxiv.org/abs/1804.07461v2" target="_blank" rel="noopener">GLUE: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding</a>|GLUE|<br>|Williams et al., 2018|<a href="https://arxiv.org/abs/1704.05426v4" target="_blank" rel="noopener">A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference</a>|MNLI|<br>|Chen et al., 2018|<a href="https://data.quora.com/First-Quora-Dataset-Release-Question-Pairs" target="_blank" rel="noopener">First Quora Dataset Release: Question Pairs</a>|QQP|<br>|Rajpurkar et al., 2016|<a href="https://arxiv.org/abs/1606.05250v3" target="_blank" rel="noopener">SQuAD: 100,000+ Questions for Machine Comprehension of Text</a>|QNLI|<br>|Socher et al., 2013|<a href="https://nlp.stanford.edu/sentiment/" target="_blank" rel="noopener">Deeply Moving: Deep Learning for Sentiment Analysis</a>|SST-2|<br>|Warstadt et al., 2018|<a href="https://nyu-mll.github.io/CoLA/" target="_blank" rel="noopener">The Corpus of Linguistic Acceptability</a>|CoLA|<br>|Cer et al., 2017|<a href="https://arxiv.org/abs/1708.00055v1" target="_blank" rel="noopener">SemEval-2017 Task 1: Semantic Textual Similarity - Multilingual and Cross-lingual Focused Evaluation</a>|STS-B|<br>|Dolan and Brockett, 2005|<a href="https://www.researchgate.net/publication/228613673_Automatically_constructing_a_corpus_of_sentential_paraphrases" target="_blank" rel="noopener">Automatically constructing a corpus of sentential paraphrases</a>|MRPC|<br>|Bentivogli et al., 2009|<a href="https://www.mendeley.com/catalogue/fifth-pascal-recognizing-textual-entailment-challenge/" target="_blank" rel="noopener">The fifth pascal recognizing textual entailment challenge</a>|RTE|<br>|Levesque et al., 2011|<a href="https://cs.nyu.edu/faculty/davise/papers/WinogradSchemas/WS.html" target="_blank" rel="noopener">The winograd schema challenge. In Aaai spring symposium: Logical formalizations of commonsense reasoning, volume 46, page 47.</a>|WNLI|<br>|Rajpurkar et al., 2016|<a href="https://arxiv.org/abs/1606.05250v3" target="_blank" rel="noopener">SQuAD: 100,000+ Questions for Machine Comprehension of Text</a>|SQuAD|<br>|Joshi et al., 2017|<a href="https://arxiv.org/abs/1705.03551v2" target="_blank" rel="noopener">TriviaQA: A Large Scale Distantly Supervised Challenge Dataset for Reading Comprehension</a>|TriviaQA|<br>|Clark et al., 2018|<a href="https://arxiv.org/abs/1809.08370v1" target="_blank" rel="noopener">Semi-Supervised Sequence Modeling with Cross-View Training</a>||<br>|Zellers et al., 2018|<a href="https://arxiv.org/abs/1808.05326v1" target="_blank" rel="noopener">SWAG: A Large-Scale Adversarial Dataset for Grounded Commonsense Inference</a>|SWAG|</p>
-<p><strong>5. Ablation Studies 消融研究中的参考文献</strong><br>|BERT 文中简写|原始标论文标题|其它|<br>|-|-|-|<br>|Vaswani et al. (2017)|<a href="https://arxiv.org/abs/1706.03762v5" target="_blank" rel="noopener">Attention Is All You Need</a>|Transformer|<br>|Al-Rfou et al., 2018|<a href="https://arxiv.org/abs/1808.04444v1" target="_blank" rel="noopener">Character-Level Language Modeling with Deeper Self-Attention</a>||</p>
+<p><strong>Abstract 摘要中的参考文献</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>BERT 文中简写</th>
+<th>原始标论文标题</th>
+<th>其它</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Peters et al., 2018</td>
+<td><a href="https://arxiv.org/abs/1802.05365v2" target="_blank" rel="noopener">Deep contextualized word representations</a></td>
+<td>ELMo</td>
+</tr>
+<tr>
+<td>Radford et al., 2018</td>
+<td><a href="https://blog.openai.com/language-unsupervised/" target="_blank" rel="noopener">Improving Language Understanding with Unsupervised Learning</a></td>
+<td>OpenAI GPT</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>1. Introduction 介绍中的参考文献</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>BERT 文中简写</th>
+<th>原始标论文标题</th>
+<th>其它</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Peters et al., 2018</td>
+<td><a href="https://arxiv.org/abs/1802.05365v2" target="_blank" rel="noopener">Deep contextualized word representations</a></td>
+<td>ELMo</td>
+</tr>
+<tr>
+<td>Radford et al., 2018</td>
+<td><a href="https://blog.openai.com/language-unsupervised/" target="_blank" rel="noopener">Improving Language Understanding with Unsupervised Learning</a></td>
+<td>OpenAI GPT</td>
+</tr>
+<tr>
+<td>Dai and Le, 2015</td>
+<td><a href="http://papers.nips.cc/paper/5949-semi-supervised-sequence-learning" target="_blank" rel="noopener">Semi-supervised sequence learning. In Advances in neural information processing systems, pages 3079–3087</a></td>
+<td>AndrewMDai and Quoc V Le. 2015</td>
+</tr>
+<tr>
+<td>Howard and Ruder, 2018</td>
+<td><a href="https://arxiv.org/abs/1801.06146v5" target="_blank" rel="noopener">Universal Language Model Fine-tuning for Text Classification</a></td>
+<td><strong>ULMFiT</strong>；Jeremy Howard and Sebastian Ruder.</td>
+</tr>
+<tr>
+<td>Bow-man et al., 2015</td>
+<td><a href="https://arxiv.org/abs/1508.05326v1" target="_blank" rel="noopener">A large annotated corpus for learning natural language inference</a></td>
+<td>Samuel R. Bowman, Gabor Angeli, Christopher Potts, and Christopher D. Manning.</td>
+</tr>
+<tr>
+<td>Williams et al., 2018</td>
+<td><a href="https://arxiv.org/abs/1704.05426v4" target="_blank" rel="noopener">A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference</a></td>
+<td>Adina Williams, Nikita Nangia, and Samuel R Bowman.</td>
+</tr>
+<tr>
+<td>Dolan and Brockett, 2005</td>
+<td><a href="https://www.researchgate.net/publication/228613673_Automatically_constructing_a_corpus_of_sentential_paraphrases" target="_blank" rel="noopener">Automatically constructing a corpus of sentential paraphrases</a></td>
+<td>William B Dolan and Chris Brockett. 2005.</td>
+</tr>
+<tr>
+<td>Tjong Kim Sang and De Meulder, 2003</td>
+<td><a href="http://www.oalib.com/paper/4018980" target="_blank" rel="noopener">Introduction to the CoNLL-2003 Shared Task: Language-Independent Named Entity Recognition</a></td>
+<td>Erik F Tjong Kim Sang and Fien De Meulder. 2003.</td>
+</tr>
+<tr>
+<td>Rajpurkar et al., 2016</td>
+<td><a href="https://arxiv.org/abs/1606.05250v3" target="_blank" rel="noopener">SQuAD: 100,000+ Questions for Machine Comprehension of Text</a></td>
+<td>SQuAD</td>
+</tr>
+<tr>
+<td>Taylor, 1953</td>
+<td><a href="https://www.researchgate.net/publication/232539913_Cloze_Procedure_A_New_Tool_For_Measuring_Readability" target="_blank" rel="noopener">“Cloze Procedure”: A New Tool For Measuring Readability</a></td>
+<td>Wilson L Taylor. 1953.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>2. Related Work 相关工作中的参考文献</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>BERT 文中简写</th>
+<th>原始标论文标题</th>
+<th>其它</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Brown et al., 1992</td>
+<td><a href="https://dl.acm.org/citation.cfm?id=176316" target="_blank" rel="noopener">Class-based n-gram models of natural language</a></td>
+<td>Peter F Brown, Peter V Desouza, Robert L Mercer, Vincent J Della Pietra, and Jenifer C Lai. 1992.</td>
+</tr>
+<tr>
+<td>Ando and Zhang, 2005</td>
+<td><a href="http://academictorrents.com/details/f4470eb8bc3a6f697df61bde319fd56e3a9d6733" target="_blank" rel="noopener">A Framework for Learning Predictive Structures from Multiple Tasks and Unlabeled Data</a></td>
+<td>Rie Kubota Ando and Tong Zhang. 2005.</td>
+</tr>
+<tr>
+<td>Blitzer et al., 2006</td>
+<td><a href="https://dl.acm.org/citation.cfm?id=1610094" target="_blank" rel="noopener">Domain adaptation with structural correspondence learning</a></td>
+<td>John Blitzer, Ryan McDonald, and Fernando Pereira.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>2006.|<br>|Collobert and Weston, 2008|<a href="https://www.researchgate.net/publication/200044432_A_Unified_Architecture_for_Natural_Language_Processing" target="_blank" rel="noopener">A Unified Architecture for Natural Language Processing</a>|Ronan Collobert and Jason Weston. 2008.|<br>|Mikolov et al., 2013|<a href="https://arxiv.org/abs/1310.4546v1" target="_blank" rel="noopener">Distributed Representations of Words and Phrases and their Compositionality</a>|CBOW Model；Skip-gram Model|<br>|Pennington et al., 2014|<a href="http://www.aclweb.org/anthology/D14-1162" target="_blank" rel="noopener">GloVe: Global Vectors for Word Representation</a>|GloVe|<br>|Turian et al., 2010|<a href="https://www.researchgate.net/publication/220873681_Word_Representations_A_Simple_and_General_Method_for_Semi-Supervised_Learning" target="_blank" rel="noopener">Word Representations: A Simple and General Method for Semi-Supervised Learning</a>|Joseph Turian, Lev Ratinov, and Yoshua Bengio. 2010.|<br>|Kiros et al., 2015|<a href="https://arxiv.org/abs/1506.06726v1" target="_blank" rel="noopener">Skip-Thought Vectors</a>|Skip-Thought Vectors|<br>|Logeswaran and Lee, 2018|<a href="https://arxiv.org/abs/1803.02893v1" target="_blank" rel="noopener">An efficient framework for learning sentence representations</a>|Lajanugen Logeswaran and Honglak Lee. 2018.|<br>|Le and Mikolov, 2014|<a href="https://arxiv.org/abs/1405.4053v2" target="_blank" rel="noopener">Distributed Representations of Sentences and Documents</a>|Quoc Le and Tomas Mikolov. 2014.|<br>|Peters et al., 2017|<a href="https://arxiv.org/abs/1705.00108v1" target="_blank" rel="noopener">Semi-supervised sequence tagging with bidirectional language models</a>|Matthew Peters, Waleed Ammar, Chandra Bhagavatula, and Russell Power. 2017.|<br>|Peters et al., 2018|<a href="https://arxiv.org/abs/1802.05365v2" target="_blank" rel="noopener">Deep contextualized word representations</a>|ELMo|<br>|Rajpurkar et al., 2016|<a href="https://arxiv.org/abs/1606.05250v3" target="_blank" rel="noopener">SQuAD: 100,000+ Questions for Machine Comprehension of Text</a>|SQuAD|<br>|Socher et al., 2013|<a href="https://nlp.stanford.edu/sentiment/" target="_blank" rel="noopener">Deeply Moving: Deep Learning for Sentiment Analysis</a>|SST-2|<br>|Tjong Kim Sang and De Meulder, 2003|<a href="http://www.oalib.com/paper/4018980" target="_blank" rel="noopener">Introduction to the CoNLL-2003 Shared Task: Language-Independent Named Entity Recognition</a>|Erik F Tjong Kim Sang and Fien De Meulder. 2003.|<br>|Dai and Le, 2015|<a href="http://papers.nips.cc/paper/5949-semi-supervised-sequence-learning" target="_blank" rel="noopener">Semi-supervised sequence learning. In Advances in neural information processing systems, pages 3079–3087</a>|AndrewMDai and Quoc V Le. 2015|<br>|Howard and Ruder, 2018|<a href="https://arxiv.org/abs/1801.06146v5" target="_blank" rel="noopener">Universal Language Model Fine-tuning for Text Classification</a>|<strong>ULMFiT</strong>；Jeremy Howard and Sebastian Ruder.|<br>|Radford et al., 2018|<a href="https://blog.openai.com/language-unsupervised/" target="_blank" rel="noopener">Improving Language Understanding with Unsupervised Learning</a>|OpenAI GPT|<br>|Wang et al.(2018)|<a href="https://arxiv.org/abs/1804.07461v2" target="_blank" rel="noopener">GLUE: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding</a>|GLUE|<br>|Con-neau et al., 2017|<a href="https://www.aclweb.org/anthology/D17-1070" target="_blank" rel="noopener">Supervised Learning of Universal Sentence Representations from Natural Language Inference Data</a>|Alexis Conneau, Douwe Kiela, Holger Schwenk, Loic Barrault, and Antoine Bordes. 2017.|<br>|McCann et al., 2017|<a href="https://einstein.ai/static/images/pages/research/cove/McCann2017LearnedIT.pdf" target="_blank" rel="noopener">Learned in Translation: Contextualized Word Vectors</a>|Bryan McCann, James Bradbury, Caiming Xiong, and Richard Socher. 2017.|<br>|Deng et al.|<a href="https://ieeexplore.ieee.org/document/5206848" target="_blank" rel="noopener">ImageNet: A large-scale hierarchical image database</a>|J. Deng,W. Dong, R. Socher, L.-J. Li, K. Li, and L. FeiFei. 2009.|<br>|Yosinski et al., 2014|<a href="https://arxiv.org/abs/1411.1792v1" target="_blank" rel="noopener">How transferable are features in deep neural networks?</a>|Jason Yosinski, Jeff Clune, Yoshua Bengio, and Hod Lipson. 2014.|</p>
+<p><strong>3. BERT 中的参考文献</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>BERT 文中简写</th>
+<th>原始标论文标题</th>
+<th>其它</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vaswani et al. (2017)</td>
+<td><a href="https://arxiv.org/abs/1706.03762v5" target="_blank" rel="noopener">Attention Is All You Need</a></td>
+<td>Transformer</td>
+</tr>
+<tr>
+<td>Wu et al., 2016</td>
+<td><a href="https://arxiv.org/abs/1609.08144v2" target="_blank" rel="noopener">Google’s Neural Machine Translation System: Bridging the Gap between Human and Machine Translation</a></td>
+<td>WordPiece</td>
+</tr>
+<tr>
+<td>Taylor, 1953</td>
+<td><a href="https://www.researchgate.net/publication/232539913_Cloze_Procedure_A_New_Tool_For_Measuring_Readability" target="_blank" rel="noopener">“Cloze Procedure”: A New Tool For Measuring Readability</a></td>
+<td>Wilson L Taylor. 1953.</td>
+</tr>
+<tr>
+<td>Vincent et al., 2008</td>
+<td><a href="https://www.researchgate.net/publication/221346269_Extracting_and_composing_robust_features_with_denoising_autoencoders" target="_blank" rel="noopener">Extracting and composing robust features with denoising autoencoders</a></td>
+<td>denoising auto-encoders</td>
+</tr>
+<tr>
+<td>Zhu et al., 2015</td>
+<td><a href="https://arxiv.org/abs/1506.06724v1" target="_blank" rel="noopener">Aligning Books and Movies: Towards Story-like Visual Explanations by Watching Movies and Reading Books</a></td>
+<td>BooksCorpus (800M words)</td>
+</tr>
+<tr>
+<td>Chelba et al., 2013</td>
+<td><a href="https://arxiv.org/abs/1312.3005v3" target="_blank" rel="noopener">One Billion Word Benchmark for Measuring Progress in Statistical Language Modeling</a></td>
+<td>Billion Word Benchmark corpus</td>
+</tr>
+<tr>
+<td>Hendrycks and Gimpel, 2016</td>
+<td><a href="https://arxiv.org/abs/1606.08415v3" target="_blank" rel="noopener">Gaussian Error Linear Units (GELUs)</a></td>
+<td>GELUs</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>4. Experiments 实验中的参考文献</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>BERT 文中简写</th>
+<th>原始标论文标题</th>
+<th>其它</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wang et al.(2018)</td>
+<td><a href="https://arxiv.org/abs/1804.07461v2" target="_blank" rel="noopener">GLUE: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding</a></td>
+<td>GLUE</td>
+</tr>
+<tr>
+<td>Williams et al., 2018</td>
+<td><a href="https://arxiv.org/abs/1704.05426v4" target="_blank" rel="noopener">A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference</a></td>
+<td>MNLI</td>
+</tr>
+<tr>
+<td>Chen et al., 2018</td>
+<td><a href="https://data.quora.com/First-Quora-Dataset-Release-Question-Pairs" target="_blank" rel="noopener">First Quora Dataset Release: Question Pairs</a></td>
+<td>QQP</td>
+</tr>
+<tr>
+<td>Rajpurkar et al., 2016</td>
+<td><a href="https://arxiv.org/abs/1606.05250v3" target="_blank" rel="noopener">SQuAD: 100,000+ Questions for Machine Comprehension of Text</a></td>
+<td>QNLI</td>
+</tr>
+<tr>
+<td>Socher et al., 2013</td>
+<td><a href="https://nlp.stanford.edu/sentiment/" target="_blank" rel="noopener">Deeply Moving: Deep Learning for Sentiment Analysis</a></td>
+<td>SST-2</td>
+</tr>
+<tr>
+<td>Warstadt et al., 2018</td>
+<td><a href="https://nyu-mll.github.io/CoLA/" target="_blank" rel="noopener">The Corpus of Linguistic Acceptability</a></td>
+<td>CoLA</td>
+</tr>
+<tr>
+<td>Cer et al., 2017</td>
+<td><a href="https://arxiv.org/abs/1708.00055v1" target="_blank" rel="noopener">SemEval-2017 Task 1: Semantic Textual Similarity - Multilingual and Cross-lingual Focused Evaluation</a></td>
+<td>STS-B</td>
+</tr>
+<tr>
+<td>Dolan and Brockett, 2005</td>
+<td><a href="https://www.researchgate.net/publication/228613673_Automatically_constructing_a_corpus_of_sentential_paraphrases" target="_blank" rel="noopener">Automatically constructing a corpus of sentential paraphrases</a></td>
+<td>MRPC</td>
+</tr>
+<tr>
+<td>Bentivogli et al., 2009</td>
+<td><a href="https://www.mendeley.com/catalogue/fifth-pascal-recognizing-textual-entailment-challenge/" target="_blank" rel="noopener">The fifth pascal recognizing textual entailment challenge</a></td>
+<td>RTE</td>
+</tr>
+<tr>
+<td>Levesque et al., 2011</td>
+<td><a href="https://cs.nyu.edu/faculty/davise/papers/WinogradSchemas/WS.html" target="_blank" rel="noopener">The winograd schema challenge. In Aaai spring symposium: Logical formalizations of commonsense reasoning, volume 46, page 47.</a></td>
+<td>WNLI</td>
+</tr>
+<tr>
+<td>Rajpurkar et al., 2016</td>
+<td><a href="https://arxiv.org/abs/1606.05250v3" target="_blank" rel="noopener">SQuAD: 100,000+ Questions for Machine Comprehension of Text</a></td>
+<td>SQuAD</td>
+</tr>
+<tr>
+<td>Joshi et al., 2017</td>
+<td><a href="https://arxiv.org/abs/1705.03551v2" target="_blank" rel="noopener">TriviaQA: A Large Scale Distantly Supervised Challenge Dataset for Reading Comprehension</a></td>
+<td>TriviaQA</td>
+</tr>
+<tr>
+<td>Clark et al., 2018</td>
+<td><a href="https://arxiv.org/abs/1809.08370v1" target="_blank" rel="noopener">Semi-Supervised Sequence Modeling with Cross-View Training</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Zellers et al., 2018</td>
+<td><a href="https://arxiv.org/abs/1808.05326v1" target="_blank" rel="noopener">SWAG: A Large-Scale Adversarial Dataset for Grounded Commonsense Inference</a></td>
+<td>SWAG</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>5. Ablation Studies 消融研究中的参考文献</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>BERT 文中简写</th>
+<th>原始标论文标题</th>
+<th>其它</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vaswani et al. (2017)</td>
+<td><a href="https://arxiv.org/abs/1706.03762v5" target="_blank" rel="noopener">Attention Is All You Need</a></td>
+<td>Transformer</td>
+</tr>
+<tr>
+<td>Al-Rfou et al., 2018</td>
+<td><a href="https://arxiv.org/abs/1808.04444v1" target="_blank" rel="noopener">Character-Level Language Modeling with Deeper Self-Attention</a></td>
+</tr>
+</tbody>
+</table>
+</div>
 
       
     </div>
