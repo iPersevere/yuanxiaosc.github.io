@@ -82,22 +82,22 @@
 <meta name="description" content="Natural Language ProcessingUp to this point, we have only considered machine learning algorithms that mostly operate on numerical inputs. If we want to use text, we must find a way to convert the text">
 <meta name="keywords" content="深度学习;机器学习;人工智能">
 <meta property="og:type" content="article">
-<meta property="og:title" content="自然语言处理 Natural Language Processing">
-<meta property="og:url" content="http://yoursite.com/2018/11/26/自然语言处理/index.html">
+<meta property="og:title" content="tensorflow cookbook 自然语言处理">
+<meta property="og:url" content="http://yoursite.com/2018/11/26/tensorflow_cookbook_自然语言处理/index.html">
 <meta property="og:site_name" content="望江人工智库">
 <meta property="og:description" content="Natural Language ProcessingUp to this point, we have only considered machine learning algorithms that mostly operate on numerical inputs. If we want to use text, we must find a way to convert the text">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/11/26/自然语言处理/output_9_0.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/26/自然语言处理/output_27_0.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/26/自然语言处理/output_25_0.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/26/自然语言处理/output_25_1.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/26/自然语言处理/04_skipgram_model.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/26/自然语言处理/05_cbow_model.png">
-<meta property="og:updated_time" content="2018-11-27T08:42:05.400Z">
+<meta property="og:image" content="http://yoursite.com/2018/11/26/tensorflow_cookbook_自然语言处理/output_9_0.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/26/tensorflow_cookbook_自然语言处理/output_27_0.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/26/tensorflow_cookbook_自然语言处理/output_25_0.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/26/tensorflow_cookbook_自然语言处理/output_25_1.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/26/tensorflow_cookbook_自然语言处理/04_skipgram_model.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/26/tensorflow_cookbook_自然语言处理/05_cbow_model.png">
+<meta property="og:updated_time" content="2019-01-07T09:17:30.808Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="自然语言处理 Natural Language Processing">
+<meta name="twitter:title" content="tensorflow cookbook 自然语言处理">
 <meta name="twitter:description" content="Natural Language ProcessingUp to this point, we have only considered machine learning algorithms that mostly operate on numerical inputs. If we want to use text, we must find a way to convert the text">
-<meta name="twitter:image" content="http://yoursite.com/2018/11/26/自然语言处理/output_9_0.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/11/26/tensorflow_cookbook_自然语言处理/output_9_0.png">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/26/自然语言处理/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/11/26/tensorflow_cookbook_自然语言处理/"/>
 
 
 
 
 
-  <title>自然语言处理 Natural Language Processing | 望江人工智库</title>
+  <title>tensorflow cookbook 自然语言处理 | 望江人工智库</title>
   
 
 
@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/26/自然语言处理/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/26/tensorflow_cookbook_自然语言处理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="望江车神">
@@ -311,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">自然语言处理 Natural Language Processing</h1>
+          <h1 class="post-title" itemprop="name headline">tensorflow cookbook 自然语言处理</h1>
         
 
         <div class="post-meta">
@@ -478,7 +478,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Relabel 'spam' as 1, 'ham' as 0</span></span><br><span class="line">target = [<span class="number">1</span> <span class="keyword">if</span> x==<span class="string">'spam'</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">for</span> x <span class="keyword">in</span> target]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Normalize text</span></span><br><span class="line"><span class="comment"># Lower case</span></span><br><span class="line">texts = [x.lower() <span class="keyword">for</span> x <span class="keyword">in</span> texts]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Remove punctuation</span></span><br><span class="line">texts = [<span class="string">''</span>.join(c <span class="keyword">for</span> c <span class="keyword">in</span> x <span class="keyword">if</span> c <span class="keyword">not</span> <span class="keyword">in</span> string.punctuation) <span class="keyword">for</span> x <span class="keyword">in</span> texts]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Remove numbers</span></span><br><span class="line">texts = [<span class="string">''</span>.join(c <span class="keyword">for</span> c <span class="keyword">in</span> x <span class="keyword">if</span> c <span class="keyword">not</span> <span class="keyword">in</span> <span class="string">'0123456789'</span>) <span class="keyword">for</span> x <span class="keyword">in</span> texts]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Trim extra whitespace</span></span><br><span class="line">texts = [<span class="string">' '</span>.join(x.split()) <span class="keyword">for</span> x <span class="keyword">in</span> texts]</span><br></pre></td></tr></table></figure>
 <p>To determine a good sentence length to pad/crop at, we plot a histogram of text lengths (in words).</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line"><span class="comment"># Plot histogram of text lengths</span></span><br><span class="line">text_lengths = [len(x.split()) <span class="keyword">for</span> x <span class="keyword">in</span> texts]</span><br><span class="line">text_lengths = [x <span class="keyword">for</span> x <span class="keyword">in</span> text_lengths <span class="keyword">if</span> x &lt; <span class="number">50</span>]</span><br><span class="line">plt.hist(text_lengths, bins=<span class="number">25</span>)</span><br><span class="line">plt.title(<span class="string">'Histogram of # of Words in Texts'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p><img src="/2018/11/26/自然语言处理/output_9_0.png" alt="png"></p>
+<p><img src="/2018/11/26/tensorflow_cookbook_自然语言处理/output_9_0.png" alt="png"></p>
 <p>We crop/pad all texts to be 25 words long.  We also will filter out any words that do not appear at least 3 times.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Choose max text word length at 25</span></span><br><span class="line">sentence_size = <span class="number">25</span></span><br><span class="line">min_word_freq = <span class="number">3</span></span><br></pre></td></tr></table></figure>
 <p>TensorFlow has a built in text processing function called <code>VocabularyProcessor()</code>. We use this function to process the texts.</p>
@@ -511,7 +511,7 @@ Test Observation #500
 Test Observation #600
 </code></pre><p>Let’s look at the training accuracy over all the iterations.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Plot training accuracy over time</span></span><br><span class="line">plt.plot(range(len(train_acc_avg)), train_acc_avg, <span class="string">'k-'</span>, label=<span class="string">'Train Accuracy'</span>)</span><br><span class="line">plt.title(<span class="string">'Avg Training Acc Over Past 50 Iterations'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'Iterations'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'Training Accuracy'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p><img src="/2018/11/26/自然语言处理/output_27_0.png" alt="png"></p>
+<p><img src="/2018/11/26/tensorflow_cookbook_自然语言处理/output_27_0.png" alt="png"></p>
 <p>It is worthwhile to mention the motivation of limiting the sentence (or text) size.  In this example we limited the text size to 25 words.  This is a common practice with bag of words because it limits the effect of text length on the prediction.  You can imagine that if we find a word, “meeting” for example, that is predictive of a text being ham (not spam), then a spam message might get through by putting in many occurrences of that word at the end.  In fact, this is a common problem with imbalanced target data.  Imbalanced data might occur in this situation, since spam may be hard to find and ham may be easy to find.  Because of this fact, our vocabulary that we create might be heavily skewed toward words represented in the ham part of our data (more ham means more words are represented in ham than spam).  If we allow unlimited length of texts, then spammers might take advantage of this and create very long texts, which have a higher probability of triggering non-spam word factors in our logistic model.</p>
 <p>In the next section, we attempt to tackle this problem in a better way using the frequency of word occurrence to determine the values of the word embeddings.</p>
 <hr>
@@ -559,7 +559,7 @@ Generation # 9500. Train Loss (Test Loss): 0.39 (0.46). Train Acc (Test Acc): 0.
 Generation # 10000. Train Loss (Test Loss): 0.52 (0.46). Train Acc (Test Acc): 0.80 (0.85)
 </code></pre><p>Here is matplotlib code to plot the loss and accuracies.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Plot loss over time</span></span><br><span class="line">plt.plot(i_data, train_loss, <span class="string">'k-'</span>, label=<span class="string">'Train Loss'</span>)</span><br><span class="line">plt.plot(i_data, test_loss, <span class="string">'r--'</span>, label=<span class="string">'Test Loss'</span>, linewidth=<span class="number">4</span>)</span><br><span class="line">plt.title(<span class="string">'Cross Entropy Loss per Generation'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'Generation'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'Cross Entropy Loss'</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'upper right'</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Plot train and test accuracy</span></span><br><span class="line">plt.plot(i_data, train_acc, <span class="string">'k-'</span>, label=<span class="string">'Train Set Accuracy'</span>)</span><br><span class="line">plt.plot(i_data, test_acc, <span class="string">'r--'</span>, label=<span class="string">'Test Set Accuracy'</span>, linewidth=<span class="number">4</span>)</span><br><span class="line">plt.title(<span class="string">'Train and Test Accuracy'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'Generation'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'Accuracy'</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'lower right'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p><img src="/2018/11/26/自然语言处理/output_25_0.png" alt="png"><br><img src="/2018/11/26/自然语言处理/output_25_1.png" alt="png"></p>
+<p><img src="/2018/11/26/tensorflow_cookbook_自然语言处理/output_25_0.png" alt="png"><br><img src="/2018/11/26/tensorflow_cookbook_自然语言处理/output_25_1.png" alt="png"></p>
 <hr>
 <h2 id="Word2Vec-Skipgram-Model"><a href="#Word2Vec-Skipgram-Model" class="headerlink" title="Word2Vec: Skipgram Model"></a><a href="https://github.com/nfmcclure/tensorflow_cookbook/tree/master/07_Natural_Language_Processing/04_Working_With_Skip_Gram_Embeddings" target="_blank" rel="noopener">Word2Vec: Skipgram Model</a></h2><p><strong>Working with Skip Gram Embeddings</strong></p>
 <p>Prior to this recipe, we have not considered the order of words to be relevant in creating word embeddings. In early 2013, Tomas Mikolov and other researchers at Google authored a paper about creating word embeddings that address this issue (<a href="https://arxiv.org/abs/1301.3781" target="_blank" rel="noopener">https://arxiv.org/abs/1301.3781</a>), and they named their methods “word2vec”.</p>
@@ -571,7 +571,7 @@ Generation # 10000. Train Loss (Test Loss): 0.52 (0.46). Train Acc (Test Acc): 0
 <p>We might achieve such numerical representation of words if we only consider their positional relationship to each other.  If we could analyse a large enough source of coherent documents, we might find that the words “king”, “man”, and “queen” are mentioned closely to each other in our texts.  If we also know that “man” and “woman” are related in a different way, then we might conclude that “man” is to “king” as “woman” is to “queen” and so on.</p>
 <p>To go about finding such an embedding, we will use a neural network that predicts surrounding words giving an input word.  We could, just as easily, switched that and tried to predict a target word given a set of surrounding words, but we will start with the prior method.  Both are variations of the word2vec procedure. But the prior method of predicting the surrounding words (the context) from a target word is called the skip-gram model.  In the next recipe, we will implement the other method, predicting the target word from the context, which is called the continuous bag of words method (CBOW).</p>
 <p>See below figure for an illustration.</p>
-<p><img src="/2018/11/26/自然语言处理/04_skipgram_model.png" alt="Skipgram" title="Word2Vec-SkipGram Example"></p>
+<p><img src="/2018/11/26/tensorflow_cookbook_自然语言处理/04_skipgram_model.png" alt="Skipgram" title="Word2Vec-SkipGram Example"></p>
 <p>In this example, we will download and preprocess the movie review data.</p>
 <p>From this data set we will compute/fit the skipgram model of the Word2Vec Algorithm</p>
 <p>Skipgram: based on predicting the surrounding words from the</p>
@@ -628,7 +628,7 @@ Loss at step 60500 : 3.153820514678955
 <p>Most of the code will stay the same, except we will need to change how we create the embeddings and how we generate the data from the sentences.</p>
 <p>To make the code easier to read, we have moved all the major functions to a separate file, called ‘text_helpers.py’ in the same directory.  This function holds the data loading, text normalization, dictionary creation, and batch generation functions.  This functions are exactly as they appear in the prior recipe, “Working with Skip-gram Embeddings”, except where noted.</p>
 <p>See the following illustration of a CBOW example.</p>
-<p><img src="/2018/11/26/自然语言处理/05_cbow_model.png" alt="CBOW" title="Word2Vec-CBOW Example"></p>
+<p><img src="/2018/11/26/tensorflow_cookbook_自然语言处理/05_cbow_model.png" alt="CBOW" title="Word2Vec-CBOW Example"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'Creating Model'</span>)</span><br><span class="line"><span class="comment"># Define Embeddings:</span></span><br><span class="line">embeddings = tf.Variable(tf.random_uniform([vocabulary_size, embedding_size], <span class="number">-1.0</span>, <span class="number">1.0</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># NCE loss parameters</span></span><br><span class="line">nce_weights = tf.Variable(tf.truncated_normal([vocabulary_size, embedding_size],</span><br><span class="line">                                               stddev=<span class="number">1.0</span> / np.sqrt(embedding_size)))</span><br><span class="line">nce_biases = tf.Variable(tf.zeros([vocabulary_size]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create data/target placeholders</span></span><br><span class="line">x_inputs = tf.placeholder(tf.int32, shape=[batch_size, <span class="number">2</span>*window_size])</span><br><span class="line">y_target = tf.placeholder(tf.int32, shape=[batch_size, <span class="number">1</span>])</span><br><span class="line">valid_dataset = tf.constant(valid_examples, dtype=tf.int32)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Lookup the word embedding</span></span><br><span class="line"><span class="comment"># Add together window embeddings:</span></span><br><span class="line">embed = tf.zeros([batch_size, embedding_size])</span><br><span class="line"><span class="keyword">for</span> element <span class="keyword">in</span> range(<span class="number">2</span>*window_size):</span><br><span class="line">    embed += tf.nn.embedding_lookup(embeddings, x_inputs[:, element])</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Get loss from prediction</span></span><br><span class="line">loss = tf.reduce_mean(tf.nn.nce_loss(weights=nce_weights,</span><br><span class="line">                                     biases=nce_biases,</span><br><span class="line">                                     labels=y_target,</span><br><span class="line">                                     inputs=embed,</span><br><span class="line">                                     num_sampled=num_sampled,</span><br><span class="line">                                     num_classes=vocabulary_size))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create optimizer</span></span><br><span class="line">optimizer = tf.train.GradientDescentOptimizer(learning_rate=model_learning_rate).minimize(loss)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Cosine similarity between words</span></span><br><span class="line">norm = tf.sqrt(tf.reduce_sum(tf.square(embeddings), <span class="number">1</span>, keep_dims=<span class="keyword">True</span>))</span><br><span class="line">normalized_embeddings = embeddings / norm</span><br><span class="line">valid_embeddings = tf.nn.embedding_lookup(normalized_embeddings, valid_dataset)</span><br><span class="line">similarity = tf.matmul(valid_embeddings, normalized_embeddings, transpose_b=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
 
@@ -777,7 +777,7 @@ Loss at step 60500 : 3.153820514678955
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">105</span>
+                  <span class="site-state-item-count">106</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
