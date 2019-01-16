@@ -79,21 +79,21 @@
 
 
 
-<meta name="description" content="词嵌入资源    标题 说明 附加          Tencent AI Lab Embedding Corpus for Chinese Words and Phrases|This corpus provides 200-dimension vector representations, a.k.a. embeddings, for over 8 million Chinese words">
+<meta name="description" content="词嵌入资源    标题 说明 附加     Tencent AI Lab Embedding Corpus for Chinese Words and Phrases This corpus provides 200-dimension vector representations, a.k.a. embeddings, for over 8 million Chinese words and p">
 <meta name="keywords" content="Embedding,词嵌入">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Embedding 和语言模型 LanguageModel">
 <meta property="og:url" content="http://yoursite.com/2019/01/07/词嵌入Embedding和语言模型LanguageModel/index.html">
 <meta property="og:site_name" content="望江人工智库">
-<meta property="og:description" content="词嵌入资源    标题 说明 附加          Tencent AI Lab Embedding Corpus for Chinese Words and Phrases|This corpus provides 200-dimension vector representations, a.k.a. embeddings, for over 8 million Chinese words">
+<meta property="og:description" content="词嵌入资源    标题 说明 附加     Tencent AI Lab Embedding Corpus for Chinese Words and Phrases This corpus provides 200-dimension vector representations, a.k.a. embeddings, for over 8 million Chinese words and p">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/01/07/词嵌入Embedding和语言模型LanguageModel/d2.png">
 <meta property="og:image" content="http://yoursite.com/2019/01/07/词嵌入Embedding和语言模型LanguageModel/c1.png">
 <meta property="og:image" content="http://yoursite.com/2019/01/07/词嵌入Embedding和语言模型LanguageModel/a1.png">
-<meta property="og:updated_time" content="2019-01-07T10:31:30.381Z">
+<meta property="og:updated_time" content="2019-01-16T13:30:51.601Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Embedding 和语言模型 LanguageModel">
-<meta name="twitter:description" content="词嵌入资源    标题 说明 附加          Tencent AI Lab Embedding Corpus for Chinese Words and Phrases|This corpus provides 200-dimension vector representations, a.k.a. embeddings, for over 8 million Chinese words">
+<meta name="twitter:description" content="词嵌入资源    标题 说明 附加     Tencent AI Lab Embedding Corpus for Chinese Words and Phrases This corpus provides 200-dimension vector representations, a.k.a. embeddings, for over 8 million Chinese words and p">
 <meta name="twitter:image" content="http://yoursite.com/2019/01/07/词嵌入Embedding和语言模型LanguageModel/d2.png">
 
 
@@ -391,12 +391,12 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
+<td><a href="https://ai.tencent.com/ailab/nlp/embedding.html" target="_blank" rel="noopener">Tencent AI Lab Embedding Corpus for Chinese Words and Phrases</a></td>
+<td>This corpus provides 200-dimension vector representations, a.k.a. embeddings, for over 8 million Chinese words and phrases, which are pre-trained on large-scale high-quality data. These vectors, capturing semantic meanings for Chinese words and phrases, can be widely applied in many downstream Chinese processing tasks (e.g., named entity recognition and text classification) and in further research.<a href="https://www.jiqizhixin.com/articles/2018-10-19-16" target="_blank" rel="noopener">腾讯AI Lab开源大规模高质量中文词向量数据，800万中文词随你用</a></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p><a href="https://ai.tencent.com/ailab/nlp/embedding.html" target="_blank" rel="noopener">Tencent AI Lab Embedding Corpus for Chinese Words and Phrases</a>|This corpus provides 200-dimension vector representations, a.k.a. embeddings, for over 8 million Chinese words and phrases, which are pre-trained on large-scale high-quality data. These vectors, capturing semantic meanings for Chinese words and phrases, can be widely applied in many downstream Chinese processing tasks (e.g., named entity recognition and text classification) and in further research.<a href="https://www.jiqizhixin.com/articles/2018-10-19-16" target="_blank" rel="noopener">腾讯AI Lab开源大规模高质量中文词向量数据，800万中文词随你用</a>||</p>
 <h2 id="词语嵌入和语言模型基本概念"><a href="#词语嵌入和语言模型基本概念" class="headerlink" title="词语嵌入和语言模型基本概念"></a>词语嵌入和语言模型基本概念</h2><h3 id="为什么要使用Word-Embedding"><a href="#为什么要使用Word-Embedding" class="headerlink" title="为什么要使用Word Embedding"></a>为什么要使用Word Embedding</h3><p>在信号处理领域，图像和音频信号的输入往往是表示成高维度、密集的向量形式，在图像和音频的应用系统中，如何对输入信息进行编码(Encoding)显得非常重要和关键，这将直接决定了系统的质量。然而，在自然语言处理领域中，传统的做法是将词表示成离散的符号，例如将 [cat] 表示为 [Id537]，而 [dog] 表示为 [Id143]。这样做的缺点在于，没有提供足够的信息来体现词语之间的某种关联，例如尽管cat和dog不是同一个词，但是却应该有着某种的联系（如都是属于动物种类）。由于这种一元表示法(One-hot Representation)使得词向量过于稀疏，所以往往需要大量的语料数据才能训练出一个令人满意的模型。而Word Embedding技术则可以解决上述传统方法带来的问题。</p>
 <h3 id="向量空间模型"><a href="#向量空间模型" class="headerlink" title="向量空间模型"></a>向量空间模型</h3><p>向量空间模型(Vector space models, VSMs)将词语表示为一个连续的词向量，并且语义接近的词语对应的词向量在空间上也是接近的。VSMs在NLP中拥有很长的历史，但是所有的方法在某种程度上都是基于一种分布式假说，该假说的思想是如果两个词的上下文(context)相同，那么这两个词所表达的语义也是一样的；换言之，两个词的语义是否相同或相似，取决于两个词的上下文内容，上下文相同表示两个词是可以等价替换的。</p>
 <p>基于分布式假说理论的词向量生成方法主要分两大类：计数法(count-based methods, e.g. Latent Semantic Analysis)和预测法(predictive methods, e.g. neural probabilistic language models)。<a href="http://clic.cimec.unitn.it/marco/publications/acl2014/baroni-etal-countpredict-acl2014.pdf" target="_blank" rel="noopener">Baroni等人</a>详细论述了这两种方法的区别，简而言之，计数法是在大型语料中统计词语及邻近的词的共现频率，然后将之为每个词都映射为一个稠密的向量表示；预测法是直接利用词语的邻近词信息来得到预测词的词向量（词向量通常作为模型的训练参数）。</p>
