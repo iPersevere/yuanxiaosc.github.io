@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Pycharm]]></title>
     <url>%2F2019%2F01%2F22%2FPycharm%2F</url>
-    <content type="text"><![CDATA[16步Pycharm连接远程服务器，开始远程代码编写注意有时需要在第3步后点击，Project Interpreter 前面的小三角通过以上 16 步，已经实现本地文件与服务器文件的同步，现在可以在本地写一个测试文件试试了！ 随时查看远程和本地文件在Pycharm 最上面一栏中依次选择 Tools &gt; deployment &gt; Brows Remote Host，然后看到：默认情况下，这里讲显示远程服务器根目录的文件，为了便于对比远程文件和本地文件，做如下设置：选择文件夹为 “16步Pycharm连接远程服务器，开始远程代码编写” 中第15步填写的那个文件夹。]]></content>
+    <content type="text"><![CDATA[16步Pycharm连接远程服务器，开始远程代码编写注意有时需要在第3步后点击，Project Interpreter 前面的小三角通过以上 16 步，已经实现本地文件与服务器文件的同步，现在可以在本地写一个测试文件试试了！]]></content>
       <categories>
         <category>技能</category>
         <category>Pycharm</category>
