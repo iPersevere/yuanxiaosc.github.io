@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[论文世界]]></title>
+    <url>%2F2019%2F01%2F23%2F%E8%AE%BA%E6%96%87%E4%B8%96%E7%95%8C%2F</url>
+    <content type="text"><![CDATA[论文实现目录 Paper with code 自然语言处理进展NLP-progress用于跟踪自然语言处理（NLP）进度的存储库，包括数据集和最常见的NLP任务的当前最新技术。https://nlpprogress.com/NLP-progress 的中文翻译（翻译至20180624）自然语言处理全家福：纵览当前 NLP 中的任务、数据、模型与论文 Google seed bank 交互式机器学习示例的集合 我目前关注Dependency parsingSemi-Supervised Sequence Modeling with Cross-View Training codeword2vec和ELMo等无监督表示学习算法提高了许多有监督NLP模型的准确性，主要是因为它们可以利用大量的无标记文本。然而，监督模型只在主要训练阶段从特定于任务的标记数据中学习。因此，我们提出了交叉视图训练(CVT)，这是一种半监督学习算法，它使用标记和未标记数据的混合来改进双lstm语句编码器的表示。在标注的例子中，使用了标准监督学习。在没有标记的例子中，CVT教授助动词。 Adversarial Text Classification Cross-Target Stance Classification with Self-Attention Networks 在观点分类中，观点所基于的目标定义了任务的边界，通常训练分类器对同一目标进行预测。在这项工作中，我们探索了在不同目标之间泛化分类器的潜力，并提出了一个神经模型，可以将从源目标中学到的东西应用到目标目标。结果表明，该模型能够发现相关目标之间共享的有用信息，提高了模型的泛化能力。 论文中描述 CrossNet 这个模型的方法值得借鉴，一步一步描述很清晰。 An improved neural network model for joint POS tagging and dependency parsing 这个名字可以参考。]]></content>
+      <categories>
+        <category>论文</category>
+      </categories>
+      <tags>
+        <tag>论文</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Pycharm]]></title>
     <url>%2F2019%2F01%2F22%2FPycharm%2F</url>
     <content type="text"><![CDATA[16步Pycharm连接远程服务器，开始远程代码编写注意有时需要在第3步后点击，Project Interpreter 前面的小三角通过以上 16 步，已经实现本地文件与服务器文件的同步，现在可以在本地写一个测试文件试试了！ 随时查看远程和本地文件在Pycharm 最上面一栏中依次选择 Tools &gt; deployment &gt; Brows Remote Host，然后看到：默认情况下，这里讲显示远程服务器根目录的文件，为了便于对比远程文件和本地文件，做如下设置：选择文件夹为 “16步Pycharm连接远程服务器，开始远程代码编写” 中第15步填写的那个文件夹。由于此时根目录改变了（Root path），注意同步修改，本地文件与服务器映射文件关系。]]></content>
@@ -8,17 +19,6 @@
         <category>技能</category>
         <category>Pycharm</category>
       </categories>
-  </entry>
-  <entry>
-    <title><![CDATA[论文世界]]></title>
-    <url>%2F2019%2F01%2F21%2F%E8%AE%BA%E6%96%87%E4%B8%96%E7%95%8C%2F</url>
-    <content type="text"><![CDATA[论文实现目录 Paper with code 自然语言处理进展NLP-progress用于跟踪自然语言处理（NLP）进度的存储库，包括数据集和最常见的NLP任务的当前最新技术。https://nlpprogress.com/NLP-progress 的中文翻译（翻译至20180624）自然语言处理全家福：纵览当前 NLP 中的任务、数据、模型与论文 Google seed bank 交互式机器学习示例的集合 我目前关注Dependency parsingSemi-Supervised Sequence Modeling with Cross-View Training code Adversarial Text Classification]]></content>
-      <categories>
-        <category>论文</category>
-      </categories>
-      <tags>
-        <tag>论文</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[flair]]></title>
