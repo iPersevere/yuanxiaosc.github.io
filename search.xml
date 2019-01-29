@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[TensorFlow]]></title>
+    <url>%2F2019%2F01%2F29%2FTensorFlow%2F</url>
+    <content type="text"><![CDATA[TensorFlow 资源 标题 说明 附加 TensorFlow 指南 本单元中的文档深入介绍了 TensorFlow 的工作原理。 tf-estimator-tutorials tutorials on how to use the TensorFlow estimator APIs to perform various ML tasks api_docs 官方 API 文档 持续更新 TensorFlow官方文档 W3Cschool 文档 持续更新 stanford-tensorflow-tutorials CS 20: Tensorflow for Deep Learning Research 20180101 TensorFlow内核剖析 揭秘框架的本源：开源中文书「TensorFlow内核剖析」 20180706 nfmcclure/tensorflow_cookbook 书籍 20181006 jtoy/awesome-tensorflow TensorFlow - A curated list of dedicated resources http://tensorflow.org 持续更新 TensorFlow-Examples aymericdamien @tflearn Author 比官方更简洁的Tensorflow入门教程 10 分钟阅读 20180507 Tensorflow快餐教程 TensorFlow 基本概念 20180604 EffectiveTensorflow TensorFlow教程和最佳实践。 20180727 重要博客 标题 内容 最后更新时间 谢小小XH TensorFlow框架学习 20180917 知乎专栏《机器不学习》 项目实战+详细讲解 201806 Deep NLP Examples in TensorFlow 1 zhedongzheng 20181219 斯坦福Guillaume Genthial TF NLP 20181123 How to get started debugging TensorFlow DeBUG 2018-07-16 TensorFlow 指南TensorFlow GuideThe documents in this unit dive into the details of how TensorFlow works. The units are as follows: https://github.com/tensorflow/docs/blob/master/site/en/guide/index.md 高阶API Keras Keras.ipynb Eagaer Executioneager.ipynb Intro to tf.estimator and tf.data导入数据datasets.mdEstimator 简介estimators.md custom_estimators.md Estimator 预创建的 Estimator premade_estimator.py iris_data.py 我们的鸢尾花实现包含四个特征、两个隐藏层和一个对数输出层 检查点特征列特征列作为原始数据与模型所需的数据之间的桥梁 Estimator 的数据集创建自定义 Estimator custom_estimator.py 预创建的 Estimator 和自定义 Estimator 都是 Estimator tensorflow张量乘法的广播机制123# tf.multiply# tensorflow 只有维度相同的张量可以进行张量间的乘法；# 若维度不同的张量进行乘法，首先会尝试通过广播把维度变为相同，若尝试失败则会报错。 12import tensorflow as tfimport numpy as np 1tf.__version__ &#39;1.4.0&#39; 1sess = tf.Session() 12a = tf.constant(np.arange(1, 9, dtype=np.float32), shape=[3, 3, 1])b = tf.constant(np.arange(1, 15, dtype=np.float32), shape=[1, 3, 5]) 1a &lt;tf.Tensor &#39;Const:0&#39; shape=(3, 3, 1) dtype=float32&gt; 1b &lt;tf.Tensor &#39;Const_1:0&#39; shape=(1, 3, 5) dtype=float32&gt; 1sess.run(a) array([[[1.], [2.], [3.]], [[4.], [5.], [6.]], [[7.], [8.], [8.]]], dtype=float32) 1sess.run(b) array([[[ 1., 2., 3., 4., 5.], [ 6., 7., 8., 9., 10.], [11., 12., 13., 14., 14.]]], dtype=float32) 1sess.run(a*b) array([[[ 1., 2., 3., 4., 5.], [ 12., 14., 16., 18., 20.], [ 33., 36., 39., 42., 42.]], [[ 4., 8., 12., 16., 20.], [ 30., 35., 40., 45., 50.], [ 66., 72., 78., 84., 84.]], [[ 7., 14., 21., 28., 35.], [ 48., 56., 64., 72., 80.], [ 88., 96., 104., 112., 112.]]], dtype=float32) 1A = tf.concat([a,a,a,a,a], axis=2) 1B = tf.concat([b,b,b], axis=0) 1A &lt;tf.Tensor &#39;concat:0&#39; shape=(3, 3, 5) dtype=float32&gt; 1B &lt;tf.Tensor &#39;concat_1:0&#39; shape=(3, 3, 5) dtype=float32&gt; 1sess.run(A) array([[[1., 1., 1., 1., 1.], [2., 2., 2., 2., 2.], [3., 3., 3., 3., 3.]], [[4., 4., 4., 4., 4.], [5., 5., 5., 5., 5.], [6., 6., 6., 6., 6.]], [[7., 7., 7., 7., 7.], [8., 8., 8., 8., 8.], [8., 8., 8., 8., 8.]]], dtype=float32) 1sess.run(B) array([[[ 1., 2., 3., 4., 5.], [ 6., 7., 8., 9., 10.], [11., 12., 13., 14., 14.]], [[ 1., 2., 3., 4., 5.], [ 6., 7., 8., 9., 10.], [11., 12., 13., 14., 14.]], [[ 1., 2., 3., 4., 5.], [ 6., 7., 8., 9., 10.], [11., 12., 13., 14., 14.]]], dtype=float32) 1sess.run(A*B) array([[[ 1., 2., 3., 4., 5.], [ 12., 14., 16., 18., 20.], [ 33., 36., 39., 42., 42.]], [[ 4., 8., 12., 16., 20.], [ 30., 35., 40., 45., 50.], [ 66., 72., 78., 84., 84.]], [[ 7., 14., 21., 28., 35.], [ 48., 56., 64., 72., 80.], [ 88., 96., 104., 112., 112.]]], dtype=float32) 1sess.close()]]></content>
+      <categories>
+        <category>TF</category>
+      </categories>
+      <tags>
+        <tag>深度学习框架</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[面向任务的对话系统资料整理]]></title>
     <url>%2F2019%2F01%2F25%2F%E9%9D%A2%E5%90%91%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86%2F</url>
-    <content type="text"><![CDATA[Paper source title date abstract NAACL-HLT 2018 End-to-End Learning of Task-Oriented Dialogs ACL Task-oriented Dialogue System for Automatic Diagnosis ACL Task-oriented Dialogue System for Automatic Diagnosis]]></content>
+    <content type="text"><![CDATA[Paper source title abstract NAACL-HLT 2018 End-to-End Learning of Task-Oriented Dialogs ACL 2018 Task-oriented Dialogue System for Automatic Diagnosis ACL 2018 Task-oriented Dialogue System for Automatic Diagnosis ICEECCOT 2018 Intent Detection for code-mix utterances in task oriented dialogue systems ACL 2018 Exploring the importance of context and embeddings in neural NER models for task-oriented dialogue systems NIPS 2018 Flexible and Scalable State Tracking Framework for Goal-Oriented Dialogue Systems COLING2018 Sequence-to-Sequence Data Augmentation for Dialogue Language Understanding]]></content>
       <categories>
         <category>论文</category>
       </categories>
@@ -308,17 +319,6 @@
         <tag>最大期望算法</tag>
         <tag>混合高斯模型</tag>
         <tag>K-means算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[TensorFlow]]></title>
-    <url>%2F2018%2F12%2F19%2FTensorFlow%2F</url>
-    <content type="text"><![CDATA[TensorFlow 资源 标题 说明 附加 TensorFlow 指南 本单元中的文档深入介绍了 TensorFlow 的工作原理。 tf-estimator-tutorials tutorials on how to use the TensorFlow estimator APIs to perform various ML tasks api_docs 官方 API 文档 持续更新 TensorFlow官方文档 W3Cschool 文档 持续更新 stanford-tensorflow-tutorials CS 20: Tensorflow for Deep Learning Research 20180101 TensorFlow内核剖析 揭秘框架的本源：开源中文书「TensorFlow内核剖析」 20180706 nfmcclure/tensorflow_cookbook 书籍 20181006 jtoy/awesome-tensorflow TensorFlow - A curated list of dedicated resources http://tensorflow.org 持续更新 TensorFlow-Examples aymericdamien @tflearn Author 比官方更简洁的Tensorflow入门教程 10 分钟阅读 20180507 Tensorflow快餐教程 TensorFlow 基本概念 20180604 EffectiveTensorflow TensorFlow教程和最佳实践。 20180727 重要博客 标题 内容 最后更新时间 谢小小XH TensorFlow框架学习 20180917 知乎专栏《机器不学习》 项目实战+详细讲解 201806 Deep NLP Examples in TensorFlow 1 zhedongzheng 20181219 斯坦福Guillaume Genthial TF NLP 20181123 How to get started debugging TensorFlow DeBUG 2018-07-16 TensorFlow 指南TensorFlow GuideThe documents in this unit dive into the details of how TensorFlow works. The units are as follows: https://github.com/tensorflow/docs/blob/master/site/en/guide/index.md 高阶API Keras Keras.ipynb Eagaer Executioneager.ipynb Intro to tf.estimator and tf.data导入数据datasets.mdEstimator 简介estimators.md custom_estimators.md Estimator 预创建的 Estimator premade_estimator.py iris_data.py 我们的鸢尾花实现包含四个特征、两个隐藏层和一个对数输出层 检查点特征列特征列作为原始数据与模型所需的数据之间的桥梁 Estimator 的数据集创建自定义 Estimator custom_estimator.py 预创建的 Estimator 和自定义 Estimator 都是 Estimator]]></content>
-      <categories>
-        <category>TF</category>
-      </categories>
-      <tags>
-        <tag>深度学习框架</tag>
       </tags>
   </entry>
   <entry>
