@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[槽填充和意图识别任务相关论文发展脉络]]></title>
+    <url>%2F2019%2F02%2F25%2F%E6%A7%BD%E5%A1%AB%E5%85%85%E5%92%8C%E6%84%8F%E5%9B%BE%E8%AF%86%E5%88%AB%E4%BB%BB%E5%8A%A1%E7%9B%B8%E5%85%B3%E8%AE%BA%E6%96%87%E5%8F%91%E5%B1%95%E8%84%89%E7%BB%9C%2F</url>
+    <content type="text"><![CDATA[GitHub 槽填充和意图识别任务Reprslot-filling 标题 说明 时间 snips-nlu Snips NLU（自然语言理解）是一个Python库，允许解析用自然语言编写的句子并提取结构化信息。主要针对意图识别和槽填充任务，结合了深度学习和特征工程方法，且有对智能家居领域的应用示例 DeepPavlov 用于深度学习端到端对话系统和聊天机器人的开源库。 intent最新槽填充和意图识别任务相关论文https://paperswithcode.com/task/slot-fillinghttps://paperswithcode.com/task/intent-classificationhttps://github.com/AtmaHou/Task-Oriented-Dialogue-Dataset-Survey 2016 Attention-Based Recurrent Neural Network Models for Joint Intent Detection and Slot Filling 数据集 AITS |标题|说明|时间||-|-|-|-||Attention-Based Recurrent Neural Network Models for Joint Intent Detection and Slot Filling|原始论文|20160906||Attention-Based Recurrent Neural Network Models for Joint Intent Detection and Slot Filling|论文跟踪信息|||RNN-for-Joint-NLU|官方实现|20170918||Joint-Slot-Filling 和 解析|论文实现和解析|20190127| 2018 Slot-Gated Modeling for Joint Slot Filling and Intent Prediction 数据集 AITS 和 Snips 标题 说明 时间 Slot-Gated Modeling for Joint Slot Filling and Intent Prediction 论文原文 2018 论文实现 Code 原作者实现 2018 Slot-Gated Modeling for Joint Slot Filling and Intent Prediction Helic He 解读 20181203 『 论文阅读』Slot-Gated Modeling for Joint Slot Filling and Intent Prediction 立刻有 20181014 相关论文Attention-Based Recurrent Neural Network Models for Joint Intent Detection and Slot Filling解读 立刻有 20181014 【论文阅读】Slot-Gated Modeling for Joint Slot Filling and Intent Prediction iMayday_hui；代码解读 20181121 《用于槽填充和意图检测的slot-gates模型》阅读笔记 战先生 20181105 2018 Subword Semantic Hashing for Intent Classification on Small Datasetshttps://paperswithcode.com/paper/subword-semantic-hashing-for-intent-clas2 标题 说明 时间 Subword Semantic Hashing for Intent Classification on Small Datasets 论文原文 20181216 论文实现 Code 原作者实现 20190201]]></content>
+      <categories>
+        <category>论文</category>
+        <category>口语理解</category>
+      </categories>
+      <tags>
+        <tag>论文</tag>
+        <tag>意图识别</tag>
+        <tag>槽填充</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Python]]></title>
     <url>%2F2019%2F02%2F22%2FPython%2F</url>
     <content type="text"><![CDATA[Python 语言本身 标题 说明 时间 《Python Cookbook》 3rd Edition Translation 《Python Cookbook》 在线阅读地址；Code samples from the “Python Cookbook, 3rd Edition” 《Python进阶》（Intermediate Python 中文版） 英文原版 wtfpython WTF Python：有趣且鲜为人知的Python特性 这些Python代码技巧，你肯定还不知道 英文原版An A-Z of useful Python tricks 20180829 Python 语言使用 标题 说明 时间 《统计学习方法》的代码实现 《统计学习方法》可以说是机器学习的入门宝典，许多机器学习培训班、互联网企业的面试、笔试题目，很多都参考这本书。本站根据网上资料用Python复现了课程内容，并提供本书的代码实现、课件下载。 20181217 《The Hitchhiker’s Guide to Python》 Python best practices guidebook, written for humans. python-patterns Python中的一系列设计模式/习语 system-design-primer 了解如何设计大型系统。准备系统设计面试。包括Anki抽认卡。 free-programming-books-zh_CN 免费的计算机编程类中文书籍，欢迎投稿 http://weibo.com/justjavac All Algorithms implemented in Python These implementations are for demonstration purposes. They are less efficient than the implementations in the Python standard library. 机器学习算法Python实现 机器学习实战（Python3） 机器学习实战（Python3）：kNN、决策树、贝叶斯、逻辑回归、SVM、线性回归、树回归 COMS W4995 Applied Machine Learning - Spring 19 机器学习应用课程COMS W4995 Applied Machine Learning Spring 2019 - Schedule 2019 Python 库与项目 类别 标题 说明 时间 人脸识别 face_recognition The world’s simplest facial recognition api for Python and the command line. 分割线，下面是还未整理好的内容 数据集切分Numpy np.random.choice1234567# Split data into train/test = 80%/20%train_indices = np.random.choice(len(x_vals), round(len(x_vals)*0.8), replace=False)test_indices = np.array(list(set(range(len(x_vals))) - set(train_indices)))x_vals_train = x_vals[train_indices]x_vals_test = x_vals[test_indices]y_vals_train = y_vals[train_indices]y_vals_test = y_vals[test_indices] sklearn train_test_split12from sklearn.model_selection import train_test_splittrain_test_split(x,y,test_size=0.3,random_state=0) np.random.permutation123shuffled_ix = np.random.permutation(np.arange(len(X)))X = X[shuffled_ix]Y = Y[shuffled_ix] 字符串维基百科定义：字符串是由零个或多个字符组成的有限序列。Python 3：字符串是由 Unicode 码点组成的不可变序列（Strings are immutable sequences of Unicode code points.） 12345678910111213# 以下的s、t皆表示序列，x表示元素x in s # 若s包含x，返回True，否则返回Falsex not in s # 若s包含x，返回False，否则返回Trues + t # 连接两个序列s * n # s复制n次s[i] # s的索引第i项s[i:j] # s切片从第i项到第j-1项s[i:j:k] # s切片从第i项到第j-1项,间隔为klen(s) # s的长度min(s) # s的最小元素max(s) # s的最大元素s.index（x） # x的索引位置s.count(x) # s中出现x的总次数 字符串序列是一种不可变序列，这意味着它不能像可变序列一样，进行就地修改。例如，在字符串“Python”的基础上拼接“Cat”，得到字符串“PythonCat”，新的字符串是一个独立的存在，它与基础字符串“Python”并没有关联关系。 历史上，人类创造了多种多样的字符编码标准，例如 ASCII（1963年）编码，以西欧语言的字符为主，它的缺点是只能编码 128 个字符；例如 GB2312（1981年），这是中国推出的编码标准，在兼容ASCII标准的基础上，还加入了对日文、俄文等字符的编码，但缺点仍是编码范围有限，无法表示古汉语、繁体字及更多书写系统的字符。 Unicode 编码标准于1991年推出，至今 (2018) 迭代到了第11版，已经能够编码146个书写系统的130000个字符，可谓是无所不包，真不愧是“国际码”。Unicode 编码其实是一个二进制字符集，它建立了从书写字符映射成唯一的数字字符的关系，但是，由于各系统平台对字符的理解差异，以及出于节省空间的考虑，Unicode编码还需要再做一次转换，转换后的新的二进制数字才能作为实际存储及网络传输时的编码。 这种转换方式被称为 Unicode 转换格式 （Unicode Transformation Format，简称为UTF），它又细分为UTF-8、UTF-16、UTF-32等等方式。我们最常用的是UTF-8。为什么UTF-8最常用呢？因为它是可变长度的编码方案，针对不同的字符使用不同的字节数来编码，例如编码英文字母时，只需要一个字节（8个比特），而编码较复杂的汉字时，就会用到三个字节（24个比特）。 二进制的编码串可以说是给机器阅读的，为了方便，我们通常会将其转化为十六进制，例如“中”字的Unicode编码可以表示成0x4e2d ，其UTF-8编码可以表示为0xe4b8ad，’0x’用于开头表示十六进制，这样就简洁多了。不过，UTF-8编码的结果会被表示成以字节为单位的形式，例如“中”字用UTF-8编码后的字节形式是 \xe4\xb8\xad 。 Python中为了区分Unicode编码与字节码，分别在开头加“u”和“b”以示区分。在Python 3中，因为Unicode成了默认编码格式，所以“u”被省略掉了。 总结一下，Python 3 中的字符串是由Unicode码点组成的不可变序列，也即是，由采用Unicode标准编码的字符组成的不可变序列。Unicode编码将书写系统的字符映射成了计算机二进制数字，为了方便，通常显示为十六进制；在运算内存中，字符以Unicode编码呈现，当写入磁盘或用于网络传输时，一般采用UTF-8方式编码。]]></content>
@@ -43,20 +57,6 @@
       </categories>
       <tags>
         <tag>论文</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[槽填充和意图识别任务相关论文发展脉络]]></title>
-    <url>%2F2019%2F02%2F19%2F%E6%A7%BD%E5%A1%AB%E5%85%85%E5%92%8C%E6%84%8F%E5%9B%BE%E8%AF%86%E5%88%AB%E4%BB%BB%E5%8A%A1%E7%9B%B8%E5%85%B3%E8%AE%BA%E6%96%87%E5%8F%91%E5%B1%95%E8%84%89%E7%BB%9C%2F</url>
-    <content type="text"><![CDATA[最新槽填充和意图识别任务相关论文https://paperswithcode.com/task/slot-fillinghttps://paperswithcode.com/task/intent-classificationhttps://github.com/AtmaHou/Task-Oriented-Dialogue-Dataset-Survey 2016 Attention-Based Recurrent Neural Network Models for Joint Intent Detection and Slot Filling 数据集 AITS |标题|说明|时间||-|-|-|-||Attention-Based Recurrent Neural Network Models for Joint Intent Detection and Slot Filling|原始论文|20160906||Attention-Based Recurrent Neural Network Models for Joint Intent Detection and Slot Filling|论文跟踪信息|||RNN-for-Joint-NLU|官方实现|20170918||Joint-Slot-Filling 和 解析|论文实现和解析|20190127| 2018 Slot-Gated Modeling for Joint Slot Filling and Intent Prediction 数据集 AITS 和 Snips 标题 说明 时间 Slot-Gated Modeling for Joint Slot Filling and Intent Prediction 论文原文 2018 论文实现 Code 原作者实现 2018 Slot-Gated Modeling for Joint Slot Filling and Intent Prediction Helic He 解读 20181203 『 论文阅读』Slot-Gated Modeling for Joint Slot Filling and Intent Prediction 立刻有 20181014 相关论文Attention-Based Recurrent Neural Network Models for Joint Intent Detection and Slot Filling解读 立刻有 20181014 【论文阅读】Slot-Gated Modeling for Joint Slot Filling and Intent Prediction iMayday_hui；代码解读 20181121 《用于槽填充和意图检测的slot-gates模型》阅读笔记 战先生 20181105 2018 Subword Semantic Hashing for Intent Classification on Small Datasetshttps://paperswithcode.com/paper/subword-semantic-hashing-for-intent-clas2 标题 说明 时间 Subword Semantic Hashing for Intent Classification on Small Datasets 论文原文 20181216 论文实现 Code 原作者实现 20190201]]></content>
-      <categories>
-        <category>论文</category>
-        <category>口语理解</category>
-      </categories>
-      <tags>
-        <tag>论文</tag>
-        <tag>意图识别</tag>
-        <tag>槽填充</tag>
       </tags>
   </entry>
   <entry>
@@ -693,7 +693,7 @@
   <entry>
     <title><![CDATA[论文写作方法与工具]]></title>
     <url>%2F2018%2F11%2F14%2F%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C%E6%96%B9%E6%B3%95%E4%B8%8E%E5%B7%A5%E5%85%B7%2F</url>
-    <content type="text"><![CDATA[文献管理工具 mendeley Mendeley初步使用说明 20180122 overleaf LATEX 写作overleaf写作，如何输入中文？程明明做了一个中文科研论文的Overleaf Latex版本，跟大家共享。Overleaf设置使用XeLatex。这里是共享链接：https://www.overleaf.com/read/pzfyspxjnscm 方法：121. 加入package：\usepackage[UTF8]&#123;ctex&#125;2. 设置-&gt;修改Latex引擎-&gt;选择“XeLatex”。由“小齿轮图标”设置-&gt;修改Latex引擎-&gt;选择“XeLatex”，改为了：左上角的Menu -&gt; Setting -&gt; Compiler -&gt; XeLatex]]></content>
+    <content type="text"><![CDATA[阅读论文一文教你如何快速高效阅读Paper（硕士生版） 文献管理工具 mendeley Mendeley初步使用说明 20180122 overleaf LATEX 写作overleaf写作，如何输入中文？程明明做了一个中文科研论文的Overleaf Latex版本，跟大家共享。Overleaf设置使用XeLatex。这里是共享链接：https://www.overleaf.com/read/pzfyspxjnscm 方法：121. 加入package：\usepackage[UTF8]&#123;ctex&#125;2. 设置-&gt;修改Latex引擎-&gt;选择“XeLatex”。由“小齿轮图标”设置-&gt;修改Latex引擎-&gt;选择“XeLatex”，改为了：左上角的Menu -&gt; Setting -&gt; Compiler -&gt; XeLatex]]></content>
       <categories>
         <category>论文</category>
         <category>论文写作</category>
