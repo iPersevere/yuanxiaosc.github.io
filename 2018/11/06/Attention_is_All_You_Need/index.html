@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="序列到序列任务与Transformer模型序列到序列任务与Encoder-Decoder框架序列到序列（Sequence-to-Sequence）是自然语言处理中的一个常见任务，主要用来做泛文本生成的任务，像机器翻译、文本摘要、歌词/故事生成、对话机器人等。最具有代表性的一个任务就是机器翻译（Machine Translation），将一种语言的序列映射到另一个语言的序列。例如，在汉-英机器翻译任">
+<meta name="description" content="深入解析 Attention is All You Need 中自注意力机制    标题 说明 时间     The Illustrated Transformer 对论文解析的最好的一篇博文，制作精美 20190228     序列到序列任务与Transformer模型序列到序列任务与Encoder-Decoder框架序列到序列（Sequence-to-Sequence）是自然语言处理中的一个常">
 <meta name="keywords" content="Attention,Transformer,Sequence-to-Sequence">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Attention is All You Need">
 <meta property="og:url" content="http://yoursite.com/2018/11/06/Attention_is_All_You_Need/index.html">
 <meta property="og:site_name" content="望江人工智库">
-<meta property="og:description" content="序列到序列任务与Transformer模型序列到序列任务与Encoder-Decoder框架序列到序列（Sequence-to-Sequence）是自然语言处理中的一个常见任务，主要用来做泛文本生成的任务，像机器翻译、文本摘要、歌词/故事生成、对话机器人等。最具有代表性的一个任务就是机器翻译（Machine Translation），将一种语言的序列映射到另一个语言的序列。例如，在汉-英机器翻译任">
+<meta property="og:description" content="深入解析 Attention is All You Need 中自注意力机制    标题 说明 时间     The Illustrated Transformer 对论文解析的最好的一篇博文，制作精美 20190228     序列到序列任务与Transformer模型序列到序列任务与Encoder-Decoder框架序列到序列（Sequence-to-Sequence）是自然语言处理中的一个常">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/11/06/Attention_is_All_You_Need/p1.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/06/Attention_is_All_You_Need/p2.png">
@@ -109,10 +109,10 @@
 <meta property="og:image" content="http://yoursite.com/2018/11/06/Attention_is_All_You_Need/attention_nmt_model.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/06/Attention_is_All_You_Need/transformer_nmt_model.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/06/Attention_is_All_You_Need/imdb_attention.png">
-<meta property="og:updated_time" content="2018-11-06T06:18:36.564Z">
+<meta property="og:updated_time" content="2019-03-01T07:51:52.941Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Attention is All You Need">
-<meta name="twitter:description" content="序列到序列任务与Transformer模型序列到序列任务与Encoder-Decoder框架序列到序列（Sequence-to-Sequence）是自然语言处理中的一个常见任务，主要用来做泛文本生成的任务，像机器翻译、文本摘要、歌词/故事生成、对话机器人等。最具有代表性的一个任务就是机器翻译（Machine Translation），将一种语言的序列映射到另一个语言的序列。例如，在汉-英机器翻译任">
+<meta name="twitter:description" content="深入解析 Attention is All You Need 中自注意力机制    标题 说明 时间     The Illustrated Transformer 对论文解析的最好的一篇博文，制作精美 20190228     序列到序列任务与Transformer模型序列到序列任务与Encoder-Decoder框架序列到序列（Sequence-to-Sequence）是自然语言处理中的一个常">
 <meta name="twitter:image" content="http://yoursite.com/2018/11/06/Attention_is_All_You_Need/p1.png">
 
 
@@ -373,8 +373,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/论文/论文阅读/" itemprop="url" rel="index">
-                    <span itemprop="name">论文阅读</span>
+                  <a href="/categories/论文/神经机器翻译/" itemprop="url" rel="index">
+                    <span itemprop="name">神经机器翻译</span>
                   </a>
                 </span>
 
@@ -410,7 +410,25 @@
       
 
       
-        <h1 id="序列到序列任务与Transformer模型"><a href="#序列到序列任务与Transformer模型" class="headerlink" title="序列到序列任务与Transformer模型"></a><a href="https://cloud.tencent.com/developer/article/1153079" target="_blank" rel="noopener">序列到序列任务与Transformer模型</a></h1><h2 id="序列到序列任务与Encoder-Decoder框架"><a href="#序列到序列任务与Encoder-Decoder框架" class="headerlink" title="序列到序列任务与Encoder-Decoder框架"></a>序列到序列任务与Encoder-Decoder框架</h2><p>序列到序列（Sequence-to-Sequence）是自然语言处理中的一个常见任务，主要用来做泛文本生成的任务，像机器翻译、文本摘要、歌词/故事生成、对话机器人等。最具有代表性的一个任务就是机器翻译（Machine Translation），将一种语言的序列映射到另一个语言的序列。例如，在汉-英机器翻译任务中，模型要将一个汉语句子（词序列）转化成一个英语句子（词序列）。</p>
+        <h2 id="深入解析-Attention-is-All-You-Need-中自注意力机制"><a href="#深入解析-Attention-is-All-You-Need-中自注意力机制" class="headerlink" title="深入解析 Attention is All You Need 中自注意力机制"></a>深入解析 Attention is All You Need 中自注意力机制</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>标题</th>
+<th>说明</th>
+<th>时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://jalammar.github.io/illustrated-transformer/" target="_blank" rel="noopener">The Illustrated Transformer</a></td>
+<td>对论文解析的最好的一篇博文，制作精美</td>
+<td>20190228</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="序列到序列任务与Transformer模型"><a href="#序列到序列任务与Transformer模型" class="headerlink" title="序列到序列任务与Transformer模型"></a><a href="https://cloud.tencent.com/developer/article/1153079" target="_blank" rel="noopener">序列到序列任务与Transformer模型</a></h1><h2 id="序列到序列任务与Encoder-Decoder框架"><a href="#序列到序列任务与Encoder-Decoder框架" class="headerlink" title="序列到序列任务与Encoder-Decoder框架"></a>序列到序列任务与Encoder-Decoder框架</h2><p>序列到序列（Sequence-to-Sequence）是自然语言处理中的一个常见任务，主要用来做泛文本生成的任务，像机器翻译、文本摘要、歌词/故事生成、对话机器人等。最具有代表性的一个任务就是机器翻译（Machine Translation），将一种语言的序列映射到另一个语言的序列。例如，在汉-英机器翻译任务中，模型要将一个汉语句子（词序列）转化成一个英语句子（词序列）。</p>
 <p>目前Encoder-Decoder框架是解决序列到序列问题的一个主流模型。模型使用Encoder对source sequence进行压缩表示，使用Decoder基于源端的压缩表示生成target sequence。该结构的好处是可以实现两个sequence之间end-to-end方式的建模，模型中所有的参数变量统一到一个目标函数下进行训练，模型表现较好。图1展示了Encoder-Decoder模型的结构，从底向上是一个机器翻译的过程。<br><img src="/2018/11/06/Attention_is_All_You_Need/p1.png" alt=""><br>Encoder和Decoder可以选用不同结构的Neural Network，比如RNN、CNN。RNN的工作方式是对序列根据时间步，依次进行压缩表示。使用RNN的时候，一般会使用双向的RNN结构。具体方式是使用一个RNN对序列中的元素进行从左往右的压缩表示，另一个RNN对序列进行从右向左的压缩表示。两种表示被联合起来使用，作为最终序列的分布式表示。使用CNN结构的时候，一般使用多层的结构，来实现序列局部表示到全局表示的过程。使用RNN建模句子可以看做是一种时间序列的观点，使用CNN建模句子可以看做一种结构化的观点。使用RNN结构的序列到序列模型主要包括RNNSearch、GNMT等，使用CNN结构的序列到序列模型主要有ConvS2S等。</p>
 <h2 id="神经网络模型与语言距离依赖现象"><a href="#神经网络模型与语言距离依赖现象" class="headerlink" title="神经网络模型与语言距离依赖现象"></a>神经网络模型与语言距离依赖现象</h2><p>Transformer是一种建模序列的新方法，序列到序列的模型依然是沿用了上述经典的Encoder-Decoder结构，不同的是不再使用RNN或是CNN作为序列建模机制了，而是使用了self-attention机制。这种机制理论上的优势就是更容易捕获“长距离依赖信息（long distance dependency）”。所谓的“长距离依赖信息”可以这么来理解：1）一个词其实是一个可以表达多样性语义信息的符号（歧义问题）。2）一个词的语义确定，要依赖其所在的上下文环境。（根据上下文消岐）3）有的词可能需要一个范围较小的上下文环境就能确定其语义（短距离依赖现象），有的词可能需要一个范围较大的上下文环境才能确定其语义（长距离依赖现象）。</p>
 <p>举个例子，看下面两句话：“山上有很多杜鹃，春天到了的时候，会漫山遍野的开放，非常美丽。” “山上有很多杜鹃，春天到了的时候，会漫山遍野的啼鸣，非常婉转。”在这两句话中，“杜鹃”分别指花（azalea）和鸟（cuckoo）。在机器翻译问题中，如果不看距其比较远的距离的词，很难将“杜鹃”这个词翻译正确。该例子是比较明显的一个例子，可以明显的看到词之间的远距离依赖关系。当然，绝大多数的词义在一个较小范围的上下文语义环境中就可以确定，像上述的例子在语言中占的比例会相对较小。我们期望的是模型既能够很好的学习到短距离的依赖知识，也能够学习到长距离依赖的知识。</p>
@@ -462,7 +480,7 @@
 <td>201807</td>
 </tr>
 <tr>
-<td>[Attention Is All You Need code we used to train and evaluate our models is available at <a href="https://github.com/tensorflow/tensor2tensor" target="_blank" rel="noopener">https://github.com/tensorflow/tensor2tensor</a>.]</td>
+<td>Attention Is All You Need code we used to train and evaluate our models is available at <a href="https://github.com/tensorflow/tensor2tensor" target="_blank" rel="noopener">https://github.com/tensorflow/tensor2tensor</a></td>
 <td>原始论文模型评估</td>
 <td></td>
 </tr>
@@ -687,7 +705,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -741,7 +759,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#序列到序列任务与Transformer模型"><span class="nav-number">1.</span> <span class="nav-text">序列到序列任务与Transformer模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#序列到序列任务与Encoder-Decoder框架"><span class="nav-number">1.1.</span> <span class="nav-text">序列到序列任务与Encoder-Decoder框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#神经网络模型与语言距离依赖现象"><span class="nav-number">1.2.</span> <span class="nav-text">神经网络模型与语言距离依赖现象</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Attention-Is-All-You-Need"><span class="nav-number">2.</span> <span class="nav-text">Attention Is All You Need</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#论文模型图片"><span class="nav-number">2.1.</span> <span class="nav-text">论文模型图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#论文结果可视化"><span class="nav-number">2.2.</span> <span class="nav-text">论文结果可视化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#论文原文"><span class="nav-number">2.3.</span> <span class="nav-text">论文原文</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#seq2seq-example"><span class="nav-number">3.</span> <span class="nav-text">seq2seq_example</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NMT-Keras"><span class="nav-number">4.</span> <span class="nav-text">NMT-Keras</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Attentional-recurrent-neural-network-NMT-model"><span class="nav-number">4.1.</span> <span class="nav-text">Attentional recurrent neural network NMT model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transformer-NMT-model"><span class="nav-number">4.2.</span> <span class="nav-text">Transformer NMT model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解析attention-keras-py"><span class="nav-number">5.</span> <span class="nav-text">解析attention_keras.py</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#attention-keras-源码"><span class="nav-number">5.1.</span> <span class="nav-text">attention_keras 源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多头attention维度变换查看"><span class="nav-number">5.2.</span> <span class="nav-text">多头attention维度变换查看</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对Q、K、V做线性变换"><span class="nav-number">5.2.1.</span> <span class="nav-text">对Q、K、V做线性变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同理"><span class="nav-number">5.2.2.</span> <span class="nav-text">同理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算内积，然后mask，然后softmax"><span class="nav-number">5.2.3.</span> <span class="nav-text">计算内积，然后mask，然后softmax</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">5.3.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型图"><span class="nav-number">5.4.</span> <span class="nav-text">模型图</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#深入解析-Attention-is-All-You-Need-中自注意力机制"><span class="nav-number">1.</span> <span class="nav-text">深入解析 Attention is All You Need 中自注意力机制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#序列到序列任务与Transformer模型"><span class="nav-number"></span> <span class="nav-text">序列到序列任务与Transformer模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#序列到序列任务与Encoder-Decoder框架"><span class="nav-number">1.</span> <span class="nav-text">序列到序列任务与Encoder-Decoder框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#神经网络模型与语言距离依赖现象"><span class="nav-number">2.</span> <span class="nav-text">神经网络模型与语言距离依赖现象</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Attention-Is-All-You-Need"><span class="nav-number"></span> <span class="nav-text">Attention Is All You Need</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#论文模型图片"><span class="nav-number">1.</span> <span class="nav-text">论文模型图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#论文结果可视化"><span class="nav-number">2.</span> <span class="nav-text">论文结果可视化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#论文原文"><span class="nav-number">3.</span> <span class="nav-text">论文原文</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#seq2seq-example"><span class="nav-number"></span> <span class="nav-text">seq2seq_example</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NMT-Keras"><span class="nav-number"></span> <span class="nav-text">NMT-Keras</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Attentional-recurrent-neural-network-NMT-model"><span class="nav-number">1.</span> <span class="nav-text">Attentional recurrent neural network NMT model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transformer-NMT-model"><span class="nav-number">2.</span> <span class="nav-text">Transformer NMT model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解析attention-keras-py"><span class="nav-number"></span> <span class="nav-text">解析attention_keras.py</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#attention-keras-源码"><span class="nav-number">1.</span> <span class="nav-text">attention_keras 源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多头attention维度变换查看"><span class="nav-number">2.</span> <span class="nav-text">多头attention维度变换查看</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对Q、K、V做线性变换"><span class="nav-number">2.1.</span> <span class="nav-text">对Q、K、V做线性变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同理"><span class="nav-number">2.2.</span> <span class="nav-text">同理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算内积，然后mask，然后softmax"><span class="nav-number">2.3.</span> <span class="nav-text">计算内积，然后mask，然后softmax</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">3.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型图"><span class="nav-number">4.</span> <span class="nav-text">模型图</span></a></li></ol></div>
             
 
           </div>
