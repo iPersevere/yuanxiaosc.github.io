@@ -543,7 +543,13 @@ LearningRate 详细解读
       
         
           
-          深入解析 Attention is All You Need 中自注意力机制
+          论文精要自注意力机制机制$Attention(Q, K, V)=softmax(\dfrac{QK^T}{\sqrt{d_k}})V$
+多头自注意力机制
+
+
+
+$MultiHead(Q, K, V)=Concat(head_1,…,head_h)W^o $$where head_i=Attention(QW^Q_i, KW^K_i, VW^V_i)$
+深入解析 Attention is All You Need 中自注意力机制
 
 
 
@@ -561,7 +567,7 @@ The Illustrated Transformer
 
 
 
-序列到序列任务与Transformer模型序列到序列任务与Encoder-Decoder框架序列到序列（Sequence-to-Sequence）是自然语言处理中的一个常见任务，主要用来做泛文本生成的任务，像机器翻译、文本摘要、歌词/故事生成、对话机器人等。最具有代表性的一个任务就是机器翻译（Machine Translation），将一种语言的序列映射到另一个语言的
+序列到序列任务与
           ...
           <!--noindex-->
           <div class="post-button text-center">
