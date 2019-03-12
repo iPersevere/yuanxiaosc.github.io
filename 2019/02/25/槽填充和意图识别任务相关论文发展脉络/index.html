@@ -88,7 +88,7 @@
 <meta property="og:description" content="GitHub 槽填充和意图识别任务Reprslot-filling    标题 说明 时间     snips-nlu Snips NLU（自然语言理解）是一个Python库，允许解析用自然语言编写的句子并提取结构化信息。主要针对意图识别和槽填充任务，结合了深度学习和特征工程方法，且有对智能家居领域的应用示例    DeepPavlov 用于深度学习端到端对话系统和聊天机器人的开源库。     i">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/02/25/槽填充和意图识别任务相关论文发展脉络/1.png">
-<meta property="og:updated_time" content="2019-03-06T03:17:06.781Z">
+<meta property="og:updated_time" content="2019-03-11T07:56:19.538Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="槽填充和意图识别任务相关论文发展脉络">
 <meta name="twitter:description" content="GitHub 槽填充和意图识别任务Reprslot-filling    标题 说明 时间     snips-nlu Snips NLU（自然语言理解）是一个Python库，允许解析用自然语言编写的句子并提取结构化信息。主要针对意图识别和槽填充任务，结合了深度学习和特征工程方法，且有对智能家居领域的应用示例    DeepPavlov 用于深度学习端到端对话系统和聊天机器人的开源库。     i">
@@ -416,9 +416,7 @@
 <p>基于注意力的编码器-解码器神经网络模型最近在机器翻译和语音识别方面显示出了良好的效果。在这项工作中，我们提出了一个基于注意力的神经网络模型，用于联合意图检测和插槽填充，这两个都是许多语音理解和对话系统的关键步骤。与机器翻译和语音识别不同，插槽填充中的对齐是显式的。我们探讨了在编码器-解码器框架中合并这种对齐信息的不同策略。从编码器-解码器模型的注意机制入手，进一步提出了基于对齐的RNN模型的注意问题。这些关注为分类正确率和插槽标签预测提供了额外的信息。我们的独立任务模型在基准ATIS任务上实现了最先进的意图检测错误率和填槽F1分数。我们的联合训练模型在意图检测上进一步得到了0.56%的绝对误差(相对误差23.8%)，在独立任务模型上得到了0.23%的插槽填充绝对误差。</p>
 </blockquote>
 <p><img src="/2019/02/25/槽填充和意图识别任务相关论文发展脉络/1.png" alt=""><br>|标题|说明|时间|<br>|-|-|-|-|<br>|<a href="https://arxiv.org/abs/1609.01454v1" target="_blank" rel="noopener">Attention-Based Recurrent Neural Network Models for Joint Intent Detection and Slot Filling</a>|原始论文|20160906|<br>|<a href="https://paperswithcode.com/paper/attention-based-recurrent-neural-network3" target="_blank" rel="noopener">Attention-Based Recurrent Neural Network Models for Joint Intent Detection and Slot Filling</a>|论文跟踪信息||<br>|<a href="https://github.com/DSKSD/RNN-for-Joint-NLU" target="_blank" rel="noopener">RNN-for-Joint-NLU</a>|官方实现|20170918|<br>|<a href="https://github.com/pengshuang/Joint-Slot-Filling" target="_blank" rel="noopener">Joint-Slot-Filling</a> 和 <a href="https://zhuanlan.zhihu.com/p/55371671" target="_blank" rel="noopener">解析</a>|论文实现和解析|20190127|</p>
-<h2 id="2018-Slot-Gated-Modeling-for-Joint-Slot-Filling-and-Intent-Prediction"><a href="#2018-Slot-Gated-Modeling-for-Joint-Slot-Filling-and-Intent-Prediction" class="headerlink" title="2018 Slot-Gated Modeling for Joint Slot Filling and Intent Prediction"></a>2018 Slot-Gated Modeling for Joint Slot Filling and Intent Prediction</h2><blockquote>
-<p>数据集 AITS 和 Snips</p>
-</blockquote>
+<h2 id="2018-Slot-Gated-Modeling-for-Joint-Slot-Filling-and-Intent-Prediction"><a href="#2018-Slot-Gated-Modeling-for-Joint-Slot-Filling-and-Intent-Prediction" class="headerlink" title="2018 Slot-Gated Modeling for Joint Slot Filling and Intent Prediction"></a>2018 Slot-Gated Modeling for Joint Slot Filling and Intent Prediction</h2><p>用于关节意图检测和槽填充的基于注意的递归神经网络模型已经实现了最先进的性能，同时它们具有独立的注意力。 考虑到时隙和意图具有很强的关系，本文提出了一个槽门机制，侧重于学习意图和槽注意向量之间的关系，以便通过全局优化获得更好的语义框架结果。 实验表明，与基准ATIS和Snips数据集的注意模型相比，我们提出的模型显着提高了句子级语义框架的准确性，相对改进率分别为4.2％和1.9％。</p>
 <div class="table-container">
 <table>
 <thead>
@@ -467,6 +465,25 @@
 </tbody>
 </table>
 </div>
+<h2 id="2018-Unsupervised-Transfer-Learning-for-Spoken-Language-Understanding-in-Intelligent-Agents"><a href="#2018-Unsupervised-Transfer-Learning-for-Spoken-Language-Understanding-in-Intelligent-Agents" class="headerlink" title="2018 Unsupervised Transfer Learning for Spoken Language Understanding in Intelligent Agents"></a>2018 Unsupervised Transfer Learning for Spoken Language Understanding in Intelligent Agents</h2><p>用户与语音代理的交互会产生大量未标记的话语。在本文中，我们探索了从这些未标记的话语中有效传递知识的技术，以提高口语理解（SLU）任务的模型性能。我们使用语言模型嵌入（ELMo）通过学习语境化的单词表示来利用未标记的数据。此外，我们提出ELMo-Light（ELMoL），这是一种更快速，更简单的无监督预训练方法，适用于SLU。我们的研究结果表明，对于大量未标记的话语进行无监督的预训练，与从头开始训练相比，可以显着提高SLU性能，甚至可以胜过传统的监督转移。此外，我们表明，无监督传输技术可以通过监督传输进一步提高收益。这些改进在低资源设置中更为明显，并且当仅使用1000个标记的域内样本时，我们的技术从头开始匹配10-15倍标记的域内数据的训练性能。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>标题</th>
+<th>说明</th>
+<th>时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://arxiv.org/abs/1811.05370" target="_blank" rel="noopener">Unsupervised Transfer Learning for Spoken Language Understanding in Intelligent Agents</a></td>
+<td>论文原文</td>
+<td>20181113</td>
+</tr>
+</tbody>
+</table>
+</div>
 <h2 id="2018-Subword-Semantic-Hashing-for-Intent-Classification-on-Small-Datasets"><a href="#2018-Subword-Semantic-Hashing-for-Intent-Classification-on-Small-Datasets" class="headerlink" title="2018 Subword Semantic Hashing for Intent Classification on Small Datasets"></a>2018 Subword Semantic Hashing for Intent Classification on Small Datasets</h2><p><a href="https://paperswithcode.com/paper/subword-semantic-hashing-for-intent-clas2" target="_blank" rel="noopener">https://paperswithcode.com/paper/subword-semantic-hashing-for-intent-clas2</a></p>
 <div class="table-container">
 <table>
@@ -491,6 +508,25 @@
 </tbody>
 </table>
 </div>
+<h2 id="2018-Snips-Voice-Platform-an-embedded-Spoken-Language-Understanding-system-for-private-by-design-voice-interfaces"><a href="#2018-Snips-Voice-Platform-an-embedded-Spoken-Language-Understanding-system-for-private-by-design-voice-interfaces" class="headerlink" title="2018 Snips Voice Platform: an embedded Spoken Language Understanding system for private-by-design voice interfaces"></a>2018 Snips Voice Platform: an embedded Spoken Language Understanding system for private-by-design voice interfaces</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>标题</th>
+<th>说明</th>
+<th>时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://arxiv.org/abs/1805.10190" target="_blank" rel="noopener">Snips Voice Platform: an embedded Spoken Language Understanding system for private-by-design voice interfaces</a></td>
+<td>论文原文</td>
+<td>20181206</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>本文介绍了Snips语音平台的机器学习架构，这是一种软件解决方案，用于在物联网设备的典型微处理器上执行语言管理。 嵌入式推理快速准确，同时通过设计实施隐私，因为不会收集任何个人用户数据。 我们专注于自动语音识别和自然语言理解，详细介绍了我们培训高性能机器学习模型的方法，这些模型足够小，可以在小型设备上实时运行。 此外，我们还介绍了一种数据生成过程，该过程可提供足够的高质量培训数据，而不会影响用户隐私。</p>
 <h2 id="2018-Joint-Slot-Filling-and-Intent-Detection-via-Capsule-Neural-Networks"><a href="#2018-Joint-Slot-Filling-and-Intent-Detection-via-Capsule-Neural-Networks" class="headerlink" title="2018 Joint Slot Filling and Intent Detection via Capsule Neural Networks"></a>2018 Joint Slot Filling and Intent Detection via Capsule Neural Networks</h2><div class="table-container">
 <table>
 <thead>
@@ -505,6 +541,23 @@
 <td><a href="https://arxiv.org/abs/1812.09471" target="_blank" rel="noopener">Joint Slot Filling and Intent Detection via Capsule Neural Networks</a></td>
 <td>论文原文</td>
 <td>20181222</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="2018-A-Self-Attentive-Model-with-Gate-Mechanism-for-Spoken-Language-Understanding"><a href="#2018-A-Self-Attentive-Model-with-Gate-Mechanism-for-Spoken-Language-Understanding" class="headerlink" title="2018 A Self-Attentive Model with Gate Mechanism for Spoken Language Understanding"></a>2018 A Self-Attentive Model with Gate Mechanism for Spoken Language Understanding</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>标题</th>
+<th>说明</th>
+<th>时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://aclweb.org/anthology/D18-1417" target="_blank" rel="noopener">A Self-Attentive Model with Gate Mechanism for Spoken Language Understanding</a></td>
+<td>论文原文</td>
 </tr>
 </tbody>
 </table>
@@ -730,7 +783,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub-槽填充和意图识别任务Repr"><span class="nav-number">1.</span> <span class="nav-text">GitHub 槽填充和意图识别任务Repr</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#slot-filling"><span class="nav-number">1.1.</span> <span class="nav-text">slot-filling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#intent"><span class="nav-number">1.2.</span> <span class="nav-text">intent</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最新槽填充和意图识别任务相关论文"><span class="nav-number">2.</span> <span class="nav-text">最新槽填充和意图识别任务相关论文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2016-Attention-Based-Recurrent-Neural-Network-Models-for-Joint-Intent-Detection-and-Slot-Filling"><span class="nav-number">3.</span> <span class="nav-text">2016 Attention-Based Recurrent Neural Network Models for Joint Intent Detection and Slot Filling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018-Slot-Gated-Modeling-for-Joint-Slot-Filling-and-Intent-Prediction"><span class="nav-number">4.</span> <span class="nav-text">2018 Slot-Gated Modeling for Joint Slot Filling and Intent Prediction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018-Subword-Semantic-Hashing-for-Intent-Classification-on-Small-Datasets"><span class="nav-number">5.</span> <span class="nav-text">2018 Subword Semantic Hashing for Intent Classification on Small Datasets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018-Joint-Slot-Filling-and-Intent-Detection-via-Capsule-Neural-Networks"><span class="nav-number">6.</span> <span class="nav-text">2018 Joint Slot Filling and Intent Detection via Capsule Neural Networks</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub-槽填充和意图识别任务Repr"><span class="nav-number">1.</span> <span class="nav-text">GitHub 槽填充和意图识别任务Repr</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#slot-filling"><span class="nav-number">1.1.</span> <span class="nav-text">slot-filling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#intent"><span class="nav-number">1.2.</span> <span class="nav-text">intent</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最新槽填充和意图识别任务相关论文"><span class="nav-number">2.</span> <span class="nav-text">最新槽填充和意图识别任务相关论文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2016-Attention-Based-Recurrent-Neural-Network-Models-for-Joint-Intent-Detection-and-Slot-Filling"><span class="nav-number">3.</span> <span class="nav-text">2016 Attention-Based Recurrent Neural Network Models for Joint Intent Detection and Slot Filling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018-Slot-Gated-Modeling-for-Joint-Slot-Filling-and-Intent-Prediction"><span class="nav-number">4.</span> <span class="nav-text">2018 Slot-Gated Modeling for Joint Slot Filling and Intent Prediction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018-Unsupervised-Transfer-Learning-for-Spoken-Language-Understanding-in-Intelligent-Agents"><span class="nav-number">5.</span> <span class="nav-text">2018 Unsupervised Transfer Learning for Spoken Language Understanding in Intelligent Agents</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018-Subword-Semantic-Hashing-for-Intent-Classification-on-Small-Datasets"><span class="nav-number">6.</span> <span class="nav-text">2018 Subword Semantic Hashing for Intent Classification on Small Datasets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018-Snips-Voice-Platform-an-embedded-Spoken-Language-Understanding-system-for-private-by-design-voice-interfaces"><span class="nav-number">7.</span> <span class="nav-text">2018 Snips Voice Platform: an embedded Spoken Language Understanding system for private-by-design voice interfaces</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018-Joint-Slot-Filling-and-Intent-Detection-via-Capsule-Neural-Networks"><span class="nav-number">8.</span> <span class="nav-text">2018 Joint Slot Filling and Intent Detection via Capsule Neural Networks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018-A-Self-Attentive-Model-with-Gate-Mechanism-for-Spoken-Language-Understanding"><span class="nav-number">9.</span> <span class="nav-text">2018 A Self-Attentive Model with Gate Mechanism for Spoken Language Understanding</span></a></li></ol></div>
             
 
           </div>
